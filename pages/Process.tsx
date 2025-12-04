@@ -37,58 +37,67 @@ const Process: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full h-full flex flex-col justify-center max-w-5xl mx-auto px-4 md:px-6"
+      // Standardized Max Width
+      className="w-full max-w-7xl mx-auto"
     >
-      <header className="mb-12 md:mb-16 flex-shrink-0">
-        <h1 className="text-3xl md:text-5xl font-display font-bold mb-3 tracking-tight">How I work</h1>
-        <p className="text-gray-400 max-w-xl text-base md:text-lg font-light leading-relaxed">
-          I don't just make things look good. I build systems that work.
-        </p>
-      </header>
+      <div className="w-full grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-4 md:gap-x-6 lg:gap-x-8">
+        <div className="col-span-4 md:col-span-8 lg:col-span-12">
+          {/* Header Section - Standardized Margin Bottom (mb-20) */}
+          <header className="mb-20">
+            <h1 className="text-h2 font-display font-bold mb-6 tracking-h2 leading-h2 text-light-text">How I work</h1>
+            <div className="relative pl-6 border-l-2 border-teal-accent/50">
+              <p className="text-h6 text-gray-400 max-w-2xl font-light leading-p tracking-h6">
+                  I don't just make things look good. I build systems that work.
+              </p>
+            </div>
+          </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {steps.map((step, index) => (
-          <motion.div
-            key={step.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="relative group p-6 rounded-2xl bg-dark-sec/10 border border-dark-sec/50 hover:bg-dark-sec/20 hover:border-teal-accent/30 transition-all duration-300"
+          <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-8 mb-16">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                // Hover: white/gray shade instead of teal
+                className="col-span-4 md:col-span-4 lg:col-span-6 relative group p-8 rounded-2xl bg-dark-sec/20 border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
+              >
+                <div className="absolute right-6 top-6 text-display font-bold text-white/[0.03] font-display select-none pointer-events-none group-hover:text-white/[0.08] transition-colors leading-none">
+                    {step.id}
+                </div>
+
+                <div className="flex items-center gap-5 mb-6 relative z-10">
+                  {/* Icon with Neutral Background */}
+                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                    <step.icon size={24} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-h5 font-bold text-light-text group-hover:text-white transition-colors">{step.title}</h3>
+                </div>
+                
+                <p className="text-gray-400 leading-p text-body relative z-10 max-w-md">
+                  {step.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-start"
           >
-            {/* Subtle background number */}
-            <div className="absolute right-4 top-2 text-6xl font-bold text-white/[0.03] font-display select-none pointer-events-none group-hover:text-teal-accent/[0.05] transition-colors">
-                {step.id}
-            </div>
-
-            <div className="flex items-center gap-4 mb-4 relative z-10">
-              <div className="w-10 h-10 rounded-lg bg-dark-sec/50 border border-white/5 flex items-center justify-center text-teal-accent group-hover:scale-110 transition-transform duration-300">
-                <step.icon size={20} strokeWidth={1.5} />
-              </div>
-              <h3 className="text-lg font-bold text-light-text group-hover:text-teal-accent transition-colors">{step.title}</h3>
-            </div>
-            
-            <p className="text-gray-400 leading-relaxed text-sm relative z-10 max-w-sm">
-              {step.desc}
-            </p>
+            <Link 
+                to="/contact" 
+                className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-dark-main font-bold text-body transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
+            >
+                Start a project 
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
-        ))}
+        </div>
       </div>
-
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="mt-12 md:mt-16 flex-shrink-0 flex justify-start"
-      >
-        <Link 
-            to="/contact" 
-            className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-teal-accent text-dark-main font-bold text-sm transition-all hover:bg-white hover:shadow-[0_0_20px_rgba(0,173,181,0.4)]"
-        >
-            Start a project 
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </motion.div>
     </motion.div>
   );
 };

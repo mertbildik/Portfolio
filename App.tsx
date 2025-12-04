@@ -26,13 +26,17 @@ const AnimatedRoutes: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
-      <div className="flex flex-col md:flex-row min-h-screen md:h-screen bg-dark-main text-light-text font-sans selection:bg-teal-accent selection:text-dark-main relative overflow-hidden">
-        {/* Subtle Background Gradient for Premium Feel */}
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#1a1e26] via-dark-main to-dark-main opacity-60 pointer-events-none"></div>
+    // @ts-ignore: Suppressing type error for future flags which are valid in runtime for v6.28+
+    <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <div className="flex flex-col lg:flex-row min-h-screen bg-dark-main text-light-text font-sans selection:bg-teal-accent selection:text-dark-main relative">
+        {/* Subtle Background Gradient for Premium Feel - Uses dark-sec (30%) blending into dark-main (60%) */}
+        <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-dark-sec via-dark-main to-dark-main opacity-60 pointer-events-none"></div>
         
         <Sidebar />
-        <main className="flex-1 w-full h-full overflow-y-auto md:overflow-hidden p-6 md:p-8 lg:p-10 relative z-10 flex flex-col">
+        
+        {/* Main Content Area - Enforcing 8pt Grid Spacing */}
+        {/* Increased Top Padding to pt-24 md:pt-32 for better vertical start consistency */}
+        <main className="flex-1 w-full px-8 md:px-12 lg:px-16 lg:pl-32 pt-24 md:pt-32 pb-32 relative z-10 flex flex-col">
             <AnimatedRoutes />
         </main>
       </div>

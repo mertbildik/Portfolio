@@ -1,109 +1,231 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Send, Copy, Linkedin, Twitter, Download, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Send, Linkedin, Twitter, Download, Copy, Mail, CheckCircle2, AlertCircle, Dribbble, FileText } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  
+  const projectTypes = [
+    "Website", "Social Media", "Brand Identity", "Presentation", "Other"
+  ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+
+    // Simple Validation
+    const newErrors: Record<string, string> = {};
+    if (!name) newErrors.name = "Please enter your name.";
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) newErrors.email = "Please add a valid email.";
+    if (!message) newErrors.message = "Please tell me a bit about the project.";
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Simulate Network Request
+    setErrors({});
+    setFormState('submitting');
+    setTimeout(() => {
+      setFormState('success');
+    }, 1500);
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('mertbildik.work@gmail.com');
+    // Optional: Add toast notification logic here
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-5xl mx-auto h-full flex flex-col justify-center px-4 md:px-6"
+      // Standardized Max Width and Alignment
+      className="w-full max-w-7xl mx-auto"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
+      {/* 1. Header Section - Left Aligned */}
+      <div className="mb-12 max-w-3xl">
+        <h1 className="text-h2 font-display font-bold leading-tight text-light-text mb-6">
+          Let’s build <span className="text-teal-accent">what’s next.</span>
+        </h1>
+        <div className="relative pl-6 border-l-2 border-teal-accent/50">
+           <p className="text-h6 text-gray-400 font-light leading-relaxed">
+              Have a project in mind? Send me a short message and I’ll get back to you soon.
+           </p>
+        </div>
+      </div>
+
+      {/* Main Content Column - Constrained width for readability */}
+      <div className="w-full max-w-3xl">
         
-        {/* Contact Info */}
-        <div className="space-y-10">
-          <div>
-            <h1 className="text-3xl md:text-5xl font-display font-bold mb-4 tracking-tight leading-tight">Let's build something <span className="text-teal-accent">future-proof.</span></h1>
-            <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-md">
-              Have a project in mind or just want to say hi? I'm currently open for new opportunities.
-            </p>
-          </div>
+        {/* 2. Main Form Card */}
+        <div className="w-full p-8 md:p-10 rounded-3xl bg-dark-sec/20 border border-white/5 relative overflow-hidden">
+            <AnimatePresence mode="wait">
+                {formState === 'success' ? (
+                    <motion.div 
+                        key="success"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex flex-col items-center justify-center py-20 text-center"
+                    >
+                        <div className="w-20 h-20 rounded-full bg-teal-accent/10 flex items-center justify-center text-teal-accent mb-6">
+                            <CheckCircle2 size={40} />
+                        </div>
+                        <h3 className="text-h4 font-bold text-white mb-2">Message Sent!</h3>
+                        <p className="text-gray-400 text-body">I will get back to you soon.</p>
+                        <button 
+                            onClick={() => { setFormState('idle'); setSelectedType(null); }}
+                            className="mt-8 text-sm text-teal-accent hover:text-white transition-colors underline underline-offset-4"
+                        >
+                            Send another message
+                        </button>
+                    </motion.div>
+                ) : (
+                    <motion.form 
+                        key="form"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onSubmit={handleSubmit}
+                        className="flex flex-col gap-8"
+                    >
+                        {/* Name Field */}
+                        <div className="space-y-3">
+                            <label htmlFor="name" className="text-xs font-mono text-gray-500 uppercase tracking-widest font-bold">Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name"
+                                placeholder="John Doe"
+                                className={`w-full p-4 rounded-xl bg-dark-main/50 border ${errors.name ? 'border-red-500/50 focus:border-red-500' : 'border-white/5 focus:border-teal-accent/50'} text-light-text placeholder:text-gray-700 focus:outline-none focus:bg-dark-main focus:shadow-[0_0_20px_-5px_rgba(0,173,181,0.1)] transition-all`}
+                            />
+                            {errors.name && <p className="text-xs text-red-400 flex items-center gap-1"><AlertCircle size={12}/> {errors.name}</p>}
+                        </div>
 
-          <div className="space-y-4">
-            {/* Email Card */}
-            <div className="p-5 bg-dark-sec/20 border border-dark-sec/60 rounded-xl hover:bg-dark-sec/40 hover:border-teal-accent/30 transition-all group cursor-pointer" onClick={() => navigator.clipboard.writeText('mertbildik.work@gmail.com')}>
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Email</h3>
-                <Copy size={14} className="text-gray-600 group-hover:text-teal-accent transition-colors" />
-              </div>
-              <span className="text-base md:text-lg font-bold text-light-text group-hover:text-teal-accent transition-colors break-all">mertbildik.work@gmail.com</span>
-            </div>
+                        {/* Email Field */}
+                        <div className="space-y-3">
+                            <label htmlFor="email" className="text-xs font-mono text-gray-500 uppercase tracking-widest font-bold">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email"
+                                placeholder="john@example.com"
+                                className={`w-full p-4 rounded-xl bg-dark-main/50 border ${errors.email ? 'border-red-500/50 focus:border-red-500' : 'border-white/5 focus:border-teal-accent/50'} text-light-text placeholder:text-gray-700 focus:outline-none focus:bg-dark-main focus:shadow-[0_0_20px_-5px_rgba(0,173,181,0.1)] transition-all`}
+                            />
+                             {errors.email && <p className="text-xs text-red-400 flex items-center gap-1"><AlertCircle size={12}/> {errors.email}</p>}
+                        </div>
 
-            <div className="grid grid-cols-2 gap-3">
-               <a href="#" className="flex items-center gap-3 p-4 bg-dark-sec/20 border border-dark-sec/60 rounded-xl hover:bg-teal-accent/5 hover:border-teal-accent/40 transition-all group">
-                  <div className="bg-dark-sec/50 p-1.5 rounded-full group-hover:bg-teal-accent group-hover:text-dark-main transition-colors text-gray-400">
-                    <Linkedin size={16} />
-                  </div>
-                  <span className="font-medium text-sm text-gray-300 group-hover:text-light-text">LinkedIn</span>
-               </a>
-               <a href="#" className="flex items-center gap-3 p-4 bg-dark-sec/20 border border-dark-sec/60 rounded-xl hover:bg-teal-accent/5 hover:border-teal-accent/40 transition-all group">
-                  <div className="bg-dark-sec/50 p-1.5 rounded-full group-hover:bg-teal-accent group-hover:text-dark-main transition-colors text-gray-400">
-                    <Twitter size={16} />
-                  </div>
-                  <span className="font-medium text-sm text-gray-300 group-hover:text-light-text">X / Twitter</span>
-               </a>
-            </div>
+                        {/* Project Type Selector */}
+                        <div className="space-y-3">
+                            <label className="text-xs font-mono text-gray-500 uppercase tracking-widest font-bold">Project Type</label>
+                            <div className="flex flex-wrap gap-3">
+                                {projectTypes.map(type => (
+                                    <button
+                                        key={type}
+                                        type="button"
+                                        onClick={() => setSelectedType(type)}
+                                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${
+                                            selectedType === type 
+                                            ? 'bg-white text-dark-main border-white' 
+                                            : 'bg-transparent text-gray-400 border-white/10 hover:border-white/30 hover:text-white'
+                                        }`}
+                                    >
+                                        {type}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
 
-             <a href="#" className="flex items-center justify-between p-4 bg-gradient-to-r from-teal-accent/5 to-transparent border border-teal-accent/20 rounded-xl hover:border-teal-accent/50 transition-all group">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-teal-accent/10 text-teal-accent">
-                        <Download size={18} />
-                    </div>
-                    <div>
-                        <span className="block font-bold text-light-text text-sm group-hover:text-teal-accent transition-colors">Download CV</span>
-                        <span className="text-[10px] text-gray-500 font-mono">PDF Format (2.4 MB)</span>
-                    </div>
-                </div>
-                <ArrowRight size={16} className="text-teal-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-             </a>
-          </div>
+                        {/* Message Field */}
+                        <div className="space-y-3">
+                            <label htmlFor="message" className="text-xs font-mono text-gray-500 uppercase tracking-widest font-bold">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message"
+                                rows={5}
+                                placeholder="Tell me about the goals, timeline, and budget..."
+                                className={`w-full p-4 rounded-xl bg-dark-main/50 border ${errors.message ? 'border-red-500/50 focus:border-red-500' : 'border-white/5 focus:border-teal-accent/50'} text-light-text placeholder:text-gray-700 focus:outline-none focus:bg-dark-main focus:shadow-[0_0_20px_-5px_rgba(0,173,181,0.1)] transition-all resize-none`}
+                            ></textarea>
+                            {errors.message && <p className="text-xs text-red-400 flex items-center gap-1"><AlertCircle size={12}/> {errors.message}</p>}
+                        </div>
+
+                        {/* Submit Action */}
+                        <div className="pt-2">
+                            <button 
+                                type="submit"
+                                disabled={formState === 'submitting'}
+                                className="w-full py-4 rounded-xl bg-white text-dark-main font-bold text-sm tracking-widest uppercase hover:bg-gray-100 transition-all flex items-center justify-center gap-3 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-white/5"
+                            >
+                                {formState === 'submitting' ? 'Sending...' : 'Send Message'}
+                                {formState !== 'submitting' && <Send size={16} />}
+                            </button>
+                            <p className="text-center text-xs text-gray-500 mt-4 font-mono">
+                                I usually reply within one business day.
+                            </p>
+                        </div>
+                    </motion.form>
+                )}
+            </AnimatePresence>
         </div>
 
-        {/* Contact Form */}
-        <div className="bg-dark-sec/10 border border-white/5 p-6 md:p-8 rounded-2xl backdrop-blur-md shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-20 bg-teal-accent/5 blur-[60px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-          
-          <form className="space-y-5 relative z-10">
-            <div className="space-y-1.5">
-              <label htmlFor="name" className="text-[10px] font-mono text-gray-500 uppercase tracking-widest ml-1">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                className="w-full bg-dark-main/40 border border-white/10 rounded-lg px-4 py-3 text-light-text text-sm focus:outline-none focus:border-teal-accent/50 focus:bg-dark-main/80 transition-all placeholder:text-gray-700"
-                placeholder="John Doe"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label htmlFor="email" className="text-[10px] font-mono text-gray-500 uppercase tracking-widest ml-1">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                className="w-full bg-dark-main/40 border border-white/10 rounded-lg px-4 py-3 text-light-text text-sm focus:outline-none focus:border-teal-accent/50 focus:bg-dark-main/80 transition-all placeholder:text-gray-700"
-                placeholder="john@example.com"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label htmlFor="message" className="text-[10px] font-mono text-gray-500 uppercase tracking-widest ml-1">Message</label>
-              <textarea 
-                id="message" 
-                rows={3}
-                className="w-full bg-dark-main/40 border border-white/10 rounded-lg px-4 py-3 text-light-text text-sm focus:outline-none focus:border-teal-accent/50 focus:bg-dark-main/80 transition-all resize-none placeholder:text-gray-700"
-                placeholder="Tell me about your project..."
-              ></textarea>
-            </div>
-
-            <button 
-              type="button"
-              className="w-full bg-teal-accent text-dark-main font-bold py-3.5 rounded-lg hover:bg-white transition-all shadow-lg hover:shadow-[0_0_20px_rgba(238,238,238,0.3)] flex items-center justify-center gap-2 text-sm uppercase tracking-wide mt-2"
+        {/* 3. Compact Contact Details Row */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            {/* Email - Copyable */}
+            <div 
+                onClick={handleCopyEmail}
+                className="group md:col-span-2 p-6 rounded-2xl bg-dark-sec/20 border border-white/5 hover:border-white/10 hover:bg-white/5 transition-all cursor-pointer flex items-center justify-between"
             >
-              Send Message <Send size={14} />
-            </button>
-          </form>
+                <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-white transition-colors">
+                        <Mail size={20} />
+                    </div>
+                    <div>
+                        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest block mb-1">Email</span>
+                        <span className="text-lg font-bold text-light-text group-hover:text-white transition-colors">mertbildik.work@gmail.com</span>
+                    </div>
+                </div>
+                <Copy size={18} className="text-gray-600 group-hover:text-white transition-colors" />
+            </div>
+
+            {/* Social Links Grid */}
+            <div className="p-6 rounded-2xl bg-dark-sec/20 border border-white/5 flex items-center justify-between">
+                 <div className="flex gap-4">
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LinkedIn">
+                        <Linkedin size={18} />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="Dribbble">
+                        <Dribbble size={18} />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="X / Twitter">
+                        <Twitter size={18} />
+                    </a>
+                 </div>
+                 <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Follow</span>
+            </div>
+
+            {/* Download CV */}
+            <a href="#" className="group p-6 rounded-2xl bg-dark-sec/20 border border-white/5 hover:border-white/10 hover:bg-white/5 transition-all flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                     <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-white transition-colors">
+                        <FileText size={20} />
+                    </div>
+                    <div>
+                        <span className="font-bold text-light-text group-hover:text-white block">Download CV</span>
+                        <span className="text-xs text-gray-500">PDF (2.4 MB)</span>
+                    </div>
+                </div>
+                <Download size={18} className="text-gray-600 group-hover:text-white transition-colors" />
+            </a>
+
         </div>
 
       </div>
