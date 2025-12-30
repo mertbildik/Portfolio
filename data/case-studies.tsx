@@ -43,148 +43,132 @@ export const caseStudies: CaseStudyData[] = [
     {
         id: "dog-and-ride",
         title: "Dog & Ride",
-        role: "Lead Product Designer",
-        timeline: "Oct 2024 - Jan 2025",
-        tools: ["Figma", "Webflow", "Adobe CC"],
-        oneLineSummary: "Scaling a premium lifestyle brand for urban riders and their dogs.",
+        role: "Product / Graphic Designer",
+        timeline: "May 2025 to June 2025",
+        tools: ["Figma", "Framer", "PowerPoint", "Adobe Creative Suite", "Notion"],
+        oneLineSummary: "A new brand and digital experience that lets scooter riders travel with their dogs safely, spend more time together, and buy with confidence.",
         icon: <PawPrint size={32} />,
-        problem: "Dog & Ride had a passionate community but a disjointed digital presence. The website didn't reflect the 'luxury but rugged' feel of the physical products, and customers struggled to understand the modularity of the gear.",
-        solution: "I redesigned the digital ecosystem from the ground up, focusing on high-end visual storytelling and an interactive 'Gear Builder' that allows users to visualize how different accessories fit together.",
+        problem: "Dog and Ride already had a strong product.\nThe business setup was the blocker.\n\nThe brand was not defined yet.\nThere was no website to explain the product clearly.\nPeople had too many questions before buying.\nSales depended on manual chats, so conversions stayed low.",
+        solution: "One cohesive system was delivered across brand, web, and social.",
         impact: {
-            user: "Users reported a 40% increase in confidence when choosing sizes and modular components due to the interactive builder.",
-            business: "Conversion rates increased by 22% within the first two months of the new site launch, with average order value (AOV) rising by 15%."
+            user: "The biggest change was clarity.\n\nDog and Ride went from a good product with an unclear story to a brand people trust.",
+            business: "The website and social system created one place for discovery, questions, and purchase intent.\nThe pitch deck made partnership conversations easier to start and easier to lead."
         },
-        context: "The brand needed to transition from a 'boutique' hobby shop to a scalable D2C brand capable of international shipping and wholesale partnerships.",
+        context: "Core problem statement\nPeople liked the idea, but they did not have enough clarity and trust to purchase.",
         goals: [
-            "Create a premium, luxury-tech aesthetic.",
-            "Educate users on modular product features.",
-            "Streamline the checkout flow for mobile users."
+            "Answer questions fast",
+            "Build trust",
+            "Make it easy to buy or reach out"
         ],
-        usersScenario: "Urban dog owners who commute by bike or foot and need gear that is as stylish as it is functional. They are busy, tech-savvy, and care deeply about product quality.",
-        approach: "I spent the first week interviewing 10 core customers to understand their 'ride flow'. I realized the biggest friction point wasn't the price, but the fear of gear not fitting their specific dog breed or bike setup.",
+        usersScenario: "Dog owners who ride scooters had one big issue.\nTraveling with a dog did not feel safe or comfortable.",
+        approach: "Started with people who already bought.\n\nA short survey and interviews with 5 existing customers.\nFocus stayed on three things.\n\n• What made them buy.\n• What confused them before buying.\n• What they would change about the experience.\n\nThe most common questions from sales chats were collected.\nThose questions shaped the website structure and content.",
         keyDecisions: [
-            "Prioritized breed-specific sizing guides on product pages.",
-            "Used a 'dark luxury' color palette to differentiate from generic pet stores.",
-            "Implemented an infinite-scroll 'Community Feed' to show real-world usage."
+            "Brand foundation — A clear visual direction, colors, and tone of voice. A premium feel that still stays warm and human.",
+            "Website experience — A simple flow that explains what it is, how it works, and who it fits. Clear safety story. Clear how to buy path. Fast contact for high intent buyers.",
+            "Instagram presence — A consistent look and message. Posts and short videos that show real use and build trust.",
+            "Vespa pitch deck — A story that frames Dog and Ride as a lifestyle fit for Vespa riders. A clean narrative focused on safety, aesthetics, and emotional connection."
         ],
-        iterations: [
-            {
-                title: "Sketching the Gear Builder",
-                description: "Initial sketches focused on a drag-and-drop interface, which we later simplified to a click-to-add system for better mobile performance."
-            },
-            {
-                title: "Wireframing the Hybrid Feed",
-                description: "We learned that users wanted to see product details directly inside social proof images, leading us to add 'Shop the Look' tags to community photos."
-            }
-        ],
+        iterations: [],
         finalProduct: [
             {
-                title: "Interactive Gear Preview",
-                description: "A high-fidelity visualization tool where users can toggle accessories on a virtual rider."
+                title: "Brand",
+                description: "A new identity system that did not exist before. Clear direction that makes the product feel credible and premium."
             },
             {
-                title: "Simplified Mobile Checkout",
-                description: "A one-page checkout process that reduced abandonment by 12%."
+                title: "Website",
+                description: "A Framer website designed to do three jobs. Explain the product fast. Remove doubts with clear answers. Turn interest into purchase or direct contact."
+            },
+            {
+                title: "Social",
+                description: "A repeatable Instagram content system. Designed to make the product feel real, not theoretical."
+            },
+            {
+                title: "Partnership deck",
+                description: "A PowerPoint deck to support the Vespa integration conversation. Built to be easy to present and easy to skim."
             }
         ],
-        learnings: "Minimalism doesn't mean less information; it means better organized information. By hiding complexity behind interactive elements, we kept the premium feel without sacrificing utility."
+        learnings: "Premium products do not sell on visuals alone.\nThey sell when questions get answered early.\n\nNext steps\n• Add a quick fit check guide for different dog sizes and scooter setups.\n• Add more real rider photos and short clips on product pages.\n• Add a tighter FAQ based on the top questions from DMs.\n• Track drop off points and refine the buy flow."
     },
     {
         id: "bunect",
         title: "Bunect",
-        role: "UX/UI Designer & Strategist",
-        timeline: "Jun 2024 - Sep 2024",
-        tools: ["Figma", "React", "Tailwind CSS"],
-        oneLineSummary: "Simplifying company setup and accounting for expats in Poland.",
+        role: "Lead designer",
+        timeline: "Jan 2025 to Present (ongoing)",
+        tools: ["Framer", "Notion", "Adobe Creative Suite", "Canva", "PowerPoint"],
+        oneLineSummary: "A word of mouth service business turned into a clear digital system with a website, sales deck, and improved branding that converts traffic into inquiries.",
         icon: <Briefcase size={32} />,
-        problem: "Opening a company in a foreign country is a bureaucratic nightmare. Bunect had great services but their online onboarding was confusing, leading to high drop-off rates and excessive support calls.",
-        solution: "I designed a 'Step-by-Step Company Launchpad' that breaks down the process into 5 simple stages, with clear progress tracking and automated document generation.",
+        problem: "Bunect was growing mainly through word of mouth.\nThere was no website to explain services clearly.\nThere was no deck to present the offer in meetings.",
+        solution: "The goal was simple.\nLet people understand the offer in seconds and reach the team instantly.",
         impact: {
-            user: "Total onboarding time reduced from 8 days to 48 hours for the average user.",
-            business: "Customer inquiries regarding 'what do I do next?' dropped by 65%, allowing the team to scale without hiring more support staff."
+            user: "Client volume grew strongly after the website and deck went live.\nGrowth reached roughly 2 to 3 times, depending on the period measured.",
+            business: "Clicks and inquiries increased.\nMore people contacted via WhatsApp or called directly."
         },
-        context: "The Polish market is growing, but language barriers and complex tax laws make it inaccessible for many international founders.",
+        context: "Core problem statement\nThe service was real, but there was no clear digital path to educate and convert new clients.",
         goals: [
-            "Humanize the accounting experience.",
-            "Provide real-time transparency on application status.",
-            "Build trust through a professional, clean interface."
+            "Make services easy to understand",
+            "Make contact one tap away"
         ],
-        usersScenario: "Digital nomads and international founders moving to Poland. They are often stressed about legal compliance and need a 'fixer' they can trust.",
-        approach: "I mapped out the entire legal process from 4 different government entities to find the most common failure points. I then translated these legal steps into user-friendly UI actions.",
+        usersScenario: "People had to ask everything in chat.\nThat slowed down decisions and cost leads.",
+        approach: "Services were grouped into clear categories.\nContent was written from real client questions.\nA landing flow was built to push high intent users to action fast.",
         keyDecisions: [
-            "Used a warm, approachable color palette to reduce user anxiety.",
-            "Dedicated a 'Knowledge Hub' to explain tax terms in plain English.",
-            "Integrated a live chat that only triggers during high-friction steps."
+            "Landing page website — Clear service categories. Short explanations for each service. Contact form for warm leads.",
+            "One click conversion path — A direct button that opens WhatsApp in one tap. Built for fast mobile decisions.",
+            "Sales presentation deck — A deck for meetings and outreach. Clear structure. Easy to skim.",
+            "Brand refinement — A base identity existed. The system was improved and made more consistent across touchpoints."
         ],
-        iterations: [
-            {
-                title: "The Onboarding Maze",
-                description: "The first version tried to collect all data at once. We moved to a progressive disclosure model to keep users from feeling overwhelmed."
-            },
-            {
-                title: "Dashboard Refinement",
-                description: "Users initially found the dashboard too 'empty'. We added a 'Recent Activity' feed to show that the Bunect team was working on their case."
-            }
-        ],
+        iterations: [],
         finalProduct: [
             {
-                title: "Launchpad Dashboard",
-                description: "The central hub for all company formation tasks and document status."
+                title: "Website",
+                description: "A single landing page that explains services and converts traffic into inquiries. Built to work with social and Google Ads."
             },
             {
-                title: "Document Auto-Generator",
-                description: "A tool that fills out government forms based on user profile data."
+                title: "Presentation deck",
+                description: "A reusable deck for client meetings and outreach."
+            },
+            {
+                title: "Brand system",
+                description: "Cleaner visuals and more consistent use of type and color."
             }
         ],
-        learnings: "Empathy is the most important tool for complex services. Designing for the user's emotional state (anxiety/confusion) was more important than just designing the functional flow."
+        learnings: "Small businesses do not need complex funnels.\nThey need clear offers and fast contact paths.\n\nNext steps\n• Add a simple service picker.\n• Add FAQs based on the top WhatsApp questions.\n• Track which services get the most clicks and refine the landing order."
     },
     {
         id: "adclusive",
-        title: "Adclusive",
-        role: "Lead UI Designer",
-        timeline: "Feb 2024 - May 2024",
-        tools: ["Figma", "Prototyping", "Design Systems"],
-        oneLineSummary: "A data-heavy management platform made elegant and efficient.",
+        title: "AdClusive",
+        role: "Product designer",
+        timeline: "2021 to Present (on pause)",
+        tools: ["Figma", "Notion", "VSCode", "Angular"],
+        oneLineSummary: "A multi role ad platform that connects advertisers with publishers and influencers, with dashboards, campaign setup, and tracking built into one system.",
         icon: <Monitor size={32} />,
-        problem: "Ad managers were drowning in data. The existing platform was built by engineers with no design input, resulting in an interface that was cluttered, slow, and hard to navigate for non-technical clients.",
-        solution: "I created a custom design system and dashboard architecture that prioritizes 'Management by Exception'—showing users only what needs their attention first.",
+        problem: "Two sides needed to work in one product.\nAdvertisers. Publishers and influencers.\n\nThe platform required clarity across complex areas.\nCampaign creation. Asset management. Tracking links. Performance and finance. Payout readiness.",
+        solution: "The goal was simple.\nBring both sides into one platform with clear flows.",
         impact: {
-            user: "The 'Time-to-Insight' (finding an underperforming ad) dropped from 15 minutes to under 2 minutes.",
-            business: "Platform retention increased by 30% as users found the tool 'actually enjoyable' to use compared to previous spreadsheets."
+            user: "Early traction was reached with real supply and demand on the platform.\nThe product proved a small team can ship and maintain a complex web app with a clear system.",
+            business: "A working platform with active users.\nAround 20 advertisers and close to 50 influencers.\n\nThe product supports campaign setup, tracking, creatives, performance, and finance in one place.\nThe business model takes a commission on deals."
         },
-        context: "In the high-stakes world of digital advertising, every minute of inefficiency costs money. Adclusive needed to look as fast as their performance data claimed.",
+        context: "Core problem statement\nA complex ad product needed simple, repeatable UX so users can launch campaigns, track performance, and manage payments without confusion.",
         goals: [
-            "Clean up data density without losing detail.",
-            "Speed up common workflows via keyboard shortcuts and bulk actions.",
-            "Create a 'white-label' ready UI for agency clients."
+            "Create and manage campaigns",
+            "Browse and search advertisers",
+            "Track performance and revenue",
+            "Understand approvals, invoices, and payout status"
         ],
-        usersScenario: "Media buyers and ad ops specialists who manage 50+ campaigns simultaneously. They need speed, accuracy, and clear visual indicators of success/failure.",
-        approach: "I shadowed three media buyers for a full day each. Watching them constantly switch between tabs and take manual notes in Excel led to the realization that they needed better bulk editing tools.",
+        usersScenario: "Without a clear system, users get lost.\nCampaign setup slows down.\nTrust in numbers and payouts drops.",
+        approach: "Screens were designed around repeatable patterns.\nConsistent layout. Predictable navigation. Clear data hierarchy.\n\nWork happened with an 8 person team.\nBackend, marketing, and stakeholders.",
         keyDecisions: [
-            "Implemented a side-panel for 'Quick Edits' to avoid losing context.",
-            "Used color sparingly—only for performance indicators (up/down/alert).",
-            "Built a modular widget system for custom dashboard views."
+            "Role based portal structure — Separate areas for advertiser work and publisher work. Consistent sidebar navigation across screens.",
+            "Publisher dashboard and finance clarity — Revenue overview. Account balance. Status buckets like awaiting approval, approved...",
+            "Advertiser campaign setup — A structured create campaign flow with sections for general info, collaboration rules...",
+            "Tracking and assets — Link management with multiple tracking options. Creative uploads for images and banners..."
         ],
-        iterations: [
-            {
-                title: "Card vs Table Views",
-                description: "We initially used cards for campaigns, but testing showed media buyers preferred high-density tables with customizable columns."
-            },
-            {
-                title: "Filtering Logic",
-                description: "We redesigned the filter bar three times to ensure users could save and share complex data segments."
-            }
-        ],
+        iterations: [],
         finalProduct: [
             {
-                title: "The Command Dashboard",
-                description: "A high-density information display with clear visual hierarchy and real-time updates."
-            },
-            {
-                title: "Bulk Editor Pro",
-                description: "A powerful tool for changing settings across hundreds of ads in seconds."
+                title: "Platform",
+                description: "A working platform with active users. Around 20 advertisers and close to 50 influencers. The product supports campaign setup, tracking, creatives, performance, and finance in one place. The business model takes a commission on deals."
             }
         ],
-        learnings: "Designing for experts is different from designing for general users. Experts want control and density; they aren't afraid of complexity if it makes them faster."
+        learnings: "Teamwork matters more in web apps than in simple sites.\nAlignment saves weeks.\n\nKey learnings covered dashboards, payment logic, tracking systems, and APIs.\nCross functional work improved speed and decision making.\n\nNext steps\n• Improve onboarding for both roles.\n• Add clearer empty states for new accounts.\n• Track where users get stuck and simplify those steps first."
     }
 ];

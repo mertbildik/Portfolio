@@ -23,7 +23,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({ children, currentId }
     return (
         <div className="min-h-screen bg-dark-main text-light-text flex flex-col">
             {/* Fixed Top Bar */}
-            <nav className="fixed top-0 left-0 right-0 z-[100] bg-dark-main/80 backdrop-blur-xl border-b border-white/5 h-16 md:h-20 flex items-center px-4 md:px-8">
+            <nav className="fixed top-0 left-0 right-0 z-[100] bg-dark-main/30 backdrop-blur-xl border-b border-white/[0.03] h-16 md:h-20 flex items-center px-4 md:px-8">
                 <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
 
                     {/* Left: Go Back */}

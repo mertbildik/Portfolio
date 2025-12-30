@@ -12,14 +12,14 @@ const AnimatedBackground: React.FC = () => {
                 - Slow 25s duration loop
             */}
             <motion.div
-                className="absolute -top-[20%] -right-[20%] w-[80vw] h-[80vw] bg-teal-accent rounded-full blur-[120px] opacity-[0.08]"
+                className="absolute -top-[20%] -right-[20%] w-[80vw] h-[80vw] bg-teal-accent rounded-full blur-[120px] opacity-[0.04]"
                 animate={shouldReduceMotion ? {} : {
                     x: [0, -100, 0],
                     y: [0, 50, 0],
-                    scale: [1, 1.1, 1],
+                    scale: [1, 1.05, 1],
                 }}
                 transition={{
-                    duration: 25,
+                    duration: 40,
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut"
@@ -27,13 +27,13 @@ const AnimatedBackground: React.FC = () => {
             />
 
             <motion.div
-                className="absolute -bottom-[20%] -left-[20%] w-[60vw] h-[60vw] bg-teal-accent rounded-full blur-[100px] opacity-[0.05]"
+                className="absolute -bottom-[20%] -left-[20%] w-[60vw] h-[60vw] bg-teal-accent rounded-full blur-[100px] opacity-[0.03]"
                 animate={shouldReduceMotion ? {} : {
                     x: [0, 100, 0],
                     y: [0, -50, 0],
                 }}
                 transition={{
-                    duration: 20,
+                    duration: 35,
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut",
@@ -42,7 +42,7 @@ const AnimatedBackground: React.FC = () => {
             />
 
             {/* Layer 2: Noise Texture Overlay */}
-            <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay">
+            <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                     <filter id="noiseFilter">
                         <feTurbulence
