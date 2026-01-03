@@ -38,18 +38,7 @@ const About: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Social Links */}
-                    <div className="flex items-center gap-4 mt-8 pl-2">
-                        <a href="#" className="p-3 text-gray-400 hover:text-teal-accent transition-colors duration-300">
-                            <Linkedin size={20} />
-                        </a>
-                        <a href="#" className="p-3 text-gray-400 hover:text-teal-accent transition-colors duration-300">
-                            <Twitter size={20} />
-                        </a>
-                        <a href="#" className="p-3 text-gray-400 hover:text-teal-accent transition-colors duration-300">
-                            <Mail size={20} />
-                        </a>
-                    </div>
+                    {/* Social Links Removed */}
                 </motion.div>
 
                 {/* Right Column: Content 
@@ -75,7 +64,7 @@ const About: React.FC = () => {
                             className="relative pl-6 border-l-2 border-teal-accent/50"
                         >
                             <p className="text-h6 text-gray-400 font-light leading-p tracking-h6 max-w-xl">
-                                Since I was a kid, I’ve always been into finding easier ways to do things with tech. I used to spend hours on the computer, not just for fun, but to make life a little smoother.
+                                I’ve always been curious about using technology to make things simpler. As a kid, I spent hours on the computer, not for fun only, but to smooth out everyday problems. That way of thinking never left.
                             </p>
                         </motion.div>
                     </motion.div>
@@ -94,15 +83,9 @@ const About: React.FC = () => {
                                 <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">About Me</span>
                             </div>
                             <div className="col-span-1 lg:col-span-3 pl-4 border-l border-teal-accent/30">
-                                <p className="text-h6 font-display font-medium text-light-text leading-tight mb-4 tracking-tight">
-                                    I’ve always been obsessed with making things easier.
-                                </p>
                                 <div className="space-y-4 text-body text-gray-400 leading-p font-light">
                                     <p>
-                                        Since I was a kid, I looked for simpler ways to do things with tech. I spent hours on the computer, not just for fun, but to make life smoother.
-                                    </p>
-                                    <p>
-                                        I’m a big basketball and football fan, but design is where I feel most at home.
+                                        I follow basketball and football closely, but design is where I feel most grounded.
                                     </p>
                                 </div>
                             </div>
@@ -119,15 +102,15 @@ const About: React.FC = () => {
                                 <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">How I Work</span>
                             </div>
                             <div className="col-span-1 lg:col-span-3 pl-4 border-l border-teal-accent/30">
-                                <p className="text-h6 font-display font-medium text-light-text leading-tight mb-4 tracking-tight">
-                                    Calm process. Clear thinking. No drama.
-                                </p>
                                 <div className="space-y-4 text-body text-gray-400 leading-p font-light">
                                     <p>
-                                        After graduating, I worked in a corporate role. It helped me grow fast and understand how businesses operate.
+                                        After graduating, I spent time in a large corporate environment. It taught me how businesses run and helped me grow fast. Later, I started my own studio to work with more freedom and focus on projects I truly care about.
                                     </p>
                                     <p>
-                                        Then I started my own studio so I could work more freely and take on projects I actually care about. I work best with people who value clarity and a good process.
+                                        Today, I choose to work with people and teams I align with. Clarity, a shared mindset, and healthy collaboration matter to me.
+                                    </p>
+                                    <p>
+                                        If we work together, you’ll get someone who listens, understands the goal, and builds the right solution without noise or distraction.
                                     </p>
                                 </div>
                             </div>
@@ -144,15 +127,12 @@ const About: React.FC = () => {
                                 <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">What Drives Me</span>
                             </div>
                             <div className="col-span-1 lg:col-span-3 pl-4 border-l border-teal-accent/30">
-                                <p className="text-h6 font-display font-medium text-light-text leading-tight mb-4 tracking-tight">
-                                    Design is reducing friction so people can move faster.
-                                </p>
                                 <div className="space-y-4 text-body text-gray-400 leading-p font-light">
                                     <p>
-                                        Anything that makes life easier grabs my attention. I’m curious about systems, tools, and ways of thinking that bring clarity.
+                                        I’m drawn to systems and tools that make life easier and clearer. I enjoy learning, both inside and outside the industry, and sharing what I’ve learned with the people I work with.
                                     </p>
                                     <p>
-                                        I try to pass what I learn into the work, so the result feels focused and effortless.
+                                        Design is not about looking impressive. It’s about helping people move forward with less friction and more focus.
                                     </p>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Search, PenTool, Rocket, ArrowRight } from 'lucide-react';
+import { MessageSquare, Search, PenTool, Rocket, ArrowRight, AppWindow, Layout, Image as ImageIcon, Palette, FileText, Sparkles, Zap, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Process: React.FC = () => {
@@ -78,6 +78,36 @@ const Process: React.FC = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Tools I Use Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="mb-20"
+          >
+            <h2 className="text-h5 font-bold mb-8 text-light-text flex items-center gap-3">
+              <Zap size={20} className="text-teal-accent" /> Tools I use
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {[
+                { name: "Microsoft Office", icon: AppWindow },
+                { name: "Figma", icon: PenTool },
+                { name: "Framer", icon: Layout },
+                { name: "Adobe Creative Suite", icon: ImageIcon },
+                { name: "Canva", icon: Palette },
+                { name: "Notion", icon: FileText },
+                { name: "Gemini", icon: Sparkles },
+                { name: "Anti gravity", icon: Zap },
+                { name: "Google AI Studio", icon: Cpu }
+              ].map((tool) => (
+                <div key={tool.name} className="flex items-center gap-3 p-4 rounded-xl bg-dark-sec/20 border border-white/5 hover:border-teal-accent/30 hover:bg-white/[0.03] transition-all group">
+                  <tool.icon size={18} className="text-gray-400 group-hover:text-teal-accent transition-colors" />
+                  <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{tool.name}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

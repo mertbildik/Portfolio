@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mert Bildik | Product Designer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'dark-main': '#0f1115', // 60% - Dominant Background
-              'dark-sec': '#1E232B',  // 30% - Secondary Elements (Cards, Nav)
-              'teal-accent': '#00ADB5', // 10% - CTAs and Highlights
-              'light-text': '#EEEEEE',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Space Grotesk', 'sans-serif'],
-            },
-            // Major Third Type Scale (1.25) | Base 16px
-            fontSize: {
-              'xs': '0.8rem',     // 12.8px
-              'body': '1rem',     // 16px (Base)
-              'h6': '1.25rem',    // 20px
-              'h5': '1.563rem',   // 25px
-              'h4': '1.953rem',   // 31.25px
-              'h3': '2.441rem',   // 39.06px
-              'h2': '3.052rem',   // 48.83px
-              'h1': '3.815rem',   // 61.04px
-              'display': '4.768rem', // ~76px for major impact
-            },
-            // Specific Line Heights as requested
-            lineHeight: {
-              'p': '1.5',   // 150%
-              'h4': '1.3',  // 130%
-              'h3': '1.2',  // 120% (Bridging)
-              'h2': '1.1',  // 110%
-              'h1': '1.0',  // 100%
-            },
-            // Specific Letter Spacing as requested
-            letterSpacing: {
-              'p': '0em',
-              'h6': '-0.005em', // -0.5%
-              'h3': '-0.015em', // -1.5%
-              'h1': '-0.02em',  // -2%
-            },
-            animation: {
-              'glow': 'glow 2s ease-in-out infinite alternate',
-            },
-            keyframes: {
-              glow: {
-                '0%': { boxShadow: '0 0 5px #00ADB5' },
-                '100%': { boxShadow: '0 0 20px #00ADB5, 0 0 10px #00ADB5' },
-              }
-            }
-          }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mert Bildik | Product Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-main': '#050505', // Deep Black
+            'dark-sec': '#121212',  // Surface Black
+            'border-dim': '#222222', // Subtle Border
+            'border-light': '#333333', // Highlight Border
+            'light-text': '#FFFFFF', // Primary Text
+            'muted-text': '#888888', // Secondary Text
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          // Major Third Type Scale (1.25) | Base 16px
+          fontSize: {
+            'xs': '0.8rem',     // 12.8px
+            'body': '1rem',     // 16px (Base)
+            'h6': '1.25rem',    // 20px
+            'h5': '1.563rem',   // 25px
+            'h4': '1.953rem',   // 31.25px
+            'h3': '2.441rem',   // 39.06px
+            'h2': '3.052rem',   // 48.83px
+            'h1': '3.815rem',   // 61.04px
+            'display': '4.768rem', // ~76px for major impact
+          },
+          // Specific Line Heights as requested
+          lineHeight: {
+            'p': '1.5',   // 150%
+            'h4': '1.3',  // 130%
+            'h3': '1.2',  // 120% (Bridging)
+            'h2': '1.1',  // 110%
+            'h1': '1.0',  // 100%
+          },
+          // Specific Letter Spacing as requested
+          letterSpacing: {
+            'p': '0em',
+            'h6': '-0.005em', // -0.5%
+            'h3': '-0.015em', // -1.5%
+            'h1': '-0.02em',  // -2%
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
         }
       }
-    </script>
-    <style>
+    }
+  </script>
+  <style>
+    body {
+      background-color: #050505;
+      color: #EEEEEE;
+      overflow-x: hidden;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #222222;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444444;
+    }
+
+    @media print {
       body {
-        background-color: #0f1115;
-        color: #EEEEEE;
-        overflow-x: hidden;
+        background-color: white !important;
+        color: black !important;
       }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
+
+      #root {
+        background-color: white !important;
+        color: black !important;
       }
-      ::-webkit-scrollbar-track {
-        background: #0f1115; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1E232B; 
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #00ADB5; 
-      }
-      
-      @media print {
-        body {
-          background-color: white !important;
-          color: black !important;
-        }
-        #root {
-            background-color: white !important;
-            color: black !important;
-        }
-      }
-    </style>
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -110,8 +114,10 @@
 }
 </script>
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>

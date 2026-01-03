@@ -12,14 +12,15 @@ const AnimatedBackground: React.FC = () => {
                 - Slow 25s duration loop
             */}
             <motion.div
-                className="absolute -top-[20%] -right-[20%] w-[80vw] h-[80vw] bg-teal-accent rounded-full blur-[120px] opacity-[0.04]"
+                className="absolute -top-[20%] -right-[20%] w-[80vw] h-[80vw] bg-white rounded-full blur-[140px] opacity-[0.015]"
                 animate={shouldReduceMotion ? {} : {
-                    x: [0, -100, 0],
-                    y: [0, 50, 0],
-                    scale: [1, 1.05, 1],
+                    x: [0, -30, 0],
+                    y: [0, 20, 0],
+                    scale: [1, 1.02, 1],
+                    rotate: [0, 3, 0],
                 }}
                 transition={{
-                    duration: 40,
+                    duration: 90,
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut"
@@ -27,17 +28,18 @@ const AnimatedBackground: React.FC = () => {
             />
 
             <motion.div
-                className="absolute -bottom-[20%] -left-[20%] w-[60vw] h-[60vw] bg-teal-accent rounded-full blur-[100px] opacity-[0.03]"
+                className="absolute -bottom-[20%] -left-[20%] w-[70vw] h-[70vw] bg-white rounded-full blur-[150px] opacity-[0.01]"
                 animate={shouldReduceMotion ? {} : {
-                    x: [0, 100, 0],
-                    y: [0, -50, 0],
+                    x: [0, 40, 0],
+                    y: [0, -20, 0],
+                    scale: [1, 1.03, 1],
                 }}
                 transition={{
-                    duration: 35,
+                    duration: 80,
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut",
-                    delay: 2
+                    delay: 5
                 }}
             />
 
@@ -57,7 +59,7 @@ const AnimatedBackground: React.FC = () => {
             </div>
 
             {/* Layer 3: Soft Vignette */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#0f1115_100%)] opacity-80" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050505_100%)] opacity-80" />
         </div>
     );
 };

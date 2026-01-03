@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Menu, X, ArrowRight, CheckCircle2, Target, Users, Lightbulb, Zap, Rocket, ChevronRight, Circle } from 'lucide-react';
+import { Menu, X, ArrowRight, CheckCircle2, Target, Users, Lightbulb, Zap, Rocket, ChevronRight, Circle, PenTool, Layout, Image as ImageIcon, FileText, Sparkles, Cpu, Code, Presentation, Palette, Monitor } from 'lucide-react';
 import { useScroll, useSpring, motion, AnimatePresence } from 'framer-motion';
 import { caseStudies, CaseStudyData } from '../data/case-studies.tsx';
 import CaseStudyLayout from '../components/CaseStudyLayout';
@@ -52,7 +52,7 @@ const CaseStudy: React.FC = () => {
                     }
                 });
             },
-            { threshold: 0, rootMargin: "-45% 0% -45% 0%" }
+            { threshold: 0.2, rootMargin: "-20% 0% -35% 0%" }
         );
 
         const sections = document.querySelectorAll('section[id]');
@@ -76,7 +76,7 @@ const CaseStudy: React.FC = () => {
     const scrollTo = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            const offset = 100;
+            const offset = 120;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - offset;
             window.scrollTo({ top: offsetPosition, behavior: "smooth" });
@@ -204,10 +204,25 @@ const CaseStudy: React.FC = () => {
                             </div>
                             <div className="space-y-4">
                                 <span className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.2em] font-bold block">Tools</span>
-                                <div className="flex flex-wrap gap-2">
-                                    {study.tools.map(tool => (
-                                        <span key={tool} className="text-[10px] text-gray-400 bg-white/[0.02] border border-white/[0.08] px-2.5 py-1 rounded-md tracking-tight hover:border-white/20 transition-colors">{tool}</span>
-                                    ))}
+                                <div className="grid grid-cols-2 gap-2">
+                                    {study.tools.map(tool => {
+                                        let Icon = Zap;
+                                        if (tool.includes("Figma")) Icon = PenTool;
+                                        else if (tool.includes("Framer")) Icon = Layout;
+                                        else if (tool.includes("Adobe")) Icon = ImageIcon;
+                                        else if (tool.includes("Notion")) Icon = FileText;
+                                        else if (tool.includes("Gemini") || tool.includes("AI")) Icon = Sparkles;
+                                        else if (tool.includes("PowerPoint")) Icon = Presentation;
+                                        else if (tool.includes("VSCode") || tool.includes("Angular")) Icon = Code;
+                                        else if (tool.includes("Canva")) Icon = Palette;
+
+                                        return (
+                                            <span key={tool} className="text-[11px] text-gray-300 bg-white/[0.03] border border-white/[0.08] px-3 py-2 rounded-lg tracking-tight hover:border-teal-accent/30 hover:bg-teal-accent/5 transition-all flex items-center gap-2">
+                                                <Icon size={12} className="text-teal-accent/70" />
+                                                {tool}
+                                            </span>
+                                        );
+                                    })}
                                 </div>
                             </div>
                             <div className="col-span-2 md:col-span-2 md:flex md:justify-end md:items-center">
@@ -323,16 +338,25 @@ const CaseStudy: React.FC = () => {
                             <div className="space-y-10">
                                 <motion.h3 variants={itemVariants} className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.2em] font-bold">Core Modules</motion.h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                    {study.keyDecisions.map((decision, i) => (
-                                        <motion.div
-                                            key={i}
-                                            variants={itemVariants}
-                                            className="flex items-start gap-4 p-7 rounded-[1.25rem] bg-white/[0.015] border border-white/[0.06] hover:border-teal-accent/20 hover:bg-white/[0.025] transition-all duration-500 group shadow-lg shadow-black/5"
-                                        >
-                                            <div className="w-1.5 h-1.5 rounded-full bg-teal-accent/40 mt-2 flex-shrink-0 group-hover:bg-teal-accent group-hover:shadow-[0_0_10px_rgba(0,173,181,0.6)] transition-all" />
-                                            <span className="text-gray-300 text-[15px] leading-[1.7]">{decision}</span>
-                                        </motion.div>
-                                    ))}
+                                    {study.keyDecisions.map((decision, i) => {
+                                        const [title, ...bodyParts] = decision.split('—');
+                                        const body = bodyParts.join('—').trim();
+                                        const displayTitle = title.trim();
+
+                                        return (
+                                            <motion.div
+                                                key={i}
+                                                variants={itemVariants}
+                                                className="flex flex-col gap-3 p-7 rounded-[1.25rem] bg-white/[0.015] border border-white/[0.06] hover:border-teal-accent/20 hover:bg-white/[0.025] transition-all duration-500 group shadow-lg shadow-black/5"
+                                            >
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-teal-accent/40 group-hover:bg-teal-accent group-hover:shadow-[0_0_8px_rgba(0,173,181,0.6)] transition-all" />
+                                                    <span className="text-sm font-bold text-gray-200">{displayTitle}</span>
+                                                </div>
+                                                <span className="text-gray-400 text-[14px] leading-[1.6]">{body || decision}</span>
+                                            </motion.div>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>
@@ -356,12 +380,12 @@ const CaseStudy: React.FC = () => {
                             </motion.div>
                         </div>
                         <div className="md:col-span-8 lg:col-span-9 space-y-32">
-                            {study.finalProduct.map((item, i) => (
+                            {study.finalProduct.filter(item => !item.title.toLowerCase().includes('brand')).map((item, i) => (
                                 <motion.div key={i} variants={itemVariants} className="space-y-10 group">
                                     <div className="aspect-[16/10] w-full rounded-[2.5rem] bg-white/[0.015] border border-white/[0.08] flex items-center justify-center relative overflow-hidden transition-all duration-1000 group-hover:border-teal-accent/30 shadow-2xl shadow-black/40">
                                         <div className="absolute inset-0 bg-gradient-to-tr from-teal-accent/[0.08] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                                         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-                                        <span className="text-gray-700 font-mono text-[10px] uppercase tracking-[0.3em] opacity-30 group-hover:opacity-50 transition-opacity relative z-10 font-bold">Exhibit Segment {i + 1}</span>
+                                        <span className="text-gray-700 font-mono text-[10px] uppercase tracking-[0.3em] opacity-30 group-hover:opacity-50 transition-opacity relative z-10 font-bold transform group-hover:scale-110 transition-transform duration-1000">Exhibit Segment {i + 1}</span>
                                     </div>
                                     <div className="space-y-5 px-4 md:px-0">
                                         <h4 className="text-2xl md:text-3xl font-display font-medium text-white group-hover:text-teal-accent transition-colors duration-700 tracking-tight">{item.title}</h4>
