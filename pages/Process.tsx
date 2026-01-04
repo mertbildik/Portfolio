@@ -42,9 +42,9 @@ const Process: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="mb-20"
           >
-            <h1 className="text-h2 font-display font-bold mb-6 tracking-h2 leading-h2 text-light-text">How I work</h1>
-            <div className="relative pl-6 border-l-2 border-teal-accent/50">
-              <p className="text-h6 text-gray-400 max-w-2xl font-light leading-p tracking-h6">
+            <h1 className="text-h2 font-medium mb-6 tracking-tight leading-h2 text-text-primary">How I work</h1>
+            <div className="relative pl-6 border-l border-border-subtle">
+              <p className="text-h6 text-text-muted max-w-2xl font-normal leading-p tracking-normal">
                 I don't just make things look good. I build systems that work.
               </p>
             </div>
@@ -58,21 +58,21 @@ const Process: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
                 // Hover: white/gray shade instead of teal
-                className="col-span-4 md:col-span-4 lg:col-span-6 relative group p-8 rounded-2xl bg-dark-sec/20 border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
+                className="col-span-4 md:col-span-4 lg:col-span-6 relative group p-8 rounded-md bg-surface/20 border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
               >
-                <div className="absolute right-6 top-6 text-display font-bold text-white/[0.03] font-display select-none pointer-events-none group-hover:text-white/[0.08] transition-colors leading-none">
+                <div className="absolute right-6 top-6 text-display font-bold text-white/[0.03] font-sans select-none pointer-events-none group-hover:text-white/[0.08] transition-colors leading-none">
                   {step.id}
                 </div>
 
                 <div className="flex items-center gap-5 mb-6 relative z-10">
                   {/* Icon with Neutral Background */}
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-md bg-white/5 border border-white/5 flex items-center justify-center text-text-primary group-hover:scale-110 transition-transform duration-300">
                     <step.icon size={24} strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-h5 font-bold text-light-text group-hover:text-white transition-colors">{step.title}</h3>
+                  <h3 className="text-h5 font-medium text-text-primary group-hover:text-white transition-colors">{step.title}</h3>
                 </div>
 
-                <p className="text-gray-400 leading-p text-body relative z-10 max-w-md">
+                <p className="text-text-muted leading-p text-body relative z-10 max-w-md">
                   {step.desc}
                 </p>
               </motion.div>
@@ -86,8 +86,8 @@ const Process: React.FC = () => {
             transition={{ delay: 0.7 }}
             className="mb-20"
           >
-            <h2 className="text-h5 font-bold mb-8 text-light-text flex items-center gap-3">
-              <Zap size={20} className="text-teal-accent" /> Tools I use
+            <h2 className="text-h5 font-medium mb-8 text-text-primary flex items-center gap-3">
+              <Zap size={20} className="text-text-muted" /> Tools I use
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {[
@@ -101,9 +101,9 @@ const Process: React.FC = () => {
                 { name: "Anti gravity", icon: Zap },
                 { name: "Google AI Studio", icon: Cpu }
               ].map((tool) => (
-                <div key={tool.name} className="flex items-center gap-3 p-4 rounded-xl bg-dark-sec/20 border border-white/5 hover:border-teal-accent/30 hover:bg-white/[0.03] transition-all group">
-                  <tool.icon size={18} className="text-gray-400 group-hover:text-teal-accent transition-colors" />
-                  <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{tool.name}</span>
+                <div key={tool.name} className="flex items-center gap-3 p-4 rounded-md bg-surface/20 border border-white/5 hover:border-white/20 hover:bg-white/[0.03] transition-all group">
+                  <tool.icon size={18} className="text-text-muted group-hover:text-text-primary transition-colors" />
+                  <span className="text-sm font-medium text-text-muted group-hover:text-text-primary transition-colors">{tool.name}</span>
                 </div>
               ))}
             </div>
@@ -117,7 +117,7 @@ const Process: React.FC = () => {
           >
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-dark-main font-bold text-body transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-md bg-text-primary text-text-inverse font-medium text-body transition-all hover:scale-[0.98] active:scale-[0.96] shadow-lg shadow-white/5"
             >
               Start a project
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

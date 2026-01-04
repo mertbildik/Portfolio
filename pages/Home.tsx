@@ -12,7 +12,7 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.1,
+            staggerChildren: 0.05,
             delayChildren: 0.3
         }
     }
@@ -26,7 +26,7 @@ const itemVariants = {
         filter: 'blur(0px)',
         transition: {
             duration: 1.2,
-            ease: [0.2, 0.65, 0.3, 0.9]
+            ease: [0.25, 0.1, 0.25, 1.0]
         }
     }
 };
@@ -61,17 +61,17 @@ const Home: React.FC = () => {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-25"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                     </div>
-                    <span className="text-[11px] font-mono text-muted-text tracking-[0.2em] uppercase opacity-80">Available for work</span>
+                    <span className="text-[11px] font-mono text-text-muted tracking-widest uppercase opacity-80">Available for work</span>
                 </motion.div>
 
                 {/* Main Heading */}
                 <div className="mb-12 relative z-10">
                     <motion.h1
                         variants={itemVariants}
-                        className="text-h2 md:text-[5rem] font-display font-medium leading-[1.1] tracking-[-0.03em] text-light-text selection:bg-white selection:text-black mix-blend-plus-lighter"
+                        className="text-h2 md:text-[5rem] font-medium leading-[1.1] tracking-tight text-text-primary selection:bg-white selection:text-black mix-blend-plus-lighter"
                     >
                         Hey, I'm Mert. <br />
-                        <span className="text-muted-text opacity-60">I design </span>
+                        <span className="text-text-muted opacity-60">I design </span>
                         <span className="relative inline-block min-w-[200px] md:min-w-[400px]">
                             <AnimatePresence mode="wait">
                                 <motion.span
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
 
                     {/* Value Proposition */}
                     <motion.div variants={itemVariants} className="mt-8 relative pl-6 border-l border-white/10">
-                        <p className="text-h6 text-muted-text max-w-xl font-light leading-p tracking-normal opacity-80">
+                        <p className="text-h6 text-text-muted max-w-xl font-normal leading-p tracking-normal opacity-80">
                             Helping people spend less time clicking and more time living.
                         </p>
                     </motion.div>
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
                     <div className="lg:col-span-7 space-y-8">
                         <motion.h2
                             variants={itemVariants}
-                            className="text-[11px] font-mono text-muted-text uppercase tracking-[0.2em] opacity-60 ml-1"
+                            className="text-[11px] font-mono text-text-muted uppercase tracking-widest opacity-60 ml-1"
                         >
                             What brings you here today?
                         </motion.h2>
@@ -137,7 +137,7 @@ const Home: React.FC = () => {
                             <Magnetic>
                                 <Link
                                     to="/contact"
-                                    className="group relative inline-flex items-center gap-3 px-8 py-3 rounded-full border border-white/20 hover:bg-white/5 text-white font-medium text-body transition-all duration-500 overflow-hidden"
+                                    className="group relative inline-flex items-center gap-3 px-8 py-3 rounded-md bg-text-primary text-text-inverse font-medium text-body transition-all duration-300 hover:scale-[0.96]"
                                 >
                                     <span className="relative z-10">Get in touch</span>
                                     <motion.span
@@ -173,16 +173,16 @@ const OptionCard: React.FC<OptionCardProps> = ({ label, icon, text, onClick }) =
         <motion.button
             whileHover={{ x: 6, backgroundColor: "rgba(255,255,255,0.01)" }}
             whileTap={{ x: 2 }}
-            transition={{ type: "spring", stiffness: 200, damping: 30 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30, mass: 1 }}
             onClick={onClick}
-            className="group relative w-full text-left py-4 px-2 border-b border-white/5 bg-transparent transition-all duration-700 flex items-baseline gap-6"
+            className="group relative w-full text-left py-4 px-2 border-b border-border-subtle bg-transparent hover:bg-surface-hover transition-all duration-500 flex items-baseline gap-6"
         >
-            <div className="flex-shrink-0 font-mono text-xs text-muted-text/50 group-hover:text-muted-text transition-colors duration-500">
+            <div className="flex-shrink-0 font-mono text-xs text-text-muted/50 group-hover:text-text-muted transition-colors duration-500">
                 {label} —
             </div>
 
             <div className="flex-grow">
-                <h3 className="text-muted-text font-light text-[0.95rem] tracking-wide group-hover:text-white transition-colors duration-500 flex items-center gap-4">
+                <h3 className="text-text-muted font-normal text-[0.95rem] tracking-wide group-hover:text-text-primary transition-colors duration-500 flex items-center gap-4">
                     <span className="opacity-90 group-hover:opacity-100 transition-all duration-500">{text}</span>
                 </h3>
             </div>

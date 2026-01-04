@@ -21,10 +21,10 @@ const Sidebar: React.FC = () => {
       <motion.nav
         initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
         animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        transition={{ duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
         className="pointer-events-auto flex flex-row lg:flex-col items-center gap-3 p-2 rounded-full 
-          bg-dark-sec/30 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.2)] 
-          ring-1 ring-white/5 hover:bg-dark-sec/40 transition-colors duration-500"
+          glass-panel shadow-[0_8px_32px_rgba(0,0,0,0.2)] 
+          ring-1 ring-white/5 hover:bg-surface/40 transition-colors duration-500"
       >
         {navItems.map((item) => (
           <NavLink
@@ -49,15 +49,15 @@ const Sidebar: React.FC = () => {
                 <motion.div
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  className={`relative z-10 transition-colors duration-300 ${isActive ? 'text-white' : 'text-muted-text group-hover:text-white'}`}
+                  transition={{ type: "spring", stiffness: 300, damping: 30, mass: 1 }}
+                  className={`relative z-10 transition-colors duration-300 ${isActive ? 'text-text-primary' : 'text-text-muted group-hover:text-text-primary'}`}
                 >
                   <item.icon size={20} strokeWidth={1.5} />
                 </motion.div>
 
                 {/* Tooltip (Desktop Only) */}
                 <span className="absolute left-full ml-6 top-1/2 -translate-y-1/2 
-                  bg-dark-sec/90 backdrop-blur-md border border-white/10 text-white text-[10px] tracking-wide font-medium py-1 px-2.5 rounded opacity-0 -translate-x-2 
+                  bg-surface/90 backdrop-blur-md border border-white/10 text-text-primary text-[10px] tracking-wide font-medium py-1 px-2.5 rounded opacity-0 -translate-x-2 
                   group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden lg:block shadow-xl z-20"
                 >
                   {item.label}

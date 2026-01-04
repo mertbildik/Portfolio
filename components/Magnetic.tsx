@@ -31,7 +31,7 @@ const Magnetic: React.FC<MagneticProps> = ({ children, className }) => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             animate={{ x, y }}
-            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30, mass: 1 }}
             className={className}
         >
             {children}

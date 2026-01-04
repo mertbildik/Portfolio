@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import AnimatedBackground from './components/AnimatedBackground';
+
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Process from './pages/Process';
@@ -18,7 +18,7 @@ const AnimatedRoutes: React.FC = () => {
       <Routes location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/portfolio/:id" element={<CaseStudy />} />
+        <Route path="/case-study/:id" element={<CaseStudy />} />
         <Route path="/process" element={<Process />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -36,9 +36,7 @@ const Content: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-transparent text-light-text font-sans selection:bg-teal-accent selection:text-dark-main relative">
-      <AnimatedBackground />
-
+    <div className="flex flex-col lg:flex-row min-h-screen bg-void text-text-primary font-sans selection:bg-text-primary selection:text-text-inverse relative">
       <Sidebar />
 
       {/* Main Content Area - Enforcing 8pt Grid Spacing */}

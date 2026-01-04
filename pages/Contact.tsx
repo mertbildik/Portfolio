@@ -21,9 +21,9 @@ const LiveClock: React.FC = () => {
 
     return (
         <div className="flex flex-col items-start">
-            <span className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Local Time</span>
+            <span className="text-xs font-mono text-text-muted uppercase tracking-widest mb-2">Local Time</span>
             <div className="flex items-baseline gap-3">
-                <div className="flex text-4xl md:text-5xl font-display font-bold text-light-text tracking-tighter leading-none h-10 md:h-12 overflow-hidden">
+                <div className="flex text-4xl md:text-5xl font-medium text-text-primary tracking-tight leading-none h-10 md:h-12 overflow-hidden">
                     {timeString.split('').map((char, index) => (
                         <div key={index} className={`relative flex justify-center ${char === ':' ? 'w-[0.25em]' : 'w-[0.6em]'}`}>
                             <AnimatePresence mode="popLayout" initial={false}>
@@ -41,7 +41,7 @@ const LiveClock: React.FC = () => {
                         </div>
                     ))}
                 </div>
-                <span className="text-sm font-medium text-teal-accent mb-1">Warsaw, PL</span>
+                <span className="text-sm font-medium text-text-muted mb-1">Warsaw, PL</span>
             </div>
         </div>
     );
@@ -107,11 +107,11 @@ const Contact: React.FC = () => {
                 transition={{ delay: 0.2 }}
                 className="mb-12 md:mb-20"
             >
-                <h1 className="text-h2 font-display font-bold leading-tight text-light-text mb-6 tracking-h2">
-                    Let’s build <span className="text-teal-accent">what’s next.</span>
+                <h1 className="text-h2 font-medium leading-tight text-text-primary mb-6 tracking-tight">
+                    Let’s build <span className="text-text-muted">what’s next.</span>
                 </h1>
-                <div className="relative pl-6 border-l-2 border-teal-accent/50">
-                    <p className="text-h6 text-gray-400 font-light leading-p tracking-h6 max-w-xl">
+                <div className="relative pl-6 border-l border-border-subtle">
+                    <p className="text-h6 text-text-muted font-normal leading-p tracking-normal max-w-xl">
                         Have a project in mind? Send me a message and let's discuss.
                     </p>
                 </div>
@@ -126,10 +126,10 @@ const Contact: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                         // Improved Glassmorphism Container
-                        className="relative p-8 md:p-10 rounded-[2rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/5 backdrop-blur-xl shadow-2xl overflow-hidden"
+                        className="relative p-8 md:p-10 rounded-md bg-surface/20 border border-white/5 backdrop-blur-xl shadow-2xl overflow-hidden"
                     >
                         {/* Decorative Glow */}
-                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-teal-accent/10 rounded-full blur-[80px] pointer-events-none"></div>
+                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
 
                         <AnimatePresence mode="wait">
                             {formState === 'success' ? (
@@ -143,7 +143,7 @@ const Contact: React.FC = () => {
                                         initial={{ scale: 0 }}
                                         animate={{ scale: 1 }}
                                         transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                        className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-accent to-teal-600 flex items-center justify-center text-dark-main mb-8 shadow-lg shadow-teal-accent/20"
+                                        className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-text-primary mb-8 shadow-lg"
                                     >
                                         <CheckCircle2 size={48} strokeWidth={2.5} />
                                     </motion.div>
@@ -153,7 +153,7 @@ const Contact: React.FC = () => {
                                     </p>
                                     <button
                                         onClick={() => { setFormState('idle'); setSelectedTypes([]); }}
-                                        className="px-8 py-3 rounded-full border border-white/10 text-sm font-bold text-white hover:bg-white hover:text-dark-main transition-all"
+                                        className="px-8 py-3 rounded-md border border-white/10 text-sm font-medium text-white hover:bg-white hover:text-void transition-all"
                                     >
                                         Send another message
                                     </button>
@@ -170,7 +170,7 @@ const Contact: React.FC = () => {
                                     {/* Input Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div className="space-y-3 group">
-                                            <label htmlFor="name" className={`text-xs font-mono uppercase tracking-widest font-bold transition-colors ${focusedField === 'name' ? 'text-teal-accent' : 'text-gray-500'}`}>Name</label>
+                                            <label htmlFor="name" className={`text-xs font-mono uppercase tracking-widest font-normal transition-colors ${focusedField === 'name' ? 'text-text-primary' : 'text-text-muted'}`}>Name</label>
                                             <motion.div whileTap={{ scale: 0.995 }}>
                                                 <input
                                                     type="text"
@@ -179,14 +179,14 @@ const Contact: React.FC = () => {
                                                     onFocus={() => setFocusedField('name')}
                                                     onBlur={() => setFocusedField(null)}
                                                     placeholder="John Doe"
-                                                    className={`w-full p-4 rounded-xl bg-dark-main/30 border text-light-text placeholder:text-gray-700 focus:placeholder:text-gray-400 focus:outline-none transition-all duration-300 ${errors.name ? 'border-red-500/50' : 'border-white/5 hover:border-teal-accent focus:border-[#006064] focus:bg-dark-main/50'}`}
+                                                    className={`w-full p-4 rounded-md bg-void/50 border text-text-primary placeholder:text-text-muted focus:placeholder:text-text-muted/50 focus:outline-none transition-all duration-300 ${errors.name ? 'border-red-500/50' : 'border-white/5 hover:border-white/20 focus:border-white/20 focus:bg-void'}`}
                                                 />
                                             </motion.div>
                                             {errors.name && <p className="text-xs text-red-400 flex items-center gap-1 animate-pulse"><AlertCircle size={12} /> {errors.name}</p>}
                                         </div>
 
                                         <div className="space-y-3 group">
-                                            <label htmlFor="email" className={`text-xs font-mono uppercase tracking-widest font-bold transition-colors ${focusedField === 'email' ? 'text-teal-accent' : 'text-gray-500'}`}>Email</label>
+                                            <label htmlFor="email" className={`text-xs font-mono uppercase tracking-widest font-normal transition-colors ${focusedField === 'email' ? 'text-text-primary' : 'text-text-muted'}`}>Email</label>
                                             <motion.div whileTap={{ scale: 0.995 }}>
                                                 <input
                                                     type="email"
@@ -195,7 +195,7 @@ const Contact: React.FC = () => {
                                                     onFocus={() => setFocusedField('email')}
                                                     onBlur={() => setFocusedField(null)}
                                                     placeholder="john@example.com"
-                                                    className={`w-full p-4 rounded-xl bg-dark-main/30 border text-light-text placeholder:text-gray-700 focus:placeholder:text-gray-400 focus:outline-none transition-all duration-300 ${errors.email ? 'border-red-500/50' : 'border-white/5 hover:border-teal-accent focus:border-[#006064] focus:bg-dark-main/50'}`}
+                                                    className={`w-full p-4 rounded-md bg-void/50 border text-text-primary placeholder:text-text-muted focus:placeholder:text-text-muted/50 focus:outline-none transition-all duration-300 ${errors.email ? 'border-red-500/50' : 'border-white/5 hover:border-white/20 focus:border-white/20 focus:bg-void'}`}
                                                 />
                                             </motion.div>
                                             {errors.email && <p className="text-xs text-red-400 flex items-center gap-1 animate-pulse"><AlertCircle size={12} /> {errors.email}</p>}
@@ -215,9 +215,9 @@ const Contact: React.FC = () => {
                                                         onClick={() => toggleProjectType(type)}
                                                         whileHover={{ scale: 1.05 }}
                                                         whileTap={{ scale: 0.95 }}
-                                                        className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 border ${isSelected
-                                                            ? 'bg-teal-accent border-teal-accent text-dark-main shadow-[0_0_15px_-3px_rgba(0,173,181,0.5)]'
-                                                            : 'bg-white/5 border-white/5 text-gray-400 hover:border-teal-accent hover:text-teal-accent hover:bg-teal-accent/10'
+                                                        className={`px-5 py-2.5 rounded-md text-xs font-medium transition-all duration-300 border ${isSelected
+                                                            ? 'bg-white border-white text-void shadow-[0_0_15px_-3px_rgba(255,255,255,0.3)]'
+                                                            : 'bg-white/5 border-white/5 text-text-muted hover:border-white/20 hover:text-text-primary hover:bg-white/10'
                                                             }`}
                                                     >
                                                         {type}
@@ -229,7 +229,7 @@ const Contact: React.FC = () => {
 
                                     {/* Message */}
                                     <div className="space-y-3 group">
-                                        <label htmlFor="message" className={`text-xs font-mono uppercase tracking-widest font-bold transition-colors ${focusedField === 'message' ? 'text-teal-accent' : 'text-gray-500'}`}>Message</label>
+                                        <label htmlFor="message" className={`text-xs font-mono uppercase tracking-widest font-normal transition-colors ${focusedField === 'message' ? 'text-text-primary' : 'text-text-muted'}`}>Message</label>
                                         <motion.div whileTap={{ scale: 0.995 }}>
                                             <textarea
                                                 id="message"
@@ -238,7 +238,7 @@ const Contact: React.FC = () => {
                                                 onFocus={() => setFocusedField('message')}
                                                 onBlur={() => setFocusedField(null)}
                                                 placeholder="Tell me about the goals, timeline, and budget..."
-                                                className={`w-full p-4 rounded-xl bg-dark-main/30 border text-light-text placeholder:text-gray-700 focus:placeholder:text-gray-400 focus:outline-none transition-all duration-300 resize-none ${errors.message ? 'border-red-500/50' : 'border-white/5 hover:border-teal-accent focus:border-[#006064] focus:bg-dark-main/50'}`}
+                                                className={`w-full p-4 rounded-md bg-void/50 border text-text-primary placeholder:text-text-muted focus:placeholder:text-text-primary/50 focus:outline-none transition-all duration-300 resize-none ${errors.message ? 'border-red-500/50' : 'border-white/5 hover:border-white/20 focus:border-white/20 focus:bg-void'}`}
                                             ></textarea>
                                         </motion.div>
                                         {errors.message && <p className="text-xs text-red-400 flex items-center gap-1 animate-pulse"><AlertCircle size={12} /> {errors.message}</p>}
@@ -251,7 +251,7 @@ const Contact: React.FC = () => {
                                             disabled={formState === 'submitting'}
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
-                                            className="group w-full py-4 rounded-xl bg-white text-dark-main font-bold text-sm tracking-widest uppercase hover:bg-gray-100 transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-white/5 relative overflow-hidden"
+                                            className="group w-full py-4 rounded-md bg-text-primary text-text-inverse font-medium text-sm tracking-widest uppercase hover:bg-white transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-white/5 relative overflow-hidden"
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
 
@@ -291,10 +291,10 @@ const Contact: React.FC = () => {
                             role="button"
                             title="Click to copy"
                         >
-                            <span className="text-xl md:text-2xl font-display font-medium text-light-text group-hover/email:text-teal-accent transition-colors break-all">
+                            <span className="text-xl md:text-2xl font-medium text-text-primary group-hover/email:text-white transition-colors break-all tracking-tight">
                                 mertbildik.work@gmail.com
                             </span>
-                            <div className="w-6 h-6 flex items-center justify-center bg-white/5 rounded-full group-hover/email:bg-teal-accent/20 transition-colors">
+                            <div className="w-6 h-6 flex items-center justify-center bg-white/5 rounded-full group-hover/email:bg-white/10 transition-colors">
                                 <AnimatePresence mode="wait">
                                     {emailCopied ? (
                                         <motion.div
@@ -302,7 +302,7 @@ const Contact: React.FC = () => {
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
                                             exit={{ scale: 0 }}
-                                            className="text-teal-accent"
+                                            className="text-white"
                                         >
                                             <Check size={14} strokeWidth={3} />
                                         </motion.div>
@@ -312,7 +312,7 @@ const Contact: React.FC = () => {
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             exit={{ opacity: 0 }}
-                                            className="text-gray-500 group-hover/email:text-teal-accent transition-colors"
+                                            className="text-text-muted group-hover/email:text-white transition-colors"
                                         >
                                             <Copy size={14} />
                                         </motion.div>
@@ -363,9 +363,9 @@ const Contact: React.FC = () => {
                         <a
                             href="/Mert_Bildik_CV.pdf"
                             download="Mert_Bildik_CV.pdf"
-                            className="group/cv flex items-center gap-3 text-light-text font-bold hover:text-teal-accent transition-colors"
+                            className="group/cv flex items-center gap-3 text-text-primary font-medium hover:text-white transition-colors"
                         >
-                            <div className="w-12 h-12 rounded-full bg-teal-accent/10 border border-teal-accent/20 flex items-center justify-center text-teal-accent group-hover/cv:bg-teal-accent group-hover/cv:text-dark-main transition-all">
+                            <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-muted group-hover/cv:bg-white/10 group-hover/cv:text-white transition-all">
                                 <Download size={20} />
                             </div>
                             <span>Download CV</span>
