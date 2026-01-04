@@ -1,208 +1,165 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Linkedin, Twitter, Mail, Upload, ImageOff } from 'lucide-react';
+import { ArrowRight, MapPin, Linkedin, Twitter, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import mertPhoto from '../assets/mert.jpeg';
 
 const About: React.FC = () => {
-  // Smart Image Loading Strategy - Preserved exactly as requested
-  // We try multiple extensions in case the user saved it as JPG or WebP
-  const imageCandidates = ['/mert.png', '/mert.jpg', '/mert.jpeg', '/mert.webp'];
-  const [currentCandidateIndex, setCurrentCandidateIndex] = useState(0);
-  const [imageError, setImageError] = useState(false);
-  const [customImage, setCustomImage] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+    return (
+        <div className="w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-12 items-start">
 
-  const handleImageError = () => {
-    if (currentCandidateIndex < imageCandidates.length - 1) {
-      // Try the next extension
-      setCurrentCandidateIndex((prev) => prev + 1);
-    } else {
-      // All candidates failed
-      setImageError(true);
-    }
-  };
-
-  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setCustomImage(imageUrl);
-      setImageError(false);
-    }
-  };
-
-  const triggerFileInput = () => {
-    fileInputRef.current?.click();
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      // Standardized Max Width and Alignment
-      className="w-full max-w-7xl mx-auto"
-    >
-      <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-8 items-start">
-        
-        {/* Left Column: Photo - 5 cols */}
-        <div className="col-span-4 md:col-span-4 lg:col-span-5 space-y-8">
-            <motion.div 
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-                // Placeholder uses dark-sec base
-                className="aspect-[4/5] rounded-2xl bg-dark-sec relative overflow-hidden group w-full shadow-2xl ring-1 ring-white/5"
-            >
-                {/* Hidden File Input */}
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  onChange={handleFileSelect} 
-                  accept="image/*" 
-                  className="hidden" 
-                />
-
-                {customImage ? (
-                   <img 
-                      src={customImage} 
-                      alt="Mert Bildik" 
-                      className="object-cover w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
-                   />
-                ) : !imageError ? (
-                  <img 
-                      src={imageCandidates[currentCandidateIndex]} 
-                      alt="Mert Bildik" 
-                      className="object-cover w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
-                      onError={handleImageError}
-                  />
-                ) : (
-                  // Fallback UI
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-dark-sec/30 text-gray-500 group-hover:bg-dark-sec/50 transition-colors p-8 text-center border-2 border-dashed border-white/5 group-hover:border-teal-accent/20">
-                     <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-6 ring-1 ring-white/10 group-hover:scale-110 transition-transform group-hover:bg-teal-accent/10">
-                        <ImageOff size={32} className="text-gray-600 group-hover:text-teal-accent transition-colors" />
-                     </div>
-                     <span className="text-h6 font-display font-bold text-light-text mb-2 block">Image not found</span>
-                     <p className="text-xs font-mono opacity-60 leading-relaxed max-w-[200px] mx-auto mb-6">
-                        We couldn't find <b>mert.png</b> in your project folder.
-                     </p>
-                     
-                     <button 
-                        onClick={triggerFileInput}
-                        className="flex items-center gap-2 px-5 py-2.5 bg-white/5 text-gray-300 border border-white/10 text-sm font-bold rounded-full hover:bg-white hover:text-dark-main transition-all active:scale-95"
-                     >
-                        <Upload size={16} /> Upload Photo
-                     </button>
-                  </div>
-                )}
-                
-                {/* Overlay Gradient */}
-                {(customImage || !imageError) && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-main via-transparent to-transparent opacity-60 pointer-events-none"></div>
-                )}
-                
-                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-10 pointer-events-none">
-                    <div className="flex items-center gap-2 text-gray-300 text-xs font-mono font-bold bg-dark-main/90 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
-                        <MapPin size={12} /> Warsaw, PL
-                    </div>
-                </div>
-            </motion.div>
-
-            <div className="flex gap-4 justify-center md:justify-start">
-                 {/* Social Buttons - Dark Teal Hover */}
-                 <a href="#" className="p-4 rounded-full bg-dark-sec/20 border border-white/5 text-gray-400 hover:text-teal-accent hover:border-teal-accent/20 hover:bg-teal-accent/10 transition-all">
-                    <Linkedin size={20} />
-                 </a>
-                 <a href="#" className="p-4 rounded-full bg-dark-sec/20 border border-white/5 text-gray-400 hover:text-teal-accent hover:border-teal-accent/20 hover:bg-teal-accent/10 transition-all">
-                    <Twitter size={20} />
-                 </a>
-                 <a href="#" className="p-4 rounded-full bg-dark-sec/20 border border-white/5 text-gray-400 hover:text-teal-accent hover:border-teal-accent/20 hover:bg-teal-accent/10 transition-all">
-                    <Mail size={20} />
-                 </a>
-            </div>
-        </div>
-
-        {/* Right Column: Content - 7 cols */}
-        <div className="col-span-4 md:col-span-4 lg:col-span-7 space-y-12 pl-0 lg:pl-8 mt-8 lg:mt-0">
-            {/* Standardized Margin Bottom (mb-20) */}
-            <div className="mb-20">
-                <motion.h1 
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    className="text-h2 font-display font-bold mb-6 tracking-h2 leading-h2 text-light-text"
-                >
-                    Hey, I’m Mert. <br/>
-                    <span className="text-gray-400 text-h5 font-sans font-medium block mt-3 opacity-90 tracking-normal">Born in Izmir, now based in Warsaw.</span>
-                </motion.h1>
-                
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                {/* Left Column: Photo Card 
+                   - Desktop: 5 cols width, Sticky
+                   - Tablet/Mobile: Full width
+                */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="relative pl-6 border-l-2 border-teal-accent/50"
+                    className="col-span-4 md:col-span-8 lg:col-span-5 lg:sticky lg:top-32 h-fit"
                 >
-                    <p className="text-h6 text-gray-400 font-light leading-p tracking-h6 max-w-prose">
-                        Since I was a kid, I’ve always been into finding easier ways to do things with tech. I used to spend hours on the computer, not just for fun, but to make life a little smoother.
-                    </p>
-                </motion.div>
-            </div>
+                    <div className="relative w-full aspect-[3/4] lg:aspect-[4/5] rounded-2xl overflow-hidden bg-dark-sec/20 border border-white/5 shadow-2xl backdrop-blur-sm group">
+                        <img
+                            src={mertPhoto}
+                            alt="Mert Bildik"
+                            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                        />
 
-            <div className="space-y-8">
-                <motion.div 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                    className="relative pl-6 border-l border-teal-accent/30"
-                >
-                    <h2 className="text-xs font-bold font-mono uppercase tracking-widest text-gray-500 mb-3">How I work</h2>
-                    <div className="space-y-3 text-gray-400 text-body leading-p max-w-md">
-                        <p>
-                            After corporate life, I started my own studio to work more freely. Now I look for clarity and shared mindset.
-                        </p>
-                        <p className="text-light-text font-medium">
-                            You’ll get someone who listens and focuses on building the right solution without drama.
-                        </p>
+                        {/* Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-dark-main/80 via-transparent to-transparent pointer-events-none" />
+
+                        {/* Location Pill */}
+                        <div className="absolute bottom-6 left-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark-main/80 border border-white/10 text-xs font-mono text-gray-300 backdrop-blur-md shadow-lg">
+                                <MapPin size={12} className="text-teal-accent" />
+                                <span>Warsaw, PL</span>
+                            </div>
+                        </div>
                     </div>
+
+                    {/* Social Links Removed */}
                 </motion.div>
 
-                <motion.div 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="relative pl-6 border-l border-teal-accent/30"
-                >
-                     <h2 className="text-xs font-bold font-mono uppercase tracking-widest text-gray-500 mb-3">What drives me</h2>
-                    <div className="space-y-3 text-gray-400 text-body leading-p max-w-md">
-                        <p>
-                            I’m curious about systems and tools that bring clarity. Design isn’t about being fancy.
-                        </p>
-                        <p className="text-light-text">
-                            It’s about helping people get where they want to go, with less friction and more focus.
-                        </p>
+                {/* Right Column: Content 
+                   - Desktop: 7 cols width (starts at col 6)
+                */}
+                <div className="col-span-4 md:col-span-8 lg:col-span-7 lg:col-start-7 flex flex-col gap-16 pb-20 pt-4 lg:pt-0">
+
+                    {/* Hero Text */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="space-y-6"
+                    >
+                        <h1 className="text-h2 md:text-h1 font-display font-bold leading-h1 tracking-h1 text-light-text">
+                            Hey, I’m Mert. <br />
+                            <span className="text-gray-400 text-h4 font-sans font-medium block mt-2 tracking-tight">Born in Izmir, now based in Warsaw.</span>
+                        </h1>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                            className="relative pl-6 border-l-2 border-teal-accent/50"
+                        >
+                            <p className="text-h6 text-gray-400 font-light leading-p tracking-h6 max-w-xl">
+                                I’ve always been curious about using technology to make things simpler. As a kid, I spent hours on the computer, not for fun only, but to smooth out everyday problems. That way of thinking never left.
+                            </p>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Content Sections */}
+                    <div className="space-y-12">
+
+                        {/* Section: ABOUT ME */}
+                        <motion.section
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                            className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 border-t border-white/5 pt-8"
+                        >
+                            <div className="col-span-1">
+                                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">About Me</span>
+                            </div>
+                            <div className="col-span-1 lg:col-span-3 pl-4 border-l border-teal-accent/30">
+                                <div className="space-y-4 text-body text-gray-400 leading-p font-light">
+                                    <p>
+                                        I follow basketball and football closely, but design is where I feel most grounded.
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.section>
+
+                        {/* Section: HOW I WORK */}
+                        <motion.section
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 border-t border-white/5 pt-8"
+                        >
+                            <div className="col-span-1">
+                                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">How I Work</span>
+                            </div>
+                            <div className="col-span-1 lg:col-span-3 pl-4 border-l border-teal-accent/30">
+                                <div className="space-y-4 text-body text-gray-400 leading-p font-light">
+                                    <p>
+                                        After graduating, I spent time in a large corporate environment. It taught me how businesses run and helped me grow fast. Later, I started my own studio to work with more freedom and focus on projects I truly care about.
+                                    </p>
+                                    <p>
+                                        Today, I choose to work with people and teams I align with. Clarity, a shared mindset, and healthy collaboration matter to me.
+                                    </p>
+                                    <p>
+                                        If we work together, you’ll get someone who listens, understands the goal, and builds the right solution without noise or distraction.
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.section>
+
+                        {/* Section: WHAT DRIVES ME */}
+                        <motion.section
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7 }}
+                            className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 border-t border-white/5 pt-8"
+                        >
+                            <div className="col-span-1">
+                                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">What Drives Me</span>
+                            </div>
+                            <div className="col-span-1 lg:col-span-3 pl-4 border-l border-teal-accent/30">
+                                <div className="space-y-4 text-body text-gray-400 leading-p font-light">
+                                    <p>
+                                        I’m drawn to systems and tools that make life easier and clearer. I enjoy learning, both inside and outside the industry, and sharing what I’ve learned with the people I work with.
+                                    </p>
+                                    <p>
+                                        Design is not about looking impressive. It’s about helping people move forward with less friction and more focus.
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.section>
                     </div>
-                </motion.div>
-            </div>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="pt-4"
-            >
-                <Link 
-                    to="/contact" 
-                    className="inline-flex items-center gap-3 text-teal-accent font-semibold text-body border-b border-teal-accent/20 hover:border-teal-accent pb-1 transition-all group"
-                >
-                    Let's talk <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-                </Link>
-            </motion.div>
+                    {/* CTA Section - Matches Home.tsx Button */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        className="grid grid-cols-1 lg:grid-cols-4 pt-8"
+                    >
+                        <div className="lg:col-start-2 lg:col-span-3 pl-4">
+                            <Link
+                                to="/contact"
+                                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-dark-main font-bold text-body transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
+                            >
+                                Get in touch <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+                            </Link>
+                        </div>
+                    </motion.div>
+
+                </div>
+            </div>
         </div>
-      </div>
-    </motion.div>
-  );
+    );
 };
 
 export default About;

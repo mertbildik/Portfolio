@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Search, PenTool, Rocket, ArrowRight } from 'lucide-react';
+import { MessageSquare, Search, PenTool, Rocket, ArrowRight, AppWindow, Layout, Image as ImageIcon, Palette, FileText, Sparkles, Zap, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Process: React.FC = () => {
@@ -32,39 +32,36 @@ const Process: React.FC = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      // Standardized Max Width
-      className="w-full max-w-7xl mx-auto"
-    >
+    <div className="w-full max-w-7xl mx-auto">
       <div className="w-full grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-4 md:gap-x-6 lg:gap-x-8">
         <div className="col-span-4 md:col-span-8 lg:col-span-12">
           {/* Header Section - Standardized Margin Bottom (mb-20) */}
-          <header className="mb-20">
+          <motion.header
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-20"
+          >
             <h1 className="text-h2 font-display font-bold mb-6 tracking-h2 leading-h2 text-light-text">How I work</h1>
             <div className="relative pl-6 border-l-2 border-teal-accent/50">
               <p className="text-h6 text-gray-400 max-w-2xl font-light leading-p tracking-h6">
-                  I don't just make things look good. I build systems that work.
+                I don't just make things look good. I build systems that work.
               </p>
             </div>
-          </header>
+          </motion.header>
 
           <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-8 mb-16">
             {steps.map((step, index) => (
               <motion.div
                 key={step.id}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.3 }}
                 // Hover: white/gray shade instead of teal
                 className="col-span-4 md:col-span-4 lg:col-span-6 relative group p-8 rounded-2xl bg-dark-sec/20 border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
               >
                 <div className="absolute right-6 top-6 text-display font-bold text-white/[0.03] font-display select-none pointer-events-none group-hover:text-white/[0.08] transition-colors leading-none">
-                    {step.id}
+                  {step.id}
                 </div>
 
                 <div className="flex items-center gap-5 mb-6 relative z-10">
@@ -74,7 +71,7 @@ const Process: React.FC = () => {
                   </div>
                   <h3 className="text-h5 font-bold text-light-text group-hover:text-white transition-colors">{step.title}</h3>
                 </div>
-                
+
                 <p className="text-gray-400 leading-p text-body relative z-10 max-w-md">
                   {step.desc}
                 </p>
@@ -82,23 +79,53 @@ const Process: React.FC = () => {
             ))}
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+          {/* Tools I Use Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="mb-20"
+          >
+            <h2 className="text-h5 font-bold mb-8 text-light-text flex items-center gap-3">
+              <Zap size={20} className="text-teal-accent" /> Tools I use
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {[
+                { name: "Microsoft Office", icon: AppWindow },
+                { name: "Figma", icon: PenTool },
+                { name: "Framer", icon: Layout },
+                { name: "Adobe Creative Suite", icon: ImageIcon },
+                { name: "Canva", icon: Palette },
+                { name: "Notion", icon: FileText },
+                { name: "Gemini", icon: Sparkles },
+                { name: "Anti gravity", icon: Zap },
+                { name: "Google AI Studio", icon: Cpu }
+              ].map((tool) => (
+                <div key={tool.name} className="flex items-center gap-3 p-4 rounded-xl bg-dark-sec/20 border border-white/5 hover:border-teal-accent/30 hover:bg-white/[0.03] transition-all group">
+                  <tool.icon size={18} className="text-gray-400 group-hover:text-teal-accent transition-colors" />
+                  <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{tool.name}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
             className="flex justify-start"
           >
-            <Link 
-                to="/contact" 
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-dark-main font-bold text-body transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-dark-main font-bold text-body transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
             >
-                Start a project 
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              Start a project
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
