@@ -1,38 +1,28 @@
-@font-face {
-  font-family: 'Geist Sans';
-  src: url('/fonts/Geist-Variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Geist Mono';
-  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+
+  html,
   body {
-    @apply bg-void text-text-primary antialiased;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
-  /* Silence Technique: Grayscale by default */
+  body {
+    @apply bg-transparent text-neutral-200 antialiased selection:bg-white selection:text-black font-sans;
+  }
+
+  /* Precision Image Rendering */
   img {
     @apply grayscale transition-all duration-500;
   }
-
-  img:hover {
-    @apply grayscale-0;
-  }
 }
 
-@layer components {
-  .glass-panel {
-    @apply bg-[#0A0A0A]/60 backdrop-blur-xl border border-white/10;
-  }
+@layer utilities {
+  /* Utilities cleared for new global background system */
 }

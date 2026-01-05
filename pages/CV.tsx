@@ -3,7 +3,7 @@ import { FileText, Printer } from 'lucide-react';
 
 const CV: React.FC = () => {
   return (
-    <div className="min-h-screen bg-void text-text-primary font-sans antialiased p-8 md:p-16 lg:p-24 print:bg-white print:text-black print:p-0 print:max-w-none">
+    <div className="min-h-screen bg-transparent text-text-primary font-sans antialiased p-8 md:p-16 lg:p-24 print:bg-white print:text-black print:p-0 print:max-w-none">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <header className="flex flex-col md:flex-row justify-between items-start gap-8 mb-16 print:mb-8 border-b border-border-subtle print:border-gray-200 pb-8">
