@@ -16,8 +16,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, debug = false }) => {
                 grid grid-cols-1 lg:grid-cols-12 
                 items-start lg:items-center 
                 gap-12 lg:gap-12 
-                py-24 lg:py-0 
-                h-screen max-h-screen
+                py-24 lg:py-12 
+                min-h-screen
                 ${debug ? 'outline outline-1 outline-red-500' : ''}
             `}>
 

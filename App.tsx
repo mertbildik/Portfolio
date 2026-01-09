@@ -1,14 +1,21 @@
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Home from './pages/Home';
-import Portfolio from './pages/Portfolio';
-import Process from './pages/Process';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import CV from './pages/CV';
+import Home from './src/pages/Home';
+import Portfolio from './src/pages/Portfolio';
+import Process from './src/pages/Process';
+import About from './src/pages/About';
+import Contact from './src/pages/Contact';
+import CV from './src/pages/CV';
 import Navigation from './src/components/Navigation';
-import CaseStudy from './pages/CaseStudy';
+import CaseStudy from './src/pages/CaseStudy';
+import EmploymentVentures from './src/pages/EmploymentVentures'; // Keep if used directly or for fallback
+import McKinsey from './src/pages/McKinsey';
+import DogRide from './src/pages/DogRide';
+import Bunect from './src/pages/Bunect';
+import Adclusive from './src/pages/Adclusive';
+import Curvix from './src/pages/Curvix';
+import GalaNetwork from './src/pages/GalaNetwork';
 import GlobalBackground from './src/components/GlobalBackground';
 
 const AnimatedRoutes = () => {
@@ -19,6 +26,18 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
+
+        {/* Client Projects */}
+        <Route path="/case-study/dog-and-ride" element={<DogRide />} />
+        <Route path="/case-study/bunect" element={<Bunect />} />
+        <Route path="/case-study/adclusive" element={<Adclusive />} />
+
+        {/* Employment & Ventures */}
+        <Route path="/case-study/mckinsey" element={<McKinsey />} />
+        <Route path="/case-study/curvix" element={<Curvix />} />
+        <Route path="/case-study/gala-network" element={<GalaNetwork />} />
+
+        {/* Generic Case Study Route (Fallback) */}
         <Route path="/case-study/:id" element={<CaseStudy />} />
         <Route path="/process" element={<Process />} />
         <Route path="/about" element={<About />} />
@@ -47,7 +66,7 @@ const Content: React.FC = () => {
   const isCaseStudy = location.pathname.startsWith('/case-study/');
 
   return (
-    <div className="flex flex-col min-h-screen text-white font-sans selection:bg-white selection:text-black relative overflow-x-hidden">
+    <div className="flex flex-col min-h-screen text-white font-sans selection:bg-white selection:text-black relative">
 
       {/* Global Unified Background - Applied Everywhere */}
       <GlobalBackground />

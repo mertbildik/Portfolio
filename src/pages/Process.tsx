@@ -161,13 +161,18 @@ const Process: React.FC = () => {
                             ))}
                         </div>
 
-                        <div className="mt-8 flex justify-start">
+                        <div className="mt-12 w-full flex justify-start">
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center gap-3 text-neutral-400 hover:text-white transition-colors group py-2"
+                                className="w-full flex items-center justify-between group cursor-pointer"
                             >
-                                <span className="text-sm uppercase tracking-widest font-mono">Start a project</span>
-                                <ArrowRight size={16} className="text-neutral-600 group-hover:text-white transition-colors group-hover:translate-x-1 duration-300" />
+                                <div className="flex flex-col shrink-0">
+                                    <span className="text-xl font-medium text-white group-hover:text-neutral-300 transition-colors">Start a project</span>
+                                    <span className="text-[10px] font-mono text-neutral-600 mt-1 uppercase tracking-widest">Open for transmission</span>
+                                </div>
+                                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 ml-4">
+                                    <ArrowRight size={20} />
+                                </div>
                             </Link>
                         </div>
                     </div>

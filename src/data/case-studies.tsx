@@ -1,5 +1,5 @@
 import React from 'react';
-import { PawPrint, Briefcase, Monitor } from 'lucide-react';
+import { PawPrint, Briefcase, Monitor, Layers, PenTool, Globe } from 'lucide-react';
 
 export interface CaseStudyData {
     id: string;
@@ -37,9 +37,30 @@ export interface CaseStudyData {
         image?: string;
     }[];
     learnings: string;
+
+    // Experience Detail (Optional - for non-case-study pages)
+    experienceDetails?: {
+        type: 'experience';
+        role: string;
+        location?: string;
+        timeline: string;
+        intro?: {
+            label: string;
+            text: string;
+        };
+        sections: {
+            title: string;
+            items: string[];
+        }[];
+        placeholderBox?: {
+            label: string;
+            items: string[];
+        };
+    };
 }
 
 export const caseStudies: CaseStudyData[] = [
+    // --- Original Client Projects ---
     {
         id: "dog-and-ride",
         title: "Dog & Ride",
@@ -135,7 +156,7 @@ export const caseStudies: CaseStudyData[] = [
     },
     {
         id: "adclusive",
-        title: "AdClusive",
+        title: "Adclusive",
         role: "Product designer",
         timeline: "2021 to Present (on pause)",
         tools: ["Figma", "Notion", "VSCode", "Angular"],
@@ -170,5 +191,155 @@ export const caseStudies: CaseStudyData[] = [
             }
         ],
         learnings: "Teamwork matters more in web apps than in simple sites.\nAlignment saves weeks.\n\nKey learnings covered dashboards, payment logic, tracking systems, and APIs.\nCross functional work improved speed and decision making.\n\nNext steps\n• Improve onboarding for both roles.\n• Add clearer empty states for new accounts.\n• Track where users get stuck and simplify those steps first."
+    },
+
+    // --- New Employment & Ventures ---
+    // --- Experience / Employment ---
+    {
+        id: "mckinsey",
+        title: "McKinsey & Co.",
+        role: "Visual Communication Specialist",
+        timeline: "Sep 2021 to Aug 2024",
+        tools: ["PowerPoint", "Excel", "Affinity", "Figma"],
+        oneLineSummary: "High-stakes presentation design and visual strategy for global consulting projects.",
+        icon: <Briefcase size={32} />,
+        // Standard Case Study Fields (Required by TS but unused in new view)
+        problem: "", solution: "", impact: { user: "", business: "" }, context: "", goals: [], usersScenario: "", approach: "", keyDecisions: [], iterations: [], finalProduct: [], learnings: "",
+
+        // New Experience Data
+        experienceDetails: {
+            type: 'experience',
+            role: "Visual Communication Specialist",
+            location: "Poznan, Poland",
+            timeline: "Sep 2021 to Aug 2024",
+            sections: [
+                {
+                    title: "What I did",
+                    items: [
+                        "Turned complex thinking into clean storylines.",
+                        "Made decks easier to read fast.",
+                        "Refined charts and data visuals for clarity.",
+                        "Built reusable slide layouts and systems.",
+                        "Kept large presentations consistent.",
+                        "Helped teams move faster without losing quality."
+                    ]
+                },
+                {
+                    title: "How I worked",
+                    items: [
+                        "Clarify the goal and audience.",
+                        "Map the story and logic.",
+                        "Build the pages and hierarchy.",
+                        "Simplify, align, and polish.",
+                        "Hand off with clear rules."
+                    ]
+                },
+                {
+                    title: "Tools and collaboration",
+                    items: [
+                        "PowerPoint, Excel, Affinity, Figma.",
+                        "Worked closely with consultants on tight timelines."
+                    ]
+                },
+                {
+                    title: "NDA note",
+                    items: [
+                        "I can't share client materials. I can share my process and the outcomes."
+                    ]
+                }
+            ],
+            placeholderBox: {
+                label: "Confidential work placeholder area",
+                items: [
+                    "Confidential client deck",
+                    "Internal strategy narrative",
+                    "Data visualization system",
+                    "Workshop materials",
+                    "Template library"
+                ]
+            }
+        }
+    },
+    // --- Ventures ---
+    {
+        id: "curvix",
+        title: "Curvix",
+        role: "Founder",
+        timeline: "Current",
+        tools: ["Figma", "Framer", "React", "Adobe Suite"],
+        oneLineSummary: "Curvix is my studio. I design and build websites and systems that are clear, fast, and easy to use.",
+        icon: <Monitor size={32} />,
+        context: "Marketing support is handled with my partner when the project needs it. Photography is Warsaw only.",
+
+        problem: "• Website design and build\n• Brand identity and visual systems\n• Product UX and UI\n• Presentation design\n• Social visuals and content assets\n• Remote marketing support (with my partner)\n• Photography in Warsaw (when needed)",
+
+        goals: [
+            "Clear, fast websites",
+            "Brand identity systems",
+            "Product UX/UI",
+            "Presentation design"
+        ],
+
+        approach: "• I start with discovery and goals in Notion.\n• I send a clear offer and scope.\n• I take 50% upfront.\n• I collect assets or build the brand foundation if it’s missing.\n• I create a moodboard and direction.\n• I design wireframes, then the final UI.\n• I build the site and polish details.\n• I deliver with a clean handoff.\n• I collect the remaining payment.",
+
+        usersScenario: "Clients need a reliable partner who delivers quality without the bloat of a large agency.",
+
+        solution: "My process is designed for clarity and speed. From discovery to handoff, every step is transparent.",
+
+        finalProduct: [
+            { title: "Bunect", description: "Digital system and website." },
+            { title: "Dog & Ride", description: "Brand and digital experience." },
+            { title: "Adclusive", description: "Product design and system." }
+        ],
+
+        impact: {
+            user: "Clients get a direct line of communication and work that ships fast.",
+            business: "A streamlined studio model allows for high-quality output with lower overhead."
+        },
+
+        keyDecisions: [],
+        iterations: [],
+        learnings: "Clear process and upfront agreements prevent scope creep and ensure happy clients."
+    },
+    {
+        id: "gala-network",
+        title: "GalaNetwork",
+        role: "Co-founder",
+        timeline: "Dec 2024",
+        tools: ["Social Media", "Writing", "Visual Design"],
+        oneLineSummary: "GalaNetwork is an English-first space for Galatasaray fans. It’s news, storytelling, and community.",
+        icon: <PawPrint size={32} />,
+        context: "I write posts and design visuals that feel sharp and consistent.",
+
+        problem: "• Grow the fan base outside Turkey.\n• Make it easier for fans to connect with each other.\n• Turn good conversations into public posts people can build on.",
+
+        goals: [
+            "Grow fan base globally",
+            "Connect fans",
+            "Elevate conversations"
+        ],
+
+        approach: "• Track matches and news.\n• Pick the story worth telling.\n• Write the post in a simple voice.\n• Design a visual when it helps the point.\n• Publish and follow up with replies.\n• Iterate the format based on what people react to.\n• Coordinate with my friend to keep cadence.",
+
+        usersScenario: "International fans often feel disconnected or lack high-quality English content.",
+
+        solution: "It’s not only about tweets. It’s about building a real network between fans. Jobs, projects, and support can come out of it.",
+
+        impact: {
+            user: "Fans get a reliable source of news and a place to belong.",
+            business: "Building a dedicated audience that values quality over clickbait."
+        },
+
+        finalProduct: [
+            { title: "Daily posting and writing", description: "Consistent coverage and storytelling." },
+            { title: "Matchday visuals", description: "Posters and game graphics." },
+            { title: "Quote posters", description: "Simple story slides and formatting." },
+            { title: "Clean layouts", description: "Visuals designed to work on X." },
+            { title: "Community building", description: "Replying and engaging with fans." }
+        ],
+
+        keyDecisions: [],
+        iterations: [],
+        learnings: "Consistency and voice matter more than volume. Authentic engagement builds real community."
     }
 ];

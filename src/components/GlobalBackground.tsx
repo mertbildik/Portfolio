@@ -10,8 +10,10 @@ const GlobalBackground: React.FC = () => {
                 style={{
                     backgroundImage: 'radial-gradient(circle, #888 1px, transparent 1px)',
                     backgroundSize: '24px 24px',
+                    willChange: 'transform',
+                    backfaceVisibility: 'hidden',
                 }}
-                animate={{ x: [0, -24, 0], y: [0, -12, 0] }}
+                animate={{ x: [0, -24, 0], y: [0, -12, 0], z: 0 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
             <motion.div
@@ -19,8 +21,10 @@ const GlobalBackground: React.FC = () => {
                 style={{
                     backgroundImage: 'radial-gradient(circle, #AAA 1px, transparent 1px)',
                     backgroundSize: '32px 32px',
+                    willChange: 'transform',
+                    backfaceVisibility: 'hidden',
                 }}
-                animate={{ x: [0, 32, 0], scale: [1, 1.05, 1], rotate: [0, 1, 0] }}
+                animate={{ x: [0, 32, 0], scale: [1, 1.05, 1], rotate: [0, 1, 0], z: 0 }}
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent z-0" />
