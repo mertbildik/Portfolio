@@ -1,173 +1,181 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Search, PenTool, Rocket, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// -- Variants (Consistent with Home/Portfolio) --
+import PageLayout from '../components/PageLayout';
+
+// ... (Variants can be removed if shared or kept local. keeping local for now)
 const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.05, delayChildren: 0.1 }
     }
-  }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-  }
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    }
 };
 
 const Process: React.FC = () => {
-  const steps = [
-    {
-      id: "01",
-      title: "Discovery",
-      desc: "I listen to understand your core goals. No assumptions, just clear facts.",
-      icon: MessageSquare
-    },
-    {
-      id: "02",
-      title: "Strategy",
-      desc: "User flows and wireframes to ensure solid logic before any visual design.",
-      icon: Search
-    },
-    {
-      id: "03",
-      title: "Design",
-      desc: "Minimal, premium aesthetic. Functional beauty where every pixel serves a purpose.",
-      icon: PenTool
-    },
-    {
-      id: "04",
-      title: "Launch",
-      desc: "Production-ready assets and support to ensure the solution works in the wild.",
-      icon: Rocket
-    }
-  ];
+    const steps = [
+        {
+            id: "01",
+            title: "Discovery",
+            desc: "I listen to understand your core goals. No assumptions, just clear facts.",
+        },
+        {
+            id: "02",
+            title: "Strategy",
+            desc: "User flows and wireframes to ensure solid logic before any visual design.",
+        },
+        {
+            id: "03",
+            title: "Design",
+            desc: "Minimal, premium aesthetic. Functional beauty where every pixel serves a purpose.",
+        },
+        {
+            id: "04",
+            title: "Launch",
+            desc: "Production-ready assets and support to ensure the solution works in the wild.",
+        }
+    ];
 
-  return (
-    // 100svh Container - STRICTLY NO SCROLL
-    // Centered Layout
-    // UPDATED TOP ANCHOR: pt-[clamp(3rem,8vh,8rem)]
-    <div className="w-full h-[100svh] max-h-[100svh] overflow-hidden relative flex flex-col justify-center pt-[clamp(3rem,8vh,8rem)] pb-[clamp(3rem,8vh,8rem)]">
+    const tools = [
+        { name: "Figma", category: "Design" },
+        { name: "Framer", category: "Design" },
+        { name: "Notion", category: "Productivity" },
+        { name: "Microsoft Office", category: "Productivity" },
+        { name: "Adobe CC", category: "Design" },
+        { name: "Affinity", category: "Design" },
+        { name: "Canva", category: "Design" },
+        { name: "ChatGPT", category: "AI" },
+        { name: "Claude", category: "AI" },
+        { name: "Perplexity", category: "AI" },
+        { name: "Gemini", category: "AI" },
+        { name: "AntiGravity", category: "AI" }, // Fixed Typo: AntiGravity
+        { name: "HTML/CSS", category: "Code" },
+        { name: "Angular", category: "Code" },
+        { name: "React", category: "Code" },
+    ];
 
-      {/* Atmosphere: Morning Fog */}
-
-      <motion.div
-        className="flex flex-col h-full max-w-[1200px] mx-auto w-full px-6 md:px-12 relative z-10 justify-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-
-        {/* HEADER: Tight and Integrated */}
-        <motion.header variants={itemVariants} className="shrink-0 mb-[clamp(1.5rem,3vh,3rem)] flex items-end justify-between">
-          <div>
-            <h1 className="font-medium text-[#EDEDED] leading-none tracking-tight mb-3"
-              style={{ fontSize: "clamp(2rem, 5vh, 4rem)" }}>
-              How I work
-            </h1>
-            <div className="pl-4 border-l border-[#262626]">
-              <p className="text-[#737373] font-normal leading-snug max-w-xl"
-                style={{ fontSize: "clamp(0.875rem, 1.5vh, 1.125rem)" }}>
-                I don't just make things look good. I build systems that work.
-              </p>
-            </div>
-          </div>
-        </motion.header>
-
-        {/* MAIN CONTENT: 2x2 Grid (Balanced & Dense) */}
-        {/* Grid grows but not indefinitely. Aspect ratio control prevents stretching. */}
-        <div className="shrink-0 grid grid-cols-1 md:grid-cols-2 gap-[clamp(0.75rem,1.5vh,1.5rem)] mb-[clamp(2rem,4vh,4rem)]">
-          {steps.map((step) => (
+    return (
+        <PageLayout>
+            {/* LEFT COLUMN: Header / Intro - col-span-4 */}
             <motion.div
-              key={step.id}
-              variants={itemVariants}
-              // Card Styling: Short, wide, minimal.
-              className="group relative flex flex-col bg-[#121212]/40 backdrop-blur-sm border border-white/5 rounded-lg overflow-hidden transition-all duration-300 hover:bg-[#121212]/80 hover:border-white/10"
-              style={{ padding: "clamp(1.25rem, 2.5vh, 2rem)" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="lg:col-span-4 flex flex-col justify-center relative z-20 h-full"
             >
-              {/* Specular Highlight */}
-              <div className="absolute inset-x-0 top-0 h-px bg-white/10 opacity-50"></div>
+                <div className="flex flex-col">
+                    {/* Back Link - Very subtle, aligned */}
+                    <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-xs tracking-widest uppercase font-medium">← Back</span>
+                    </Link>
 
-              <div className="flex items-start justify-between mb-4">
-                {/* Title */}
-                <h3 className="font-medium text-[#EDEDED] leading-tight"
-                  style={{ fontSize: "clamp(1.1rem, 2vh, 1.5rem)" }}>
-                  {step.title}
-                </h3>
-                {/* Number: Embedded */}
-                <span className="font-mono text-white/5 text-lg font-bold tracking-widest group-hover:text-white/10 transition-colors">{step.id}</span>
-              </div>
+                    {/* Title System - Matches Portfolio's hierarchy */}
+                    <div className="mb-6 lg:mb-8">
+                        <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase mb-4 block">
+                            Methodology
+                        </span>
+                        <h1 className="text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[0.95] text-white">
+                            How I <br />
+                            <span className="text-neutral-500 font-light">Work.</span>
+                        </h1>
+                    </div>
 
-              {/* Description */}
-              <p className="text-[#737373] leading-relaxed max-w-[90%]"
-                style={{ fontSize: "clamp(0.75rem, 1.4vh, 0.95rem)", lineHeight: "1.5" }}>
-                {step.desc}
-              </p>
-
-              {/* Icon: Background Texture */}
-              <div className="absolute -bottom-6 -right-6 text-[#121212] group-hover:text-[#1A1A1A] transition-colors duration-500 pointer-events-none transform rotate-12 group-hover:rotate-0">
-                <step.icon size={100} strokeWidth={0.5} />
-              </div>
+                    <p className="text-neutral-400 max-w-xs leading-relaxed text-sm lg:text-base font-light">
+                        I don't just make things look good. I build systems that work.
+                    </p>
+                </div>
             </motion.div>
-          ))}
-        </div>
 
-        {/* FOOTER: Tools (Text Logos) + CTA */}
-        <div className="shrink-0 flex items-center justify-between py-2 border-t border-white/5 pt-6">
-
-          {/* Text-Based Logo Wall (Simulated) */}
-          <motion.div variants={itemVariants} className="flex-1 flex flex-col justify-center">
-            <span className="font-mono uppercase text-[#404040] tracking-widest text-[10px] mb-3">Tools</span>
-
-            <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2 opacity-50 hover:opacity-100 transition-opacity duration-500">
-              {/* Figma: Geometric Sans */}
-              <span className="text-[#888] font-sans font-bold tracking-tight text-sm hover:text-white cursor-default transition-colors">figma</span>
-
-              {/* Framer: Geometric */}
-              <span className="text-[#888] font-sans font-semibold tracking-wide text-sm hover:text-white cursor-default transition-colors">framer</span>
-
-              {/* React: Mono */}
-              <span className="text-[#888] font-mono font-medium text-xs hover:text-white cursor-default transition-colors">React</span>
-
-              {/* TS: Serif or Mono */}
-              <span className="text-[#888] font-mono font-bold text-xs text-blue-500/50 hover:text-blue-400 cursor-default transition-colors">TS</span>
-
-              {/* Adobe: Uppercase Bold */}
-              <span className="text-[#888] font-sans font-black tracking-tighter text-sm hover:text-[#FF0000]/80 cursor-default transition-colors">Ad</span>
-
-              {/* Notion: Serif */}
-              <span className="text-[#888] font-serif font-medium italic text-sm hover:text-white cursor-default transition-colors">Notion</span>
-
-              {/* Gemini: Sparkle text */}
-              <span className="text-[#888] font-sans font-medium hover:text-white cursor-default transition-colors bg-clip-text text-transparent bg-gradient-to-r from-[#888] to-[#666] hover:from-blue-400 hover:to-purple-400">Gemini</span>
-            </div>
-          </motion.div>
-
-          {/* CTA (Right) */}
-          <motion.div variants={itemVariants} className="shrink-0 flex items-end">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-3 text-[#EDEDED] font-medium transition-transform hover:translate-x-1 group"
-              style={{ fontSize: "clamp(0.875rem, 1.5vh, 1rem)" }}
+            {/* RIGHT COLUMN: Interactive List - col-span-8 */}
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="lg:col-span-8 flex flex-col justify-center w-full relative z-30 lg:pl-12"
             >
-              Start a project
-              <ArrowRight size={16} className="text-[#525252] group-hover:text-white transition-colors" />
-            </Link>
-          </motion.div>
+                <div className="flex flex-col w-full max-w-3xl ml-auto gap-12 lg:gap-20">
 
-        </div>
+                    {/* SECTION: The Process */}
+                    <div className="flex flex-col gap-4">
+                        <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
+                            The Process
+                        </motion.h2>
 
-      </motion.div>
-    </div>
-  );
+                        <div className="flex flex-col border-t border-white/[0.08]">
+                            {steps.map((step) => (
+                                <motion.div
+                                    key={step.id}
+                                    variants={itemVariants}
+                                    className="relative py-5 lg:py-6 flex flex-col md:flex-row md:items-baseline justify-between border-b border-white/[0.08] group px-2 -mx-2 hover:bg-white/[0.02] transition-colors duration-300 rounded-lg"
+                                >
+                                    <div className="flex items-baseline gap-6 md:gap-10">
+                                        <span className="text-xs font-mono text-neutral-600 transition-colors">
+                                            {step.id}
+                                        </span>
+                                        <span className="text-xl lg:text-2xl font-light text-neutral-300 group-hover:text-white transition-colors duration-300 tracking-tight">
+                                            {step.title}
+                                        </span>
+                                    </div>
+
+                                    <div className="mt-2 md:mt-0 md:max-w-xs lg:max-w-sm">
+                                        <p className="text-sm text-neutral-500 leading-relaxed font-light group-hover:text-neutral-400 transition-colors">
+                                            {step.desc}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* SECTION: Toolkit */}
+                    <div className="flex flex-col gap-4">
+                        <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
+                            Toolkit
+                        </motion.h2>
+
+                        {/* Minimal Grid - Compact */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-2 gap-x-8 border-t border-white/[0.08] pt-4">
+                            {tools.map((tool, i) => (
+                                <motion.div
+                                    key={i}
+                                    variants={itemVariants}
+                                    className="flex items-center gap-3 group py-1"
+                                >
+                                    <div className="w-1 h-1 rounded-full bg-neutral-800 group-hover:bg-white transition-colors duration-300" />
+                                    <span className="text-xs lg:text-sm text-neutral-500 font-light group-hover:text-white transition-colors duration-300">
+                                        {tool.name}
+                                    </span>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <div className="mt-8 flex justify-start">
+                            <Link
+                                to="/contact"
+                                className="inline-flex items-center gap-3 text-neutral-400 hover:text-white transition-colors group py-2"
+                            >
+                                <span className="text-sm uppercase tracking-widest font-mono">Start a project</span>
+                                <ArrowRight size={16} className="text-neutral-600 group-hover:text-white transition-colors group-hover:translate-x-1 duration-300" />
+                            </Link>
+                        </div>
+                    </div>
+
+                </div>
+            </motion.div>
+        </PageLayout>
+    );
 };
 
 export default Process;

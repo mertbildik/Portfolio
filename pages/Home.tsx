@@ -68,7 +68,8 @@ const Home: React.FC = () => {
 
             {/* Main Content Layout */}
             {/* pt-20 for mobile safety. Grid used on desktop, stacked on mobile. */}
-            <div className="relative z-10 w-full max-w-[1600px] flex-1 mx-auto px-6 md:px-12 lg:px-20 xl:px-32 grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-12 py-20 lg:py-0">
+            {/* Added lg:pl-32 to accommodate Left Navigation (approx 80px width impact) */}
+            <div className="relative z-10 w-full max-w-[1600px] flex-1 mx-auto px-6 md:px-12 lg:pr-20 lg:pl-32 xl:px-32 grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-12 py-20 lg:py-0">
 
                 {/* Hero Section (Left Column) - col-span-8 gives width constraint on desktop */}
                 <motion.div

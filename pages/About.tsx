@@ -26,89 +26,163 @@ const itemVariants = {
 
 const About: React.FC = () => {
     return (
-        // 100svh Container - STRICTLY NO SCROLL
-        <div className="w-full h-[100svh] max-h-[100svh] overflow-hidden relative flex flex-col pt-[clamp(3rem,8vh,6rem)] pb-[clamp(3rem,6vh,6rem)]">
+        <div className="w-full min-h-screen text-[#E5E5E5] flex flex-col font-sans">
 
-            {/* Atmosphere */}
+            {/* Grid Layout Container - Strict Alignment */}
+            <div className="relative z-10 w-full max-w-[1600px] flex-1 mx-auto px-6 md:px-12 lg:pr-20 lg:pl-32 xl:px-32 grid grid-cols-1 lg:grid-cols-12 items-start lg:items-center gap-12 lg:gap-12 py-24 lg:py-0">
 
-            <motion.div
-                className="flex h-full max-w-[1400px] mx-auto w-full px-6 md:px-12 relative z-10 gap-8 lg:gap-16 items-center"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-            >
+                {/* LEFT COLUMN: Header / Intro - PRESERVED EXACTLY */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="lg:col-span-4 flex flex-col justify-center relative z-20 h-full"
+                >
+                    <div className="flex flex-col">
+                        {/* Back Link */}
+                        <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300">
+                            <span className="text-xs tracking-widest uppercase font-medium">← Back</span>
+                        </Link>
 
-                {/* LEFT COLUMN: Photo (Compact) */}
-                <motion.div variants={itemVariants} className="hidden lg:block w-1/3 max-w-[360px] h-[55vh] relative">
-                    <div className="w-full h-full rounded-lg overflow-hidden border border-white/5 bg-surface/20 relative shadow-2xl">
-                        <img src={mertPhoto} alt="Mert" className="w-full h-full object-cover opacity-80" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                        <div className="absolute bottom-6 left-6 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10">
-                            <MapPin size={12} className="text-[#CCC]" />
-                            <span className="text-[10px] font-mono text-[#CCC] uppercase tracking-widest">Warsaw, PL</span>
+                        {/* Title System */}
+                        <div className="mb-6 lg:mb-8">
+                            <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase mb-4 block">
+                                Profile
+                            </span>
+                            <h1 className="text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[0.95] text-white">
+                                Who I <br />
+                                <span className="text-neutral-500 font-light">Am.</span>
+                            </h1>
                         </div>
+
+                        <p className="text-neutral-400 max-w-xs leading-relaxed text-sm lg:text-base font-light">
+                            Born in Izmir, now based in Warsaw.
+                        </p>
                     </div>
                 </motion.div>
 
-                {/* RIGHT COLUMN: Content (Dense) */}
-                <div className="flex-1 flex flex-col justify-center h-full max-h-full">
+                {/* RIGHT COLUMN: HERO PORTRAIT SYSTEM */}
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="lg:col-span-8 flex flex-col justify-center w-full relative z-30 lg:pl-12"
+                >
+                    {/* Main System Grid */}
+                    <div className="w-full border-t border-neutral-800">
 
-                    {/* Header */}
-                    <motion.div variants={itemVariants} className="mb-[clamp(1rem,2.5vh,2rem)]">
-                        <h1 className="font-medium text-[#EDEDED] leading-none tracking-tight mb-2"
-                            style={{ fontSize: "clamp(2rem, 4vh, 3.5rem)" }}>
-                            Hey, I'm Mert.
-                        </h1>
-                        <p className="text-[#A3A3A3] font-normal" style={{ fontSize: "clamp(1rem, 1.8vh, 1.25rem)" }}>
-                            Born in Izmir, now based in Warsaw.
-                        </p>
-                    </motion.div>
+                        {/* 1. HERO ROW: BACKGROUND + PORTRAIT */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-800">
 
-                    {/* Intro Text */}
-                    <motion.div variants={itemVariants} className="mb-[clamp(1.5rem,3vh,3rem)] border-l border-[#262626] pl-6">
-                        <p className="text-[#737373] max-w-xl leading-relaxed" style={{ fontSize: "clamp(0.875rem, 1.4vh, 1rem)" }}>
-                            I’ve always been curious about using technology to make things simpler. As a kid, I spent hours on the computer, not for fun only, but to smooth out everyday problems. That way of thinking never left.
-                        </p>
-                    </motion.div>
+                            {/* 1A. Background Text (Span 2) - Supports the photo */}
+                            <motion.div variants={itemVariants} className="md:col-span-2 py-8 pr-12 lg:border-r border-neutral-800 flex flex-col justify-between h-full">
+                                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-6">
+                                    01 — Background
+                                </span>
 
-                    {/* Info Grid (Tight) */}
-                    <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-[clamp(1.5rem,3vh,3rem)] border-t border-white/5 pt-4">
-                        {/* About Me */}
-                        <div className="space-y-1.5">
-                            <span className="text-[10px] font-mono text-[#404040] uppercase tracking-widest block">About Me</span>
-                            <p className="text-[#737373] text-xs leading-snug">
-                                I follow basketball and football closely, but design is where I feel most grounded.
-                            </p>
+                                <div className="max-w-md">
+                                    <h2 className="text-xl md:text-2xl font-light text-white leading-tight mb-8">
+                                        I’ve always been curious about using technology to make things simpler.
+                                    </h2>
+                                    <p className="text-neutral-500 leading-relaxed text-sm font-light">
+                                        As a kid, I spent hours on the computer, not for fun only, but to smooth out everyday problems. That way of thinking never left. Now, I apply it to building digital products that serve a clear purpose.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* 1B. HERO PORTRAIT (Span 1) - Aspect 3:4 Frame */}
+                            {/* This container drives the row height naturally, no fixed min-h needed if content fits */}
+                            <motion.div variants={itemVariants} className="relative w-full md:border-l border-neutral-800 md:-ml-[1px] p-6 lg:p-8 flex items-center justify-center">
+                                {/* The Frame: Fixed Aspect Ratio */}
+                                <div className="w-full aspect-[3/4] relative bg-neutral-900 border border-white/10 overflow-hidden group">
+                                    {/* Image: Object Top + Cover for perfect framing */}
+                                    <img
+                                        src={mertPhoto}
+                                        alt="Mert"
+                                        className="w-full h-full object-cover object-top grayscale contrast-110 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                    />
+
+                                    {/* Subtle Overlay gradient for depth */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+
+                                    {/* Micro Label */}
+                                    <div className="absolute bottom-3 left-3">
+                                        <span className="text-[9px] font-mono text-white/50 uppercase tracking-widest">
+                                            Portrait '26
+                                        </span>
+                                    </div>
+                                </div>
+                            </motion.div>
                         </div>
 
-                        {/* Work */}
-                        <div className="space-y-1.5">
-                            <span className="text-[10px] font-mono text-[#404040] uppercase tracking-widest block">Work</span>
-                            <p className="text-[#737373] text-xs leading-snug">
-                                From corporate environments to my own studio. I value clarity, shared mindsets, and healthy collaboration.
-                            </p>
+                        {/* 2. INDEX ROW: PERSPECTIVE */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-800">
+                            {/* Focus */}
+                            <motion.div variants={itemVariants} className="py-8 md:pr-8 lg:border-r border-neutral-800 relative group">
+                                <span className="block text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-4 group-hover:text-white transition-colors">
+                                    02 — Focus
+                                </span>
+                                <p className="text-neutral-400 text-xs leading-relaxed font-light group-hover:text-neutral-300 transition-colors">
+                                    I follow basketball and football, but design is where I feel most grounded.
+                                </p>
+                            </motion.div>
+
+                            {/* Method */}
+                            <motion.div variants={itemVariants} className="py-8 md:px-8 lg:border-r border-neutral-800 relative group md:-ml-[1px]">
+                                <span className="block text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-4 group-hover:text-white transition-colors">
+                                    03 — Method
+                                </span>
+                                <p className="text-neutral-400 text-xs leading-relaxed font-light group-hover:text-neutral-300 transition-colors">
+                                    From corporate environments to my own studio. I value clarity and shared mindsets.
+                                </p>
+                            </motion.div>
+
+                            {/* Philosophy */}
+                            <motion.div variants={itemVariants} className="py-8 md:pl-8 relative group md:-ml-[1px]">
+                                <span className="block text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-4 group-hover:text-white transition-colors">
+                                    04 — Philosophy
+                                </span>
+                                <p className="text-neutral-400 text-xs leading-relaxed font-light group-hover:text-neutral-300 transition-colors">
+                                    Design isn't about looking impressive. It's about helping people move forward.
+                                </p>
+                            </motion.div>
                         </div>
 
-                        {/* Drives */}
-                        <div className="space-y-1.5">
-                            <span className="text-[10px] font-mono text-[#404040] uppercase tracking-widest block">Drives</span>
-                            <p className="text-[#737373] text-xs leading-snug">
-                                Design isn't about looking impressive. It's about helping people move forward with less friction.
-                            </p>
-                        </div>
-                    </motion.div>
+                        {/* 3. FOOTER ROW: CONNECT */}
+                        <motion.div variants={itemVariants} className="py-6 flex flex-col md:flex-row items-center justify-between gap-6">
 
-                    {/* CTA */}
-                    <motion.div variants={itemVariants}>
-                        <Link to="/contact" className="inline-flex items-center gap-3 text-[#EDEDED] hover:text-white transition-colors group">
-                            <span className="font-mono uppercase tracking-widest text-xs">Get in touch</span>
-                            <ArrowRight size={14} className="text-[#555] group-hover:text-white transition-colors group-hover:translate-x-1" />
-                        </Link>
-                    </motion.div>
+                            <div className="flex items-center gap-4">
+                                <div className="w-1.5 h-1.5 bg-green-500/50 rounded-full animate-pulse" />
+                                <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">
+                                    Status: Available for new projects
+                                </span>
+                            </div>
 
+                            <Link to="/contact" className="group flex items-center gap-4 px-6 py-3 border border-neutral-800 hover:border-neutral-600 transition-colors bg-neutral-900/30">
+                                <span className="text-xs uppercase tracking-widest font-mono text-neutral-400 group-hover:text-white transition-colors">Start a conversation</span>
+                                <ArrowRight size={14} className="text-neutral-500 group-hover:text-white transition-colors group-hover:translate-x-0.5" />
+                            </Link>
+
+                        </motion.div>
+
+                    </div>
+                </motion.div>
+
+            </div>
+
+            {/* Footer Info - Fixed */}
+            <div className="fixed bottom-8 left-6 md:left-12 z-40 hidden lg:block">
+                <div className="flex items-center gap-3 opacity-60">
+                    <MapPin size={10} className="text-neutral-500" />
+                    <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest">
+                        Warsaw, PL
+                    </span>
+                    <span className="text-[10px] text-neutral-800 font-mono uppercase tracking-widest">|</span>
+                    <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest">
+                        Mert Bildik © 2026
+                    </span>
                 </div>
-
-            </motion.div>
+            </div>
         </div>
     );
 };
