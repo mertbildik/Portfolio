@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, MoveRight, ArrowRight, Check, Copy, ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
+import { CheckCircle2, MoveRight, ArrowRight, ArrowUpRight, Check, Copy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
 
@@ -50,18 +50,24 @@ const LiveClock: React.FC = () => {
 };
 
 const Contact: React.FC = () => {
-    const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+    const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [selectedServices, setSelectedServices] = useState<string[]>([]);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [emailCopied, setEmailCopied] = useState(false);
     const [focusedField, setFocusedField] = useState<string | null>(null);
 
+    const isValidEmail = (email: string) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const isFormReady = formData.name.trim() !== '' && isValidEmail(formData.email) && formData.message.trim() !== '';
+
     const SERVICES = [
         "Web Design",
         "Brand Identity",
         "Presentation Design",
-        "Posters & Social",
-        "Other"
+        "Posters and Social",
+        "Something Else"
     ];
 
     const toggleService = (service: string) => {
@@ -72,22 +78,46 @@ const Contact: React.FC = () => {
         );
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setFormState('submitting');
 
-        // Construct mailto link
-        const servicesList = selectedServices.length > 0 ? selectedServices.join(', ') : 'General Inquiry';
-        const subject = `Project Inquiry: ${servicesList}`;
-        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nServices: ${servicesList}\n\nMessage:\n${formData.message}`;
+        const formSpreeId = import.meta.env.VITE_FORMSPREE_ID;
+        const endpoint = formSpreeId ? `https://formspree.io/f/${formSpreeId}` : null;
 
-        window.location.href = `mailto:mertbildik.work@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        if (!endpoint) {
+            console.error('Formspree ID is missing in .env');
+            setTimeout(() => setFormState('error'), 1000);
+            return;
+        }
 
-        setFormState('success');
+        try {
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    services: selectedServices.length > 0 ? selectedServices.join(', ') : 'General Inquiry'
+                })
+            });
+
+            if (response.ok) {
+                setFormState('success');
+            } else {
+                setFormState('error');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setFormState('error');
+        }
     };
 
     const handleCopyEmail = () => {
-        navigator.clipboard.writeText('mertbildik.work@gmail.com');
+        navigator.clipboard.writeText('mert.bildik@gmail.com');
         setEmailCopied(true);
         setTimeout(() => setEmailCopied(false), 2000);
     };
@@ -104,7 +134,7 @@ const Contact: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className="lg:col-span-4 flex flex-col justify-center relative z-20 h-full"
+                className="lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto"
             >
                 <div className="flex flex-col">
                     <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300 w-fit">
@@ -117,13 +147,13 @@ const Contact: React.FC = () => {
                         </span>
                         <h1 className="text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[0.95] text-white">
                             Let's <br />
-                            <span className="text-neutral-500 font-light">Build.</span>
+                            <span className="text-neutral-500 font-light">Talk.</span>
                         </h1>
                     </div>
 
                     <p className="text-neutral-400 max-w-xs leading-relaxed text-sm lg:text-base font-light">
                         Available for new projects. <br />
-                        Response within 24 hours.
+                        I reply within 24 hours.
                     </p>
                 </div>
             </motion.div>
@@ -170,7 +200,7 @@ const Contact: React.FC = () => {
                                 {/* 01: FOCUS (Segmented Control) */}
                                 <div className="flex flex-col gap-6">
                                     <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest pl-[2px]">
-                                        01 — Focus
+                                        01 Focus
                                     </label>
                                     <div className="grid grid-cols-2 md:grid-cols-3 border-t border-l border-white/[0.08]">
                                         {SERVICES.map((service) => {
@@ -207,7 +237,7 @@ const Contact: React.FC = () => {
                                 {/* 02: PARTICULARS */}
                                 <div className="flex flex-col gap-10">
                                     <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest pl-[2px]">
-                                        02 — Details
+                                        02 Details
                                     </label>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -222,11 +252,11 @@ const Contact: React.FC = () => {
                                                 onBlur={() => setFocusedField(null)}
                                                 required
                                                 className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-sm font-light focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer"
-                                                placeholder="Name"
+                                                placeholder="Your name"
                                             />
                                             <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
                                                 <label className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' || formData.name ? 'text-white' : 'text-neutral-600'}`}>
-                                                    Your Name
+                                                    Your name
                                                 </label>
                                                 {/* Active Marker */}
                                                 <motion.div
@@ -250,11 +280,11 @@ const Contact: React.FC = () => {
                                                 onBlur={() => setFocusedField(null)}
                                                 required
                                                 className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-sm font-light focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer"
-                                                placeholder="Email"
+                                                placeholder="Your email"
                                             />
                                             <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
                                                 <label className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' || formData.email ? 'text-white' : 'text-neutral-600'}`}>
-                                                    Email Address
+                                                    Email address
                                                 </label>
                                                 {/* Active Marker */}
                                                 <motion.div
@@ -278,7 +308,7 @@ const Contact: React.FC = () => {
                                             onFocus={() => setFocusedField('message')}
                                             onBlur={() => setFocusedField(null)}
                                             className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-sm font-light focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer resize-none min-h-[40px] max-h-[160px]"
-                                            placeholder="Message"
+                                            placeholder="A quick note about what you are building, timeline, and budget range."
                                             onInput={(e) => {
                                                 const target = e.target as HTMLTextAreaElement;
                                                 target.style.height = 'auto';
@@ -287,7 +317,7 @@ const Contact: React.FC = () => {
                                         ></textarea>
                                         <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
                                             <label className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' || formData.message ? 'text-white' : 'text-neutral-600'}`}>
-                                                Project Data
+                                                Project details
                                             </label>
                                             {/* Active Marker */}
                                             <motion.div
@@ -305,11 +335,18 @@ const Contact: React.FC = () => {
                                 <div className="pt-8">
                                     <button
                                         type="submit"
-                                        className="w-full flex items-center justify-between group cursor-pointer pt-4"
+                                        disabled={formState === 'submitting'}
+                                        className="w-full flex items-center justify-between group cursor-pointer pt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         <div className="flex flex-col shrink-0 text-left">
-                                            <span className="text-xl font-medium text-white group-hover:text-neutral-300 transition-colors">Submit Transmission</span>
-                                            <span className="text-[10px] font-mono text-neutral-600 mt-1 uppercase tracking-widest">Ready to send</span>
+                                            <span className="text-xl font-medium text-white group-hover:text-neutral-300 transition-colors">
+                                                {formState === 'submitting' ? 'Sending...' : 'Submit'}
+                                            </span>
+                                            <span className="text-[10px] font-mono text-neutral-600 mt-1 uppercase tracking-widest">
+                                                {formState === 'error' ? (
+                                                    <span className="text-red-500">Submission failed. Click to retry.</span>
+                                                ) : isFormReady ? "Ready to send." : "Not ready."}
+                                            </span>
                                         </div>
                                         <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 ml-4">
                                             <ArrowRight size={20} />
@@ -327,23 +364,19 @@ const Contact: React.FC = () => {
                     >
                         {/* 01: Email - with vertical border */}
                         <div className="flex flex-col gap-4 py-8 md:pr-8 md:border-r border-white/[0.08]">
-                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">Connect</span>
+                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">CONNECT</span>
                             <div onClick={handleCopyEmail} className="group cursor-pointer flex items-center gap-3 text-neutral-400 hover:text-white transition-colors w-fit">
-                                <span className="text-xs font-mono transition-all">mertbildik.work@gmail.com</span>
+                                <span className="text-xs font-mono transition-all">mert.bildik@gmail.com</span>
                                 {emailCopied ? <Check size={12} className="text-green-500" /> : <Copy size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-500" />}
                             </div>
                         </div>
 
                         {/* 02: Social - with vertical border */}
                         <div className="flex flex-col gap-4 py-8 md:px-8 md:border-r border-white/[0.08]">
-                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">Networks</span>
+                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">NETWORKS</span>
                             <div className="flex flex-col gap-2">
-                                <a href="#" className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors group w-fit">
+                                <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors group w-fit">
                                     <span className="text-xs font-mono">LinkedIn</span>
-                                    <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </a>
-                                <a href="#" className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors group w-fit">
-                                    <span className="text-xs font-mono">Dribbble</span>
                                     <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </a>
                             </div>
@@ -351,7 +384,7 @@ const Contact: React.FC = () => {
 
                         {/* 03: Time - aligned right/end */}
                         <div className="hidden md:flex flex-col gap-4 py-8 md:pl-8">
-                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">Local Time</span>
+                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">LOCAL TIME</span>
                             <div className="text-xs font-mono text-neutral-400">
                                 <LiveClock />
                             </div>

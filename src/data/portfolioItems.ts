@@ -13,34 +13,34 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
         id: 'dog-and-ride',
         title: 'Dog & Ride',
         type: 'clientProject',
-        subtitle: 'Product Design',
+        subtitle: 'Multidisciplinary Designer',
         yearOrStatus: '2025',
-        route: '/case-study/dog-and-ride'
+        route: '/portfolio/dog-and-ride'
     },
     {
         id: 'bunect',
         title: 'Bunect',
         type: 'clientProject',
-        subtitle: 'Web Design',
-        yearOrStatus: '2024',
-        route: '/case-study/bunect'
+        subtitle: 'Design Lead',
+        yearOrStatus: '2025',
+        route: '/portfolio/bunect'
     },
     {
         id: 'adclusive',
         title: 'Adclusive',
         type: 'clientProject',
-        subtitle: 'Product UX',
+        subtitle: 'Product designer',
         yearOrStatus: '2024',
-        route: '/case-study/adclusive'
+        route: '/portfolio/adclusive'
     },
     // Employment
     {
         id: 'mckinsey',
         title: 'McKinsey & Co.',
         type: 'employment',
-        subtitle: 'Visual Communication Specialist',
-        yearOrStatus: '3 Years',
-        route: '/case-study/mckinsey'
+        subtitle: 'Visual communication',
+        yearOrStatus: '3 years',
+        route: '/portfolio/mckinsey'
     },
     // Ventures
     {
@@ -49,7 +49,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
         type: 'venture',
         subtitle: 'Founder',
         yearOrStatus: 'Current',
-        route: '/case-study/curvix'
+        route: '/portfolio/curvix'
     },
     {
         id: 'gala-network',
@@ -57,6 +57,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
         type: 'venture',
         subtitle: 'Co-founder',
         yearOrStatus: 'Current',
-        route: '/case-study/gala-network'
+        route: '/portfolio/gala-network'
     }
 ];

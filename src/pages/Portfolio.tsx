@@ -36,7 +36,7 @@ const Portfolio: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="lg:col-span-4 flex flex-col justify-center relative z-20 h-full"
+        className="lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto"
       >
         <div className="flex flex-col">
           {/* Back Link - Very subtle, aligned */}
@@ -47,7 +47,7 @@ const Portfolio: React.FC = () => {
           {/* Title System - Matches Home's "Hey, I'm Mert" hierarchy */}
           <div className="mb-6 lg:mb-8">
             <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase mb-4 block">
-              Archive
+              ARCHIVE
             </span>
             <h1 className="text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[0.95] text-white">
               Selected <br />
@@ -56,7 +56,8 @@ const Portfolio: React.FC = () => {
           </div>
 
           <p className="text-neutral-400 max-w-xs leading-relaxed text-sm lg:text-base font-light">
-            A curated collection of client stories, missions, and personal ventures.
+            A small set of projects I am proud of.
+            Client work, team work, and things I built for myself.
           </p>
         </div>
       </motion.div>
@@ -66,14 +67,14 @@ const Portfolio: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="lg:col-span-8 flex flex-col w-full relative z-30 lg:pl-12 lg:h-screen lg:overflow-hidden"
+        className="lg:col-span-8 flex flex-col w-full relative z-30 lg:pl-12"
       >
         <div className="flex flex-col w-full max-w-3xl ml-auto gap-10 lg:gap-12">
 
           {/* SECTION: Client Work */}
           <div className="flex flex-col gap-4">
             <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
-              Client Projects
+              CLIENT PROJECTS
             </motion.h2>
             <div className="flex flex-col">
               <div className="border-t border-white/[0.08] -mx-2 mb-0" />
@@ -109,7 +110,7 @@ const Portfolio: React.FC = () => {
           {/* SECTION: Experience */}
           <div className="flex flex-col gap-4">
             <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
-              Employment
+              EMPLOYMENT
             </motion.h2>
             <div className="flex flex-col">
               <div className="border-t border-white/[0.08] -mx-2 mb-0" />
@@ -145,7 +146,7 @@ const Portfolio: React.FC = () => {
           {/* SECTION: Ventures */}
           <div className="flex flex-col gap-4">
             <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
-              Ventures
+              VENTURES
             </motion.h2>
             <div className="flex flex-col">
               <div className="border-t border-white/[0.08] -mx-2 mb-0" />

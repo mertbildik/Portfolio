@@ -1,21 +1,34 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-import { VENTURE_CONTENT } from '../data/venture-content';
+import { useNavigate } from 'react-router-dom';
+import BackButton from '../../components/BackButton';
 
-interface EmploymentVenturesProps {
-    id: string;
+// Based on VENTURE_CONTENT shape in src/data/venture-content.ts
+// I'll define an interface locally or import if available, but for template modularity I prefer defining the expected prop shape here.
+export interface VentureData {
+    title: string;
+    role: string;
+    timeline?: string;
+    location?: string;
+    sections: {
+        title: string;
+        text?: string;
+        items?: string[];
+    }[];
 }
 
-const EmploymentVentures: React.FC<EmploymentVenturesProps> = ({ id }) => {
-    const content = VENTURE_CONTENT[id];
+interface VentureTemplateProps {
+    data: VentureData | undefined;
+}
+
+const VentureTemplate: React.FC<VentureTemplateProps> = ({ data }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [id]);
+    }, [data?.title]); // Use title or another stable key to trigger scroll reset on change
 
-    if (!content) {
+    if (!data) {
         return (
             <div className="min-h-screen flex items-center justify-center text-white">
                 <p>Content not found.</p>
@@ -63,15 +76,11 @@ const EmploymentVentures: React.FC<EmploymentVenturesProps> = ({ id }) => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pt-24 md:pt-32 relative"
+                className="relative"
             >
                 {/* Back Link - Absolute precision placement */}
-                <motion.div variants={itemVariants} className="mb-24 lg:mb-32">
-                    <Link to="/" className="group inline-flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-[10px] tracking-[0.2em] font-mono uppercase">01</span>
-                        <div className="h-[1px] w-8 bg-current transition-all duration-300 group-hover:w-16" />
-                        <span className="text-[10px] tracking-[0.2em] font-mono uppercase">Back</span>
-                    </Link>
+                <motion.div variants={itemVariants} className="mb-16 md:mb-24">
+                    <BackButton />
                 </motion.div>
 
                 {/* Hero Section - Geometric & Deconstructed */}
@@ -81,13 +90,13 @@ const EmploymentVentures: React.FC<EmploymentVenturesProps> = ({ id }) => {
 
                     <div className="lg:col-span-8 relative">
                         <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter text-white mb-8 leading-[0.9]">
-                            {content.title}
+                            {data.title}
                         </motion.h1>
 
                         <motion.div variants={itemVariants} className="flex flex-col gap-4 max-w-xl">
                             <div className="w-12 h-[1px] bg-white/30 mb-2" />
                             <p className="text-xl md:text-2xl font-light text-neutral-300 leading-relaxed">
-                                {content.role}
+                                {data.role}
                             </p>
                         </motion.div>
                     </div>
@@ -95,21 +104,21 @@ const EmploymentVentures: React.FC<EmploymentVenturesProps> = ({ id }) => {
                     <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col justify-end lg:pl-12 border-l border-white/[0.08] lg:border-none">
                         <div className="flex flex-col gap-8">
                             {/* Dynamic Header Details */}
-                            {content.timeline && (
+                            {data.timeline && (
                                 <div className="flex flex-col gap-1">
                                     <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Timeline</span>
-                                    <span className="text-sm font-light text-neutral-300">{content.timeline}</span>
+                                    <span className="text-sm font-light text-neutral-300">{data.timeline}</span>
                                 </div>
                             )}
-                            {content.location && (
+                            {data.location && (
                                 <div className="flex flex-col gap-1">
                                     <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Location</span>
-                                    <span className="text-sm font-light text-neutral-300">{content.location}</span>
+                                    <span className="text-sm font-light text-neutral-300">{data.location}</span>
                                 </div>
                             )}
                             <div className="flex flex-col gap-1">
                                 <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Role</span>
-                                <span className="text-sm font-light text-neutral-300">{content.role}</span>
+                                <span className="text-sm font-light text-neutral-300">{data.role}</span>
                             </div>
                         </div>
                     </motion.div>
@@ -128,7 +137,7 @@ const EmploymentVentures: React.FC<EmploymentVenturesProps> = ({ id }) => {
 
                     {/* Primary Column (First 3 sections usually) */}
                     <div className="lg:col-span-8 grid grid-cols-1 gap-16">
-                        {content.sections.slice(0, 3).map((section, idx) => (
+                        {data.sections.slice(0, 3).map((section, idx) => (
                             <motion.div key={idx} variants={itemVariants} className="flex flex-col gap-6">
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-1 h-1 bg-white/40 rounded-full" />
@@ -154,7 +163,7 @@ const EmploymentVentures: React.FC<EmploymentVenturesProps> = ({ id }) => {
 
                     {/* Secondary Column (Remaining sections) */}
                     <div className="lg:col-span-4 flex flex-col gap-16 lg:pl-12 lg:border-l border-white/[0.08]">
-                        {content.sections.slice(3).map((section, idx) => (
+                        {data.sections.slice(3).map((section, idx) => (
                             <motion.div key={idx} variants={itemVariants} className="flex flex-col gap-4">
                                 <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">{section.title}</h3>
                                 {section.items ? (
@@ -184,4 +193,4 @@ const EmploymentVentures: React.FC<EmploymentVenturesProps> = ({ id }) => {
     );
 };
 
-export default EmploymentVentures;
+export default VentureTemplate;

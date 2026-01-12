@@ -1,8 +1,16 @@
 import React from 'react';
-import CaseStudy from './CaseStudy';
+import ProjectTemplate from '../templates/projects/ProjectTemplate';
+import { PROJECT_CONTENT } from '../data/project-content';
 
 const DogRide: React.FC = () => {
-    return <CaseStudy id="dog-and-ride" />;
+    const data = PROJECT_CONTENT.find(s => s.id === 'dog-and-ride');
+    return <ProjectTemplate
+        project={data}
+        layoutOverrides={{
+            textBalance: true,
+            tighterMeasure: true
+        }}
+    />;
 };
 
 export default DogRide;

@@ -1,8 +1,16 @@
 import React from 'react';
-import CaseStudy from './CaseStudy';
+import ProjectTemplate from '../templates/projects/ProjectTemplate';
+import { PROJECT_CONTENT } from '../data/project-content';
 
 const Adclusive: React.FC = () => {
-    return <CaseStudy id="adclusive" />;
+    const data = PROJECT_CONTENT.find(s => s.id === 'adclusive');
+    return <ProjectTemplate
+        project={data}
+        layoutOverrides={{
+            textBalance: true,
+            tighterMeasure: true
+        }}
+    />;
 };
 
 export default Adclusive;

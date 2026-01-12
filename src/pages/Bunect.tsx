@@ -1,8 +1,16 @@
 import React from 'react';
-import CaseStudy from './CaseStudy';
+import ProjectTemplate from '../templates/projects/ProjectTemplate';
+import { PROJECT_CONTENT } from '../data/project-content';
 
 const Bunect: React.FC = () => {
-    return <CaseStudy id="bunect" />;
+    const data = PROJECT_CONTENT.find(s => s.id === 'bunect');
+    return <ProjectTemplate
+        project={data}
+        layoutOverrides={{
+            textBalance: true,
+            tighterMeasure: true
+        }}
+    />;
 };
 
 export default Bunect;
