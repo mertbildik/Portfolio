@@ -90,7 +90,7 @@ const Portfolio: React.FC = () => {
                     </span>
 
                     {/* Role/Type */}
-                    <span className="text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
+                    <span className="hidden md:block text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
                       {work.subtitle}
                     </span>
 
@@ -126,7 +126,7 @@ const Portfolio: React.FC = () => {
                     </span>
 
                     {/* Role */}
-                    <span className="text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
+                    <span className="hidden md:block text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
                       {exp.subtitle}
                     </span>
 
@@ -162,7 +162,7 @@ const Portfolio: React.FC = () => {
                     </span>
 
                     {/* Role */}
-                    <span className="text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
+                    <span className="hidden md:block text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
                       {venture.subtitle}
                     </span>
 
