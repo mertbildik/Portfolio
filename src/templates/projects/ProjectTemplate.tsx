@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getProjectImages } from '../../utils/image-loader';
@@ -61,31 +61,43 @@ const StatBlock: React.FC<{ value: string; label: string; desc: string; delay: n
     );
 };
 
+const SECTION_IDS = ['problem', 'approach', 'solution', 'output', 'impact'];
+
 const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverrides }) => {
     const [activeSection, setActiveSection] = useState('problem');
+    const clickLockRef = useRef<number | null>(null);
     const projectImages = project ? getProjectImages(project.id) : [];
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [project?.id]);
 
-    // TOC Observer Logic
+    // TOC Active-Section Tracking
+    // Picks the topmost section whose top has crossed a line ~30% from the
+    // viewport top. Avoids the multi-intersection ambiguity of IntersectionObserver.
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
-                    }
-                });
-            },
-            { threshold: 0.2, rootMargin: "-20% 0% -35% 0%" }
-        );
-
-        const sections = document.querySelectorAll('section[id]');
-        sections.forEach((section) => observer.observe(section));
-
-        return () => sections.forEach((section) => observer.unobserve(section));
+        const update = () => {
+            if (clickLockRef.current !== null) return;
+            const threshold = window.innerHeight * 0.3;
+            let current = SECTION_IDS[0];
+            for (const id of SECTION_IDS) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                if (el.getBoundingClientRect().top - threshold <= 0) current = id;
+            }
+            setActiveSection(current);
+        };
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        return () => {
+            window.removeEventListener('scroll', update);
+            window.removeEventListener('resize', update);
+            if (clickLockRef.current !== null) {
+                window.clearTimeout(clickLockRef.current);
+                clickLockRef.current = null;
+            }
+        };
     }, [project?.id]);
 
     if (!project) {
@@ -102,9 +114,13 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
 
     const scrollTo = (id: string) => {
         const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (!element) return;
+        setActiveSection(id);
+        if (clickLockRef.current !== null) window.clearTimeout(clickLockRef.current);
+        clickLockRef.current = window.setTimeout(() => {
+            clickLockRef.current = null;
+        }, 800);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
     // Helper to render text with clean spacing
@@ -112,7 +128,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
         return text.split('\n').filter(p => p.trim()).map((paragraph, idx) => {
             // List items
             if (paragraph.trim().startsWith('•') || paragraph.trim().startsWith('-')) {
-                const widthClass = layoutOverrides?.tighterMeasure ? 'max-w-xl' : 'max-w-2xl';
+                const widthClass = layoutOverrides?.tighterMeasure ? 'max-w-2xl' : 'max-w-3xl';
                 return (
                     <div key={idx} className={`flex gap-4 items-start pl-2 ${widthClass}`}>
                         <div className="w-1 h-1 rounded-full bg-neutral-400 mt-2.5 shrink-0" />
@@ -121,7 +137,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                 );
             }
             // Normal Paragraph
-            const widthClass = layoutOverrides?.tighterMeasure ? 'max-w-xl' : 'max-w-2xl';
+            const widthClass = layoutOverrides?.tighterMeasure ? 'max-w-2xl' : 'max-w-3xl';
             const balanceClass = layoutOverrides?.textBalance ? 'text-balance' : '';
             return (
                 <p key={idx} className={`text-neutral-400 leading-relaxed text-[16px] mb-4 last:mb-0 ${widthClass} ${balanceClass}`}>

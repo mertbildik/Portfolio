@@ -15,6 +15,7 @@ const Contact = React.lazy(() => import('./pages/Contact'));
 const CV = React.lazy(() => import('./pages/CV'));
 
 // Project Pages (Client Work) (Lazy)
+const OFK = React.lazy(() => import('./pages/OFK'));
 const DogRide = React.lazy(() => import('./pages/DogRide'));
 const Bunect = React.lazy(() => import('./pages/Bunect'));
 const Adclusive = React.lazy(() => import('./pages/Adclusive'));
@@ -35,7 +36,7 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       {/* @ts-expect-error: Routes does not officially support 'key' but it is required for AnimatePresence to work correctly */}
-      <Suspense fallback={<div className="min-h-screen bg-black" />}>
+      <Suspense fallback={<div className="min-h-screen" />}>
         <Routes location={location} key={location.pathname}>
           {/* Core Pages */}
           <Route path="/" element={<Home />} />
@@ -46,6 +47,7 @@ const AnimatedRoutes = () => {
           <Route path="/cv" element={<CV />} />
 
           {/* Portfolio Detail Pages - New Route Structure */}
+          <Route path="/portfolio/ofk" element={<OFK />} />
           <Route path="/portfolio/dog-and-ride" element={<DogRide />} />
           <Route path="/portfolio/bunect" element={<Bunect />} />
           <Route path="/portfolio/adclusive" element={<Adclusive />} />

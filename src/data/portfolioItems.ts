@@ -10,6 +10,14 @@ export interface PortfolioItem {
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     // Client Projects
     {
+        id: 'ofk',
+        title: 'OFK Construction',
+        type: 'clientProject',
+        subtitle: 'Product Designer',
+        yearOrStatus: '2025',
+        route: '/portfolio/ofk'
+    },
+    {
         id: 'dog-and-ride',
         title: 'Dog & Ride',
         type: 'clientProject',

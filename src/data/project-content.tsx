@@ -1,5 +1,5 @@
 import React from 'react';
-import { PawPrint, Briefcase, Monitor } from 'lucide-react';
+import { PawPrint, Briefcase, Monitor, Building2 } from 'lucide-react';
 
 export interface ImpactStat {
     number: string;
@@ -46,6 +46,76 @@ export interface ProjectData {
 }
 
 export const PROJECT_CONTENT: ProjectData[] = [
+    {
+        id: "ofk",
+        title: "OFK Construction",
+        role: "Product Designer",
+        timeline: "Mar 2026 to Apr 2026",
+        tools: ["React", "Tailwind", "Framer Motion", "Notion", "Claude Code", "Adobe Creative Cloud"],
+        oneLineSummary: "A brand direction, design system, and bilingual website for a Polish construction company, built so B2B clients can verify the work in one visit.",
+        icon: <Building2 size={32} />,
+        problem: "OFK had been running since 2018 with 200+ employees.\nReal track record. Orlen Olefin Expansion in Płock. Szczecin Polimery. Warsaw Fast Tramline.\n\nBut no website. No brand beyond a logo.\nB2B clients had no way to check who OFK was before reaching out.",
+        solution: "One system across brand, design, and site.\nBuilt to show the work, list real references, and make contact easy.",
+        impact: {
+            user: [
+                {
+                    number: "2",
+                    title: "LANGUAGES",
+                    description: "English and Polish, built in from day one. Same content, same trust, both audiences."
+                },
+                {
+                    number: "3",
+                    title: "REFERENCE COMPANIES SHOWN",
+                    description: "FABE POLSKA, YOOJEONG, and ILK INSAAT. Real names that prospects can verify."
+                }
+            ],
+            business: [
+                {
+                    number: "5",
+                    title: "CORE PAGES",
+                    description: "Home, About, Projects, Services, Contact. Everything a B2B buyer needs in one place."
+                },
+                {
+                    number: "1",
+                    title: "DESIGN SYSTEM",
+                    description: "Tokens, primitives, and motion rules. Future pages stay consistent without redesign."
+                }
+            ]
+        },
+        context: "Core problem statement\nThe work was real. The proof of it was not visible anywhere online.",
+        goals: [
+            "Show who OFK is and what they build",
+            "Make completed projects and references easy to verify",
+            "Keep contact one tap away"
+        ],
+        usersScenario: "A procurement manager shortlisting subcontractors checks credibility before any call.\nOFK had nothing to give them.",
+        approach: "Started with what a B2B buyer actually looks for.\nTrack record. Scale. Real references. A clear way to reach the team.\n\nContent was shaped around those four questions.\nThe design system was built before pages, so EN and PL stay consistent without rework.",
+        keyDecisions: [
+            "Bilingual from day one — English and Polish baked into the system, not bolted on. OFK works with both Polish and international clients.",
+            "Projects as the main trust signal — Orlen Olefin Expansion, Szczecin Polimery, and the Warsaw Tramline shown with scope and reference letters.",
+            "Reference companies up front — FABE POLSKA, YOOJEONG, and ILK INSAAT named directly. Prospects can match them to the projects.",
+            "System before pages — Tokens, primitives, and motion rules built first. Every section reuses the same parts."
+        ],
+        finalProduct: [
+            {
+                title: "Brand direction",
+                description: "A grounded, editorial visual direction. Monochrome blue accent on a cool blue-gray neutral family. Professional without feeling corporate."
+            },
+            {
+                title: "Design system",
+                description: "Tailwind v4 tokens, a tuned grayscale, type scale, motion constants, and reusable primitives. One source of truth for every page."
+            },
+            {
+                title: "Website",
+                description: "A bilingual site across Home, About, Projects, Services, and Contact. Built to load fast and read clearly on desktop and mobile."
+            },
+            {
+                title: "Front-end build",
+                description: "Designed and shipped in React with Tailwind, Framer Motion for transitions, and Lenis for scroll. Same hands from system to live site."
+            }
+        ],
+        learnings: "B2B sites earn trust by answering the obvious questions first.\nWho are you, what have you built, who can vouch for you, how do I reach you."
+    },
     {
         id: "dog-and-ride",
         title: "Dog & Ride",

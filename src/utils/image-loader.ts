@@ -54,7 +54,8 @@ export const getProjectImages = (projectId: string): { src: string; name: string
         // We know the files are [Name]_[Details]
         return lowercaseFilename.startsWith(projectId.replace(/-/g, '') + '_') ||
             lowercaseFilename.startsWith(projectId.replace('and', '&').replace(/-/g, '') + '_') || // catch dog-and-ride -> dog&ride if override failed
-            lowercaseFilename.startsWith(projectId + '_'); // basic exact match
+            lowercaseFilename.startsWith(projectId + '_') || // basic exact match
+            lowercaseFilename.startsWith(projectId + '-'); // hyphen-separated prefix (e.g. ofk-home.png)
 
     });
 
