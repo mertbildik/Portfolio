@@ -49,6 +49,9 @@ const Process: React.FC = () => {
     ];
 
     const tools = [
+        { name: "Claude Code", category: "AI" },
+        { name: "Codex", category: "AI" },
+        { name: "VS Code", category: "Code" },
         { name: "Figma", category: "Design" },
         { name: "Framer", category: "Design" },
         { name: "Notion", category: "Productivity" },
@@ -56,10 +59,8 @@ const Process: React.FC = () => {
         { name: "Adobe CC", category: "Design" },
         { name: "Affinity", category: "Design" },
         { name: "Canva", category: "Design" },
-        { name: "ChatGPT", category: "AI" },
-        { name: "Claude", category: "AI" },
         { name: "Perplexity", category: "AI" },
-        { name: "Gemini", category: "AI" },
+        { name: "Google AI Studio", category: "AI" },
         { name: "AntiGravity", category: "AI" },
         { name: "HTML/CSS", category: "Code" },
         { name: "Angular", category: "Code" },

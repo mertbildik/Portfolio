@@ -88,10 +88,10 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
             setActiveSection(current);
         };
         update();
-        window.addEventListener('scroll', update, { passive: true });
+        document.addEventListener('scroll', update, { passive: true, capture: true });
         window.addEventListener('resize', update);
         return () => {
-            window.removeEventListener('scroll', update);
+            document.removeEventListener('scroll', update, { capture: true } as EventListenerOptions);
             window.removeEventListener('resize', update);
             if (clickLockRef.current !== null) {
                 window.clearTimeout(clickLockRef.current);
