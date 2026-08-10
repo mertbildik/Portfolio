@@ -58,7 +58,7 @@ const Navigation: React.FC = () => {
                                     `}
                                 >
                                     <span
-                                        className="text-[10px] bg-transparent leading-none font-medium font-mono uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors whitespace-nowrap"
+                                        className="text-eyebrow bg-transparent font-mono uppercase text-neutral-500 group-hover:text-white transition-colors whitespace-nowrap"
                                     >
                                         {item.label}
                                     </span>

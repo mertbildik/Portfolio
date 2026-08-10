@@ -79,21 +79,21 @@ const Process: React.FC = () => {
                 <div className="flex flex-col">
                     {/* Back Link - Very subtle, aligned */}
                     <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-xs tracking-widest uppercase font-medium">← Back</span>
+                        <span className="text-button uppercase">← Back</span>
                     </Link>
 
                     {/* Title System - Matches Portfolio's hierarchy */}
                     <div className="mb-6 lg:mb-8">
-                        <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase mb-4 block">
+                        <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-4 block">
                             METHODOLOGY
                         </span>
-                        <h1 className="text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[0.95] text-white">
+                        <h1 className="text-display-xl text-white">
                             How I <br />
-                            <span className="text-neutral-500 font-light">Work.</span>
+                            <span className="text-neutral-500">Work.</span>
                         </h1>
                     </div>
 
-                    <p className="text-neutral-400 max-w-xs leading-relaxed text-sm lg:text-base font-light">
+                    <p className="text-neutral-400 max-w-xs text-body-lg">
                         I do not just make things look nice.
                         I build things that hold up in the real world.
                     </p>
@@ -111,7 +111,7 @@ const Process: React.FC = () => {
 
                     {/* SECTION: The Process */}
                     <div className="flex flex-col gap-4">
-                        <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
+                        <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2">
                             THE PROCESS
                         </motion.h2>
 
@@ -145,17 +145,17 @@ const Process: React.FC = () => {
                                         <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4">
                                             {/* Header: Index & Title */}
                                             <div className="md:col-span-4 flex flex-row md:flex-col items-baseline md:items-start gap-3 md:gap-1">
-                                                <span className="text-[10px] font-mono text-neutral-600 tracking-widest uppercase">
+                                                <span className="text-caption font-mono text-neutral-600 uppercase">
                                                     {step.id}
                                                 </span>
-                                                <span className="text-lg lg:text-xl font-light text-neutral-200 group-hover:text-white transition-colors duration-300 tracking-tight">
+                                                <span className="text-card-title text-neutral-200 group-hover:text-white transition-colors duration-300">
                                                     {step.title}
                                                 </span>
                                             </div>
 
                                             {/* Body */}
                                             <div className="md:col-span-8">
-                                                <p className="text-sm text-neutral-500 leading-relaxed font-light group-hover:text-neutral-400 transition-colors max-w-lg">
+                                                <p className="text-body-sm text-neutral-500 group-hover:text-neutral-400 transition-colors max-w-lg">
                                                     {step.desc}
                                                 </p>
                                             </div>
@@ -168,7 +168,7 @@ const Process: React.FC = () => {
 
                     {/* SECTION: Toolkit */}
                     <div className="flex flex-col gap-4">
-                        <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
+                        <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2">
                             Toolkit
                         </motion.h2>
 
@@ -181,7 +181,7 @@ const Process: React.FC = () => {
                                     className="flex items-center gap-3 group py-1"
                                 >
                                     <div className="w-1 h-1 rounded-full bg-neutral-800 group-hover:bg-white transition-colors duration-300" />
-                                    <span className="text-xs lg:text-sm text-neutral-500 font-light group-hover:text-white transition-colors duration-300">
+                                    <span className="text-body-sm text-neutral-500 group-hover:text-white transition-colors duration-300">
                                         {tool.name}
                                     </span>
                                 </motion.div>
@@ -194,8 +194,8 @@ const Process: React.FC = () => {
                                 className="w-full flex items-center justify-between group cursor-pointer"
                             >
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-xl font-medium text-white group-hover:text-neutral-300 transition-colors">Start a project</span>
-                                    <span className="text-[10px] font-mono text-neutral-600 mt-1 uppercase tracking-widest">Open for transmission</span>
+                                    <span className="text-card-title text-white group-hover:text-neutral-300 transition-colors">Start a project</span>
+                                    <span className="text-caption font-mono text-neutral-600 mt-1 uppercase">Open for transmission</span>
                                 </div>
                                 <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={20} />

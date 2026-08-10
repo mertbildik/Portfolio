@@ -43,8 +43,8 @@ const LiveClock: React.FC = () => {
 
     return (
         <div className="flex items-baseline gap-2">
-            <span className="text-xs font-mono text-neutral-400 tracking-tight">{timeString}</span>
-            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">Warsaw, PL</span>
+            <span className="text-caption font-mono text-neutral-400">{timeString}</span>
+            <span className="text-caption font-mono text-neutral-600 uppercase">Warsaw, PL</span>
         </div>
     );
 };
@@ -138,20 +138,20 @@ const Contact: React.FC = () => {
             >
                 <div className="flex flex-col">
                     <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300 w-fit">
-                        <span className="text-xs tracking-widest uppercase font-medium">← Back</span>
+                        <span className="text-button uppercase">← Back</span>
                     </Link>
 
                     <div className="mb-6 lg:mb-8">
-                        <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase mb-4 block">
+                        <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-4 block">
                             Inquiry
                         </span>
-                        <h1 className="text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[0.95] text-white">
+                        <h1 className="text-display-xl text-white">
                             Let's <br />
-                            <span className="text-neutral-500 font-light">Talk.</span>
+                            <span className="text-neutral-500">Talk.</span>
                         </h1>
                     </div>
 
-                    <p className="text-neutral-400 max-w-xs leading-relaxed text-sm lg:text-base font-light">
+                    <p className="text-neutral-400 max-w-xs text-body-lg">
                         Available for new projects. <br />
                         I reply within 24 hours.
                     </p>
@@ -179,13 +179,13 @@ const Contact: React.FC = () => {
                                 className="py-12 pl-1 border-l border-white pl-8"
                             >
                                 <CheckCircle2 size={24} className="text-white mb-6" strokeWidth={1.5} />
-                                <h3 className="text-xl text-white font-light tracking-tight mb-2">Request initiated.</h3>
-                                <p className="text-neutral-500 font-light text-sm leading-relaxed max-w-xs mb-8">
+                                <h3 className="text-headline text-white mb-2">Request initiated.</h3>
+                                <p className="text-neutral-500 text-body-sm max-w-xs mb-8">
                                     I'll review your brief shortly. Expect a response at {formData.email}.
                                 </p>
                                 <button
                                     onClick={() => { setFormState('idle'); setFormData({ name: '', email: '', message: '' }); setSelectedServices([]); }}
-                                    className="text-[10px] uppercase tracking-widest text-neutral-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-0.5"
+                                    className="text-button uppercase text-neutral-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-0.5"
                                 >
                                     Start over
                                 </button>
@@ -199,7 +199,7 @@ const Contact: React.FC = () => {
                             >
                                 {/* 01: FOCUS (Segmented Control) */}
                                 <div className="flex flex-col gap-6">
-                                    <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest pl-[2px]">
+                                    <label className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px]">
                                         01 Focus
                                     </label>
                                     <div className="grid grid-cols-2 md:grid-cols-3 border-t border-l border-white/[0.08]">
@@ -211,14 +211,14 @@ const Contact: React.FC = () => {
                                                     type="button"
                                                     onClick={() => toggleService(service)}
                                                     className={`
-                                                        relative h-14 md:h-16 flex items-center justify-center text-xs border-r border-b border-white/[0.08] transition-all duration-300 group
+                                                        relative h-14 md:h-16 flex items-center justify-center text-button border-r border-b border-white/[0.08] transition-all duration-300 group
                                                         ${isSelected
                                                             ? 'bg-white text-neutral-900'
                                                             : 'bg-transparent text-neutral-500 hover:text-white hover:bg-white/[0.02]'
                                                         }
                                                     `}
                                                 >
-                                                    <span className="relative z-10 font-mono tracking-wide uppercase text-[10px] md:text-xs">
+                                                    <span className="relative z-10 font-mono uppercase text-button">
                                                         {service}
                                                     </span>
                                                     {/* Corner Marker for Selected */}
@@ -236,7 +236,7 @@ const Contact: React.FC = () => {
 
                                 {/* 02: PARTICULARS */}
                                 <div className="flex flex-col gap-10">
-                                    <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest pl-[2px]">
+                                    <label className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px]">
                                         02 Details
                                     </label>
 
@@ -251,18 +251,18 @@ const Contact: React.FC = () => {
                                                 onFocus={() => setFocusedField('name')}
                                                 onBlur={() => setFocusedField(null)}
                                                 required
-                                                className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-sm font-light focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer"
+                                                className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-body focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer"
                                                 placeholder="Your name"
                                             />
                                             <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                                <label className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' || formData.name ? 'text-white' : 'text-neutral-600'}`}>
+                                                <label className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'name' || formData.name ? 'text-white' : 'text-neutral-600'}`}>
                                                     Your name
                                                 </label>
                                                 {/* Active Marker */}
                                                 <motion.div
                                                     initial={{ opacity: 0 }}
                                                     animate={{ opacity: focusedField === 'name' ? 1 : 0 }}
-                                                    className="text-white text-[10px] font-mono"
+                                                    className="text-white text-caption font-mono"
                                                 >
                                                     +
                                                 </motion.div>
@@ -279,18 +279,18 @@ const Contact: React.FC = () => {
                                                 onFocus={() => setFocusedField('email')}
                                                 onBlur={() => setFocusedField(null)}
                                                 required
-                                                className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-sm font-light focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer"
+                                                className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-body focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer"
                                                 placeholder="Your email"
                                             />
                                             <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                                <label className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' || formData.email ? 'text-white' : 'text-neutral-600'}`}>
+                                                <label className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'email' || formData.email ? 'text-white' : 'text-neutral-600'}`}>
                                                     Email address
                                                 </label>
                                                 {/* Active Marker */}
                                                 <motion.div
                                                     initial={{ opacity: 0 }}
                                                     animate={{ opacity: focusedField === 'email' ? 1 : 0 }}
-                                                    className="text-white text-[10px] font-mono"
+                                                    className="text-white text-caption font-mono"
                                                 >
                                                     +
                                                 </motion.div>
@@ -307,7 +307,7 @@ const Contact: React.FC = () => {
                                             onChange={handleInputChange}
                                             onFocus={() => setFocusedField('message')}
                                             onBlur={() => setFocusedField(null)}
-                                            className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-sm font-light focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer resize-none min-h-[40px] max-h-[160px]"
+                                            className="block w-full bg-transparent border-b border-white/[0.08] py-4 text-white text-body focus:outline-none focus:border-white transition-colors duration-300 placeholder-transparent peer resize-none min-h-[40px] max-h-[160px]"
                                             placeholder="A quick note about what you are building, timeline, and budget range."
                                             onInput={(e) => {
                                                 const target = e.target as HTMLTextAreaElement;
@@ -316,14 +316,14 @@ const Contact: React.FC = () => {
                                             }}
                                         ></textarea>
                                         <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                            <label className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' || formData.message ? 'text-white' : 'text-neutral-600'}`}>
+                                            <label className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'message' || formData.message ? 'text-white' : 'text-neutral-600'}`}>
                                                 Project details
                                             </label>
                                             {/* Active Marker */}
                                             <motion.div
                                                 initial={{ opacity: 0 }}
                                                 animate={{ opacity: focusedField === 'message' ? 1 : 0 }}
-                                                className="text-white text-[10px] font-mono"
+                                                className="text-white text-caption font-mono"
                                             >
                                                 +
                                             </motion.div>
@@ -339,10 +339,10 @@ const Contact: React.FC = () => {
                                         className="w-full flex items-center justify-between group cursor-pointer pt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         <div className="flex flex-col shrink-0 text-left">
-                                            <span className="text-xl font-medium text-white group-hover:text-neutral-300 transition-colors">
+                                            <span className="text-button text-white group-hover:text-neutral-300 transition-colors">
                                                 {formState === 'submitting' ? 'Sending...' : 'Submit'}
                                             </span>
-                                            <span className="text-[10px] font-mono text-neutral-600 mt-1 uppercase tracking-widest">
+                                            <span className="text-caption font-mono text-neutral-600 mt-1 uppercase">
                                                 {formState === 'error' ? (
                                                     <span className="text-red-500">Submission failed. Click to retry.</span>
                                                 ) : isFormReady ? "Ready to send." : "Not ready."}
@@ -364,19 +364,19 @@ const Contact: React.FC = () => {
                     >
                         {/* 01: Email - with vertical border */}
                         <div className="flex flex-col gap-4 py-8 md:pr-8 md:border-r border-white/[0.08]">
-                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">CONNECT</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase">CONNECT</span>
                             <div onClick={handleCopyEmail} className="group cursor-pointer flex items-center gap-3 text-neutral-400 hover:text-white transition-colors w-fit">
-                                <span className="text-xs font-mono transition-all">mert.bildik@gmail.com</span>
+                                <span className="text-caption font-mono transition-all">mert.bildik@gmail.com</span>
                                 {emailCopied ? <Check size={12} className="text-green-500" /> : <Copy size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-500" />}
                             </div>
                         </div>
 
                         {/* 02: Social - with vertical border */}
                         <div className="flex flex-col gap-4 py-8 md:px-8 md:border-r border-white/[0.08]">
-                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">NETWORKS</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase">NETWORKS</span>
                             <div className="flex flex-col gap-2">
                                 <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors group w-fit">
-                                    <span className="text-xs font-mono">LinkedIn</span>
+                                    <span className="text-caption font-mono">LinkedIn</span>
                                     <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </a>
                             </div>
@@ -384,8 +384,8 @@ const Contact: React.FC = () => {
 
                         {/* 03: Time - aligned right/end */}
                         <div className="hidden md:flex flex-col gap-4 py-8 md:pl-8">
-                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">LOCAL TIME</span>
-                            <div className="text-xs font-mono text-neutral-400">
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase">LOCAL TIME</span>
+                            <div className="text-caption font-mono text-neutral-400">
                                 <LiveClock />
                             </div>
                         </div>

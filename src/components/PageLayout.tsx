@@ -37,7 +37,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, debug = false }) => {
 
             {/* Footer Info - Fixed visual anchor */}
             <div className="fixed bottom-8 left-6 md:left-12 z-40 hidden lg:block pointer-events-none">
-                <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest opacity-40">
+                <span className="text-caption text-neutral-500 font-mono uppercase opacity-40">
                     Mert Bildik © 2026
                 </span>
             </div>
