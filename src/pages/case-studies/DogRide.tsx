@@ -1,6 +1,6 @@
 import React from 'react';
-import ProjectTemplate from '../templates/projects/ProjectTemplate';
-import { PROJECT_CONTENT } from '../data/project-content';
+import ProjectTemplate from '../../templates/ProjectTemplate';
+import { PROJECT_CONTENT } from '../../data/project-content';
 
 const DogRide: React.FC = () => {
     const data = PROJECT_CONTENT.find(s => s.id === 'dog-and-ride');

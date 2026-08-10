@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { getProjectImages } from '../../utils/image-loader';
-import BackButton from '../../components/ui/BackButton';
-import { ProjectData, ImpactStat } from '../../data/project-content';
+import { getProjectImages } from '../utils/image-loader';
+import BackButton from '../components/BackButton';
+import { ProjectData, ImpactStat } from '../data/project-content';
 
 interface ProjectTemplateProps {
     project: ProjectData | undefined;
@@ -44,16 +44,16 @@ const StatBlock: React.FC<{ value: string; label: string; desc: string; delay: n
             <div className="absolute top-0 left-0 w-full h-px bg-white/[0.08]" />
 
             <div className="w-full">
-                <span className="block text-4xl md:text-5xl font-light text-white tracking-tight group-hover:scale-105 origin-left transition-transform duration-500 ease-out">
+                <span className="block text-display-md text-white group-hover:scale-105 origin-left transition-transform duration-500 ease-out">
                     {value}
                 </span>
             </div>
 
             <div className="flex flex-col gap-2 mt-6 w-full items-start">
-                <span className="block text-[10px] font-mono uppercase tracking-widest text-neutral-400 group-hover:text-white transition-colors duration-500">
+                <span className="block text-eyebrow font-mono uppercase text-neutral-400 group-hover:text-white transition-colors duration-500">
                     {label}
                 </span>
-                <p className="text-sm text-neutral-500 font-light leading-snug group-hover:text-neutral-400 transition-colors duration-500">
+                <p className="text-body-sm text-neutral-500 group-hover:text-neutral-400 transition-colors duration-500">
                     {desc}
                 </p>
             </div>
@@ -132,7 +132,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                 return (
                     <div key={idx} className={`flex gap-4 items-start pl-2 ${widthClass}`}>
                         <div className="w-1 h-1 rounded-full bg-neutral-400 mt-2.5 shrink-0" />
-                        <p className="text-neutral-400 leading-relaxed text-[15px]">{paragraph.replace(/^[•-]\s*/, '')}</p>
+                        <p className="text-neutral-400 text-body">{paragraph.replace(/^[•-]\s*/, '')}</p>
                     </div>
                 );
             }
@@ -140,7 +140,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
             const widthClass = layoutOverrides?.tighterMeasure ? 'max-w-2xl' : 'max-w-3xl';
             const balanceClass = layoutOverrides?.textBalance ? 'text-balance' : '';
             return (
-                <p key={idx} className={`text-neutral-400 leading-relaxed text-[16px] mb-4 last:mb-0 ${widthClass} ${balanceClass}`}>
+                <p key={idx} className={`text-neutral-400 text-body mb-4 last:mb-0 ${widthClass} ${balanceClass}`}>
                     {paragraph}
                 </p>
             );
@@ -164,12 +164,12 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                 <div className="flex flex-col gap-6">
                     <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] w-fit">
                         <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                        <span className="text-[10px] font-mono font-medium text-neutral-300 uppercase tracking-widest">{project.role}</span>
+                        <span className="text-caption font-mono text-neutral-300 uppercase">{project.role}</span>
                     </div>
-                    <h1 className={`text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white leading-[1.1] ${layoutOverrides?.textBalance ? 'text-balance' : ''}`}>
+                    <h1 className={`text-display-xl text-white ${layoutOverrides?.textBalance ? 'text-balance' : ''}`}>
                         {project.title}
                     </h1>
-                    <p className={`text-lg md:text-xl text-neutral-500 font-normal max-w-2xl leading-relaxed ${layoutOverrides?.textBalance ? 'text-balance' : ''}`}>
+                    <p className={`text-body-lg text-neutral-500 max-w-2xl ${layoutOverrides?.textBalance ? 'text-balance' : ''}`}>
                         {project.oneLineSummary}
                     </p>
                 </div>
@@ -184,14 +184,14 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                         {/* Meta Info */}
                         <div className="space-y-10">
                             <div className="space-y-3">
-                                <h3 className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">Timeline</h3>
-                                <p className="text-neutral-300 text-sm font-medium">{project.timeline}</p>
+                                <h3 className="text-eyebrow font-mono text-neutral-600 uppercase">Timeline</h3>
+                                <p className="text-neutral-300 text-caption">{project.timeline}</p>
                             </div>
                             <div className="space-y-3">
-                                <h3 className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">Tools</h3>
+                                <h3 className="text-eyebrow font-mono text-neutral-600 uppercase">Tools</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {project.tools.map(tool => (
-                                        <span key={tool} className="text-[11px] text-neutral-500 bg-white/[0.02] border border-white/[0.05] px-2 py-1 rounded text-nowrap">
+                                        <span key={tool} className="text-caption text-neutral-500 bg-white/[0.02] border border-white/[0.05] px-2 py-1 rounded text-nowrap">
                                             {tool}
                                         </span>
                                     ))}
@@ -201,13 +201,13 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
 
                         {/* TOC Navigation */}
                         <nav className="space-y-2 sticky top-32">
-                            <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest font-medium mb-4 block">Contents</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase mb-4 block">Contents</span>
                             <div className="flex flex-col border-l border-white/[0.08]">
                                 {sections.map(section => (
                                     <button
                                         key={section.id}
                                         onClick={() => scrollTo(section.id)}
-                                        className={`text-left px-4 py-2 text-[13px] font-medium transition-all duration-300 border-l mb-[-1px] ${activeSection === section.id
+                                        className={`text-left px-4 py-2 text-button transition-all duration-300 border-l mb-[-1px] ${activeSection === section.id
                                             ? 'text-white border-white pl-6'
                                             : 'text-neutral-500 border-transparent hover:text-neutral-300 hover:pl-5'
                                             }`}
@@ -231,7 +231,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                     {/* 1. Problem */}
                     {project.problem && (
                         <motion.section id="problem" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                            <span className="text-xs font-mono text-neutral-600 uppercase tracking-widest block">01 — The Problem</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase block">01 — The Problem</span>
                             <div className="space-y-6">
                                 {renderText(project.problem)}
                             </div>
@@ -239,14 +239,14 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                             {/* Context & Goals */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-white/[0.05]">
                                 <div className="space-y-3">
-                                    <h4 className="text-[11px] font-medium text-white mb-2">Context</h4>
-                                    <p className="text-neutral-500 text-sm leading-relaxed">{project.context}</p>
+                                    <h4 className="text-eyebrow font-mono uppercase text-white mb-2">Context</h4>
+                                    <p className="text-neutral-500 text-body-sm">{project.context}</p>
                                 </div>
                                 <div className="space-y-3">
-                                    <h4 className="text-[11px] font-medium text-white mb-2">Objectives</h4>
+                                    <h4 className="text-eyebrow font-mono uppercase text-white mb-2">Objectives</h4>
                                     <ul className="space-y-2">
                                         {project.goals.map((g, i) => (
-                                            <li key={i} className="text-neutral-500 text-sm flex gap-3">
+                                            <li key={i} className="text-neutral-500 text-body-sm flex gap-3">
                                                 <span className="opacity-30">•</span> {g}
                                             </li>
                                         ))}
@@ -259,14 +259,14 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                     {/* 2. Approach */}
                     {project.approach && (
                         <motion.section id="approach" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                            <span className="text-xs font-mono text-neutral-600 uppercase tracking-widest block">02 — Approach</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase block">02 — Approach</span>
                             <div className="space-y-6">
                                 {renderText(project.approach)}
                             </div>
 
                             <div className="p-8 bg-white/[0.02] border border-white/[0.05] rounded-lg">
-                                <h4 className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest mb-4">User Scenario</h4>
-                                <p className="text-neutral-300 leading-relaxed text-[15px]">{project.usersScenario}</p>
+                                <h4 className="text-eyebrow font-mono text-neutral-500 uppercase mb-4">User Scenario</h4>
+                                <p className="text-neutral-300 text-body">{project.usersScenario}</p>
                             </div>
                         </motion.section>
                     )}
@@ -274,7 +274,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                     {/* 3. Solution */}
                     {project.solution && (
                         <motion.section id="solution" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                            <span className="text-xs font-mono text-neutral-600 uppercase tracking-widest block">03 — Solution</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase block">03 — Solution</span>
                             <div className="space-y-6">
                                 {renderText(project.solution)}
                             </div>
@@ -284,8 +284,8 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                                     const [title, ...bodyParts] = decision.split('—');
                                     return (
                                         <div key={i} className="p-6 border-l border-white/[0.1] hover:border-white/40 hover:bg-white/[0.02] transition-colors duration-300">
-                                            <h5 className="text-sm font-medium text-white mb-2">{title.trim()}</h5>
-                                            <p className="text-sm text-neutral-500 leading-relaxed">{bodyParts.join('—').trim()}</p>
+                                            <h5 className="text-card-title text-white mb-2">{title.trim()}</h5>
+                                            <p className="text-body-sm text-neutral-500">{bodyParts.join('—').trim()}</p>
                                         </div>
                                     )
                                 })}
@@ -297,7 +297,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                     {/* 4. Output (was Final) */}
                     {(project.finalProduct.length > 0 || projectImages.length > 0) && (
                         <motion.section id="output" variants={itemVariants} className="space-y-12 scroll-mt-32">
-                            <span className="text-xs font-mono text-neutral-600 uppercase tracking-widest block">04 — Output</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase block">04 — Output</span>
 
                             {/* ADCLUSIVE SPECIAL LAYOUT */}
                             {project.id === 'adclusive' ? (
@@ -305,14 +305,14 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                                     {/* Keep "Platform" Description */}
                                     {project.finalProduct.map((item, i) => (
                                         <div key={i} className="p-6 bg-white/[0.02] border border-white/[0.05] rounded-lg">
-                                            <h4 className="text-lg text-white font-medium mb-2">{item.title}</h4>
-                                            <p className="text-neutral-500 text-sm leading-relaxed">{item.description}</p>
+                                            <h4 className="text-card-title text-white mb-2">{item.title}</h4>
+                                            <p className="text-neutral-500 text-body-sm">{item.description}</p>
                                         </div>
                                     ))}
 
                                     {/* Group 1: Wireframes (Top, 2 Columns) */}
                                     <div className="space-y-8">
-                                        <h4 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">Wireframes</h4>
+                                        <h4 className="text-eyebrow font-mono text-neutral-500 uppercase">Wireframes</h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             {projectImages.filter(img => img.name.includes('wireframe')).map((img, i) => (
                                                 <div key={i} className="w-full bg-[#111] border border-white/[0.08] rounded-lg overflow-hidden">
@@ -329,7 +329,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
 
                                     {/* Group 2: End Product (Bottom, 1 Column) */}
                                     <div className="space-y-8">
-                                        <h4 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">End Product</h4>
+                                        <h4 className="text-eyebrow font-mono text-neutral-500 uppercase">End Product</h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                             {projectImages.filter(img => !img.name.includes('wireframe')).map((img, i) => (
                                                 <div key={i} className="w-full bg-[#111] border border-white/[0.08] rounded-lg overflow-hidden">
@@ -372,8 +372,8 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                                                 <div key={i} className="space-y-8">
                                                     {/* Description Block */}
                                                     <div className="p-6 bg-white/[0.02] border border-white/[0.05] rounded-lg">
-                                                        <h4 className="text-lg text-white font-medium mb-2">{item.title}</h4>
-                                                        <p className="text-neutral-500 text-sm leading-relaxed">{item.description}</p>
+                                                        <h4 className="text-card-title text-white mb-2">{item.title}</h4>
+                                                        <p className="text-neutral-500 text-body-sm">{item.description}</p>
                                                     </div>
 
                                                     {/* Helper Grid for this bucket */}
@@ -402,7 +402,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                     {/* 5. Impact */}
                     {(project.impact.user || project.impact.business) && (
                         <motion.section id="impact" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                            <span className="text-xs font-mono text-neutral-600 uppercase tracking-widest block">05 — Impact</span>
+                            <span className="text-eyebrow font-mono text-neutral-600 uppercase block">05 — Impact</span>
 
                             {layoutOverrides?.impactStyle === 'mckinsey' && Array.isArray(project.impact.user) && Array.isArray(project.impact.business) ? (
                                 /* MCKINSEY STYLE GRID */
@@ -421,14 +421,14 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                                 /* DEFAULT SPLIT GRID */
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="p-8 border border-white/[0.08] rounded-lg hover:bg-white/[0.02] transition-colors">
-                                        <h4 className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest mb-6">User</h4>
+                                        <h4 className="text-eyebrow font-mono text-neutral-500 uppercase mb-6">User</h4>
                                         {Array.isArray(project.impact.user) ? (
                                             <div className="flex flex-col gap-10">
                                                 {project.impact.user.map((stat, i) => (
                                                     <div key={i} className="flex flex-col gap-3">
-                                                        <span className="text-5xl font-light text-white tracking-tight">{stat.number}</span>
-                                                        <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">{stat.title}</span>
-                                                        <p className="text-neutral-400 text-sm leading-relaxed">{stat.description}</p>
+                                                        <span className="text-display-md text-white">{stat.number}</span>
+                                                        <span className="text-eyebrow font-mono text-neutral-500 uppercase">{stat.title}</span>
+                                                        <p className="text-neutral-400 text-body-sm">{stat.description}</p>
                                                     </div>
                                                 ))}
                                             </div>
@@ -437,14 +437,14 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                                         )}
                                     </div>
                                     <div className="p-8 border border-white/[0.08] rounded-lg hover:bg-white/[0.02] transition-colors">
-                                        <h4 className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest mb-6">Business</h4>
+                                        <h4 className="text-eyebrow font-mono text-neutral-500 uppercase mb-6">Business</h4>
                                         {Array.isArray(project.impact.business) ? (
                                             <div className="flex flex-col gap-10">
                                                 {project.impact.business.map((stat, i) => (
                                                     <div key={i} className="flex flex-col gap-3">
-                                                        <span className="text-5xl font-light text-white tracking-tight">{stat.number}</span>
-                                                        <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">{stat.title}</span>
-                                                        <p className="text-neutral-400 text-sm leading-relaxed">{stat.description}</p>
+                                                        <span className="text-display-md text-white">{stat.number}</span>
+                                                        <span className="text-eyebrow font-mono text-neutral-500 uppercase">{stat.title}</span>
+                                                        <p className="text-neutral-400 text-body-sm">{stat.description}</p>
                                                     </div>
                                                 ))}
                                             </div>
@@ -456,8 +456,8 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project, layoutOverri
                             )}
 
                             <div className="pt-24 mt-24 border-t border-white/[0.05]">
-                                <h3 className="text-2xl font-medium text-white mb-8">Retrospective</h3>
-                                <div className="text-neutral-500 leading-relaxed text-lg font-light max-w-2xl">
+                                <h3 className="text-display-lg text-white mb-8">Retrospective</h3>
+                                <div className="text-neutral-500 text-body max-w-2xl">
                                     {renderText(project.learnings)}
                                 </div>
                             </div>

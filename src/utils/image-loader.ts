@@ -2,7 +2,7 @@
 // Utility to load portfolio images based on project ID matching
 // Uses Vite's import.meta.glob for static asset handling
 
-const globbedImages = import.meta.glob('../../Images_portfolio/*.{png,jpg,jpeg,webp}', {
+const globbedImages = import.meta.glob('../assets/portfolio/*.{png,jpg,jpeg,webp}', {
     eager: true,
     query: '?url',
     import: 'default'

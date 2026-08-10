@@ -1,6 +1,6 @@
 import React from 'react';
-import ProjectTemplate from '../templates/projects/ProjectTemplate';
-import { PROJECT_CONTENT } from '../data/project-content';
+import ProjectTemplate from '../../templates/ProjectTemplate';
+import { PROJECT_CONTENT } from '../../data/project-content';
 
 const Bunect: React.FC = () => {
     const data = PROJECT_CONTENT.find(s => s.id === 'bunect');

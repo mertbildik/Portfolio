@@ -21,7 +21,7 @@ const BackButton: React.FC = () => {
             aria-label="Go back"
         >
             <div className="h-[1px] w-8 bg-current transition-[width] duration-300 ease-out group-hover:w-12" />
-            <span className="text-[10px] tracking-[0.2em] font-mono uppercase">GO BACK</span>
+            <span className="text-button font-mono uppercase">GO BACK</span>
         </button>
     );
 };

@@ -1,13 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-// Force Rebuild: 2026-01-05
 export default {
     darkMode: ["class"],
     content: [
         "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
-        "./components/**/*.{js,ts,jsx,tsx}",
-        "./pages/**/*.{js,ts,jsx,tsx}",
-        "./*.{js,ts,jsx,tsx}"
+        "./src/**/*.{js,ts,jsx,tsx}"
     ],
     theme: {
         extend: {
@@ -29,13 +25,14 @@ export default {
                 'button':      ['14px', { lineHeight: '1.20', letterSpacing: '0',       fontWeight: '500' }],
                 'eyebrow':     ['13px', { lineHeight: '1.30', letterSpacing: '0.4px',   fontWeight: '500' }],
             },
+            // NOTE: --radius is not defined anywhere, so rounded-lg/md/sm currently
+            // render as square corners. Define it in src/index.css to switch them on.
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)'
-            },
-            colors: {}
+            }
         }
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [],
 }

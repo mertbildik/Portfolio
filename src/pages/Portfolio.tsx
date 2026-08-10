@@ -22,7 +22,7 @@ const itemVariants = {
 };
 
 // -- Data --
-import { PORTFOLIO_ITEMS } from '../data/portfolioItems';
+import { PORTFOLIO_ITEMS } from '../data/portfolio-items';
 
 import PageLayout from '../components/PageLayout';
 
@@ -41,21 +41,21 @@ const Portfolio: React.FC = () => {
         <div className="flex flex-col">
           {/* Back Link - Very subtle, aligned */}
           <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300">
-            <span className="text-xs tracking-widest uppercase font-medium">← Back</span>
+            <span className="text-button uppercase">← Back</span>
           </Link>
 
           {/* Title System - Matches Home's "Hey, I'm Mert" hierarchy */}
           <div className="mb-6 lg:mb-8">
-            <span className="text-xs font-mono text-neutral-500 tracking-widest uppercase mb-4 block">
+            <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-4 block">
               ARCHIVE
             </span>
-            <h1 className="text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[0.95] text-white">
+            <h1 className="text-display-xl text-white">
               Selected <br />
-              <span className="text-neutral-500 font-light">Work.</span>
+              <span className="text-neutral-500">Work.</span>
             </h1>
           </div>
 
-          <p className="text-neutral-400 max-w-xs leading-relaxed text-sm lg:text-base font-light">
+          <p className="text-neutral-400 max-w-xs text-body-lg">
             A small set of projects I am proud of.
             Client work, team work, and things I built for myself.
           </p>
@@ -73,7 +73,7 @@ const Portfolio: React.FC = () => {
 
           {/* SECTION: Client Work */}
           <div className="flex flex-col gap-4">
-            <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
+            <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2">
               CLIENT PROJECTS
             </motion.h2>
             <div className="flex flex-col">
@@ -85,18 +85,18 @@ const Portfolio: React.FC = () => {
                     className="relative py-5 lg:py-6 px-2 -mx-2 rounded-lg border-b border-white/[0.08] flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 group-hover:bg-white/[0.02] transition-colors duration-300"
                   >
                     {/* Title */}
-                    <span className="text-xl font-light text-neutral-300 group-hover:text-white transition-colors duration-300 tracking-tight truncate">
+                    <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors duration-300 truncate">
                       {work.title}
                     </span>
 
                     {/* Role/Type */}
-                    <span className="hidden md:block text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
+                    <span className="hidden md:block text-caption font-mono text-neutral-600 group-hover:text-neutral-500 uppercase transition-colors">
                       {work.subtitle}
                     </span>
 
                     {/* Year & Arrow */}
                     <div className="flex items-center justify-end gap-4">
-                      <span className="text-xs font-mono text-neutral-600">{work.yearOrStatus}</span>
+                      <span className="text-caption font-mono text-neutral-600">{work.yearOrStatus}</span>
                       <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
                         <ArrowUpRight size={16} className="text-white" />
                       </div>
@@ -109,7 +109,7 @@ const Portfolio: React.FC = () => {
 
           {/* SECTION: Experience */}
           <div className="flex flex-col gap-4">
-            <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
+            <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2">
               EMPLOYMENT
             </motion.h2>
             <div className="flex flex-col">
@@ -121,18 +121,18 @@ const Portfolio: React.FC = () => {
                     className="relative py-5 lg:py-6 px-2 -mx-2 rounded-lg border-b border-white/[0.08] flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 group-hover:bg-white/[0.02] transition-colors duration-300"
                   >
                     {/* Title */}
-                    <span className="text-xl font-light text-neutral-300 group-hover:text-white transition-colors duration-300 tracking-tight truncate">
+                    <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors duration-300 truncate">
                       {exp.title}
                     </span>
 
                     {/* Role */}
-                    <span className="hidden md:block text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
+                    <span className="hidden md:block text-caption font-mono text-neutral-600 group-hover:text-neutral-500 uppercase transition-colors">
                       {exp.subtitle}
                     </span>
 
                     {/* Year & Arrow */}
                     <div className="flex items-center justify-end gap-4">
-                      <span className="text-xs font-mono text-neutral-600">{exp.yearOrStatus}</span>
+                      <span className="text-caption font-mono text-neutral-600">{exp.yearOrStatus}</span>
                       <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
                         <ArrowUpRight size={16} className="text-white" />
                       </div>
@@ -145,7 +145,7 @@ const Portfolio: React.FC = () => {
 
           {/* SECTION: Ventures */}
           <div className="flex flex-col gap-4">
-            <motion.h2 variants={itemVariants} className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-[2px] mb-2">
+            <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2">
               VENTURES
             </motion.h2>
             <div className="flex flex-col">
@@ -157,18 +157,18 @@ const Portfolio: React.FC = () => {
                     className="relative py-5 lg:py-6 px-2 -mx-2 rounded-lg border-b border-white/[0.08] flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 group-hover:bg-white/[0.02] transition-colors duration-300"
                   >
                     {/* Title */}
-                    <span className="text-xl font-light text-neutral-300 group-hover:text-white transition-colors duration-300 tracking-tight truncate">
+                    <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors duration-300 truncate">
                       {venture.title}
                     </span>
 
                     {/* Role */}
-                    <span className="hidden md:block text-xs font-mono text-neutral-600 group-hover:text-neutral-500 uppercase tracking-wider transition-colors">
+                    <span className="hidden md:block text-caption font-mono text-neutral-600 group-hover:text-neutral-500 uppercase transition-colors">
                       {venture.subtitle}
                     </span>
 
                     {/* Year & Arrow */}
                     <div className="flex items-center justify-end gap-4">
-                      <span className="text-xs font-mono text-neutral-600">{venture.yearOrStatus}</span>
+                      <span className="text-caption font-mono text-neutral-600">{venture.yearOrStatus}</span>
                       <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
                         <ArrowUpRight size={16} className="text-white" />
                       </div>

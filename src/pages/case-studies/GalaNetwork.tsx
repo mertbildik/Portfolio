@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { getProjectImages } from '../utils/image-loader';
-import BackButton from '../components/ui/BackButton';
+import { getProjectImages } from '../../utils/image-loader';
+import BackButton from '../../components/BackButton';
 
 const GalaNetwork: React.FC = () => {
     const navigate = useNavigate();
@@ -58,26 +58,26 @@ const GalaNetwork: React.FC = () => {
                     <BackButton />
                 </motion.div>
 
-                <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-medium tracking-tighter text-white mb-8">
+                <motion.h1 variants={itemVariants} className="text-display-xl text-white mb-8">
                     GalaNetwork
                 </motion.h1>
 
-                <motion.p variants={itemVariants} className="text-xl md:text-2xl text-neutral-400 font-light leading-relaxed mb-12 max-w-xl">
+                <motion.p variants={itemVariants} className="text-body-lg text-neutral-400 mb-12 max-w-xl">
                     An English first Galatasaray community built to connect fans worldwide through storytelling, match analysis, and design.
                 </motion.p>
 
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8 border-t border-white/[0.08]">
                     <div>
-                        <span className="block text-[10px] font-mono text-neutral-600 uppercase tracking-widest mb-1">Role</span>
-                        <span className="text-sm text-neutral-300 font-medium">Co founder, Content and Design Lead</span>
+                        <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-1">Role</span>
+                        <span className="text-caption text-neutral-300">Co founder, Content and Design Lead</span>
                     </div>
                     <div>
-                        <span className="block text-[10px] font-mono text-neutral-600 uppercase tracking-widest mb-1">Status</span>
-                        <span className="text-sm text-neutral-300 font-medium">Active</span>
+                        <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-1">Status</span>
+                        <span className="text-caption text-neutral-300">Active</span>
                     </div>
                     <div>
-                        <span className="block text-[10px] font-mono text-neutral-600 uppercase tracking-widest mb-1">Focus</span>
-                        <span className="text-sm text-neutral-300 font-medium">Community and network building</span>
+                        <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-1">Focus</span>
+                        <span className="text-caption text-neutral-300">Community and network building</span>
                     </div>
                 </motion.div>
             </motion.div>
@@ -94,9 +94,9 @@ const GalaNetwork: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">OVERVIEW</span>
-                    <h2 className="text-2xl md:text-3xl text-white font-medium mb-6">What it is</h2>
-                    <p className="text-lg text-neutral-500 leading-relaxed font-light">
+                    <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">OVERVIEW</span>
+                    <h2 className="text-display-lg text-white mb-6">What it is</h2>
+                    <p className="text-body text-neutral-500">
                         GalaNetwork is a fan led network for people who love Galatasaray and want to stay connected beyond borders. The content is the entry point. The long term goal is a real network with shared value, support, and connections.
                     </p>
                 </motion.section>
@@ -108,12 +108,12 @@ const GalaNetwork: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">ORIGIN</span>
-                    <h2 className="text-2xl md:text-3xl text-white font-medium mb-6">Why I started it</h2>
-                    <p className="text-lg text-neutral-500 leading-relaxed font-light mb-6">
+                    <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">ORIGIN</span>
+                    <h2 className="text-display-lg text-white mb-6">Why I started it</h2>
+                    <p className="text-body text-neutral-500 mb-6">
                         This began as a lifelong hobby. I wanted to turn that passion into a real identity and a real brand. Most fans are in Turkey. I wanted the story to reach people who think and speak in English.
                     </p>
-                    <p className="text-lg text-neutral-500 leading-relaxed font-light">
+                    <p className="text-body text-neutral-500">
                         Icardi's line that stayed with me was:
                         <br />
                         <span className="text-white italic">“Galatasaray is already big. We will make it bigger.”</span>
@@ -132,9 +132,9 @@ const GalaNetwork: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">MISSION</span>
-                    <h2 className="text-2xl md:text-3xl text-white font-medium mb-6">What we are building</h2>
-                    <p className="text-lg text-neutral-500 leading-relaxed font-light">
+                    <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">MISSION</span>
+                    <h2 className="text-display-lg text-white mb-6">What we are building</h2>
+                    <p className="text-body text-neutral-500">
                         A global home for Galatasaray storytelling. A place where fans can meet, learn, share, and help each other. Content builds attention. The network builds trust.
                     </p>
                 </motion.section>
@@ -146,25 +146,25 @@ const GalaNetwork: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">OUTPUT</span>
-                    <h2 className="text-2xl md:text-3xl text-white font-medium mb-12">What we publish</h2>
+                    <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">OUTPUT</span>
+                    <h2 className="text-display-lg text-white mb-12">What we publish</h2>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <div className="pl-6 border-l border-white/[0.1]">
-                            <h3 className="text-lg text-white font-medium mb-2">Match storytelling</h3>
-                            <p className="text-neutral-500 leading-relaxed font-light">Short posts that capture the moment and the emotion.</p>
+                            <h3 className="text-card-title text-white mb-2">Match storytelling</h3>
+                            <p className="text-body-sm text-neutral-500">Short posts that capture the moment and the emotion.</p>
                         </div>
                         <div className="pl-6 border-l border-white/[0.1]">
-                            <h3 className="text-lg text-white font-medium mb-2">Analysis</h3>
-                            <p className="text-neutral-500 leading-relaxed font-light">Simple match reads. Clear patterns.</p>
+                            <h3 className="text-card-title text-white mb-2">Analysis</h3>
+                            <p className="text-body-sm text-neutral-500">Simple match reads. Clear patterns.</p>
                         </div>
                         <div className="pl-6 border-l border-white/[0.1]">
-                            <h3 className="text-lg text-white font-medium mb-2">Design posters</h3>
-                            <p className="text-neutral-500 leading-relaxed font-light">Matchday, Starting XI, stats, and key player moments.</p>
+                            <h3 className="text-card-title text-white mb-2">Design posters</h3>
+                            <p className="text-body-sm text-neutral-500">Matchday, Starting XI, stats, and key player moments.</p>
                         </div>
                         <div className="pl-6 border-l border-white/[0.1]">
-                            <h3 className="text-lg text-white font-medium mb-2">Community signals</h3>
-                            <p className="text-neutral-500 leading-relaxed font-light">Questions, replies, and threads that keep the circle active.</p>
+                            <h3 className="text-card-title text-white mb-2">Community signals</h3>
+                            <p className="text-body-sm text-neutral-500">Questions, replies, and threads that keep the circle active.</p>
                         </div>
                     </div>
                 </motion.section>
@@ -179,29 +179,29 @@ const GalaNetwork: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">NETWORK</span>
-                    <h2 className="text-2xl md:text-3xl text-white font-medium mb-12">How the network works</h2>
+                    <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">NETWORK</span>
+                    <h2 className="text-display-lg text-white mb-12">How the network works</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                         <div>
-                            <span className="block text-[10px] font-mono text-neutral-600 mb-3">01</span>
-                            <h3 className="text-white font-medium mb-2">Listen</h3>
-                            <p className="text-neutral-500 text-sm">We collect signals from the community. DMs, replies, and trusted sources.</p>
+                            <span className="block text-caption font-mono text-neutral-600 mb-3">01</span>
+                            <h3 className="text-card-title text-white mb-2">Listen</h3>
+                            <p className="text-body-sm text-neutral-500">We collect signals from the community. DMs, replies, and trusted sources.</p>
                         </div>
                         <div>
-                            <span className="block text-[10px] font-mono text-neutral-600 mb-3">02</span>
-                            <h3 className="text-white font-medium mb-2">Filter</h3>
-                            <p className="text-neutral-500 text-sm">We keep what is useful, clear, and respectful.</p>
+                            <span className="block text-caption font-mono text-neutral-600 mb-3">02</span>
+                            <h3 className="text-card-title text-white mb-2">Filter</h3>
+                            <p className="text-body-sm text-neutral-500">We keep what is useful, clear, and respectful.</p>
                         </div>
                         <div>
-                            <span className="block text-[10px] font-mono text-neutral-600 mb-3">03</span>
-                            <h3 className="text-white font-medium mb-2">Publish</h3>
-                            <p className="text-neutral-500 text-sm">We turn it into posts, posters, or short analysis.</p>
+                            <span className="block text-caption font-mono text-neutral-600 mb-3">03</span>
+                            <h3 className="text-card-title text-white mb-2">Publish</h3>
+                            <p className="text-body-sm text-neutral-500">We turn it into posts, posters, or short analysis.</p>
                         </div>
                         <div>
-                            <span className="block text-[10px] font-mono text-neutral-600 mb-3">04</span>
-                            <h3 className="text-white font-medium mb-2">Connect</h3>
-                            <p className="text-neutral-500 text-sm">We introduce people, share opportunities, and grow real relationships.</p>
+                            <span className="block text-caption font-mono text-neutral-600 mb-3">04</span>
+                            <h3 className="text-card-title text-white mb-2">Connect</h3>
+                            <p className="text-body-sm text-neutral-500">We introduce people, share opportunities, and grow real relationships.</p>
                         </div>
                     </div>
                 </motion.section>
@@ -214,9 +214,9 @@ const GalaNetwork: React.FC = () => {
                 viewport={{ once: true, margin: "-10%" }}
                 variants={sectionVariants}
             >
-                <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">GALLERY</span>
-                <h2 className="text-2xl md:text-3xl text-white font-medium mb-6">Selected work</h2>
-                <p className="text-lg text-neutral-500 leading-relaxed font-light mb-12">
+                <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">GALLERY</span>
+                <h2 className="text-display-lg text-white mb-6">Selected work</h2>
+                <p className="text-body text-neutral-500 mb-12">
                     A few screens and posters from GalaNetwork. Built to stay consistent across matches and formats.
                 </p>
 
@@ -267,7 +267,7 @@ const GalaNetwork: React.FC = () => {
                             })()}
                         </div>
                     ) : (
-                        <p className="text-neutral-600 text-sm">No images found.</p>
+                        <p className="text-neutral-600 text-body-sm">No images found.</p>
                     )}
                 </div>
             </motion.section>
@@ -282,9 +282,9 @@ const GalaNetwork: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">OPERATING MODEL</span>
-                    <h2 className="text-2xl md:text-3xl text-white font-medium mb-6">How we run it</h2>
-                    <p className="text-lg text-neutral-500 leading-relaxed font-light">
+                    <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">OPERATING MODEL</span>
+                    <h2 className="text-display-lg text-white mb-6">How we run it</h2>
+                    <p className="text-body text-neutral-500">
                         I lead content direction and design. I work with a co founder. We stay consistent in tone and visuals. We keep the output frequent and the standard high.
                     </p>
                 </motion.section>
@@ -296,9 +296,9 @@ const GalaNetwork: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-xs font-mono text-neutral-600 uppercase tracking-widest mb-8">NOW</span>
-                    <h2 className="text-2xl md:text-3xl text-white font-medium mb-6">Current focus</h2>
-                    <p className="text-lg text-neutral-500 leading-relaxed font-light">
+                    <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">NOW</span>
+                    <h2 className="text-display-lg text-white mb-6">Current focus</h2>
+                    <p className="text-body text-neutral-500">
                         We are growing the English speaking audience. We are improving our poster systems and match analysis format. We are turning followers into a real network.
                     </p>
                 </motion.section>

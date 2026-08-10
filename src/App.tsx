@@ -14,16 +14,16 @@ const About = React.lazy(() => import('./pages/About'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const CV = React.lazy(() => import('./pages/CV'));
 
-// Project Pages (Client Work) (Lazy)
-const OFK = React.lazy(() => import('./pages/OFK'));
-const DogRide = React.lazy(() => import('./pages/DogRide'));
-const Bunect = React.lazy(() => import('./pages/Bunect'));
-const Adclusive = React.lazy(() => import('./pages/Adclusive'));
+// Case Studies — client work (Lazy)
+const OFK = React.lazy(() => import('./pages/case-studies/OFK'));
+const DogRide = React.lazy(() => import('./pages/case-studies/DogRide'));
+const Bunect = React.lazy(() => import('./pages/case-studies/Bunect'));
+const Adclusive = React.lazy(() => import('./pages/case-studies/Adclusive'));
 
-// Experience & Venture Pages (Lazy)
-const McKinsey = React.lazy(() => import('./pages/McKinsey'));
-const Curvix = React.lazy(() => import('./pages/Curvix'));
-const GalaNetwork = React.lazy(() => import('./pages/GalaNetwork'));
+// Case Studies — employment & ventures (Lazy)
+const McKinsey = React.lazy(() => import('./pages/case-studies/McKinsey'));
+const Curvix = React.lazy(() => import('./pages/case-studies/Curvix'));
+const GalaNetwork = React.lazy(() => import('./pages/case-studies/GalaNetwork'));
 
 // Redirect helper for legacy URLs
 const LegacyCaseStudyRedirect = () => {
@@ -35,8 +35,8 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
-      {/* @ts-expect-error: Routes does not officially support 'key' but it is required for AnimatePresence to work correctly */}
       <Suspense fallback={<div className="min-h-screen" />}>
+        {/* @ts-expect-error: 'key' is not in RoutesProps, but AnimatePresence needs it to detect a page change */}
         <Routes location={location} key={location.pathname}>
           {/* Core Pages */}
           <Route path="/" element={<Home />} />
