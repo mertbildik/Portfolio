@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', 'sans-serif']
+                sans: ['Inter', 'system-ui', 'sans-serif']
             },
             // Typography scale — see docs/typography.md
             fontSize: {

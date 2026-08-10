@@ -82,7 +82,10 @@ Eyebrows are `text-eyebrow font-mono uppercase`.
 
 `.env` is gitignored; `.env.example` lists the keys. `src/pages/Contact.tsx` reads `VITE_FORMSPREE_ID` and the contact form fails without it.
 
-Two known dead ends, both left alone on purpose because fixing either would change what the site looks like:
+One known dead end, left alone on purpose because fixing it would change what the site looks like: `tailwind.config.js` maps `rounded-lg/md/sm` to `var(--radius)`, which is defined nowhere, so those sixteen usages render as square corners.
 
-- `public/fonts/` ships Geist and Geist Mono, but no `@font-face` rule ever loads them and `tailwind.config.js` asks for `Inter`, which is also never loaded. Everything renders in the system sans-serif.
-- `tailwind.config.js` maps `rounded-lg/md/sm` to `var(--radius)`, which is defined nowhere, so those sixteen usages render as square corners.
+## Fonts
+
+`font-sans` is Inter, self-hosted as a single variable file at `public/fonts/InterVariable.woff2` covering weights 100-900. The `@font-face` rule sits at the top of `src/index.css` and `index.html` preloads the file. Do not swap this for a Google Fonts `<link>`: the full file is used rather than Google's `latin` subset because the `← Back` label and the Polish `ł` are outside that subset and would fall back to a different font mid-sentence.
+
+The variable file is upright only, so the one italic quote in `GalaNetwork.tsx` renders as a synthetic slant. `font-mono` is not defined and falls back to the system monospace font.
