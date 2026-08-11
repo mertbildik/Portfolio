@@ -7,12 +7,12 @@ Personal portfolio site. Vite 6 + React 19 + TypeScript + Tailwind 3.4, deployed
 ```bash
 npm install
 cp .env.example .env    # then fill in VITE_FORMSPREE_ID
-npm run dev             # http://localhost:5137
+npm run dev             # http://localhost:3000
 ```
 
 | Script | What it does |
 |---|---|
-| `npm run dev` | Dev server on port 5137 |
+| `npm run dev` | Dev server on port 3000 |
 | `npm run build` | Production build to `dist/` |
 | `npm run preview` | Serve the built output |
 | `npm run typecheck` | `tsc --noEmit`, strict |

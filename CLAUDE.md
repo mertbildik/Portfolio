@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev        # Vite dev server on port 5137, host 0.0.0.0 (polling watcher, for WSL)
+npm run dev        # Vite dev server on port 3000, host 0.0.0.0 (polling watcher, for WSL)
 npm run build      # production build to dist/
 npm run preview    # serve the built output
 npm run typecheck  # tsc --noEmit, strict
