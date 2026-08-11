@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const GlobalBackground: React.FC = () => {
     return (
         <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-            <div className="absolute inset-0 bg-[#111111] z-0" />
+            <div className="absolute inset-0 bg-canvas z-0" />
             <motion.div
                 className="absolute inset-[-50%] w-[200%] h-[200%] opacity-[0.15]"
                 style={{
@@ -27,7 +27,7 @@ const GlobalBackground: React.FC = () => {
                 animate={{ x: [0, 32, 0], scale: [1, 1.05, 1], rotate: [0, 1, 0], z: 0 }}
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent z-0" />
+            <div className="absolute inset-0 bg-gradient-to-r from-canvas via-canvas/80 to-transparent z-0" />
         </div>
     );
 };

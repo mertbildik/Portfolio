@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Inter variable, self-hosted from public/fonts. One file covers weights 100-900. */
 @font-face {
   font-family: 'Inter';
@@ -7,9 +9,158 @@
   src: url('/fonts/InterVariable.woff2') format('woff2');
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ============================================================================
+   DESIGN TOKENS
+
+   This block is the only place a design value is defined. Every name here comes
+   from docs/design/*.md, and those files explain what each one means and when to
+   reach for it. If a value needs to change, it changes here and nowhere else.
+
+   Tailwind reads the PREFIX of each variable to decide which classes to build:
+     --color-*      -> bg-*, text-*, border-*, ring-*, from-*, via-*
+     --text-*       -> text-* (size, and its own leading/tracking/weight)
+     --font-*       -> font-*
+     --ease-*       -> ease-*
+     --container-*  -> max-w-*
+   ========================================================================= */
+
+@theme {
+  /* ---- type family ---------------------------------------------------- */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  /* Declared rather than inherited: 91 labels depend on it. Same stack Tailwind
+     would have given us, written down so it is visible. */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+
+  /* ---- type scale ------------------------------------------------------
+     Twelve tokens. Each sets size, weight, line height and letter spacing in one
+     class, so `text-card-title` is one decision rather than four.
+     The three display sizes are fluid and reach their maximum at ~890px wide.
+     Rules and reasoning: docs/design/typography.md */
+
+  --text-display-xl: clamp(44px, 9vw, 80px);
+  --text-display-xl--line-height: 1.05;
+  --text-display-xl--letter-spacing: -0.0375em;
+  --text-display-xl--font-weight: 600;
+
+  --text-display-lg: clamp(32px, 6vw, 56px);
+  --text-display-lg--line-height: 1.10;
+  --text-display-lg--letter-spacing: -0.032em;
+  --text-display-lg--font-weight: 600;
+
+  --text-display-md: clamp(28px, 4.5vw, 40px);
+  --text-display-md--line-height: 1.15;
+  --text-display-md--letter-spacing: -0.025em;
+  --text-display-md--font-weight: 600;
+
+  --text-headline: 28px;
+  --text-headline--line-height: 1.20;
+  --text-headline--letter-spacing: -0.6px;
+  --text-headline--font-weight: 600;
+
+  --text-card-title: 22px;
+  --text-card-title--line-height: 1.25;
+  --text-card-title--letter-spacing: -0.4px;
+  --text-card-title--font-weight: 500;
+
+  --text-subhead: 20px;
+  --text-subhead--line-height: 1.40;
+  --text-subhead--letter-spacing: -0.2px;
+  --text-subhead--font-weight: 400;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.50;
+  --text-body-lg--letter-spacing: -0.1px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body: 16px;
+  --text-body--line-height: 1.50;
+  --text-body--letter-spacing: -0.05px;
+  --text-body--font-weight: 400;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.50;
+  --text-body-sm--letter-spacing: 0;
+  --text-body-sm--font-weight: 400;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 1.40;
+  --text-caption--letter-spacing: 0;
+  --text-caption--font-weight: 400;
+
+  --text-button: 14px;
+  --text-button--line-height: 1.20;
+  --text-button--letter-spacing: 0;
+  --text-button--font-weight: 500;
+
+  --text-eyebrow: 13px;
+  --text-eyebrow--line-height: 1.30;
+  --text-eyebrow--letter-spacing: 0.4px;
+  --text-eyebrow--font-weight: 500;
+
+  /* ---- canvas ----------------------------------------------------------
+     Painted by GlobalBackground, not by body, so the fixed layer shows through
+     every route. Also the backing behind every image frame. */
+  --color-canvas: #111111;
+  --color-canvas-overlay: #050505;
+
+  /* ---- ink ramp --------------------------------------------------------
+     Six steps measured against the canvas. Ink is the hierarchy: to push
+     something back, move down the ramp rather than adding a box.
+     Contrast ratios and the rules: docs/design/color.md + accessibility.md */
+  --color-ink-max: #FFFFFF;    /* 18.9:1  headings, hover destination, selected */
+  --color-ink-high: #E5E5E5;   /* 15.0:1  document default */
+  --color-ink-mid: #D4D4D4;    /* 12.7:1  row and list titles at rest */
+  --color-ink-body: #A3A3A3;   /*  7.5:1  paragraphs */
+  --color-ink-low: #737373;    /*  4.0:1  eyebrows, captions, labels at rest */
+  --color-ink-faint: #525252;  /*  2.4:1  numbers, years, meta. Never a sentence. */
+  --color-ink-inverse: #111111;/*          text on a white fill */
+
+  /* ---- borders ---------------------------------------------------------
+     One structural weight, one pixel, always. A quieter element does not get a
+     thinner edge; it changes its ink or its fill instead. */
+  --color-line: rgb(255 255 255 / 0.08);   /* everything structural */
+  --color-line-strong: rgb(255 255 255 / 0.2); /* circle buttons */
+  --color-line-active: #FFFFFF;            /* focus, selected, active */
+
+  /* ---- fills -----------------------------------------------------------
+     White at a low alpha, never a lighter grey. Fills mark state; they do not
+     define shape, and they never mark focus. */
+  --color-fill-subtle: rgb(255 255 255 / 0.02);  /* card and panel rest fill */
+  --color-fill-raised: rgb(255 255 255 / 0.03);  /* pills, chips */
+  --color-fill-inverse: #FFFFFF;                 /* selected cell, inverted button */
+
+  /* ---- status ----------------------------------------------------------
+     The only chromatic colour in the system. State only, never decoration, and
+     never the only signal. An inactive status dot uses ink-faint. */
+  --color-status-ok: #22C55E;    /* availability dot at /50, copy confirmation */
+  --color-status-error: #EF4444; /* form submission failure */
+
+  /* The one grey off the ink ramp. Not text: it is the physical node sitting on
+     the timeline rule, punched out of it with ring-canvas. */
+  --color-node: #404040;
+
+  /* ---- shape -----------------------------------------------------------
+     A box is square or it is a pill, nothing in between. Clearing this namespace
+     removes rounded-sm/md/lg/xl so the rule holds itself up: rounded-full and
+     rounded-none are built in and survive.
+     To allow a middle radius again, delete this line. */
+  --radius-*: initial;
+
+  /* ---- motion ----------------------------------------------------------
+     The one entrance curve, for transitions written in CSS. framer-motion needs
+     the same curve as four numbers rather than a CSS string, so it keeps its own
+     copy in src/components/motion.ts. Two spellings of one curve, in two
+     different runtimes: change one and change the other.
+     Durations use Tailwind's own scale: 300 is the default state change, 500 a
+     larger one. The default below means a transition with no duration written
+     runs at 300 rather than Tailwind's 150, which is off our scale. */
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --default-transition-duration: 300ms;
+
+  /* ---- frame ------------------------------------------------------------ */
+  --container-shell: 1600px; /* max page width, shared by both layouts */
+}
 
 @layer base {
 
@@ -21,7 +172,17 @@
   }
 
   body {
-    @apply bg-transparent text-neutral-200 antialiased selection:bg-white selection:text-black font-sans;
+    /* Transparent so GlobalBackground's fixed canvas shows through every route.
+       Selection is set once here and never overridden. */
+    @apply bg-transparent text-ink-high antialiased selection:bg-fill-inverse selection:text-black font-sans;
+  }
+
+  /* Tailwind 4's reset stopped giving buttons a pointer cursor, unlike Tailwind 3.
+     Put it back so a control still reads as clickable. `:not(:disabled)` leaves the
+     submit button's `disabled:cursor-not-allowed` alone. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }
 

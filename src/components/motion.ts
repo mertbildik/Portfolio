@@ -1,6 +1,12 @@
 import { Variants } from 'framer-motion';
 
-/** The one entrance curve. See docs/design/motion.md. */
+/**
+ * The one entrance curve. See docs/design/motion.md.
+ *
+ * framer-motion wants four numbers, CSS wants a cubic-bezier() string, so this
+ * is the JS-side copy of `--ease-entrance` in src/index.css. If one changes, the
+ * other has to change with it.
+ */
 export const EASE = [0.16, 1, 0.3, 1] as const;
 
 export const containerVariants: Variants = {

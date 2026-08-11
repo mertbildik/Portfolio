@@ -11,22 +11,22 @@ const getCurrentQuarter = () => {
 };
 
 const ListItem: React.FC<{ number: string; label: string; to: string }> = ({ number, label, to }) => (
-    <motion.div variants={itemVariants} className="relative group">
+    <motion.div variants={itemVariants} className="relative">
         <Link
             to={to}
-            className="w-full py-6 md:py-8 border-t border-white/[0.08] flex items-center justify-between text-left outline-none focus-visible:bg-white/[0.05] transition-colors duration-300"
+            className="group w-full py-6 md:py-8 border-t border-line focus-visible:border-line-active flex items-center justify-between text-left outline-none transition-colors duration-300"
         >
             <div className="flex items-center gap-4 md:gap-8">
-                <span className="text-caption font-mono text-neutral-600 group-hover:text-neutral-400 transition-colors">
+                <span className="text-caption font-mono text-ink-faint group-hover:text-ink-body transition-colors duration-300">
                     {number}
                 </span>
-                <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors whitespace-nowrap">
+                <span className="text-card-title text-ink-mid group-hover:text-ink-max transition-colors duration-300 whitespace-nowrap">
                     {label}
                 </span>
             </div>
 
-            <div className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0 transition-all duration-500 ease-out">
-                <ArrowRight size={20} className="text-white" />
+            <div className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0 transition-all duration-500 ease-out">
+                <ArrowRight size={20} className="text-ink-max" />
             </div>
         </Link>
     </motion.div>
@@ -41,22 +41,22 @@ const Home: React.FC = () => (
             animate="visible"
         >
             <motion.div variants={itemVariants} className="pl-[2px]">
-                <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-6 md:mb-8 block">
+                <span className="text-eyebrow font-mono text-ink-low uppercase mb-6 md:mb-8 block">
                     DESIGN ENGINEER · AVAILABLE FOR WORK
                 </span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-display-xl text-white mix-blend-screen">
-                <span className="text-neutral-400">Hey, I'm Mert.</span>
+            <motion.h1 variants={itemVariants} className="text-display-xl text-ink-max mix-blend-screen">
+                <span className="text-ink-body">Hey, I'm Mert.</span>
                 <br />
-                <span className="text-neutral-500">I </span>design<span className="text-neutral-500"> and </span>build
+                <span className="text-ink-low">I </span>design<span className="text-ink-low"> and </span>build
                 <br />
-                <span className="text-neutral-500">digital products.</span>
+                <span className="text-ink-low">digital products.</span>
             </motion.h1>
 
             <motion.p
                 variants={itemVariants}
-                className="mt-8 md:mt-12 text-body-lg text-neutral-400 ml-1 w-full max-w-lg lg:max-w-none lg:whitespace-nowrap"
+                className="mt-8 md:mt-12 text-body-lg text-ink-body ml-1 w-full max-w-lg lg:max-w-none lg:whitespace-nowrap"
             >
                 Helping people spend less time clicking and more time living.
             </motion.p>
@@ -77,14 +77,14 @@ const Home: React.FC = () => (
             <motion.div variants={itemVariants} className="mt-12 w-full">
                 <Link to="/contact" className="flex items-center justify-between group cursor-pointer whitespace-nowrap">
                     <div className="flex flex-col shrink-0">
-                        <span className="text-card-title text-white group-hover:text-neutral-300 transition-colors">
+                        <span className="text-card-title text-ink-max group-hover:text-ink-mid transition-colors duration-300">
                             Get in touch
                         </span>
-                        <span className="text-caption font-mono text-neutral-600 mt-1">
+                        <span className="text-caption font-mono text-ink-faint mt-1">
                             Available {getCurrentQuarter()}
                         </span>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#111111] transition-all duration-300 shrink-0 ml-4">
+                    <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                         <ArrowUpRight size={20} />
                     </div>
                 </Link>

@@ -24,16 +24,16 @@ const About: React.FC = () => {
 
                     {/* Title System */}
                     <div className="mb-6 lg:mb-8">
-                        <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-4 block">
+                        <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             Profile
                         </span>
-                        <h1 className="text-display-xl text-white">
+                        <h1 className="text-display-xl text-ink-max">
                             Who I <br />
-                            <span className="text-neutral-500">Am.</span>
+                            <span className="text-ink-low">Am.</span>
                         </h1>
                     </div>
 
-                    <p className="text-neutral-400 max-w-xs text-body-lg">
+                    <p className="text-ink-body max-w-xs text-body-lg">
                         Born in Izmir. Based in Warsaw.
                     </p>
                 </div>
@@ -48,22 +48,22 @@ const About: React.FC = () => {
             >
                 {/* Main System Grid */}
                 <div className="flex flex-col w-full max-w-3xl ml-auto">
-                    <div className="w-full border-t border-white/[0.08]">
+                    <div className="w-full border-t border-line">
 
                         {/* 1. HERO ROW: BACKGROUND + PORTRAIT */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/[0.08]">
+                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-line">
 
                             {/* 1A. Background Text (Span 2) - Supports the photo */}
-                            <motion.div variants={itemVariants} className="md:col-span-2 py-8 pr-12 lg:border-r border-white/[0.08] flex flex-col justify-between h-full">
-                                <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-6">
+                            <motion.div variants={itemVariants} className="md:col-span-2 py-8 pr-12 flex flex-col justify-between h-full">
+                                <span className="text-eyebrow font-mono text-ink-low uppercase mb-6">
                                     01 — Background
                                 </span>
 
                                 <div className="max-w-md">
-                                    <h2 className="text-display-lg text-white mb-8">
+                                    <h2 className="text-display-lg text-ink-max mb-8">
                                         I build things that make life feel easier.
                                     </h2>
-                                    <p className="text-neutral-500 text-body-sm">
+                                    <p className="text-ink-low text-body-sm">
                                         As a kid, I spent hours on the computer. Not only for fun. I liked figuring out simple ways to fix everyday problems. That mindset never left. Now I use it to design digital products with a clear purpose.
                                     </p>
                                 </div>
@@ -71,9 +71,9 @@ const About: React.FC = () => {
 
                             {/* 1B. HERO PORTRAIT (Span 1) - Aspect 3:4 Frame */}
                             {/* This container drives the row height naturally, no fixed min-h needed if content fits */}
-                            <motion.div variants={itemVariants} className="relative w-full md:border-l border-white/[0.08] md:-ml-[1px] p-6 lg:p-8 flex items-center justify-center">
+                            <motion.div variants={itemVariants} className="relative w-full md:border-l border-line md:-ml-[1px] p-6 lg:p-8 flex items-center justify-center">
                                 {/* The Frame: Fixed Aspect Ratio */}
-                                <div className="w-full aspect-[3/4] relative bg-[#111111] border border-white/[0.08] overflow-hidden group">
+                                <div className="w-full aspect-[3/4] relative bg-canvas border border-line overflow-hidden">
                                     {/* Image: Object Top + Cover for perfect framing */}
                                     <img
                                         src={mertPhoto}
@@ -86,7 +86,7 @@ const About: React.FC = () => {
 
                                     {/* Micro Label */}
                                     <div className="absolute bottom-3 left-3">
-                                        <span className="text-caption font-mono text-white/50 uppercase">
+                                        <span className="text-caption font-mono text-ink-max/50 uppercase">
                                             Portrait '26
                                         </span>
                                     </div>
@@ -95,33 +95,33 @@ const About: React.FC = () => {
                         </div>
 
                         {/* 2. INDEX ROW: PERSPECTIVE */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/[0.08]">
+                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-line">
                             {/* Focus */}
-                            <motion.div variants={itemVariants} className="py-8 md:pr-8 lg:border-r border-white/[0.08] relative group">
-                                <span className="block text-eyebrow font-mono text-neutral-500 uppercase mb-4 group-hover:text-white transition-colors">
+                            <motion.div variants={itemVariants} className="py-8 md:pr-8 relative">
+                                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-4">
                                     02 — Focus
                                 </span>
-                                <p className="text-neutral-400 text-body-sm group-hover:text-neutral-300 transition-colors">
+                                <p className="text-ink-body text-body-sm">
                                     Basketball and football keep me hooked. Design is where I feel most at home.
                                 </p>
                             </motion.div>
 
                             {/* Method */}
-                            <motion.div variants={itemVariants} className="py-8 md:px-8 lg:border-r border-white/[0.08] relative group md:-ml-[1px]">
-                                <span className="block text-eyebrow font-mono text-neutral-500 uppercase mb-4 group-hover:text-white transition-colors">
+                            <motion.div variants={itemVariants} className="py-8 md:px-8 md:border-l border-line relative md:-ml-[1px]">
+                                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-4">
                                     03 — Method
                                 </span>
-                                <p className="text-neutral-400 text-body-sm group-hover:text-neutral-300 transition-colors">
+                                <p className="text-ink-body text-body-sm">
                                     I started in a corporate environment and learned how businesses really work. Now I run my own studio. I like clear goals, direct feedback, and a calm process where the work stays the focus.
                                 </p>
                             </motion.div>
 
                             {/* Philosophy */}
-                            <motion.div variants={itemVariants} className="py-8 md:pl-8 relative group md:-ml-[1px]">
-                                <span className="block text-eyebrow font-mono text-neutral-500 uppercase mb-4 group-hover:text-white transition-colors">
+                            <motion.div variants={itemVariants} className="py-8 md:pl-8 md:border-l border-line relative md:-ml-[1px]">
+                                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-4">
                                     04 — Philosophy
                                 </span>
-                                <p className="text-neutral-400 text-body-sm group-hover:text-neutral-300 transition-colors">
+                                <p className="text-ink-body text-body-sm">
                                     Design is not about looking fancy. It is about helping people move forward with less friction and more focus.
                                 </p>
                             </motion.div>
@@ -131,17 +131,17 @@ const About: React.FC = () => {
                         <motion.div variants={itemVariants} className="py-6 flex flex-col md:flex-row items-center justify-between gap-6">
 
                             <div className="flex items-center gap-4">
-                                <div className="w-1.5 h-1.5 bg-green-500/50 rounded-full animate-pulse" />
-                                <span className="text-caption font-mono text-neutral-600 uppercase">
+                                <div className="w-1.5 h-1.5 bg-status-ok/50 rounded-full animate-pulse" />
+                                <span className="text-caption font-mono text-ink-faint uppercase">
                                     STATUS: Available for new projects
                                 </span>
                             </div>
 
                             <Link to="/contact" className="w-full flex items-center justify-between group cursor-pointer lg:w-auto lg:min-w-[280px]">
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-button text-white group-hover:text-neutral-300 transition-colors uppercase font-mono">Start a conversation</span>
+                                    <span className="text-button text-ink-max group-hover:text-ink-mid transition-colors duration-300 uppercase font-mono">Start a conversation</span>
                                 </div>
-                                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#111111] transition-all duration-300 shrink-0 ml-4">
+                                <div className="w-10 h-10 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={16} />
                                 </div>
                             </Link>

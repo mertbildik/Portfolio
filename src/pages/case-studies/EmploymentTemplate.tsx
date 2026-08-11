@@ -37,12 +37,12 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                         transition={{ duration: 0.8, ease: EASE }}
                         className="lg:col-span-8"
                     >
-                        <h1 className="text-display-xl mb-8 text-white mix-blend-screen">
+                        <h1 className="text-display-xl mb-8 text-ink-max mix-blend-screen">
                             {data.companyName}<br />
-                            {data.companySuffix && <span className="text-neutral-500">{data.companySuffix}</span>}
+                            {data.companySuffix && <span className="text-ink-low">{data.companySuffix}</span>}
                         </h1>
 
-                        <p className="text-body-lg text-neutral-400 max-w-xl">
+                        <p className="text-body-lg text-ink-body max-w-xl">
                             {data.role}. <br />
                             {data.description}
                         </p>
@@ -54,13 +54,13 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
-                            className="flex flex-col gap-6 border-l border-white/[0.08] pl-8 py-2"
+                            className="flex flex-col gap-6 border-l border-line pl-6 py-2"
                         >
                             <div className="flex items-center gap-2 mb-1">
-                                <div className="w-1.5 h-1.5 bg-neutral-600 rounded-full animate-pulse" />
-                                <span className="text-eyebrow font-mono uppercase text-neutral-500">Status: {data.ndaStatus}</span>
+                                <div className="w-1.5 h-1.5 bg-ink-faint rounded-full animate-pulse" />
+                                <span className="text-eyebrow font-mono uppercase text-ink-low">Status: {data.ndaStatus}</span>
                             </div>
-                            <p className="text-body-sm text-neutral-500 max-w-[240px] whitespace-pre-line">
+                            <p className="text-body-sm text-ink-low max-w-[240px] whitespace-pre-line">
                                 {data.ndaDescription}
                             </p>
                         </motion.div>
@@ -74,13 +74,12 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="flex items-center gap-4 mb-12"
+                    className="mb-12"
                 >
-                    <span className="w-8 h-[1px] bg-white/20" />
-                    <h2 className="text-eyebrow font-mono text-neutral-500 uppercase">Impact & Metrics</h2>
+                    <h2 className="text-eyebrow font-mono text-ink-faint uppercase">Impact & Metrics</h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-r border-b border-white/[0.08]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-r border-b border-line">
                     {data.stats.map((stat, i) => (
                         <StatBlock
                             key={i}
@@ -99,13 +98,12 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="flex items-center gap-4 mb-20"
+                    className="mb-20"
                 >
-                    <span className="w-8 h-[1px] bg-white/20" />
-                    <h2 className="text-eyebrow font-mono text-neutral-500 uppercase">Core Capabilities</h2>
+                    <h2 className="text-eyebrow font-mono text-ink-faint uppercase">Core Capabilities</h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/[0.08]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-line">
                     {data.capabilities.map((cap, idx) => (
                         <motion.div
                             key={idx}
@@ -113,15 +111,15 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE }}
-                            className="group p-8 lg:p-12 border-b border-r border-white/[0.08] hover:bg-white/[0.02] transition-colors duration-500 flex flex-col gap-8 min-h-[320px]"
+                            className="p-8 lg:p-12 border-b border-r border-line flex flex-col gap-8 min-h-[320px]"
                         >
-                            <h3 className="text-eyebrow font-mono text-neutral-500 group-hover:text-white transition-colors duration-500 uppercase">
+                            <h3 className="text-eyebrow font-mono text-ink-low uppercase">
                                 {cap.title}
                             </h3>
 
                             <ul className="flex flex-col gap-4">
                                 {cap.items.map((text, i) => (
-                                    <li key={i} className="text-body-sm text-neutral-400 group-hover:text-neutral-300 transition-colors duration-500">
+                                    <li key={i} className="text-body-sm text-ink-body">
                                         {text}
                                     </li>
                                 ))}
@@ -133,25 +131,25 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
 
             {/* 4. FOOTER: RESTRICTED ACCESS REDESIGN */}
             <section className="">
-                <div className="relative border border-white/[0.08] bg-white/[0.02] overflow-hidden group">
+                <div className="relative border border-line bg-fill-subtle overflow-hidden">
 
                     {/* Subtle Background Pattern */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03]" />
 
                     <div className="relative p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
                         {/* LEFT: NDA Declaration */}
                         <div className="flex flex-col gap-8 justify-between">
                             <div className="flex flex-col gap-6">
-                                <div className="flex items-center gap-3 text-neutral-500">
+                                <div className="flex items-center gap-3 text-ink-low">
                                     <Lock size={20} strokeWidth={1.5} />
                                     <h2 className="text-eyebrow font-mono uppercase">Restricted Access</h2>
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    <h3 className="text-headline text-white">
+                                    <h3 className="text-headline text-ink-max">
                                         Client work is protected by NDA.
                                     </h3>
-                                    <p className="text-body text-neutral-500">
+                                    <p className="text-body text-ink-low">
                                         I can’t share decks, screenshots, or client-specific materials.
                                     </p>
                                 </div>
@@ -159,21 +157,21 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
 
                             {/* Timestamp */}
                             <div className="flex flex-col gap-1">
-                                <span className="text-eyebrow font-mono text-neutral-600 uppercase">Active Status</span>
-                                <span className="text-caption text-neutral-500">{data.ndaStatus}</span>
+                                <span className="text-eyebrow font-mono text-ink-faint uppercase">Active Status</span>
+                                <span className="text-caption text-ink-low">{data.ndaStatus}</span>
                             </div>
                         </div>
 
                         {/* RIGHT: What I can share */}
-                        <div className="flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-white/[0.08] pt-12 lg:pt-0 lg:pl-12">
-                            <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-8 block">
+                        <div className="flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-line pt-12 lg:pt-0 lg:pl-12">
+                            <span className="text-eyebrow font-mono text-ink-low uppercase mb-8 block">
                                 What I can share on a call:
                             </span>
                             <ul className="flex flex-col gap-4">
                                 {data.sharableOnCall.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-4 group/item">
-                                        <div className="mt-1.5 w-1.5 h-1.5 bg-neutral-700 rounded-full group-hover/item:bg-white transition-colors duration-300" />
-                                        <span className="text-body-sm text-neutral-400 group-hover/item:text-neutral-200 transition-colors duration-300">
+                                    <li key={i} className="flex items-start gap-4">
+                                        <div className="mt-1.5 w-1.5 h-1.5 bg-ink-body rounded-full" />
+                                        <span className="text-body-sm text-ink-body">
                                             {item}
                                         </span>
                                     </li>

@@ -27,14 +27,14 @@ const Portfolio: React.FC = () => (
                 </div>
 
                 <div className="mb-6 lg:mb-8">
-                    <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-4 block">ARCHIVE</span>
-                    <h1 className="text-display-xl text-white">
+                    <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">ARCHIVE</span>
+                    <h1 className="text-display-xl text-ink-max">
                         Selected <br />
-                        <span className="text-neutral-500">Work.</span>
+                        <span className="text-ink-low">Work.</span>
                     </h1>
                 </div>
 
-                <p className="text-neutral-400 max-w-xs text-body-lg">
+                <p className="text-ink-body max-w-xs text-body-lg">
                     A small set of projects I am proud of. Client work, team work, and things I built for myself.
                 </p>
             </div>
@@ -51,12 +51,12 @@ const Portfolio: React.FC = () => (
                     <div key={section.kind} className="flex flex-col gap-4">
                         <motion.h2
                             variants={itemVariants}
-                            className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2"
+                            className="text-eyebrow font-mono text-ink-low uppercase pl-[2px] mb-2"
                         >
                             {section.label}
                         </motion.h2>
                         <div className="flex flex-col">
-                            <div className="border-t border-white/[0.08] -mx-2 mb-0" />
+                            <div className="border-t border-line -mx-2 mb-0" />
                             {PROJECTS.filter((p) => p.kind === section.kind).map((project) => (
                                 <Link
                                     key={project.id}
@@ -65,22 +65,22 @@ const Portfolio: React.FC = () => (
                                 >
                                     <motion.div
                                         variants={itemVariants}
-                                        className="relative py-5 lg:py-6 px-2 -mx-2 border-b border-white/[0.08] flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 group-hover:bg-white/[0.02] group-focus-visible:bg-white/[0.05] transition-colors duration-300"
+                                        className="relative py-5 lg:py-6 px-2 -mx-2 border-b border-line group-focus-visible:border-line-active flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 transition-colors duration-300"
                                     >
-                                        <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors duration-300 truncate">
+                                        <span className="text-card-title text-ink-mid group-hover:text-ink-max transition-colors duration-300 truncate">
                                             {project.title}
                                         </span>
 
-                                        <span className="hidden md:block text-caption font-mono text-neutral-600 group-hover:text-neutral-500 uppercase transition-colors">
+                                        <span className="hidden md:block text-caption font-mono text-ink-faint group-hover:text-ink-low uppercase transition-colors duration-300">
                                             {project.role}
                                         </span>
 
                                         <div className="flex items-center justify-end gap-4">
-                                            <span className="text-caption font-mono text-neutral-600">
+                                            <span className="text-caption font-mono text-ink-faint">
                                                 {project.yearOrStatus}
                                             </span>
                                             <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0 transition-all duration-300 ease-out">
-                                                <ArrowUpRight size={16} className="text-white" />
+                                                <ArrowUpRight size={16} className="text-ink-max" />
                                             </div>
                                         </div>
                                     </motion.div>

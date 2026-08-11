@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+// `text-ink-max` is load-bearing, not decoration: the rule below is drawn with
+// `bg-current`, so the label's ink is also the rule's ink. Both would otherwise
+// fall back to the document default.
 const STYLE =
-    'group inline-flex items-center gap-3 w-fit opacity-40 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none transition-opacity duration-300 cursor-pointer';
+    'group inline-flex items-center gap-3 w-fit text-ink-max opacity-40 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none transition-opacity duration-300 cursor-pointer';
 
 const Inner: React.FC = () => (
     <>

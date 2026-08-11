@@ -48,7 +48,10 @@ const App: React.FC = () => (
     // the looping background, when the visitor asks for less motion.
     <MotionConfig reducedMotion="user">
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-            <div className="antialiased flex flex-col min-h-screen text-white font-sans selection:bg-white selection:text-black relative">
+            {/* Layout only. Ink, font and selection come from `body` in index.css,
+                so the document default stays ink-high and white keeps meaning
+                emphasis rather than being the floor. */}
+            <div className="flex flex-col min-h-screen relative">
                 <GlobalBackground />
                 <Navigation />
                 <main className="flex-1 w-full relative z-10 flex flex-col">

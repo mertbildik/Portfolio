@@ -66,16 +66,16 @@ const Process: React.FC = () => {
 
                     {/* Title System - Matches Portfolio's hierarchy */}
                     <div className="mb-6 lg:mb-8">
-                        <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-4 block">
+                        <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             METHODOLOGY
                         </span>
-                        <h1 className="text-display-xl text-white">
+                        <h1 className="text-display-xl text-ink-max">
                             How I <br />
-                            <span className="text-neutral-500">Work.</span>
+                            <span className="text-ink-low">Work.</span>
                         </h1>
                     </div>
 
-                    <p className="text-neutral-400 max-w-xs text-body-lg">
+                    <p className="text-ink-body max-w-xs text-body-lg">
                         I do not just make things look nice.
                         I build things that hold up in the real world.
                     </p>
@@ -93,7 +93,7 @@ const Process: React.FC = () => {
 
                     {/* SECTION: The Process */}
                     <div className="flex flex-col gap-4">
-                        <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2">
+                        <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-ink-low uppercase pl-[2px] mb-2">
                             THE PROCESS
                         </motion.h2>
 
@@ -104,7 +104,7 @@ const Process: React.FC = () => {
                                 initial={{ scaleY: 0 }}
                                 animate={{ scaleY: 1 }}
                                 transition={{ duration: 1.2, ease: EASE }}
-                                className="absolute left-0 top-2 bottom-2 w-px bg-white/[0.08] origin-top"
+                                className="absolute left-0 top-2 bottom-2 w-px bg-line origin-top"
                             />
 
                             <div className="flex flex-col gap-10 lg:gap-12">
@@ -114,30 +114,30 @@ const Process: React.FC = () => {
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.6, delay: 0.2 + (i * 0.1), ease: EASE }}
-                                        className="relative group"
+                                        className="relative"
                                     >
                                         {/* Timeline Node */}
                                         <motion.div
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
                                             transition={{ duration: 0.6, delay: 0.2 + (i * 0.1), ease: EASE }}
-                                            className="absolute -left-[27px] lg:-left-[35px] top-[9px] w-[5px] h-[5px] rounded-full bg-neutral-700 ring-4 ring-[#111111] group-hover:bg-neutral-400 group-hover:ring-neutral-800 transition-all duration-500"
+                                            className="absolute -left-[27px] lg:-left-[35px] top-[9px] w-[5px] h-[5px] rounded-full bg-node ring-4 ring-canvas"
                                         />
 
                                         <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4">
                                             {/* Header: Index & Title */}
                                             <div className="md:col-span-4 flex flex-row md:flex-col items-baseline md:items-start gap-3 md:gap-1">
-                                                <span className="text-caption font-mono text-neutral-600 uppercase">
+                                                <span className="text-caption font-mono text-ink-faint uppercase">
                                                     {step.id}
                                                 </span>
-                                                <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors duration-300">
+                                                <span className="text-card-title text-ink-mid">
                                                     {step.title}
                                                 </span>
                                             </div>
 
                                             {/* Body */}
                                             <div className="md:col-span-8">
-                                                <p className="text-body-sm text-neutral-500 group-hover:text-neutral-400 transition-colors max-w-lg">
+                                                <p className="text-body-sm text-ink-low max-w-lg">
                                                     {step.desc}
                                                 </p>
                                             </div>
@@ -150,20 +150,20 @@ const Process: React.FC = () => {
 
                     {/* SECTION: Toolkit */}
                     <div className="flex flex-col gap-4">
-                        <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-neutral-500 uppercase pl-[2px] mb-2">
+                        <motion.h2 variants={itemVariants} className="text-eyebrow font-mono text-ink-low uppercase pl-[2px] mb-2">
                             Toolkit
                         </motion.h2>
 
                         {/* Minimal Grid - Compact */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-2 gap-x-8 border-t border-white/[0.08] pt-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-2 gap-x-8 border-t border-line pt-4">
                             {tools.map((tool, i) => (
                                 <motion.div
                                     key={i}
                                     variants={itemVariants}
-                                    className="flex items-center gap-3 group py-1"
+                                    className="flex items-center gap-3 py-1"
                                 >
-                                    <div className="w-1 h-1 rounded-full bg-neutral-800 group-hover:bg-white transition-colors duration-300" />
-                                    <span className="text-body-sm text-neutral-500 group-hover:text-white transition-colors duration-300">
+                                    <div className="w-1 h-1 rounded-full bg-ink-low" />
+                                    <span className="text-body-sm text-ink-low">
                                         {tool.name}
                                     </span>
                                 </motion.div>
@@ -176,10 +176,10 @@ const Process: React.FC = () => {
                                 className="w-full flex items-center justify-between group cursor-pointer"
                             >
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-card-title text-white group-hover:text-neutral-300 transition-colors">Start a project</span>
-                                    <span className="text-caption font-mono text-neutral-600 mt-1 uppercase">Open for transmission</span>
+                                    <span className="text-card-title text-ink-max group-hover:text-ink-mid transition-colors duration-300">Start a project</span>
+                                    <span className="text-caption font-mono text-ink-faint mt-1 uppercase">Open for transmission</span>
                                 </div>
-                                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#111111] transition-all duration-300 shrink-0 ml-4">
+                                <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={20} />
                                 </div>
                             </Link>

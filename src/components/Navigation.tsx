@@ -19,7 +19,7 @@ const Navigation: React.FC = () => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: EASE }}
-                className="relative flex items-center lg:flex-col gap-2 lg:gap-0 p-4 lg:p-0 rounded-full bg-[#050505]/90 backdrop-blur-md border border-white/[0.08] lg:bg-transparent lg:border-none lg:backdrop-blur-none lg:rounded-none"
+                className="relative flex items-center lg:flex-col gap-2 lg:gap-0 p-4 lg:p-0 rounded-full bg-canvas-overlay/90 backdrop-blur-md border border-line lg:bg-transparent lg:border-none lg:backdrop-blur-none lg:rounded-none"
             >
                 {navItems.map((item) => (
                     <NavLink
@@ -30,13 +30,10 @@ const Navigation: React.FC = () => {
                         {({ isActive }) => (
                             /* 44px minimum tap target. The 44 + 8 gap keeps the icons
                                at the same 52px pitch they sat at before. */
-                            <div className={`
-                                relative flex items-center justify-center w-11 h-11 rounded-none
-                                lg:w-11 lg:h-16 lg:py-0
-                            `}>
+                            <div className="relative flex items-center justify-center w-11 h-11 lg:h-16">
 
                                 {/* Icon */}
-                                <div className={`relative z-10 transition-all duration-500 ${isActive ? 'text-white scale-110 lg:scale-100' : 'text-neutral-500 group-hover:text-neutral-300 group-focus-visible:text-white lg:scale-100 lg:text-neutral-600 lg:group-hover:text-white lg:group-focus-visible:text-white'}`}>
+                                <div className={`relative z-10 transition-all duration-500 ${isActive ? 'text-ink-max scale-110 lg:scale-100' : 'text-ink-low group-hover:text-ink-mid group-focus-visible:text-ink-max lg:scale-100 lg:text-ink-faint lg:group-hover:text-ink-max lg:group-focus-visible:text-ink-max'}`}>
                                     <item.icon
                                         size={20}
                                         strokeWidth={1.5}
@@ -47,7 +44,7 @@ const Navigation: React.FC = () => {
                                 <div
                                     className={`
                                         absolute pointer-events-none flex items-center justify-center overflow-visible
-                                        transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
+                                        transition-all duration-500 ease-entrance
                                         
                                         /* Mobile: Bottom-Up Reveal */
                                         bottom-full left-1/2 -translate-x-1/2 mb-4 flex-col
@@ -62,7 +59,7 @@ const Navigation: React.FC = () => {
                                     `}
                                 >
                                     <span
-                                        className="text-eyebrow bg-transparent font-mono uppercase text-neutral-500 group-hover:text-white group-focus-visible:text-white transition-colors whitespace-nowrap"
+                                        className="text-eyebrow bg-transparent font-mono uppercase text-ink-low group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-500 whitespace-nowrap"
                                     >
                                         {item.label}
                                     </span>
