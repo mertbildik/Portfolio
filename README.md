@@ -55,4 +55,4 @@ two ids to their own components.
 ## Typography
 
 Twelve Tailwind tokens (`text-display-xl` through `text-eyebrow`) carry size, weight, line height
-and letter spacing together. See [docs/typography.md](docs/typography.md) before touching any text.
+and letter spacing together. See [docs/design/typography.md](docs/design/typography.md) before touching any text.

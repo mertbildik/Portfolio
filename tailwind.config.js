@@ -10,7 +10,7 @@ export default {
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif']
             },
-            // Typography scale — see docs/typography.md
+            // Typography scale — see docs/design/typography.md
             // The three display sizes are fluid: they hit their max (and match the
             // rest of the scale) from ~890px up, and shrink below that so a long
             // word cannot overflow a phone. Everything else is a fixed size.

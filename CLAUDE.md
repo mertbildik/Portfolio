@@ -50,7 +50,7 @@ Portfolio images live in `src/assets/portfolio/<project id>/` and are pulled in 
 
 ## Typography
 
-`docs/typography.md` defines the type system and `tailwind.config.js` implements it as twelve `fontSize` tokens (`text-display-xl` through `text-eyebrow`). Each token sets size, weight, line height and letter spacing in one class. Read that file before touching any text; its rules are the ones to follow.
+`docs/design/typography.md` defines the type system and `tailwind.config.js` implements it as twelve `fontSize` tokens (`text-display-xl` through `text-eyebrow`). Each token sets size, weight, line height and letter spacing in one class. Read that file before touching any text; its rules are the ones to follow.
 
 The three display sizes are fluid and reach their maximum at about 890px wide. Do not add responsive size variants in markup to compensate.
 

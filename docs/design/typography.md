@@ -23,6 +23,8 @@ Defined in `tailwind.config.js` under `theme.extend.fontSize`. One class sets si
 - Never put `font-*` (weight), `leading-*` or `tracking-*` on an element that already has a token. Those utilities are emitted after the tokens and silently override them, which is what the system exists to prevent.
 - Colour, `font-mono`, `uppercase` and layout classes are not part of the token and are set normally.
 - A heading split across several lines uses the same token on every line, with no extra margin between them. Emphasis comes from colour alone.
+- `text-balance` goes on a heading or a lead paragraph that wraps to two or three lines, so the last line is not left short. Never on a full body paragraph.
+- `truncate` goes on a title inside a fixed-width grid column. Everywhere else, text wraps.
 
 ## The three display sizes are fluid
 
