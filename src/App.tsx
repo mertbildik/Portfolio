@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 
 import Navigation from './components/Navigation';
 import GlobalBackground from './components/GlobalBackground';
@@ -44,15 +44,19 @@ const AppRoutes: React.FC = () => {
 };
 
 const App: React.FC = () => (
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <div className="antialiased flex flex-col min-h-screen text-white font-sans selection:bg-white selection:text-black relative">
-            <GlobalBackground />
-            <Navigation />
-            <main className="flex-1 w-full relative z-10 flex flex-col">
-                <AppRoutes />
-            </main>
-        </div>
-    </BrowserRouter>
+    // reducedMotion="user" drops every transform and layout animation, including
+    // the looping background, when the visitor asks for less motion.
+    <MotionConfig reducedMotion="user">
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <div className="antialiased flex flex-col min-h-screen text-white font-sans selection:bg-white selection:text-black relative">
+                <GlobalBackground />
+                <Navigation />
+                <main className="flex-1 w-full relative z-10 flex flex-col">
+                    <AppRoutes />
+                </main>
+            </div>
+        </BrowserRouter>
+    </MotionConfig>
 );
 
 export default App;

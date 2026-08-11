@@ -1,7 +1,7 @@
 import { Variants } from 'framer-motion';
 
+/** The one entrance curve. See docs/design/motion.md. */
 export const EASE = [0.16, 1, 0.3, 1] as const;
-export const EASE_APPLE = [0.25, 1, 0.5, 1] as const;
 
 export const containerVariants: Variants = {
     hidden: { opacity: 0 },

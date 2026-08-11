@@ -5,7 +5,7 @@ const SplitPage: React.FC<{ children: React.ReactNode; align?: 'start' | 'center
     children,
     align = 'start',
 }) => (
-    <div className="w-full min-h-screen text-[#E5E5E5] flex flex-col font-sans">
+    <div className="w-full min-h-screen text-neutral-200 flex flex-col font-sans">
         <div
             className={`relative z-10 w-full max-w-[1600px] flex-1 mx-auto
                 px-6 md:px-12 lg:pr-20 lg:pl-32 xl:px-32

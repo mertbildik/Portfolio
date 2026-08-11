@@ -118,20 +118,20 @@ const GalaNetwork: React.FC = () => {
                     <span className="block text-eyebrow font-mono text-neutral-600 uppercase mb-8">OUTPUT</span>
                     <h2 className="text-display-lg text-white mb-12">What we publish</h2>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <div className="pl-6 border-l border-white/[0.1]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="pl-6 border-l border-white/[0.08]">
                             <h3 className="text-card-title text-white mb-2">Match storytelling</h3>
                             <p className="text-body-sm text-neutral-500">Short posts that capture the moment and the emotion.</p>
                         </div>
-                        <div className="pl-6 border-l border-white/[0.1]">
+                        <div className="pl-6 border-l border-white/[0.08]">
                             <h3 className="text-card-title text-white mb-2">Analysis</h3>
                             <p className="text-body-sm text-neutral-500">Simple match reads. Clear patterns.</p>
                         </div>
-                        <div className="pl-6 border-l border-white/[0.1]">
+                        <div className="pl-6 border-l border-white/[0.08]">
                             <h3 className="text-card-title text-white mb-2">Design posters</h3>
                             <p className="text-body-sm text-neutral-500">Matchday, Starting XI, stats, and key player moments.</p>
                         </div>
-                        <div className="pl-6 border-l border-white/[0.1]">
+                        <div className="pl-6 border-l border-white/[0.08]">
                             <h3 className="text-card-title text-white mb-2">Community signals</h3>
                             <p className="text-body-sm text-neutral-500">Questions, replies, and threads that keep the circle active.</p>
                         </div>
@@ -193,12 +193,12 @@ const GalaNetwork: React.FC = () => {
                     {projectImages.map((img, i) => (
                         <div
                             key={img.name}
-                            className={`w-full h-full bg-[#111] border border-white/[0.08] rounded-sm overflow-hidden relative ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                            className={`w-full h-full bg-[#111111] border border-white/[0.08] overflow-hidden relative ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
                         >
                             <img
                                 src={img.src}
                                 alt={`GalaNetwork ${img.name}`}
-                                className="w-full h-full object-contain grayscale-0 transition-none"
+                                className="w-full h-full object-contain"
                                 loading="lazy"
                             />
                         </div>

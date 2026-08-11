@@ -23,13 +23,12 @@
   body {
     @apply bg-transparent text-neutral-200 antialiased selection:bg-white selection:text-black font-sans;
   }
-
-  /* Precision Image Rendering */
-  img {
-    @apply grayscale transition-all duration-500;
-  }
 }
 
-@layer utilities {
-  /* Utilities cleared for new global background system */
+/* framer-motion handles its own animations via MotionConfig reducedMotion="user".
+   This covers the one CSS loop left: the pulsing status dot. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse {
+    animation: none;
+  }
 }

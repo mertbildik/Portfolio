@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PROJECTS, Project } from '../content/projects';
+import BackButton from '../components/BackButton';
 import SplitPage from '../layouts/SplitPage';
-import { listVariants, itemVariants } from '../components/motion';
+import { EASE, listVariants, itemVariants } from '../components/motion';
 
 const SECTIONS: { label: string; kind: Project['kind'] }[] = [
     { label: 'CLIENT PROJECTS', kind: 'clientProject' },
@@ -17,13 +18,13 @@ const Portfolio: React.FC = () => (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
+            transition={{ duration: 0.8, ease: EASE }}
             className="lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto"
         >
             <div className="flex flex-col">
-                <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300 w-fit">
-                    <span className="text-button uppercase">← Back</span>
-                </Link>
+                <div className="mb-8 lg:mb-12">
+                    <BackButton to="/" />
+                </div>
 
                 <div className="mb-6 lg:mb-8">
                     <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-4 block">ARCHIVE</span>
@@ -64,7 +65,7 @@ const Portfolio: React.FC = () => (
                                 >
                                     <motion.div
                                         variants={itemVariants}
-                                        className="relative py-5 lg:py-6 px-2 -mx-2 rounded-lg border-b border-white/[0.08] flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 group-hover:bg-white/[0.02] transition-colors duration-300"
+                                        className="relative py-5 lg:py-6 px-2 -mx-2 border-b border-white/[0.08] flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 group-hover:bg-white/[0.02] group-focus-visible:bg-white/[0.05] transition-colors duration-300"
                                     >
                                         <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors duration-300 truncate">
                                             {project.title}
@@ -78,7 +79,7 @@ const Portfolio: React.FC = () => (
                                             <span className="text-caption font-mono text-neutral-600">
                                                 {project.yearOrStatus}
                                             </span>
-                                            <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
+                                            <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0 transition-all duration-300 ease-out">
                                                 <ArrowUpRight size={16} className="text-white" />
                                             </div>
                                         </div>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
 import BackButton from '../../components/BackButton';
 import StatBlock from '../../components/StatBlock';
-import { EASE_APPLE } from '../../components/motion';
+import { EASE } from '../../components/motion';
 import { EmploymentData } from '../../content/employment';
 
 const DURATION_BUMP = 0.8;
@@ -23,7 +23,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.2 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
                     className="mb-16 md:mb-24"
                 >
                     <BackButton />
@@ -34,10 +34,10 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: EASE_APPLE }}
+                        transition={{ duration: 0.8, ease: EASE }}
                         className="lg:col-span-8"
                     >
-                        <h1 className="text-display-xl mb-8 text-neutral-100 mix-blend-screen">
+                        <h1 className="text-display-xl mb-8 text-white mix-blend-screen">
                             {data.companyName}<br />
                             {data.companySuffix && <span className="text-neutral-500">{data.companySuffix}</span>}
                         </h1>
@@ -53,7 +53,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.3 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
                             className="flex flex-col gap-6 border-l border-white/[0.08] pl-8 py-2"
                         >
                             <div className="flex items-center gap-2 mb-1">
@@ -112,7 +112,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE_APPLE }}
+                            transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE }}
                             className="group p-8 lg:p-12 border-b border-r border-white/[0.08] hover:bg-white/[0.02] transition-colors duration-500 flex flex-col gap-8 min-h-[320px]"
                         >
                             <h3 className="text-eyebrow font-mono text-neutral-500 group-hover:text-white transition-colors duration-500 uppercase">
@@ -133,10 +133,10 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
 
             {/* 4. FOOTER: RESTRICTED ACCESS REDESIGN */}
             <section className="">
-                <div className="relative border border-white/[0.08] bg-white/[0.01] overflow-hidden group">
+                <div className="relative border border-white/[0.08] bg-white/[0.02] overflow-hidden group">
 
                     {/* Subtle Background Pattern */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-700" />
+                    <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500" />
 
                     <div className="relative p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 

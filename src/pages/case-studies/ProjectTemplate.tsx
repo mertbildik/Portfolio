@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { getProjectImages } from '../../content/images';
 import BackButton from '../../components/BackButton';
-import { listVariants, itemVariants } from '../../components/motion';
+import { EASE, listVariants, itemVariants } from '../../components/motion';
 import { ImpactStat, OutputBlock, Project } from '../../content/projects';
 
 const SECTIONS = [
@@ -106,12 +106,12 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         {blockImages.map((img) => (
                             <div
                                 key={img.name}
-                                className="w-full bg-[#111] border border-white/[0.08] rounded-lg overflow-hidden"
+                                className="w-full bg-[#111111] border border-white/[0.08] overflow-hidden"
                             >
                                 <img
                                     src={img.src}
                                     alt={`${project.title} ${block.title}`}
-                                    className="w-full h-auto object-cover grayscale-0 transition-none"
+                                    className="w-full h-auto object-cover"
                                     loading="lazy"
                                 />
                             </div>
@@ -127,7 +127,7 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
+                transition={{ duration: 0.8, ease: EASE }}
                 className="w-full mb-16 lg:mb-24"
             >
                 <div className="mb-16 md:mb-24">
@@ -207,8 +207,9 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                                 <h4 className="text-eyebrow font-mono uppercase text-white mb-2">Objectives</h4>
                                 <ul className="space-y-2">
                                     {study.goals.map((goal) => (
-                                        <li key={goal} className="text-neutral-500 text-body-sm flex gap-3">
-                                            <span className="opacity-30">•</span> {goal}
+                                        <li key={goal} className="text-neutral-500 text-body-sm flex gap-3 items-start">
+                                            <span className="w-1 h-1 rounded-full bg-neutral-500 mt-2 shrink-0" />
+                                            {goal}
                                         </li>
                                     ))}
                                 </ul>
@@ -236,7 +237,7 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                                 return (
                                     <div
                                         key={title}
-                                        className="p-6 border-l border-white/[0.1] hover:border-white/40 hover:bg-white/[0.02] transition-colors duration-300"
+                                        className="p-6 border-l border-white/[0.08] hover:border-white/40 hover:bg-white/[0.02] transition-colors duration-300"
                                     >
                                         <h5 className="text-card-title text-white mb-2">{title.trim()}</h5>
                                         <p className="text-body-sm text-neutral-500">{body.join('—').trim()}</p>

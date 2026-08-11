@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import mertPhoto from '../assets/mert.webp';
+import BackButton from '../components/BackButton';
 import SplitPage from '../layouts/SplitPage';
-import { containerVariants, itemVariants } from '../components/motion';
+import { EASE, containerVariants, itemVariants } from '../components/motion';
 
 const About: React.FC = () => {
     return (
@@ -13,14 +14,13 @@ const About: React.FC = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: EASE }}
                 className="lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto"
             >
                 <div className="flex flex-col lg:min-h-0">
-                    {/* Back Link */}
-                    <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-button uppercase">← Back</span>
-                    </Link>
+                    <div className="mb-8 lg:mb-12">
+                        <BackButton to="/" />
+                    </div>
 
                     {/* Title System */}
                     <div className="mb-6 lg:mb-8">
@@ -48,13 +48,13 @@ const About: React.FC = () => {
             >
                 {/* Main System Grid */}
                 <div className="flex flex-col w-full max-w-3xl ml-auto">
-                    <div className="w-full border-t border-neutral-800">
+                    <div className="w-full border-t border-white/[0.08]">
 
                         {/* 1. HERO ROW: BACKGROUND + PORTRAIT */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-800">
+                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/[0.08]">
 
                             {/* 1A. Background Text (Span 2) - Supports the photo */}
-                            <motion.div variants={itemVariants} className="md:col-span-2 py-8 pr-12 lg:border-r border-neutral-800 flex flex-col justify-between h-full">
+                            <motion.div variants={itemVariants} className="md:col-span-2 py-8 pr-12 lg:border-r border-white/[0.08] flex flex-col justify-between h-full">
                                 <span className="text-eyebrow font-mono text-neutral-500 uppercase mb-6">
                                     01 — Background
                                 </span>
@@ -71,14 +71,14 @@ const About: React.FC = () => {
 
                             {/* 1B. HERO PORTRAIT (Span 1) - Aspect 3:4 Frame */}
                             {/* This container drives the row height naturally, no fixed min-h needed if content fits */}
-                            <motion.div variants={itemVariants} className="relative w-full md:border-l border-neutral-800 md:-ml-[1px] p-6 lg:p-8 flex items-center justify-center">
+                            <motion.div variants={itemVariants} className="relative w-full md:border-l border-white/[0.08] md:-ml-[1px] p-6 lg:p-8 flex items-center justify-center">
                                 {/* The Frame: Fixed Aspect Ratio */}
-                                <div className="w-full aspect-[3/4] relative bg-neutral-900 border border-white/10 overflow-hidden group">
+                                <div className="w-full aspect-[3/4] relative bg-[#111111] border border-white/[0.08] overflow-hidden group">
                                     {/* Image: Object Top + Cover for perfect framing */}
                                     <img
                                         src={mertPhoto}
-                                        alt="Mert"
-                                        className="w-full h-full object-cover object-top grayscale-0 transition-none"
+                                        alt="Mert Bildik"
+                                        className="w-full h-full object-cover object-top"
                                     />
 
                                     {/* Subtle Overlay gradient for depth */}
@@ -95,9 +95,9 @@ const About: React.FC = () => {
                         </div>
 
                         {/* 2. INDEX ROW: PERSPECTIVE */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-800">
+                        <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/[0.08]">
                             {/* Focus */}
-                            <motion.div variants={itemVariants} className="py-8 md:pr-8 lg:border-r border-neutral-800 relative group">
+                            <motion.div variants={itemVariants} className="py-8 md:pr-8 lg:border-r border-white/[0.08] relative group">
                                 <span className="block text-eyebrow font-mono text-neutral-500 uppercase mb-4 group-hover:text-white transition-colors">
                                     02 — Focus
                                 </span>
@@ -107,7 +107,7 @@ const About: React.FC = () => {
                             </motion.div>
 
                             {/* Method */}
-                            <motion.div variants={itemVariants} className="py-8 md:px-8 lg:border-r border-neutral-800 relative group md:-ml-[1px]">
+                            <motion.div variants={itemVariants} className="py-8 md:px-8 lg:border-r border-white/[0.08] relative group md:-ml-[1px]">
                                 <span className="block text-eyebrow font-mono text-neutral-500 uppercase mb-4 group-hover:text-white transition-colors">
                                     03 — Method
                                 </span>
@@ -141,7 +141,7 @@ const About: React.FC = () => {
                                 <div className="flex flex-col shrink-0">
                                     <span className="text-button text-white group-hover:text-neutral-300 transition-colors uppercase font-mono">Start a conversation</span>
                                 </div>
-                                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 ml-4">
+                                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#111111] transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={16} />
                                 </div>
                             </Link>

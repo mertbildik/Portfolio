@@ -95,15 +95,15 @@ const Curvix: React.FC = () => {
                     <h2 className="text-display-lg text-white mb-12">What Curvix ships</h2>
 
                     <div className="space-y-12">
-                        <div className="pl-6 border-l border-white/[0.1]">
+                        <div className="pl-6 border-l border-white/[0.08]">
                             <h3 className="text-card-title text-white mb-2">Design systems</h3>
                             <p className="text-body-sm text-neutral-500">Typography, spacing rules, layout logic, and components that scale.</p>
                         </div>
-                        <div className="pl-6 border-l border-white/[0.1]">
+                        <div className="pl-6 border-l border-white/[0.08]">
                             <h3 className="text-card-title text-white mb-2">Product and web</h3>
                             <p className="text-body-sm text-neutral-500">Flows, screens, interaction rules, and build ready handoff.</p>
                         </div>
-                        <div className="pl-6 border-l border-white/[0.1]">
+                        <div className="pl-6 border-l border-white/[0.08]">
                             <h3 className="text-card-title text-white mb-2">Specialists when needed</h3>
                             <p className="text-body-sm text-neutral-500">Marketing and photography are added only when the project requires it.</p>
                         </div>
@@ -162,11 +162,11 @@ const Curvix: React.FC = () => {
 
                 <div className="space-y-8">
                     {projectImages.slice(0, 1).map((img) => (
-                        <div key={img.name} className="w-full bg-[#080808] border border-white/[0.08] rounded-sm overflow-hidden">
+                        <div key={img.name} className="w-full bg-[#111111] border border-white/[0.08] overflow-hidden">
                             <img
                                 src={img.src}
                                 alt={`Curvix ${img.name}`}
-                                className="w-full h-auto object-cover grayscale-0 transition-none"
+                                className="w-full h-auto object-cover"
                                 loading="lazy"
                             />
                         </div>
@@ -174,11 +174,11 @@ const Curvix: React.FC = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {projectImages.slice(1).map((img) => (
-                            <div key={img.name} className="w-full bg-[#080808] border border-white/[0.08] rounded-sm overflow-hidden">
+                            <div key={img.name} className="w-full bg-[#111111] border border-white/[0.08] overflow-hidden">
                                 <img
                                     src={img.src}
                                     alt={`Curvix ${img.name}`}
-                                    className="w-full h-auto object-cover grayscale-0 transition-none"
+                                    className="w-full h-auto object-cover"
                                     loading="lazy"
                                 />
                             </div>

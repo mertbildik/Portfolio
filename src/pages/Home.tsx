@@ -14,7 +14,7 @@ const ListItem: React.FC<{ number: string; label: string; to: string }> = ({ num
     <motion.div variants={itemVariants} className="relative group">
         <Link
             to={to}
-            className="w-full py-6 md:py-8 border-t border-white/10 flex items-center justify-between text-left outline-none group-focus:bg-white/5 transition-colors duration-300"
+            className="w-full py-6 md:py-8 border-t border-white/[0.08] flex items-center justify-between text-left outline-none focus-visible:bg-white/[0.05] transition-colors duration-300"
         >
             <div className="flex items-center gap-4 md:gap-8">
                 <span className="text-caption font-mono text-neutral-600 group-hover:text-neutral-400 transition-colors">
@@ -25,7 +25,7 @@ const ListItem: React.FC<{ number: string; label: string; to: string }> = ({ num
                 </span>
             </div>
 
-            <div className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out">
+            <div className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0 transition-all duration-500 ease-out">
                 <ArrowRight size={20} className="text-white" />
             </div>
         </Link>
@@ -84,7 +84,7 @@ const Home: React.FC = () => (
                             Available {getCurrentQuarter()}
                         </span>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 ml-4">
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#111111] transition-all duration-300 shrink-0 ml-4">
                         <ArrowUpRight size={20} />
                     </div>
                 </Link>

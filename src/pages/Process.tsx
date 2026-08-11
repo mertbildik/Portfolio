@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import BackButton from '../components/BackButton';
 import SplitPage from '../layouts/SplitPage';
-import { containerVariants, itemVariants } from '../components/motion';
+import { EASE, containerVariants, itemVariants } from '../components/motion';
 
 const Process: React.FC = () => {
     const steps = [
@@ -55,14 +56,13 @@ const Process: React.FC = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: EASE }}
                 className="lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto"
             >
                 <div className="flex flex-col">
-                    {/* Back Link - Very subtle, aligned */}
-                    <Link to="/" className="inline-block mb-8 lg:mb-12 opacity-40 hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-button uppercase">← Back</span>
-                    </Link>
+                    <div className="mb-8 lg:mb-12">
+                        <BackButton to="/" />
+                    </div>
 
                     {/* Title System - Matches Portfolio's hierarchy */}
                     <div className="mb-6 lg:mb-8">
@@ -103,8 +103,8 @@ const Process: React.FC = () => {
                             <motion.div
                                 initial={{ scaleY: 0 }}
                                 animate={{ scaleY: 1 }}
-                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute left-0 top-2 bottom-2 w-px bg-white/[0.1] origin-top"
+                                transition={{ duration: 1.2, ease: EASE }}
+                                className="absolute left-0 top-2 bottom-2 w-px bg-white/[0.08] origin-top"
                             />
 
                             <div className="flex flex-col gap-10 lg:gap-12">
@@ -113,15 +113,15 @@ const Process: React.FC = () => {
                                         key={step.id}
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ duration: 0.6, delay: 0.2 + (i * 0.1), ease: "easeOut" }}
+                                        transition={{ duration: 0.6, delay: 0.2 + (i * 0.1), ease: EASE }}
                                         className="relative group"
                                     >
                                         {/* Timeline Node */}
                                         <motion.div
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
-                                            transition={{ duration: 0.4, delay: 0.2 + (i * 0.1) }}
-                                            className="absolute -left-[27px] lg:-left-[35px] top-[9px] w-[5px] h-[5px] rounded-full bg-neutral-700 ring-4 ring-black group-hover:bg-neutral-400 group-hover:ring-neutral-800 transition-all duration-500"
+                                            transition={{ duration: 0.6, delay: 0.2 + (i * 0.1), ease: EASE }}
+                                            className="absolute -left-[27px] lg:-left-[35px] top-[9px] w-[5px] h-[5px] rounded-full bg-neutral-700 ring-4 ring-[#111111] group-hover:bg-neutral-400 group-hover:ring-neutral-800 transition-all duration-500"
                                         />
 
                                         <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4">
@@ -130,7 +130,7 @@ const Process: React.FC = () => {
                                                 <span className="text-caption font-mono text-neutral-600 uppercase">
                                                     {step.id}
                                                 </span>
-                                                <span className="text-card-title text-neutral-200 group-hover:text-white transition-colors duration-300">
+                                                <span className="text-card-title text-neutral-300 group-hover:text-white transition-colors duration-300">
                                                     {step.title}
                                                 </span>
                                             </div>
@@ -179,7 +179,7 @@ const Process: React.FC = () => {
                                     <span className="text-card-title text-white group-hover:text-neutral-300 transition-colors">Start a project</span>
                                     <span className="text-caption font-mono text-neutral-600 mt-1 uppercase">Open for transmission</span>
                                 </div>
-                                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shrink-0 ml-4">
+                                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#111111] transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={20} />
                                 </div>
                             </Link>
