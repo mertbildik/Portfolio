@@ -6,7 +6,7 @@ Two page shapes, one 12-column grid, one set of gutters.
 
 | Property | Value |
 |---|---|
-| Max width | `1600px`, centred (`max-w-[1600px] mx-auto`) |
+| Max width | `1600px`, centred (`max-w-shell mx-auto`) |
 | Min height | `100vh` per page |
 | Vertical padding | `96px` mobile, `128px` from `lg` (`py-24 lg:py-32`) |
 

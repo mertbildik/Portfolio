@@ -20,7 +20,7 @@ Never place portfolio images in `public/`. Never add a second file format to the
 Every image sits in the same frame.
 
 ```
-w-full  bg-[#111111]  border border-white/[0.08]  overflow-hidden
+w-full  bg-canvas  border border-line  overflow-hidden
 radius: none
 ```
 
@@ -53,11 +53,12 @@ Gap is always `32px` (`gap-8`). Columns are declared per output block (`columns:
 An output block opens with a card describing what is shown, then the images:
 
 ```
-p-6  bg-white/[0.02]  border border-white/[0.05]  rounded-lg
+p-6  bg-fill-subtle  border border-line
   title       text-card-title, white
   description text-body-sm, ink-low
 then space-y-8 to the image grid
 ```
+Square, and on the same border weight as the image frames below it.
 
 ## Portrait
 
@@ -65,10 +66,10 @@ One portrait exists (About). Its treatment is fixed.
 
 | Property | Value |
 |---|---|
-| Frame | `aspect-[3/4]`, `bg-[#111111]`, `border border-white/[0.08]`, square corners |
+| Frame | `aspect-[3/4]`, `bg-canvas`, `border border-line`, square corners |
 | Fit | `object-cover object-top` |
 | Overlay | `bg-gradient-to-t from-black/60 via-transparent to-transparent` at `opacity-60` |
-| Caption | Bottom left, `12px` inset, `text-caption font-mono uppercase`, `text-white/50` |
+| Caption | Bottom left, `12px` inset, `text-caption font-mono uppercase`, `text-ink-max/50` |
 
 ## Background texture
 
@@ -78,10 +79,10 @@ A large empty panel may repeat the pattern at a smaller scale as its own texture
 
 ```
 bg-[radial-gradient(#fff_1px,transparent_1px)]  [background-size:16px_16px]
-opacity-[0.03]  →  opacity-[0.05] on group hover  (duration-700)
+opacity-[0.03]
 ```
 
-Use this at most once per page.
+Static. The panel is not a control, so the texture does not lift on hover. Use this at most once per page.
 
 ## Alt text and loading
 

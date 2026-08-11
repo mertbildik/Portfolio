@@ -8,19 +8,19 @@ Measured against the canvas, `#111111`. WCAG AA needs `4.5:1` for normal text an
 
 | Ink | Hex | Ratio | Normal text | Large text |
 |---|---|---|---|---|
-| `ink-max` white | `#FFFFFF` | 18.9:1 | pass | pass |
-| `ink-high` neutral-200 | `#E5E5E5` | 15.0:1 | pass | pass |
-| `ink-mid` neutral-300 | `#D4D4D4` | 12.7:1 | pass | pass |
-| `ink-body` neutral-400 | `#A3A3A3` | 7.5:1 | pass | pass |
-| `ink-low` neutral-500 | `#737373` | 4.0:1 | **fail** | pass |
-| `ink-faint` neutral-600 | `#525252` | 2.4:1 | fail | fail |
+| `ink-max` | `#FFFFFF` | 18.9:1 | pass | pass |
+| `ink-high` | `#E5E5E5` | 15.0:1 | pass | pass |
+| `ink-mid` | `#D4D4D4` | 12.7:1 | pass | pass |
+| `ink-body` | `#A3A3A3` | 7.5:1 | pass | pass |
+| `ink-low` | `#737373` | 4.0:1 | **fail** | pass |
+| `ink-faint` | `#525252` | 2.4:1 | fail | fail |
 
 **Rules**
 
-1. A paragraph carrying information that appears nowhere else uses `ink-body` (neutral-400) or lighter.
+1. A paragraph carrying information that appears nowhere else uses `ink-body` or lighter.
 2. `ink-low` is for labels, eyebrows, captions and supporting copy that restates or introduces something already visible. It is the darkest ink allowed on text of any kind.
 3. `ink-faint` is for meta that a visitor can lose without losing meaning: row numbers, years, index digits. Never a sentence, never the only label on a control.
-4. Any `ink-low` or `ink-faint` element inside an interactive row must lift to `ink-body` or lighter on hover and on focus.
+4. Any `ink-low` or `ink-faint` element inside an interactive row must lift to `ink-body` or lighter on hover and on focus. Outside a control, ink stays put, so `ink-faint` must already be readable enough for its job at rest.
 5. Borders that define a control (input underlines, segmented cell edges) go to `line-active` (white) on focus, which clears the 3:1 interface bar.
 
 ## Focus
@@ -29,14 +29,18 @@ Measured against the canvas, `#111111`. WCAG AA needs `4.5:1` for normal text an
 
 | Element | Focus state |
 |---|---|
-| Row or list link | `bg-white/[0.05]` across the row |
-| Input, textarea | `border-white` on the underline, label goes white |
+| Row or list link | `border-line-active` on the row's own rule, plus the arrow revealed and the title lifted to white. No fill. |
+| Input, textarea | `border-line-active` on the underline, label goes white |
 | Segmented cell | Same as its selected state border, plus white label |
-| Circle button | The inverted hover state: `bg-white`, `ink-inverse` icon |
+| Circle button | The inverted hover state: `bg-fill-inverse`, `ink-inverse` icon |
 | Navigation item | Icon to white **and** the label revealed |
 | Back control | Full opacity, rule at its grown width |
 
-Every hover-revealed label, arrow or fill must also be triggered by `focus-visible` or `group-focus-within`. A keyboard visitor must never see less than a mouse visitor.
+Every hover-revealed label or arrow must also be triggered by `focus-visible`. A keyboard visitor must never see less than a mouse visitor.
+
+Put `group` on the focusable element itself so `group-focus-visible` resolves. On a non-focusable wrapper it silently never matches, which forces `group-focus-within` as a workaround, and that also fires on a mouse click.
+
+Since no row carries a fill on hover or focus, the rule going to `line-active` (white, 18.9:1) is the whole focus signal. It is what earns the `outline-none` on the link, so it can never be dropped without putting the outline back.
 
 ## Keyboard
 

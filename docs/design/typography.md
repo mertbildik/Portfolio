@@ -1,6 +1,6 @@
 # Typography
 
-Defined in `tailwind.config.js` under `theme.extend.fontSize`. One class sets size, weight, line height, and letter spacing.
+Defined in `src/index.css` under `@theme`, as `--text-*` variables. One class sets size, weight, line height, and letter spacing.
 
 | Class | Size | Weight | Line height | Tracking | Use |
 |---|---|---|---|---|---|
@@ -39,7 +39,7 @@ The responsiveness lives in the token, not in the markup. Do not add `md:text-*`
 Eyebrows are monospace and uppercase. The token sets size, weight, and spacing; the typeface and capitalisation are separate.
 
 ```jsx
-<span className="text-eyebrow font-mono uppercase text-neutral-500">ARCHIVE</span>
+<span className="text-eyebrow font-mono uppercase text-ink-low">ARCHIVE</span>
 ```
 
 A monospace label that introduces the block below it is an eyebrow. A value, year, time, or count is `text-caption`.

@@ -8,23 +8,29 @@ Implemented with `framer-motion`. Shared variants live in `src/components/motion
 
 | Token | Curve | Use |
 |---|---|---|
-| `ease-entrance` | `cubic-bezier(0.16, 1, 0.3, 1)` | Everything that enters or moves position. Exported as `EASE`. |
+| `ease-entrance` | `cubic-bezier(0.16, 1, 0.3, 1)` | Everything that enters or moves position |
 | `ease-state` | CSS `ease-out` | Hover and focus changes: colour, opacity, border, width |
 
 Two curves, no more. `EASE_APPLE` and the one-off `[0.23, 1, 0.32, 1]` fold into `ease-entrance`.
 
+The entrance curve exists twice on purpose, because the two runtimes want different formats: `--ease-entrance` in `src/index.css` gives the `ease-entrance` class for CSS transitions, and `EASE` in `src/components/motion.ts` gives framer-motion the same curve as four numbers. Change one, change the other.
+
 ## Duration
 
-| Token | ms | Use |
-|---|---|---|
-| `fast` | 300 | The default state change: colour, opacity, border, small transform |
-| `slow` | 500 | A larger state change: fill, reveal, scale, an element the eye should follow |
-| `enter-item` | 600 | A single item entering a stagger |
-| `enter-block` | 800 | A block, a hero, a page fade |
-| `enter-section` | 1200 | A full section, the timeline rule drawing |
-| `ambient` | 15000 / 20000 | The two background dot layers |
+Durations are written as plain numbers, not names: Tailwind has no theme namespace for them, so `duration-300` is the token. The names below are how to talk about them.
+
+| Name | ms | Written as | Use |
+|---|---|---|---|
+| fast | 300 | `duration-300` | The default state change: colour, opacity, border, small transform |
+| slow | 500 | `duration-500` | A larger state change: fill, reveal, scale, an element the eye should follow |
+| enter-item | 600 | framer `duration: 0.6` | A single item entering a stagger |
+| enter-block | 800 | framer `duration: 0.8` | A block, a hero, a page fade |
+| enter-section | 1200 | framer `duration: 1.2` | A full section, the timeline rule drawing |
+| ambient | 15000 / 20000 | framer | The two background dot layers |
 
 `700ms` and `1000ms` are not in the scale.
+
+`src/index.css` sets `--default-transition-duration: 300ms`, so a `transition-*` written without a `duration-*` lands on the scale instead of Tailwind's 150ms default.
 
 ## Distance
 
@@ -72,20 +78,23 @@ Routes are lazy-loaded. The `Suspense` fallback is an empty `min-h-screen` block
 
 Reuse these. Do not invent a new hover.
 
+Hover applies to controls: a `<button>`, an `<a>`, a `<Link>`. Content does not react to a pointer, so a grid cell, a stat, a list item or a paragraph carries no hover and no transition at all. See `surfaces.md`.
+
 | Pattern | Change | Duration |
 |---|---|---|
 | Text lift | One step up the ink ramp | 300 |
-| Row wash | Fill to `bg-white/[0.02]` | 300 |
 | Arrow reveal | `opacity-0 -translate-x-2` → `opacity-100 translate-x-0` | 300 |
 | Rule grow | `w-8` → `w-12` | 300 |
-| Circle invert | Transparent → `bg-white`, icon to `ink-inverse` | 300 |
+| Rule sharpen | `line` → `line-active`, on focus | 300 |
+| Circle invert | Transparent → `bg-fill-inverse`, icon to `ink-inverse` | 300 |
+| Cell fill | Transparent → `bg-fill-subtle`, segmented cell only | 300 |
 | Label reveal (nav) | `opacity-0 translate-y-4` → `translate-y-0` below `lg`, `opacity-0 translate-x-[-10px]` → `translate-x-0` from `lg` | 500 |
-| Value scale | `scale-105` from `origin-left` | 500 |
-| Dot brighten | `neutral-700` → `white`, or `neutral-800` → `white` | 300 |
-| Border sharpen | `line` → `line-hover` | 300 |
-| Texture lift | `opacity-[0.03]` → `opacity-[0.05]` | 700 |
 
-Compose at most three of these in one hover. A row typically uses text lift plus row wash plus arrow reveal.
+Compose at most three of these in one hover. A row uses text lift plus arrow reveal, and adds rule sharpen on keyboard focus.
+
+**Still state the duration.** The 300ms default in `index.css` is a safety net, not a licence to leave it off: writing `duration-300` says the timing was chosen, and makes the 500ms cases stand out as deliberate.
+
+`700ms` transitions (the old texture lift) and row fills are no longer in the system.
 
 ## Layout animation
 

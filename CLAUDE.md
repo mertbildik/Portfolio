@@ -13,11 +13,25 @@ npm run typecheck  # tsc --noEmit, strict
 
 There is no test framework and no linter. `npm run typecheck` plus `npm run build` is the full check, and both are currently clean.
 
-Tailwind config changes need a dev server restart to take effect.
-
 ## Stack
 
-Vite 6, React 19, TypeScript, Tailwind 3.4, framer-motion, react-router-dom 6, lucide-react. That is the whole runtime dependency list — keep it that way.
+Vite 6, React 19, TypeScript, Tailwind 4, framer-motion, react-router-dom 6, lucide-react. That is the whole runtime dependency list — keep it that way.
+
+## Design tokens
+
+`src/index.css` is the one place a design value is defined. There is no `tailwind.config.js` and no `postcss.config.js`: Tailwind 4 runs as a Vite plugin and reads its whole theme from the `@theme` block in that file. Edits there are picked up live, no restart.
+
+Tailwind builds classes from the prefix of each variable, so `--color-line` gives `border-line` and `bg-line`, `--text-card-title` gives `text-card-title`, `--ease-entrance` gives `ease-entrance`.
+
+The token names match the names in `docs/design/*.md` one for one. Those files explain what each token means and when to reach for it; `index.css` holds the values. If the two ever disagree, the CSS is right and the doc needs fixing.
+
+**Write tokens, not raw values.** No `text-neutral-500`, no `border-white/[0.08]`, no `bg-[#111111]` — use `text-ink-low`, `border-line`, `bg-canvas`. The default Tailwind palette still resolves, so a raw grey will not error; it will just quietly leave the system.
+
+Two known exceptions: `text-black` on text selection and `from-black/60` on the About portrait overlay are true black, not `canvas`.
+
+### Spacing gotcha
+
+`space-y-*` sets `margin-bottom` in Tailwind 4 (it was `margin-top` in Tailwind 3). A child inside a `space-y-*` container must not carry its own `mb-*`: they are the same property now, so one silently wins instead of the two stacking. Let the container own the spacing.
 
 ## Routing
 
@@ -50,7 +64,7 @@ Portfolio images live in `src/assets/portfolio/<project id>/` and are pulled in 
 
 ## Typography
 
-`docs/design/typography.md` defines the type system and `tailwind.config.js` implements it as twelve `fontSize` tokens (`text-display-xl` through `text-eyebrow`). Each token sets size, weight, line height and letter spacing in one class. Read that file before touching any text; its rules are the ones to follow.
+`docs/design/typography.md` defines the type system and the `@theme` block in `src/index.css` implements it as twelve `--text-*` tokens (`text-display-xl` through `text-eyebrow`). Each token sets size, weight, line height and letter spacing in one class. Read that file before touching any text; its rules are the ones to follow.
 
 The three display sizes are fluid and reach their maximum at about 890px wide. Do not add responsive size variants in markup to compensate.
 
@@ -62,4 +76,6 @@ The three display sizes are fluid and reach their maximum at about 890px wide. D
 
 `font-sans` is Inter, self-hosted as a single variable file at `public/fonts/InterVariable.woff2` covering weights 100-900. The `@font-face` rule sits at the top of `src/index.css` and `index.html` preloads the file. Do not swap this for a Google Fonts `<link>`: the full file is used rather than Google's `latin` subset because the `← Back` label and the Polish `ł` are outside that subset and would fall back to a different font mid-sentence.
 
-The variable file is upright only, so the one italic quote in `GalaNetwork.tsx` renders as a synthetic slant. `font-mono` is not defined and falls back to the system monospace font.
+The variable file is upright only, so the one italic quote in `GalaNetwork.tsx` renders as a synthetic slant.
+
+`font-mono` is the system monospace stack, written out as `--font-mono` in `index.css` rather than inherited from Tailwind's defaults. It carries every eyebrow and label on the site, so it is spelled out where it can be seen and changed.
