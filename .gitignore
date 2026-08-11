@@ -24,5 +24,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Playwright CLI scratch output
+# Playwright scratch output
 .playwright-cli
+.playwright-mcp
+test-results
+playwright-report

@@ -1,28 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
-import { CheckCircle2, MoveRight, ArrowRight, ArrowUpRight, Check, Copy } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, ArrowRight, ArrowUpRight, Check, Copy } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import PageLayout from '../components/PageLayout';
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.2
-        }
-    }
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-    }
-};
+import SplitPage from '../layouts/SplitPage';
+import { containerVariants, itemVariants } from '../components/motion';
 
 const LiveClock: React.FC = () => {
     const [date, setDate] = useState(new Date());
@@ -128,7 +109,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <PageLayout>
+        <SplitPage align="center">
             {/* COLUMN 1: PAGE IDENTITY (Span 4) */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -225,7 +206,7 @@ const Contact: React.FC = () => {
                                                     {isSelected && (
                                                         <motion.div
                                                             layoutId="active-corner"
-                                                            className="absolute top-0 right-0 w-2 h-2 bg-neutral-900 clip-path-polygon-[0_0,100%_0,100%_100%]"
+                                                            className="absolute top-0 right-0 w-2 h-2 bg-neutral-900"
                                                         />
                                                     )}
                                                 </motion.button>
@@ -393,7 +374,7 @@ const Contact: React.FC = () => {
 
                 </div>
             </motion.div>
-        </PageLayout >
+        </SplitPage>
     );
 };
 

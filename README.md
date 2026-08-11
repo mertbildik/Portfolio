@@ -15,32 +15,42 @@ npm run dev             # http://localhost:5137
 | `npm run dev` | Dev server on port 5137 |
 | `npm run build` | Production build to `dist/` |
 | `npm run preview` | Serve the built output |
-| `npm run typecheck` | `tsc --noEmit` |
+| `npm run typecheck` | `tsc --noEmit`, strict |
 
 There is no test suite. `npm run typecheck` plus `npm run build` is the full check.
 
-The app uses **HashRouter**, so real URLs look like `http://localhost:5137/#/portfolio`.
+## Deploying
+
+The app uses real URLs (`/portfolio/ofk`), so the host must serve `index.html` for
+any path it does not recognise. `public/_redirects` covers Netlify and Cloudflare
+Pages, `vercel.json` covers Vercel. On any other host, add the equivalent rule.
 
 ## Layout
 
 ```
 src/
-  App.tsx           route table + shell layout
-  index.tsx         entry point
+  App.tsx           route table
+  main.tsx          entry point
   index.css         Tailwind entry + base styles
-  assets/           images bundled by Vite (portfolio/ is matched by filename prefix)
-  components/       shared UI
-  data/             case-study content, kept out of the components
+  assets/           images bundled by Vite (portfolio/<project id>/)
+  components/       shared UI + motion variants
+  content/          projects, employment, image lookup
+  layouts/          SplitPage (the 4/8 grid), Wrapped (page frame)
   pages/            one file per standalone route
-    case-studies/   the pages under /portfolio/*
-  templates/        ProjectTemplate + EmploymentTemplate render the data files
-  utils/
+    case-studies/   everything under /portfolio/:id
 public/             files copied verbatim, no bundling
 docs/               typography system
 ```
 
-Case studies are content, not code: a record in `src/data/project-content.tsx`, an entry in
-`src/data/portfolio-items.ts`, a thin page in `src/pages/case-studies/`, and a route in `App.tsx`.
+## Adding a case study
+
+Add one entry to `src/content/projects.ts`. That makes it appear in the
+`/portfolio` list and gives it a working `/portfolio/<id>` page. Drop its
+images in `src/assets/portfolio/<id>/` and reference them by filename in the
+`output` blocks.
+
+Curvix and GalaNetwork are written by hand instead. `CaseStudy.tsx` maps those
+two ids to their own components.
 
 ## Typography
 

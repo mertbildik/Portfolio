@@ -1,46 +1,15 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { getProjectImages } from '../../utils/image-loader';
+import { getProjectImages } from '../../content/images';
 import BackButton from '../../components/BackButton';
+import { containerVariants, itemVariants, sectionVariants } from '../../components/motion';
 
 const GalaNetwork: React.FC = () => {
-    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-
-
-    // "Apple-level" ease
-    const EASE = [0.16, 1, 0.3, 1];
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1, ease: EASE }
-        }
-    };
-
-    const sectionVariants = {
-        hidden: { opacity: 0, y: 40 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1.2, ease: EASE }
-        }
-    };
 
     const projectImages = getProjectImages('gala-network');
 
@@ -220,55 +189,20 @@ const GalaNetwork: React.FC = () => {
                     A few screens and posters from GalaNetwork. Built to stay consistent across matches and formats.
                 </p>
 
-                <div className="space-y-8">
-                    {projectImages.length > 0 ? (
-                        <div className="space-y-8">
-                            {(() => {
-                                // 1. Deduplicate & Filter (Exclude 'home')
-                                const uniqueImages = Array.from(
-                                    new Map(
-                                        projectImages
-                                            .filter(img => !img.name.toLowerCase().includes('home'))
-                                            .map(img => [img.name, img])
-                                    ).values()
-                                );
-
-                                // 2. Sort (Numeric first, then remaining)
-                                const sortedImages = uniqueImages.sort((a, b) =>
-                                    a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' })
-                                );
-
-                                return (
-                                    <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[300px] gap-8">
-                                        {sortedImages.map((img, i) => {
-                                            // Bento Logic for 6 items:
-                                            // Index 0: Hero (2x2)
-                                            // Index 1, 2: Side Stack (1x1)
-                                            // Index 3, 4, 5: Bottom Row (1x1)
-
-                                            const isHero = i === 0;
-                                            const spanClass = isHero
-                                                ? "md:col-span-2 md:row-span-2"
-                                                : "md:col-span-1 md:row-span-1";
-
-                                            return (
-                                                <div key={i} className={`w-full h-full bg-[#111] border border-white/[0.08] rounded-sm overflow-hidden ${spanClass} relative`}>
-                                                    <img
-                                                        src={img.src}
-                                                        alt={`GalaNetwork visual ${img.name}`}
-                                                        className="w-full h-full object-contain grayscale-0 transition-none"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                );
-                            })()}
+                <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[300px] gap-8">
+                    {projectImages.map((img, i) => (
+                        <div
+                            key={img.name}
+                            className={`w-full h-full bg-[#111] border border-white/[0.08] rounded-sm overflow-hidden relative ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                        >
+                            <img
+                                src={img.src}
+                                alt={`GalaNetwork ${img.name}`}
+                                className="w-full h-full object-contain grayscale-0 transition-none"
+                                loading="lazy"
+                            />
                         </div>
-                    ) : (
-                        <p className="text-neutral-600 text-body-sm">No images found.</p>
-                    )}
+                    ))}
                 </div>
             </motion.section>
 

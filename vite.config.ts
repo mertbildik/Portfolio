@@ -12,14 +12,4 @@ export default defineConfig({
       interval: 1000,
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-framer': ['framer-motion'],
-        },
-      },
-    },
-  },
 });

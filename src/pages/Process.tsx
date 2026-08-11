@@ -3,26 +3,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// -- Variants (Consistent with Home/Portfolio) --
-import PageLayout from '../components/PageLayout';
-
-// ... (Variants can be removed if shared or kept local. keeping local for now)
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.05, delayChildren: 0.1 }
-    }
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-    }
-};
+import SplitPage from '../layouts/SplitPage';
+import { containerVariants, itemVariants } from '../components/motion';
 
 const Process: React.FC = () => {
     const steps = [
@@ -68,7 +50,7 @@ const Process: React.FC = () => {
     ];
 
     return (
-        <PageLayout>
+        <SplitPage align="center">
             {/* LEFT COLUMN: Header / Intro - col-span-4 */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -206,7 +188,7 @@ const Process: React.FC = () => {
 
                 </div>
             </motion.div>
-        </PageLayout>
+        </SplitPage>
     );
 };
 

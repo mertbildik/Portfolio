@@ -1,33 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import mertPhoto from '../assets/mert.jpeg';
-import PageLayout from '../components/PageLayout';
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.2
-        }
-    }
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-    }
-};
+import mertPhoto from '../assets/mert.webp';
+import SplitPage from '../layouts/SplitPage';
+import { containerVariants, itemVariants } from '../components/motion';
 
 const About: React.FC = () => {
     return (
-        <PageLayout>
+        <SplitPage align="center">
             {/* LEFT COLUMN: Header / Intro - PRESERVED EXACTLY */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -170,7 +151,7 @@ const About: React.FC = () => {
                     </div>
                 </div>
             </motion.div>
-        </PageLayout>
+        </SplitPage>
     );
 };
 
