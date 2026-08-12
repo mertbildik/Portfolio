@@ -1,6 +1,6 @@
 # Mert Bildik — Portfolio
 
-Personal portfolio site. Vite 6 + React 19 + TypeScript + Tailwind 3.4, deployed as a static site.
+Personal portfolio site. Vite 8 + React 19 + TypeScript 7 + Tailwind 4, deployed as a static site.
 
 ## Run it
 
@@ -16,8 +16,9 @@ npm run dev             # http://localhost:3000
 | `npm run build` | Production build to `dist/` |
 | `npm run preview` | Serve the built output |
 | `npm run typecheck` | `tsc --noEmit`, strict |
+| `npm run test` | Playwright smoke tests over every route |
 
-There is no test suite. `npm run typecheck` plus `npm run build` is the full check.
+`npm run typecheck`, `npm run build` and `npm run test` are the full check. There is no linter.
 
 ## Deploying
 
@@ -39,7 +40,8 @@ src/
   pages/            one file per standalone route
     case-studies/   everything under /portfolio/:id
 public/             files copied verbatim, no bundling
-docs/               typography system
+tests/              Playwright smoke tests
+docs/design/        design system reference (colour, type, spacing, motion, ...)
 ```
 
 ## Adding a case study

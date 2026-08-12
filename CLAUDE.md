@@ -9,13 +9,16 @@ npm run dev        # Vite dev server on port 3000, host 0.0.0.0 (polling watcher
 npm run build      # production build to dist/
 npm run preview    # serve the built output
 npm run typecheck  # tsc --noEmit, strict
+npm run test       # Playwright smoke tests over every route
 ```
 
-There is no test framework and no linter. `npm run typecheck` plus `npm run build` is the full check, and both are currently clean.
+There is no linter. `npm run typecheck`, `npm run build` and `npm run test` are the full check, and all three are currently clean.
 
 ## Stack
 
-Vite 6, React 19, TypeScript, Tailwind 4, framer-motion, react-router-dom 6, lucide-react. That is the whole runtime dependency list — keep it that way.
+Vite 8, React 19, TypeScript 7, Tailwind 4, motion 13, react-router 8, lucide-react 1. Playwright for tests. That is the whole dependency list, keep it that way.
+
+Two packages were renamed upstream: import from `motion/react`, not `framer-motion`, and from `react-router`, not `react-router-dom`.
 
 ## Design tokens
 
