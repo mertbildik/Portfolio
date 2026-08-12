@@ -42,14 +42,17 @@ const Home: React.FC = () => (
         >
             <motion.div variants={itemVariants} className="pl-[2px]">
                 <span className="text-eyebrow font-mono text-ink-low uppercase mb-6 md:mb-8 block">
-                    DESIGN ENGINEER · AVAILABLE FOR WORK
+                    DESIGN ENGINEER
                 </span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-display-xl text-ink-max mix-blend-screen">
-                <span className="text-ink-body">Hey, I'm Mert.</span>
-                <br />
-                <span className="text-ink-low">I </span>design<span className="text-ink-low"> and </span>build
+            <motion.p variants={itemVariants} className="text-headline text-ink-body mb-3 md:mb-4 flex items-center gap-3">
+                <span aria-hidden="true" className="text-[0.85em] leading-none">👋</span>
+                Hey, I'm Mert.
+            </motion.p>
+
+            <motion.h1 variants={itemVariants} className="text-display-xl text-ink-high">
+                <span className="text-ink-low">I </span>design / build
                 <br />
                 <span className="text-ink-low">digital products.</span>
             </motion.h1>
@@ -77,10 +80,11 @@ const Home: React.FC = () => (
             <motion.div variants={itemVariants} className="mt-12 w-full">
                 <Link to="/contact" className="flex items-center justify-between group cursor-pointer whitespace-nowrap">
                     <div className="flex flex-col shrink-0">
-                        <span className="text-card-title text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300">
+                        <span className="text-card-title text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">
                             Get in touch
                         </span>
-                        <span className="text-caption font-mono text-ink-faint mt-1">
+                        <span className="text-caption font-mono text-ink-faint mt-1 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-status-ok/50 rounded-full animate-pulse" />
                             Available {getCurrentQuarter()}
                         </span>
                     </div>
