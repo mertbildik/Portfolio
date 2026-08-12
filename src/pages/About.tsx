@@ -139,9 +139,9 @@ const About: React.FC = () => {
 
                             <Link to="/contact" className="w-full flex items-center justify-between group cursor-pointer lg:w-auto lg:min-w-[280px]">
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-button text-ink-max group-hover:text-ink-mid transition-colors duration-300 uppercase font-mono">Start a conversation</span>
+                                    <span className="text-button text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300 uppercase font-mono">Start a conversation</span>
                                 </div>
-                                <div className="w-10 h-10 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
+                                <div className="w-10 h-10 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={16} />
                                 </div>
                             </Link>

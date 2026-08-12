@@ -176,10 +176,10 @@ const Process: React.FC = () => {
                                 className="w-full flex items-center justify-between group cursor-pointer"
                             >
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-card-title text-ink-max group-hover:text-ink-mid transition-colors duration-300">Start a project</span>
+                                    <span className="text-card-title text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300">Start a project</span>
                                     <span className="text-caption font-mono text-ink-faint mt-1 uppercase">Open for transmission</span>
                                 </div>
-                                <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
+                                <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={20} />
                                 </div>
                             </Link>

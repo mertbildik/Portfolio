@@ -180,7 +180,7 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                                         className={`text-left px-4 py-2 text-button transition-all duration-300 border-l mb-[-1px] ${
                                             activeSection === section.id
                                                 ? 'text-ink-max border-line-active pl-6'
-                                                : 'text-ink-low border-transparent hover:text-ink-mid hover:pl-5'
+                                                : 'text-ink-low border-transparent hover:text-ink-mid hover:pl-5 focus-visible:text-ink-mid focus-visible:pl-5'
                                         }`}
                                     >
                                         {section.label}

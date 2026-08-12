@@ -67,11 +67,11 @@ const Portfolio: React.FC = () => (
                                         variants={itemVariants}
                                         className="relative py-5 lg:py-6 px-2 -mx-2 border-b border-line group-focus-visible:border-line-active flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 transition-colors duration-300"
                                     >
-                                        <span className="text-card-title text-ink-mid group-hover:text-ink-max transition-colors duration-300 truncate">
+                                        <span className="text-card-title text-ink-mid group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300 truncate">
                                             {project.title}
                                         </span>
 
-                                        <span className="hidden md:block text-caption font-mono text-ink-faint group-hover:text-ink-low uppercase transition-colors duration-300">
+                                        <span className="hidden md:block text-caption font-mono text-ink-faint group-hover:text-ink-low group-focus-visible:text-ink-low uppercase transition-colors duration-300">
                                             {project.role}
                                         </span>
 

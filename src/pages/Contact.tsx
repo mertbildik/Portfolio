@@ -166,7 +166,7 @@ const Contact: React.FC = () => {
                                 </p>
                                 <button
                                     onClick={() => { setFormState('idle'); setFormData({ name: '', email: '', message: '' }); setSelectedServices([]); }}
-                                    className="text-button uppercase text-ink-body hover:text-ink-max transition-colors duration-300 border-b border-transparent hover:border-line-active pb-0.5"
+                                    className="text-button uppercase text-ink-body hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 border-b border-transparent hover:border-line-active focus-visible:border-line-active pb-0.5"
                                 >
                                     Start over
                                 </button>
@@ -195,7 +195,7 @@ const Contact: React.FC = () => {
                                                         relative h-14 md:h-16 flex items-center justify-center text-button border-r border-b border-line transition-all duration-300 group
                                                         ${isSelected
                                                             ? 'bg-fill-inverse text-ink-inverse'
-                                                            : 'bg-transparent text-ink-low hover:text-ink-max hover:bg-fill-subtle'
+                                                            : 'bg-transparent text-ink-low hover:text-ink-max hover:bg-fill-subtle focus-visible:text-ink-max focus-visible:bg-fill-subtle'
                                                         }
                                                     `}
                                                 >
@@ -326,7 +326,7 @@ const Contact: React.FC = () => {
                                         className="w-full flex items-center justify-between group cursor-pointer pt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         <div className="flex flex-col shrink-0 text-left">
-                                            <span className="text-button text-ink-max group-hover:text-ink-mid transition-colors duration-300">
+                                            <span className="text-button text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300">
                                                 {formState === 'submitting' ? 'Sending...' : 'Submit'}
                                             </span>
                                             <span className="text-caption font-mono text-ink-faint mt-1 uppercase">
@@ -335,7 +335,7 @@ const Contact: React.FC = () => {
                                                 ) : isFormReady ? "Ready to send." : "Not ready."}
                                             </span>
                                         </div>
-                                        <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
+                                        <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                             <ArrowRight size={20} />
                                         </div>
                                     </button>
@@ -367,9 +367,9 @@ const Contact: React.FC = () => {
                         <div className="flex flex-col gap-4 py-8 md:px-8 md:border-r border-line">
                             <span className="text-eyebrow font-mono text-ink-faint uppercase">NETWORKS</span>
                             <div className="flex flex-col gap-2">
-                                <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-ink-body hover:text-ink-max transition-colors duration-300 group w-fit">
+                                <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-ink-body hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 group w-fit">
                                     <span className="text-caption font-mono">LinkedIn</span>
-                                    <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300" />
                                 </a>
                             </div>
                         </div>

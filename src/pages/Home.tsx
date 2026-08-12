@@ -17,10 +17,10 @@ const ListItem: React.FC<{ number: string; label: string; to: string }> = ({ num
             className="group w-full py-6 md:py-8 border-t border-line focus-visible:border-line-active flex items-center justify-between text-left outline-none transition-colors duration-300"
         >
             <div className="flex items-center gap-4 md:gap-8">
-                <span className="text-caption font-mono text-ink-faint group-hover:text-ink-body transition-colors duration-300">
+                <span className="text-caption font-mono text-ink-faint group-hover:text-ink-body group-focus-visible:text-ink-body transition-colors duration-300">
                     {number}
                 </span>
-                <span className="text-card-title text-ink-mid group-hover:text-ink-max transition-colors duration-300 whitespace-nowrap">
+                <span className="text-card-title text-ink-mid group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300 whitespace-nowrap">
                     {label}
                 </span>
             </div>
@@ -77,14 +77,14 @@ const Home: React.FC = () => (
             <motion.div variants={itemVariants} className="mt-12 w-full">
                 <Link to="/contact" className="flex items-center justify-between group cursor-pointer whitespace-nowrap">
                     <div className="flex flex-col shrink-0">
-                        <span className="text-card-title text-ink-max group-hover:text-ink-mid transition-colors duration-300">
+                        <span className="text-card-title text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300">
                             Get in touch
                         </span>
                         <span className="text-caption font-mono text-ink-faint mt-1">
                             Available {getCurrentQuarter()}
                         </span>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
+                    <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                         <ArrowUpRight size={20} />
                     </div>
                 </Link>
