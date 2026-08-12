@@ -4,89 +4,59 @@ The site is low contrast by design. That makes the ink rules below the tightest 
 
 ## Contrast
 
-Measured against the canvas, `#111111`. WCAG AA needs `4.5:1` for normal text and `3:1` for large text (24px, or 18.66px bold) and for interface borders.
-
-| Ink | Hex | Ratio | Normal text | Large text |
-|---|---|---|---|---|
-| `ink-max` | `#FFFFFF` | 18.9:1 | pass | pass |
-| `ink-high` | `#E5E5E5` | 15.0:1 | pass | pass |
-| `ink-mid` | `#D4D4D4` | 12.7:1 | pass | pass |
-| `ink-body` | `#A3A3A3` | 7.5:1 | pass | pass |
-| `ink-low` | `#737373` | 4.0:1 | **fail** | pass |
-| `ink-faint` | `#525252` | 2.4:1 | fail | fail |
-
-**Rules**
+WCAG AA needs 4.5:1 for normal text, and 3:1 for large text and for interface borders. Measured against the canvas, only the top four ink steps clear the normal-text bar. `ink-low` clears large text only, and `ink-faint` clears neither. The measured ratio for each step is written beside it in `src/index.css`.
 
 1. A paragraph carrying information that appears nowhere else uses `ink-body` or lighter.
-2. `ink-low` is for labels, eyebrows, captions and supporting copy that restates or introduces something already visible. It is the darkest ink allowed on text of any kind.
-3. `ink-faint` is for meta that a visitor can lose without losing meaning: row numbers, years, index digits. Never a sentence, never the only label on a control.
-4. Any `ink-low` or `ink-faint` element inside an interactive row must lift to `ink-body` or lighter on hover and on focus. Outside a control, ink stays put, so `ink-faint` must already be readable enough for its job at rest.
-5. Borders that define a control (input underlines, segmented cell edges) go to `line-active` (white) on focus, which clears the 3:1 interface bar.
+2. `ink-low` is for labels, eyebrows, captions and supporting copy that restates or introduces something already visible. **It is the darkest ink allowed on text of any kind.**
+3. `ink-faint` is for meta a visitor can lose without losing meaning: row numbers, years, index digits. Never a sentence, never the only label on a control.
+4. Any `ink-low` or `ink-faint` element inside an interactive row lifts to `ink-body` or lighter on hover and on focus. Outside a control ink stays put, so it must already be readable enough for its job at rest.
+5. A border that defines a control goes to `line-active` on focus, which clears the 3:1 interface bar.
 
 ## Focus
 
-`outline-none` is allowed **only** when the same element defines a visible focus state. No exceptions.
+**`outline-none` is allowed only when the same element defines a visible focus state.** No exceptions.
 
-| Element | Focus state |
-|---|---|
-| Row or list link | `border-line-active` on the row's own rule, plus the arrow revealed and the title lifted to white. No fill. |
-| Input, textarea | `border-line-active` on the underline, label goes white |
-| Segmented cell | Same as its selected state border, plus white label |
-| Circle button | The inverted hover state: `bg-fill-inverse`, `ink-inverse` icon |
-| Navigation item | Icon to white **and** the label revealed |
-| Back control | Full opacity, rule at its grown width |
+Every hover-revealed label, arrow or colour change must also fire on `focus-visible`. A keyboard visitor must never see less than a mouse visitor.
 
-Every hover-revealed label or arrow must also be triggered by `focus-visible`. A keyboard visitor must never see less than a mouse visitor.
+Put `group` on the focusable element itself so `group-focus-visible` resolves against it. On a non-focusable wrapper it silently never matches, which forces `group-focus-within` as a workaround, and that also fires on a mouse click.
 
-Put `group` on the focusable element itself so `group-focus-visible` resolves. On a non-focusable wrapper it silently never matches, which forces `group-focus-within` as a workaround, and that also fires on a mouse click.
-
-Since no row carries a fill on hover or focus, the rule going to `line-active` (white, 18.9:1) is the whole focus signal. It is what earns the `outline-none` on the link, so it can never be dropped without putting the outline back.
+Since no row carries a fill on hover or focus, the rule going white is the whole focus signal. It is what earns the `outline-none` on the link, so it can never be dropped without putting the outline back.
 
 ## Keyboard
 
-- Anything clickable is a `<button>` or an `<a>`/`<Link>`. A `div` with `onClick` is not shippable. This applies to the copy-to-clipboard control and to any card that opens a page.
+- Anything clickable is a `<button>` or an `<a>`/`<Link>`. A `div` with `onClick` is not shippable.
 - Tab order follows source order. No `tabindex` above `0`.
-- The case-study contents nav is a list of `<button>`s that scroll to a section. Sections carry `scroll-mt-32` so the target is not hidden under the sticky rail.
-- No keyboard trap exists in the system. There are no modals or overlays.
+- Anything that scrolls to a section leaves scroll margin on the target, so it does not land under the sticky rail.
+- There are no modals or overlays, so no keyboard trap exists.
 
 ## Targets
 
-Minimum tap target `44 × 44px`.
-
-| Control | Meets it via |
-|---|---|
-| Circle button | `w-12 h-12` (48) |
-| Compact circle button | `w-10 h-10` (40) plus its label, the whole row being the link |
-| Segmented cell | `h-14 md:h-16` (56 / 64) |
-| List row | `py-6` on full-width content (72+) |
-| Navigation icon | `w-11 h-11` on mobile, `w-11 h-16` on the desktop rail. The 20px icon is centred inside it. |
-| Inline icon (copy, external link) | Never a target on its own. The label beside it is part of the same control. |
+Minimum tap target 44 × 44px. Where a control is smaller than that, the label beside it is part of the same control and the whole row is the link. An inline icon is never a target on its own.
 
 ## Forms
 
-- Every input has a programmatic label: `id` on the field, `htmlFor` on the label, or an `aria-label`. A floating visual label is not a label.
+- Every input has a programmatic label: an `id` and `htmlFor` pair, or an `aria-label`. A floating visual label is not a label.
 - Placeholders are transparent by design, so they can never be the only prompt.
-- Required fields are marked in the markup with `required`, not only by validation on submit.
-- Submission state is announced in text, not by colour alone: "Not ready.", "Ready to send.", "Sending...", "Submission failed. Click to retry."
-- The error colour (`red-500`) always accompanies an error sentence.
-- The success panel is reachable and focusable, and offers a way back to a blank form.
+- Required fields are marked with `required` in the markup, not only by validation on submit.
+- Submission state is announced in text, never by colour alone. The error colour always accompanies an error sentence.
+- The success panel offers a way back to a blank form.
 
 ## Content
 
 | Rule | Detail |
 |---|---|
-| One `h1` per page | The page title. Case studies use the project name. |
-| Headings descend | `h1` → `h2` section → `h3` block → `h4` label. Never skip a level to get a size. |
-| Eyebrows are not headings | A monospace eyebrow that introduces a section is a `<span>` unless it is the section's real heading. |
-| Icons | Never the only signal. Pair with a label or give the control an `aria-label`. |
-| Status | Never colour alone. The green dot always sits beside "Available for new projects". |
-| Type floor | `text-caption` (12px) is the smallest size in the system, and only for meta. Body copy never goes below `text-body-sm` (14px). |
+| One `h1` per page | The page title. A case study uses the project name. |
+| Headings descend | Never skip a level to reach a size. Size comes from the type token. |
+| Eyebrows are not headings | A monospace eyebrow introducing a section is a `<span>` unless it is the section's real heading. |
+| Icons | Never the only signal. Pair with a label, or give the control an `aria-label`. |
+| Status | Never colour alone. A status dot always sits beside its sentence. |
+| Type floor | `text-caption` is the smallest size, and only for meta. Body copy never goes below `text-body-sm`. |
 | Alt text | Describes the content of the screen. Decorative layers are `div`s, not images. |
-| Language | `lang="en"` on `<html>`. Foreign proper nouns inside English copy are fine and need no markup. |
+| Language | `lang="en"` on `<html>`. Foreign proper nouns inside English copy need no markup. |
 
 ## Motion
 
-Honour `prefers-reduced-motion: reduce`. See `motion.md` for what stops and what stays. The ambient background loops forever, so it must stop under the query.
+Honour `prefers-reduced-motion: reduce`. See `motion.md`. The ambient background loops forever, so it must stop under the query.
 
 ## Check before shipping
 
