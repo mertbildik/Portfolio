@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router';
 import { PROJECTS } from '../../content/projects';
 import { EMPLOYMENT_CONTENT } from '../../content/employment';
 import ProjectTemplate from './ProjectTemplate';

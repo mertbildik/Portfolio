@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import mertPhoto from '../assets/mert.webp';
 import BackButton from '../components/BackButton';
 import SplitPage from '../layouts/SplitPage';

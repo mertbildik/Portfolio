@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from 'react-router-dom';
-import { AnimatePresence, MotionConfig } from 'framer-motion';
+import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from 'react-router';
+import { AnimatePresence, MotionConfig } from 'motion/react';
 
 import Navigation from './components/Navigation';
 import GlobalBackground from './components/GlobalBackground';
@@ -47,7 +47,7 @@ const App: React.FC = () => (
     // reducedMotion="user" drops every transform and layout animation, including
     // the looping background, when the visitor asks for less motion.
     <MotionConfig reducedMotion="user">
-        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <BrowserRouter>
             {/* Layout only. Ink, font and selection come from `body` in index.css,
                 so the document default stays ink-high and white keeps meaning
                 emphasis rather than being the floor. */}

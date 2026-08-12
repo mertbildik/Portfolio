@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { getProjectImages } from '../../content/images';
 import BackButton from '../../components/BackButton';
 import { EASE, listVariants, itemVariants } from '../../components/motion';

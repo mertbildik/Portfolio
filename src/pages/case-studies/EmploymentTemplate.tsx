@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Lock } from 'lucide-react';
 import BackButton from '../../components/BackButton';
 import StatBlock from '../../components/StatBlock';

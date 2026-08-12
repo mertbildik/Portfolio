@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 
 /** Shared page frame for routes that do not lay themselves out. */
 const Wrapped: React.FC = () => (

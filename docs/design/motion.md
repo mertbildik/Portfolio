@@ -2,7 +2,7 @@
 
 Content enters once, from below, and settles. State changes are short and colour-led. Almost nothing loops.
 
-Implemented with `framer-motion`. Shared variants live in `src/components/motion.ts`.
+Implemented with `motion`. Shared variants live in `src/components/motion.ts`.
 
 ## Easing
 
@@ -13,7 +13,7 @@ Implemented with `framer-motion`. Shared variants live in `src/components/motion
 
 Two curves, no more. `EASE_APPLE` and the one-off `[0.23, 1, 0.32, 1]` fold into `ease-entrance`.
 
-The entrance curve exists twice on purpose, because the two runtimes want different formats: `--ease-entrance` in `src/index.css` gives the `ease-entrance` class for CSS transitions, and `EASE` in `src/components/motion.ts` gives framer-motion the same curve as four numbers. Change one, change the other.
+The entrance curve exists twice on purpose, because the two runtimes want different formats: `--ease-entrance` in `src/index.css` gives the `ease-entrance` class for CSS transitions, and `EASE` in `src/components/motion.ts` gives motion the same curve as four numbers. Change one, change the other.
 
 ## Duration
 
@@ -123,7 +123,7 @@ Under `prefers-reduced-motion: reduce`:
 - Hover colour and opacity changes continue. They carry state and must remain.
 - Page transitions become a cut.
 
-`MotionConfig reducedMotion="user"` in `App.tsx` covers everything framer-motion drives. CSS loops are not covered by it and need their own `@media (prefers-reduced-motion: reduce)` rule in `index.css`.
+`MotionConfig reducedMotion="user"` in `App.tsx` covers everything motion drives. CSS loops are not covered by it and need their own `@media (prefers-reduced-motion: reduce)` rule in `index.css`.
 
 ## Rules
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 
 // `text-ink-max` is load-bearing, not decoration: the rule below is drawn with
 // `bg-current`, so the label's ink is also the rule's ink. Both would otherwise

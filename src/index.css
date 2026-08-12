@@ -148,7 +148,7 @@
   --radius-*: initial;
 
   /* ---- motion ----------------------------------------------------------
-     The one entrance curve, for transitions written in CSS. framer-motion needs
+     The one entrance curve, for transitions written in CSS. motion needs
      the same curve as four numbers rather than a CSS string, so it keeps its own
      copy in src/components/motion.ts. Two spellings of one curve, in two
      different runtimes: change one and change the other.
@@ -186,7 +186,7 @@
   }
 }
 
-/* framer-motion handles its own animations via MotionConfig reducedMotion="user".
+/* motion handles its own animations via MotionConfig reducedMotion="user".
    This covers the one CSS loop left: the pulsing status dot. */
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse {

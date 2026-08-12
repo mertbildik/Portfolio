@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { PROJECTS, Project } from '../content/projects';
 import BackButton from '../components/BackButton';
 import SplitPage from '../layouts/SplitPage';
