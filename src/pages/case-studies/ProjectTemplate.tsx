@@ -17,7 +17,7 @@ const Stats: React.FC<{ stats: ImpactStat[] }> = ({ stats }) => (
     <div className="flex flex-col gap-10">
         {stats.map((stat) => (
             <div key={stat.title} className="flex flex-col gap-3">
-                <span className="text-display-md text-ink-max">{stat.number}</span>
+                <span className="text-display-md text-ink-high">{stat.number}</span>
                 <span className="text-eyebrow font-mono text-ink-low uppercase">{stat.title}</span>
                 <p className="text-ink-body text-body-sm">{stat.description}</p>
             </div>
@@ -100,8 +100,8 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
         return (
             <div key={block.title} className="space-y-8">
                 <div className="p-6 bg-fill-subtle border border-line">
-                    <h4 className="text-card-title text-ink-max mb-2">{block.title}</h4>
-                    <p className="text-ink-low text-body-sm">{block.description}</p>
+                    <h4 className="text-card-title text-ink-high mb-2">{block.title}</h4>
+                    <p className="text-ink-body text-body-sm">{block.description}</p>
                 </div>
 
                 {blockImages.length > 0 && (
@@ -126,12 +126,12 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
     };
 
     return (
-        <div className="w-full flex flex-col items-start pb-32">
+        <div className="w-full flex flex-col items-start pb-32 space-y-24 md:space-y-32">
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: EASE }}
-                className="w-full mb-16 lg:mb-24"
+                className="w-full"
             >
                 <div className="mb-16 md:mb-24">
                     <BackButton />
@@ -142,21 +142,21 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         <span className="w-1.5 h-1.5 rounded-full bg-fill-inverse" />
                         <span className="text-caption font-mono text-ink-mid uppercase">{project.role}</span>
                     </div>
-                    <h1 className="text-display-xl text-ink-max text-balance">{project.title}</h1>
-                    <p className="text-body-lg text-ink-low max-w-2xl text-balance">{study.oneLineSummary}</p>
+                    <h1 className="text-display-xl text-ink-high text-balance">{project.title}</h1>
+                    <p className="text-body-lg text-ink-body max-w-2xl text-balance">{study.oneLineSummary}</p>
                 </div>
             </motion.div>
 
-            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <div className="lg:col-span-3 lg:col-start-1 hidden lg:block pt-12 pb-24 relative">
                     <div className="flex flex-col gap-12 h-full">
                         <div className="space-y-10">
                             <div className="space-y-3">
-                                <h3 className="text-eyebrow font-mono text-ink-faint uppercase">Timeline</h3>
+                                <h3 className="text-eyebrow font-mono text-ink-low uppercase">Timeline</h3>
                                 <p className="text-ink-mid text-caption">{study.timeline}</p>
                             </div>
                             <div className="space-y-3">
-                                <h3 className="text-eyebrow font-mono text-ink-faint uppercase">Tools</h3>
+                                <h3 className="text-eyebrow font-mono text-ink-low uppercase">Tools</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {study.tools.map((tool) => (
                                         <span
@@ -171,7 +171,7 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         </div>
 
                         <nav className="space-y-2 sticky top-32">
-                            <span className="text-eyebrow font-mono text-ink-faint uppercase mb-4 block">Contents</span>
+                            <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">Contents</span>
                             <div className="flex flex-col border-l border-line">
                                 {SECTIONS.map((section) => (
                                     <button
@@ -180,7 +180,7 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                                         className={`text-left px-4 py-2 text-button transition-all duration-300 border-l mb-[-1px] ${
                                             activeSection === section.id
                                                 ? 'text-ink-max border-line-active pl-6'
-                                                : 'text-ink-low border-transparent hover:text-ink-mid hover:pl-5 focus-visible:text-ink-mid focus-visible:pl-5'
+                                                : 'text-ink-low border-transparent hover:text-ink-body hover:pl-6 focus-visible:text-ink-body focus-visible:pl-6'
                                         }`}
                                     >
                                         {section.label}
@@ -198,19 +198,19 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                     className="lg:col-span-8 lg:col-start-5 space-y-24 md:space-y-32"
                 >
                     <motion.section id="problem" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-faint uppercase block">01 — The Problem</span>
+                        <span className="text-eyebrow font-mono text-ink-low uppercase block">01 — The Problem</span>
                         <div className="space-y-6">{renderText(study.problem)}</div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-line">
                             <div className="space-y-3">
-                                <h4 className="text-eyebrow font-mono uppercase text-ink-max">Context</h4>
-                                <p className="text-ink-low text-body-sm">{study.context}</p>
+                                <h4 className="text-eyebrow font-mono uppercase text-ink-high">Context</h4>
+                                <p className="text-ink-body text-body-sm">{study.context}</p>
                             </div>
                             <div className="space-y-3">
-                                <h4 className="text-eyebrow font-mono uppercase text-ink-max">Objectives</h4>
+                                <h4 className="text-eyebrow font-mono uppercase text-ink-high">Objectives</h4>
                                 <ul className="space-y-2">
                                     {study.goals.map((goal) => (
-                                        <li key={goal} className="text-ink-low text-body-sm flex gap-3 items-start">
+                                        <li key={goal} className="text-ink-body text-body-sm flex gap-3 items-start">
                                             <span className="w-1 h-1 rounded-full bg-ink-low mt-2 shrink-0" />
                                             {goal}
                                         </li>
@@ -221,17 +221,17 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                     </motion.section>
 
                     <motion.section id="approach" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-faint uppercase block">02 — Approach</span>
+                        <span className="text-eyebrow font-mono text-ink-low uppercase block">02 — Approach</span>
                         <div className="space-y-6">{renderText(study.approach)}</div>
 
                         <div className="p-8 bg-fill-subtle border border-line">
                             <h4 className="text-eyebrow font-mono text-ink-low uppercase mb-4">User Scenario</h4>
-                            <p className="text-ink-mid text-body">{study.usersScenario}</p>
+                            <p className="text-ink-body text-body">{study.usersScenario}</p>
                         </div>
                     </motion.section>
 
                     <motion.section id="solution" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-faint uppercase block">03 — Solution</span>
+                        <span className="text-eyebrow font-mono text-ink-low uppercase block">03 — Solution</span>
                         <div className="space-y-6">{renderText(study.solution)}</div>
 
                         <div className="grid grid-cols-1 gap-8 pt-4">
@@ -242,8 +242,8 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                                         key={title}
                                         className="pl-6 border-l border-line"
                                     >
-                                        <h5 className="text-card-title text-ink-max mb-2">{title.trim()}</h5>
-                                        <p className="text-body-sm text-ink-low">{body.join('—').trim()}</p>
+                                        <h5 className="text-card-title text-ink-high mb-2">{title.trim()}</h5>
+                                        <p className="text-body-sm text-ink-body">{body.join('—').trim()}</p>
                                     </div>
                                 );
                             })}
@@ -251,12 +251,12 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                     </motion.section>
 
                     <motion.section id="output" variants={itemVariants} className="space-y-12 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-faint uppercase block">04 — Output</span>
+                        <span className="text-eyebrow font-mono text-ink-low uppercase block">04 — Output</span>
                         <div className="space-y-16">{study.output.map(renderOutput)}</div>
                     </motion.section>
 
                     <motion.section id="impact" variants={itemVariants} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-faint uppercase block">05 — Impact</span>
+                        <span className="text-eyebrow font-mono text-ink-low uppercase block">05 — Impact</span>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="p-8 border border-line">
@@ -278,8 +278,8 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         </div>
 
                         <div className="pt-24 border-t border-line">
-                            <h3 className="text-display-lg text-ink-max mb-8">Retrospective</h3>
-                            <div className="text-ink-low text-body max-w-2xl space-y-4">{renderText(study.learnings)}</div>
+                            <h3 className="text-display-lg text-ink-high mb-8">Retrospective</h3>
+                            <div className="text-ink-body text-body max-w-2xl space-y-4">{renderText(study.learnings)}</div>
                         </div>
                     </motion.section>
                 </motion.div>

@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
                         <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             Inquiry
                         </span>
-                        <h1 className="text-display-xl text-ink-max">
+                        <h1 className="text-display-xl text-ink-high">
                             Let's <br />
                             <span className="text-ink-low">Talk.</span>
                         </h1>
@@ -160,8 +160,8 @@ const Contact: React.FC = () => {
                                 className="py-12 pl-6 border-l border-line-active"
                             >
                                 <CheckCircle2 size={24} className="text-ink-max mb-6" strokeWidth={1.5} />
-                                <h3 className="text-headline text-ink-max mb-2">Request initiated.</h3>
-                                <p className="text-ink-low text-body-sm max-w-xs mb-8">
+                                <h3 className="text-headline text-ink-high mb-2">Request initiated.</h3>
+                                <p className="text-ink-body text-body-sm max-w-xs mb-8">
                                     I'll review your brief shortly. Expect a response at {formData.email}.
                                 </p>
                                 <button
@@ -234,11 +234,11 @@ const Contact: React.FC = () => {
                                                 onFocus={() => setFocusedField('name')}
                                                 onBlur={() => setFocusedField(null)}
                                                 required
-                                                className="block w-full bg-transparent border-b border-line py-4 text-ink-max text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer"
+                                                className="block w-full bg-transparent border-b border-line py-4 text-ink-high text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer"
                                                 placeholder="Your name"
                                             />
                                             <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                                <label htmlFor="contact-name" className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'name' || formData.name ? 'text-ink-max' : 'text-ink-faint'}`}>
+                                                <label htmlFor="contact-name" className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'name' || formData.name ? 'text-ink-max' : 'text-ink-low'}`}>
                                                     Your name
                                                 </label>
                                                 {/* Active Marker */}
@@ -264,11 +264,11 @@ const Contact: React.FC = () => {
                                                 onFocus={() => setFocusedField('email')}
                                                 onBlur={() => setFocusedField(null)}
                                                 required
-                                                className="block w-full bg-transparent border-b border-line py-4 text-ink-max text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer"
+                                                className="block w-full bg-transparent border-b border-line py-4 text-ink-high text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer"
                                                 placeholder="Your email"
                                             />
                                             <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                                <label htmlFor="contact-email" className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'email' || formData.email ? 'text-ink-max' : 'text-ink-faint'}`}>
+                                                <label htmlFor="contact-email" className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'email' || formData.email ? 'text-ink-max' : 'text-ink-low'}`}>
                                                     Email address
                                                 </label>
                                                 {/* Active Marker */}
@@ -294,7 +294,7 @@ const Contact: React.FC = () => {
                                             onChange={handleInputChange}
                                             onFocus={() => setFocusedField('message')}
                                             onBlur={() => setFocusedField(null)}
-                                            className="block w-full bg-transparent border-b border-line py-4 text-ink-max text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer resize-none min-h-[40px] max-h-[160px]"
+                                            className="block w-full bg-transparent border-b border-line py-4 text-ink-high text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer resize-none min-h-[40px] max-h-[160px]"
                                             placeholder="A quick note about what you are building, timeline, and budget range."
                                             onInput={(e) => {
                                                 const target = e.target as HTMLTextAreaElement;
@@ -303,7 +303,7 @@ const Contact: React.FC = () => {
                                             }}
                                         ></textarea>
                                         <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                            <label htmlFor="contact-message" className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'message' || formData.message ? 'text-ink-max' : 'text-ink-faint'}`}>
+                                            <label htmlFor="contact-message" className={`text-button font-mono uppercase transition-colors duration-300 ${focusedField === 'message' || formData.message ? 'text-ink-max' : 'text-ink-low'}`}>
                                                 Project details
                                             </label>
                                             {/* Active Marker */}
@@ -326,7 +326,7 @@ const Contact: React.FC = () => {
                                         className="w-full flex items-center justify-between group cursor-pointer pt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         <div className="flex flex-col shrink-0 text-left">
-                                            <span className="text-button text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300">
+                                            <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">
                                                 {formState === 'submitting' ? 'Sending...' : 'Submit'}
                                             </span>
                                             <span className="text-caption font-mono text-ink-faint mt-1 uppercase">
@@ -351,7 +351,7 @@ const Contact: React.FC = () => {
                     >
                         {/* 01: Email - with vertical border */}
                         <div className="flex flex-col gap-4 py-8 md:pr-8 md:border-r border-line">
-                            <span className="text-eyebrow font-mono text-ink-faint uppercase">CONNECT</span>
+                            <span className="text-eyebrow font-mono text-ink-low uppercase">CONNECT</span>
                             <button
                                 type="button"
                                 onClick={handleCopyEmail}
@@ -365,7 +365,7 @@ const Contact: React.FC = () => {
 
                         {/* 02: Social - with vertical border */}
                         <div className="flex flex-col gap-4 py-8 md:px-8 md:border-r border-line">
-                            <span className="text-eyebrow font-mono text-ink-faint uppercase">NETWORKS</span>
+                            <span className="text-eyebrow font-mono text-ink-low uppercase">NETWORKS</span>
                             <div className="flex flex-col gap-2">
                                 <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-ink-body hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 group w-fit">
                                     <span className="text-caption font-mono">LinkedIn</span>
@@ -376,7 +376,7 @@ const Contact: React.FC = () => {
 
                         {/* 03: Time - aligned right/end */}
                         <div className="hidden md:flex flex-col gap-4 py-8 md:pl-8">
-                            <span className="text-eyebrow font-mono text-ink-faint uppercase">LOCAL TIME</span>
+                            <span className="text-eyebrow font-mono text-ink-low uppercase">LOCAL TIME</span>
                             <div className="text-caption font-mono text-ink-body">
                                 <LiveClock />
                             </div>

@@ -14,33 +14,33 @@ Six steps, plus the inverse. Ink is the hierarchy: to push something back, move 
 
 | Token | For |
 |---|---|
-| `ink-max` | Headings, active state, hover destination, selected |
-| `ink-high` | The document default, set once on `body` |
-| `ink-mid` | Row and list titles at rest, metadata values |
+| `ink-max` | Hover destination, focus, selected, active. A state, never a resting colour. |
+| `ink-high` | The document default, set once on `body`. Display headings, and card and row titles at rest. |
+| `ink-mid` | A value standing beside its label |
 | `ink-body` | Paragraphs. The default for anything a visitor must actually read. |
-| `ink-low` | Eyebrows, supporting copy, captions, labels at rest |
+| `ink-low` | Eyebrows, supporting copy, captions, labels |
 | `ink-faint` | Numbers, years, index digits. Meta a visitor can lose without losing meaning. |
+
+The steps are spaced evenly, each about 1.4x the contrast of the one below. Even spacing is the whole point of a ramp: two steps sitting close together are one step wearing two names, and a big gap at the bottom drops text off a cliff instead of quieting it.
 
 **Rules**
 
-- Within one heading, move down the ramp to de-emphasise: white for the phrase that matters, `ink-low` for the rest.
-- Hover lifts text one step, never two.
+- Within one heading, move down the ramp to de-emphasise: the heading's own ink for the phrase that matters, `ink-low` for the rest.
+- Display-size type stops one step below white. At that size, pure white on the canvas reads as loud rather than as important, and the size is already carrying the emphasis.
+- **No text rests at `ink-max`.** White means the visitor is pointing at it, or the system is. A resting title that has nowhere left to go on hover has to dim instead, and a control that dims when you touch it reads as broken. The icon inside a circle button is the exception: it is a mark on a control, and the whole control inverts on hover.
+- Hover goes up the ramp, never down. A title lifts to `ink-max`; a label lifts at least to `ink-body`.
 - Hover lifts controls only. A paragraph, a list item or a grid cell that is not clickable stays at its rest ink.
 - `ink-faint` never carries a sentence. See `accessibility.md` for the floors.
 - **Never write a raw grey.** Tailwind's default palette still resolves, so nothing will error. It just leaves the system.
+- **Opacity never dims text.** The ramp is the only dimmer. `text-ink-max opacity-40` is a grey nobody named and nobody measured, and it lands between two steps that already exist. Opacity keeps its job on whole elements: icon reveals, entrance fades, the background layers.
 - **Never lean on the inherited default.** `body` sets a floor, not a choice. Anything that paints states its own ink, including icons, which draw with `currentColor` and have no colour of their own. A component that inherits changes colour depending on which page it lands on.
 - The one grey off the ramp is `node`, the timeline marker. It is a mark sitting on a rule, not text.
 
 ### Eyebrow ink
 
-The eyebrow is the one element that uses four steps, each with a job.
+An eyebrow is `ink-low`, wherever it sits and however dense the page around it. It is a label, and a label a visitor cannot read is decoration.
 
-| Ink | Where |
-|---|---|
-| `ink-low` | Section eyebrows and form labels on a split page, and any eyebrow titling a card |
-| `ink-faint` | Section eyebrows on the denser case-study and venture pages, plus every meta label |
-| `ink-body` | A stat label, where the eyebrow is the number's only description |
-| `ink-max` | An eyebrow acting as a sub-heading inside a section |
+The one exception is an eyebrow acting as the real sub-heading of a block rather than introducing one. That is a heading, so it takes `ink-high` like every other heading.
 
 ### Headings over texture
 

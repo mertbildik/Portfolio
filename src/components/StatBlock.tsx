@@ -21,16 +21,16 @@ const StatBlock: React.FC<StatBlockProps> = ({ value, label, desc, delay }) => (
         <div className="absolute top-0 left-0 w-full h-px bg-line" />
 
         <div className="w-full">
-            <span className="block text-display-md text-ink-max">
+            <span className="block text-display-md text-ink-high">
                 {value}
             </span>
         </div>
 
         <div className="flex flex-col gap-2 mt-6 w-full items-start">
-            <span className="block text-eyebrow font-mono uppercase text-ink-body">
+            <span className="block text-eyebrow font-mono uppercase text-ink-low">
                 {label}
             </span>
-            <p className="text-body-sm text-ink-low">
+            <p className="text-body-sm text-ink-body">
                 {desc}
             </p>
         </div>

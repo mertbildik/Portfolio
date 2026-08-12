@@ -28,7 +28,7 @@ const Portfolio: React.FC = () => (
 
                 <div className="mb-6 lg:mb-8">
                     <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">ARCHIVE</span>
-                    <h1 className="text-display-xl text-ink-max">
+                    <h1 className="text-display-xl text-ink-high">
                         Selected <br />
                         <span className="text-ink-low">Work.</span>
                     </h1>
@@ -65,13 +65,13 @@ const Portfolio: React.FC = () => (
                                 >
                                     <motion.div
                                         variants={itemVariants}
-                                        className="relative py-5 lg:py-6 px-2 -mx-2 border-b border-line group-focus-visible:border-line-active flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 transition-colors duration-300"
+                                        className="relative py-6 md:py-8 px-2 -mx-2 border-b border-line group-focus-visible:border-line-active flex items-baseline justify-between lg:grid lg:grid-cols-[14rem_1fr_auto] lg:gap-4 transition-colors duration-300"
                                     >
-                                        <span className="text-card-title text-ink-mid group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300 truncate">
+                                        <span className="text-card-title text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300 truncate">
                                             {project.title}
                                         </span>
 
-                                        <span className="hidden md:block text-caption font-mono text-ink-faint group-hover:text-ink-low group-focus-visible:text-ink-low uppercase transition-colors duration-300">
+                                        <span className="hidden md:block text-caption font-mono text-ink-faint group-hover:text-ink-body group-focus-visible:text-ink-body uppercase transition-colors duration-300">
                                             {project.role}
                                         </span>
 

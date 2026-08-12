@@ -14,20 +14,20 @@ const Curvix: React.FC = () => {
     const projectImages = getProjectImages('curvix');
 
     return (
-        <div className="w-full pb-32">
+        <div className="w-full pb-32 space-y-24 md:space-y-32">
 
             {/* Header Section */}
             <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="w-full mb-16 lg:mb-24"
+                className="w-full"
             >
                 <motion.div variants={itemVariants} className="mb-16 md:mb-24">
                     <BackButton />
                 </motion.div>
 
-                <motion.h1 variants={itemVariants} className="text-display-xl text-ink-max mb-8">
+                <motion.h1 variants={itemVariants} className="text-display-xl text-ink-high mb-8">
                     Curvix
                 </motion.h1>
 
@@ -37,15 +37,15 @@ const Curvix: React.FC = () => {
 
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8 border-t border-line">
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-1">Role</span>
+                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Role</span>
                         <span className="text-caption text-ink-mid">Founder</span>
                     </div>
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-1">Status</span>
+                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Status</span>
                         <span className="text-caption text-ink-mid">In progress</span>
                     </div>
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-1">Team</span>
+                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Team</span>
                         <span className="text-caption text-ink-mid">Solo lead. Specialists as needed</span>
                     </div>
                 </motion.div>
@@ -54,7 +54,7 @@ const Curvix: React.FC = () => {
             {/* Main Content Stack */}
             {/* Main Content Stack - Grid Layout to match DogRide */}
             {/* Text Sections Grid Group 1 */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mb-24 md:mb-32">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
 
                 {/* Section 1: Overview */}
                 <motion.section
@@ -63,9 +63,9 @@ const Curvix: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-8">Overview</span>
-                    <h2 className="text-display-lg text-ink-max mb-6">What Curvix is</h2>
-                    <p className="text-body text-ink-low">
+                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Overview</span>
+                    <h2 className="text-display-lg text-ink-high mb-6">What Curvix is</h2>
+                    <p className="text-body text-ink-body">
                         Curvix is my studio brand. It is a container for how I think, how I build, and what I deliver. The goal is simple work that holds up over time.
                     </p>
                 </motion.section>
@@ -77,9 +77,9 @@ const Curvix: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-8">Intent</span>
-                    <h2 className="text-display-lg text-ink-max mb-6">Why I built it</h2>
-                    <p className="text-body text-ink-low">
+                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Intent</span>
+                    <h2 className="text-display-lg text-ink-high mb-6">Why I built it</h2>
+                    <p className="text-body text-ink-body">
                         I wanted one clear standard across web, product, and visuals. I wanted fewer decisions, better structure, and a calmer result. I wanted the work to feel consistent even when the project changes.
                     </p>
                 </motion.section>
@@ -91,21 +91,21 @@ const Curvix: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-8">Output</span>
-                    <h2 className="text-display-lg text-ink-max mb-12">What Curvix ships</h2>
+                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Output</span>
+                    <h2 className="text-display-lg text-ink-high mb-12">What Curvix ships</h2>
 
                     <div className="space-y-12">
                         <div className="pl-6 border-l border-line">
-                            <h3 className="text-card-title text-ink-max mb-2">Design systems</h3>
-                            <p className="text-body-sm text-ink-low">Typography, spacing rules, layout logic, and components that scale.</p>
+                            <h3 className="text-card-title text-ink-high mb-2">Design systems</h3>
+                            <p className="text-body-sm text-ink-body">Typography, spacing rules, layout logic, and components that scale.</p>
                         </div>
                         <div className="pl-6 border-l border-line">
-                            <h3 className="text-card-title text-ink-max mb-2">Product and web</h3>
-                            <p className="text-body-sm text-ink-low">Flows, screens, interaction rules, and build ready handoff.</p>
+                            <h3 className="text-card-title text-ink-high mb-2">Product and web</h3>
+                            <p className="text-body-sm text-ink-body">Flows, screens, interaction rules, and build ready handoff.</p>
                         </div>
                         <div className="pl-6 border-l border-line">
-                            <h3 className="text-card-title text-ink-max mb-2">Specialists when needed</h3>
-                            <p className="text-body-sm text-ink-low">Marketing and photography are added only when the project requires it.</p>
+                            <h3 className="text-card-title text-ink-high mb-2">Specialists when needed</h3>
+                            <p className="text-body-sm text-ink-body">Marketing and photography are added only when the project requires it.</p>
                         </div>
                     </div>
                 </motion.section>
@@ -117,29 +117,29 @@ const Curvix: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-8">Method</span>
-                    <h2 className="text-display-lg text-ink-max mb-12">How I work</h2>
+                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Method</span>
+                    <h2 className="text-display-lg text-ink-high mb-12">How I work</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                         <div>
                             <span className="block text-caption font-mono text-ink-faint mb-3">01</span>
-                            <h3 className="text-card-title text-ink-max mb-2">Define</h3>
-                            <p className="text-body-sm text-ink-low">Goal, constraints, audience, success checks.</p>
+                            <h3 className="text-card-title text-ink-high mb-2">Define</h3>
+                            <p className="text-body-sm text-ink-body">Goal, constraints, audience, success checks.</p>
                         </div>
                         <div>
                             <span className="block text-caption font-mono text-ink-faint mb-3">02</span>
-                            <h3 className="text-card-title text-ink-max mb-2">Structure</h3>
-                            <p className="text-body-sm text-ink-low">Content order, grid, wireframes.</p>
+                            <h3 className="text-card-title text-ink-high mb-2">Structure</h3>
+                            <p className="text-body-sm text-ink-body">Content order, grid, wireframes.</p>
                         </div>
                         <div>
                             <span className="block text-caption font-mono text-ink-faint mb-3">03</span>
-                            <h3 className="text-card-title text-ink-max mb-2">Build</h3>
-                            <p className="text-body-sm text-ink-low">Components, screens, motion rules, final assets.</p>
+                            <h3 className="text-card-title text-ink-high mb-2">Build</h3>
+                            <p className="text-body-sm text-ink-body">Components, screens, motion rules, final assets.</p>
                         </div>
                         <div>
                             <span className="block text-caption font-mono text-ink-faint mb-3">04</span>
-                            <h3 className="text-card-title text-ink-max mb-2">Tune</h3>
-                            <p className="text-body-sm text-ink-low">Polish, QA, launch support, small improvements.</p>
+                            <h3 className="text-card-title text-ink-high mb-2">Tune</h3>
+                            <p className="text-body-sm text-ink-body">Polish, QA, launch support, small improvements.</p>
                         </div>
                     </div>
                 </motion.section>
@@ -154,9 +154,9 @@ const Curvix: React.FC = () => {
                 viewport={{ once: true, margin: "-10%" }}
                 variants={sectionVariants}
             >
-                <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-8">Gallery</span>
-                <h2 className="text-display-lg text-ink-max mb-6">Selected screens</h2>
-                <p className="text-body text-ink-low mb-12">
+                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Gallery</span>
+                <h2 className="text-display-lg text-ink-high mb-6">Selected screens</h2>
+                <p className="text-body text-ink-body mb-12">
                     A few screens from the Curvix site direction. Built to show the system in use.
                 </p>
 
@@ -188,16 +188,16 @@ const Curvix: React.FC = () => {
             </motion.section>
 
             {/* Section 6: Operating Model */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mt-24 md:mt-32">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-8">Operating model</span>
-                    <h2 className="text-display-lg text-ink-max mb-6">How projects run</h2>
-                    <p className="text-body text-ink-low">
+                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Operating model</span>
+                    <h2 className="text-display-lg text-ink-high mb-6">How projects run</h2>
+                    <p className="text-body text-ink-body">
                         I lead the design end to end. When a project needs marketing or photography, I bring in freelancers I trust. The client experience stays single threaded. One owner. One system.
                     </p>
                 </motion.section>
@@ -209,9 +209,9 @@ const Curvix: React.FC = () => {
                     viewport={{ once: true, margin: "-10%" }}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-faint uppercase mb-8">Now</span>
-                    <h2 className="text-display-lg text-ink-max mb-6">Current focus</h2>
-                    <p className="text-body text-ink-low">
+                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Now</span>
+                    <h2 className="text-display-lg text-ink-high mb-6">Current focus</h2>
+                    <p className="text-body text-ink-body">
                         I’m building Curvix as a long term studio identity. I take selective work that needs system level thinking and a high finish.
                     </p>
                 </motion.section>

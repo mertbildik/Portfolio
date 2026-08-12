@@ -20,7 +20,7 @@ const SplitPage: React.FC<{ children: React.ReactNode; align?: 'start' | 'center
         </div>
 
         <div className="fixed bottom-8 left-6 md:left-12 z-40 hidden lg:block pointer-events-none">
-            <span className="text-caption text-ink-low font-mono uppercase opacity-40">
+            <span className="text-caption text-ink-faint font-mono uppercase">
                 Mert Bildik © 2026
             </span>
         </div>

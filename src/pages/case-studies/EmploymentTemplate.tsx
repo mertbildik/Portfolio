@@ -14,10 +14,10 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
     }, [data.id]);
 
     return (
-        <div className="w-full pb-32">
+        <div className="w-full pb-32 space-y-24 md:space-y-32">
 
             {/* 1. HERO SECTION */}
-            <div className="mb-24 lg:mb-32 relative">
+            <div className="relative">
 
                 {/* Back Link */}
                 <motion.div
@@ -29,7 +29,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     <BackButton />
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     {/* Left: Title & Role */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                         transition={{ duration: 0.8, ease: EASE }}
                         className="lg:col-span-8"
                     >
-                        <h1 className="text-display-xl mb-8 text-ink-max mix-blend-screen">
+                        <h1 className="text-display-xl mb-8 text-ink-high">
                             {data.companyName}<br />
                             {data.companySuffix && <span className="text-ink-low">{data.companySuffix}</span>}
                         </h1>
@@ -60,7 +60,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                                 <div className="w-1.5 h-1.5 bg-ink-faint rounded-full animate-pulse" />
                                 <span className="text-eyebrow font-mono uppercase text-ink-low">Status: {data.ndaStatus}</span>
                             </div>
-                            <p className="text-body-sm text-ink-low max-w-[240px] whitespace-pre-line">
+                            <p className="text-body-sm text-ink-body max-w-[240px] whitespace-pre-line">
                                 {data.ndaDescription}
                             </p>
                         </motion.div>
@@ -69,14 +69,14 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
             </div>
 
             {/* 2. STATS & IMPACT GRID */}
-            <section className="mb-32 lg:mb-48">
+            <section>
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     className="mb-12"
                 >
-                    <h2 className="text-eyebrow font-mono text-ink-faint uppercase">Impact & Metrics</h2>
+                    <h2 className="text-eyebrow font-mono text-ink-low uppercase">Impact & Metrics</h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-r border-b border-line">
@@ -93,14 +93,14 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
             </section>
 
             {/* 3. MODULAR CAPABILITIES GRID */}
-            <section className="mb-32">
+            <section>
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mb-20"
+                    className="mb-12"
                 >
-                    <h2 className="text-eyebrow font-mono text-ink-faint uppercase">Core Capabilities</h2>
+                    <h2 className="text-eyebrow font-mono text-ink-low uppercase">Core Capabilities</h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-line">
@@ -130,7 +130,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
             </section>
 
             {/* 4. FOOTER: RESTRICTED ACCESS REDESIGN */}
-            <section className="">
+            <section>
                 <div className="relative border border-line bg-fill-subtle overflow-hidden">
 
                     {/* Subtle Background Pattern */}
@@ -146,10 +146,10 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                                     <h2 className="text-eyebrow font-mono uppercase">Restricted Access</h2>
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    <h3 className="text-headline text-ink-max">
+                                    <h3 className="text-headline text-ink-high">
                                         Client work is protected by NDA.
                                     </h3>
-                                    <p className="text-body text-ink-low">
+                                    <p className="text-body text-ink-body">
                                         I can’t share decks, screenshots, or client-specific materials.
                                     </p>
                                 </div>
@@ -157,7 +157,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
 
                             {/* Timestamp */}
                             <div className="flex flex-col gap-1">
-                                <span className="text-eyebrow font-mono text-ink-faint uppercase">Active Status</span>
+                                <span className="text-eyebrow font-mono text-ink-low uppercase">Active Status</span>
                                 <span className="text-caption text-ink-low">{data.ndaStatus}</span>
                             </div>
                         </div>

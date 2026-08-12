@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* Inter variable, self-hosted from public/fonts. One file covers weights 100-900. */
+/* Inter variable, self-hosted from public/fonts so the site makes no third-party
+   requests. One file covers weights 100-900. */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -33,53 +34,56 @@
     'Liberation Mono', 'Courier New', monospace;
 
   /* ---- type scale ------------------------------------------------------
-     Twelve tokens. Each sets size, weight, line height and letter spacing in one
+     Eleven tokens. Each sets size, weight, line height and letter spacing in one
      class, so `text-card-title` is one decision rather than four.
      The three display sizes are fluid and reach their maximum at ~890px wide.
+
+     Two weights hold the whole scale: everything that reads as text is 400, and
+     only the two small labels (button, eyebrow) get 500. Type looks heavier as it
+     grows and heavier again as light text on a dark canvas, so anything at 22px
+     and up carries no extra weight at all. 500 exists to keep 13-14px from going
+     weak, nothing else.
      Rules and reasoning: docs/design/typography.md */
 
   --text-display-xl: clamp(44px, 9vw, 80px);
-  --text-display-xl--line-height: 1.05;
-  --text-display-xl--letter-spacing: -0.0375em;
-  --text-display-xl--font-weight: 600;
+  --text-display-xl--line-height: 1.08;
+  --text-display-xl--letter-spacing: -0.028em;
+  --text-display-xl--font-weight: 400;
 
   --text-display-lg: clamp(32px, 6vw, 56px);
-  --text-display-lg--line-height: 1.10;
-  --text-display-lg--letter-spacing: -0.032em;
-  --text-display-lg--font-weight: 600;
+  --text-display-lg--line-height: 1.15;
+  --text-display-lg--letter-spacing: -0.024em;
+  --text-display-lg--font-weight: 400;
 
   --text-display-md: clamp(28px, 4.5vw, 40px);
   --text-display-md--line-height: 1.15;
-  --text-display-md--letter-spacing: -0.025em;
-  --text-display-md--font-weight: 600;
+  --text-display-md--letter-spacing: -0.02em;
+  --text-display-md--font-weight: 400;
 
   --text-headline: 28px;
-  --text-headline--line-height: 1.20;
+  --text-headline--line-height: 1.25;
   --text-headline--letter-spacing: -0.6px;
-  --text-headline--font-weight: 600;
+  --text-headline--font-weight: 400;
 
   --text-card-title: 22px;
   --text-card-title--line-height: 1.25;
-  --text-card-title--letter-spacing: -0.4px;
-  --text-card-title--font-weight: 500;
+  --text-card-title--letter-spacing: -0.3px;
+  --text-card-title--font-weight: 400;
 
-  --text-subhead: 20px;
-  --text-subhead--line-height: 1.40;
-  --text-subhead--letter-spacing: -0.2px;
-  --text-subhead--font-weight: 400;
-
+  /* The body sizes run at 1.60 rather than the usual 1.50: light text on a dark
+     canvas needs more air between lines to stay calm. */
   --text-body-lg: 18px;
-  --text-body-lg--line-height: 1.50;
+  --text-body-lg--line-height: 1.60;
   --text-body-lg--letter-spacing: -0.1px;
   --text-body-lg--font-weight: 400;
 
   --text-body: 16px;
-  --text-body--line-height: 1.50;
+  --text-body--line-height: 1.60;
   --text-body--letter-spacing: -0.05px;
   --text-body--font-weight: 400;
 
   --text-body-sm: 14px;
-  --text-body-sm--line-height: 1.50;
+  --text-body-sm--line-height: 1.60;
   --text-body-sm--letter-spacing: 0;
   --text-body-sm--font-weight: 400;
 
@@ -107,14 +111,24 @@
   /* ---- ink ramp --------------------------------------------------------
      Six steps measured against the canvas. Ink is the hierarchy: to push
      something back, move down the ramp rather than adding a box.
+
+     The steps are spaced evenly, each roughly 1.4x the contrast of the one below
+     it. Even spacing is what makes the ramp read as a ramp: two steps close
+     together are one step wearing two names, and a big jump at the bottom drops
+     text off a cliff instead of quieting it. Every step that can hold a sentence
+     clears WCAG AA, so the site stays low contrast without going unreadable.
      Contrast ratios and the rules: docs/design/color.md + accessibility.md */
-  --color-ink-max: #FFFFFF;    /* 18.9:1  headings, hover destination, selected */
-  --color-ink-high: #E5E5E5;   /* 15.0:1  document default */
-  --color-ink-mid: #D4D4D4;    /* 12.7:1  row and list titles at rest */
+  --color-ink-max: #FFFFFF;    /* 18.9:1  a state, never a resting colour: hover, focus, selected, active */
+  --color-ink-high: #E5E5E5;   /* 15.0:1  document default, display type, card and row titles at rest */
+  --color-ink-mid: #C2C2C2;    /* 10.6:1  a value standing beside its label */
   --color-ink-body: #A3A3A3;   /*  7.5:1  paragraphs */
-  --color-ink-low: #737373;    /*  4.0:1  eyebrows, captions, labels at rest */
-  --color-ink-faint: #525252;  /*  2.4:1  numbers, years, meta. Never a sentence. */
+  --color-ink-low: #8A8A8A;    /*  5.5:1  eyebrows, captions, labels, supporting copy */
+  --color-ink-faint: #6E6E6E;  /*  3.7:1  numbers, years, meta. Never a sentence. */
   --color-ink-inverse: #111111;/*          text on a white fill */
+
+  /* Opacity never dims text. The ramp is the only dimmer, so a quieter label is a
+     step down the ramp, not white at 40%. Opacity keeps its job on whole elements:
+     icon reveals, entrance fades, the decorative background layers. */
 
   /* ---- borders ---------------------------------------------------------
      One structural weight, one pixel, always. A quieter element does not get a

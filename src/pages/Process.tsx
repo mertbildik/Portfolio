@@ -69,7 +69,7 @@ const Process: React.FC = () => {
                         <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             METHODOLOGY
                         </span>
-                        <h1 className="text-display-xl text-ink-max">
+                        <h1 className="text-display-xl text-ink-high">
                             How I <br />
                             <span className="text-ink-low">Work.</span>
                         </h1>
@@ -124,20 +124,20 @@ const Process: React.FC = () => {
                                             className="absolute -left-[27px] lg:-left-[35px] top-[9px] w-[5px] h-[5px] rounded-full bg-node ring-4 ring-canvas"
                                         />
 
-                                        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
                                             {/* Header: Index & Title */}
-                                            <div className="md:col-span-4 flex flex-row md:flex-col items-baseline md:items-start gap-3 md:gap-1">
+                                            <div className="md:col-span-1 flex flex-row md:flex-col items-baseline md:items-start gap-3 md:gap-1">
                                                 <span className="text-caption font-mono text-ink-faint uppercase">
                                                     {step.id}
                                                 </span>
-                                                <span className="text-card-title text-ink-mid">
+                                                <span className="text-card-title text-ink-high">
                                                     {step.title}
                                                 </span>
                                             </div>
 
                                             {/* Body */}
-                                            <div className="md:col-span-8">
-                                                <p className="text-body-sm text-ink-low max-w-lg">
+                                            <div className="md:col-span-2">
+                                                <p className="text-body-sm text-ink-body max-w-md">
                                                     {step.desc}
                                                 </p>
                                             </div>
@@ -163,7 +163,7 @@ const Process: React.FC = () => {
                                     className="flex items-center gap-3 py-1"
                                 >
                                     <div className="w-1 h-1 rounded-full bg-ink-low" />
-                                    <span className="text-body-sm text-ink-low">
+                                    <span className="text-body-sm text-ink-body">
                                         {tool.name}
                                     </span>
                                 </motion.div>
@@ -176,7 +176,7 @@ const Process: React.FC = () => {
                                 className="w-full flex items-center justify-between group cursor-pointer"
                             >
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-card-title text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300">Start a project</span>
+                                    <span className="text-card-title text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">Start a project</span>
                                     <span className="text-caption font-mono text-ink-faint mt-1 uppercase">Open for transmission</span>
                                 </div>
                                 <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">

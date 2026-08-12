@@ -22,7 +22,7 @@ A dark, quiet portfolio with the feel of an engineering tool. Near-black canvas,
 
 | File | Owns |
 |---|---|
-| `typography.md` | The twelve type tokens and the rules for using them |
+| `typography.md` | The eleven type tokens and the rules for using them |
 | `color.md` | Ink ramp, surface fills, border weights, status colour |
 | `spacing.md` | The step scale and the fixed rhythm pairs |
 | `layout.md` | Page shapes, gutters, breakpoints, grid, stacking order |

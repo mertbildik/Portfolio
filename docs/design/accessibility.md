@@ -4,13 +4,14 @@ The site is low contrast by design. That makes the ink rules below the tightest 
 
 ## Contrast
 
-WCAG AA needs 4.5:1 for normal text, and 3:1 for large text and for interface borders. Measured against the canvas, only the top four ink steps clear the normal-text bar. `ink-low` clears large text only, and `ink-faint` clears neither. The measured ratio for each step is written beside it in `src/index.css`.
+WCAG AA needs 4.5:1 for normal text, and 3:1 for large text and for interface borders. Measured against the canvas, the top five ink steps clear the normal-text bar. `ink-faint` clears large text and interface bars only. The measured ratio for each step is written beside it in `src/index.css`.
 
 1. A paragraph carrying information that appears nowhere else uses `ink-body` or lighter.
-2. `ink-low` is for labels, eyebrows, captions and supporting copy that restates or introduces something already visible. **It is the darkest ink allowed on text of any kind.**
+2. `ink-low` is for labels, eyebrows, captions and supporting copy that restates or introduces something already visible. **It is the darkest ink allowed on a sentence.**
 3. `ink-faint` is for meta a visitor can lose without losing meaning: row numbers, years, index digits. Never a sentence, never the only label on a control.
 4. Any `ink-low` or `ink-faint` element inside an interactive row lifts to `ink-body` or lighter on hover and on focus. Outside a control ink stays put, so it must already be readable enough for its job at rest.
 5. A border that defines a control goes to `line-active` on focus, which clears the 3:1 interface bar.
+6. **Opacity is not a contrast tool.** Dimming text with `opacity` produces a colour that is in no table and was measured by nobody. Move down the ramp instead.
 
 ## Focus
 

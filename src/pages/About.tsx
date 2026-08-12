@@ -27,7 +27,7 @@ const About: React.FC = () => {
                         <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             Profile
                         </span>
-                        <h1 className="text-display-xl text-ink-max">
+                        <h1 className="text-display-xl text-ink-high">
                             Who I <br />
                             <span className="text-ink-low">Am.</span>
                         </h1>
@@ -60,10 +60,10 @@ const About: React.FC = () => {
                                 </span>
 
                                 <div className="max-w-md">
-                                    <h2 className="text-display-lg text-ink-max mb-8">
+                                    <h2 className="text-display-lg text-ink-high mb-8">
                                         I build things that make life feel easier.
                                     </h2>
-                                    <p className="text-ink-low text-body-sm">
+                                    <p className="text-ink-body text-body-sm">
                                         As a kid, I spent hours on the computer. Not only for fun. I liked figuring out simple ways to fix everyday problems. That mindset never left. Now I use it to design digital products with a clear purpose.
                                     </p>
                                 </div>
@@ -86,7 +86,7 @@ const About: React.FC = () => {
 
                                     {/* Micro Label */}
                                     <div className="absolute bottom-3 left-3">
-                                        <span className="text-caption font-mono text-ink-max/50 uppercase">
+                                        <span className="text-caption font-mono text-ink-body uppercase">
                                             Portrait '26
                                         </span>
                                     </div>
@@ -139,7 +139,7 @@ const About: React.FC = () => {
 
                             <Link to="/contact" className="w-full flex items-center justify-between group cursor-pointer lg:w-auto lg:min-w-[280px]">
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-button text-ink-max group-hover:text-ink-mid group-focus-visible:text-ink-mid transition-colors duration-300 uppercase font-mono">Start a conversation</span>
+                                    <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300 uppercase font-mono">Start a conversation</span>
                                 </div>
                                 <div className="w-10 h-10 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={16} />

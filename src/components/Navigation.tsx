@@ -33,7 +33,7 @@ const Navigation: React.FC = () => {
                             <div className="relative flex items-center justify-center w-11 h-11 lg:h-16">
 
                                 {/* Icon */}
-                                <div className={`relative z-10 transition-all duration-500 ${isActive ? 'text-ink-max scale-110 lg:scale-100' : 'text-ink-low group-hover:text-ink-mid group-focus-visible:text-ink-max lg:scale-100 lg:text-ink-faint lg:group-hover:text-ink-max lg:group-focus-visible:text-ink-max'}`}>
+                                <div className={`relative z-10 transition-all duration-500 ${isActive ? 'text-ink-max scale-110 lg:scale-100' : 'text-ink-low group-hover:text-ink-max group-focus-visible:text-ink-max lg:scale-100 lg:text-ink-faint lg:group-hover:text-ink-max lg:group-focus-visible:text-ink-max'}`}>
                                     <item.icon
                                         size={20}
                                         strokeWidth={1.5}
