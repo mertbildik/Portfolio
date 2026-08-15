@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { PROJECTS, Project } from '../content/projects';
 import BackButton from '../components/BackButton';
-import SplitPage from '../layouts/SplitPage';
+import SplitPage, { IDENTITY_COLUMN } from '../layouts/SplitPage';
 import { EASE, listVariants, itemVariants } from '../components/motion';
 
 const SECTIONS: { label: string; kind: Project['kind'] }[] = [
@@ -19,7 +19,7 @@ const Portfolio: React.FC = () => (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: EASE }}
-            className="lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto"
+            className={IDENTITY_COLUMN}
         >
             <div className="flex flex-col">
                 <div className="mb-8 lg:mb-12">
@@ -46,7 +46,7 @@ const Portfolio: React.FC = () => (
             animate="visible"
             className="lg:col-span-8 flex flex-col w-full relative z-30 lg:pl-12"
         >
-            <div className="flex flex-col w-full max-w-3xl ml-auto gap-10 lg:gap-12">
+            <div className="flex flex-col w-full max-w-3xl gap-10 lg:gap-12">
                 {SECTIONS.map((section) => (
                     <div key={section.kind} className="flex flex-col gap-4">
                         <motion.h2

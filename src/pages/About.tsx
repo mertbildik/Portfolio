@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import mertPhoto from '../assets/mert.webp';
 import BackButton from '../components/BackButton';
-import SplitPage from '../layouts/SplitPage';
+import SplitPage, { IDENTITY_COLUMN } from '../layouts/SplitPage';
 import { EASE, containerVariants, itemVariants } from '../components/motion';
 
 const About: React.FC = () => {
@@ -15,7 +15,7 @@ const About: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, ease: EASE }}
-                className="lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto"
+                className={IDENTITY_COLUMN}
             >
                 <div className="flex flex-col lg:min-h-0">
                     <div className="mb-8 lg:mb-12">

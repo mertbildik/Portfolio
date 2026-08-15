@@ -1,6 +1,13 @@
 import React from 'react';
 
 /**
+ * The identity column: back control, eyebrow, page heading, one lead paragraph.
+ * Every split page but Home uses it, so it is written once here.
+ */
+export const IDENTITY_COLUMN =
+    'lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto';
+
+/**
  * The 4/8 column grid shared by Home, Portfolio, Process, About and Contact.
  * Layout only: ink and font come from `body`, same as every other page.
  */
