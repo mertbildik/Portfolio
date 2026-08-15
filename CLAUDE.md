@@ -34,7 +34,6 @@ A routing layer, not required reading. Inspect the affected code first, then ope
 
 - **Write tokens, not raw values.** `text-ink-low`, `border-line`, `bg-canvas`. Tailwind's default palette still resolves, so a raw grey will not error, it will just quietly leave the system.
 - **The dependency list is closed.** Do not add a package. Two are renamed upstream: import from `motion/react`, not `framer-motion`, and from `react-router`, not `react-router-dom`.
-- **Do not swap the self-hosted Inter file for a Google Fonts link.** The full file is used because the `←` in the back label and the Polish `ł` fall outside Google's `latin` subset and would change typeface mid-sentence.
 - **`space-y-*` sets `margin-bottom` in Tailwind 4**, not `margin-top` as in Tailwind 3. A child inside a `space-y-*` container must not carry its own `mb-*`: they are the same property now, so one silently wins instead of the two stacking.
 - Deep links need the host to serve `index.html` for unknown paths. `public/_redirects` and `vercel.json` carry this.
 
