@@ -1,7 +1,7 @@
 # Home
 
 Meta title: `Mert Bildik`
-Meta description: `Product designer in Warsaw. I design and build B2B websites and products end to end — and the work here is live, so you can check it.`
+Meta description: `Product designer in Warsaw. I design and build B2B websites and products end to end, and the work here is live, so you can check it.`
 
 ---
 
@@ -25,18 +25,18 @@ introduction, not a preview of the case study.
 ### Client Work
 
 **Sinerjik**
-Product Designer · 2026 · [sinerjik.com.tr](https://www.sinerjik.com.tr) — live
+Product Designer · 2026 · [sinerjik.com.tr](https://www.sinerjik.com.tr) (live)
 
 A Turkish consulting firm and their 20-year-old software product, sold on one site. The
-product's real screens couldn't be shown, so I built working demos of it in code instead.
+product's real screens couldn't be shown, so I built working demos of it in code.
 
 → Read the story `/work/sinerjik`
 
 **OFK Construction**
-Product Designer · 2026 · [ofkconstruction.com](https://ofkconstruction.com) — live
+Product Designer · 2026 · [ofkconstruction.com](https://ofkconstruction.com) (live)
 
 A Polish contractor with 200+ people, real projects, and no website. Brand, design system,
-and a bilingual site — built so a buyer can check that the work is real.
+and a bilingual site, built so a buyer can check that the work is real.
 
 → Read the story `/work/ofk`
 
@@ -45,16 +45,16 @@ and a bilingual site — built so a buyer can check that the work is real.
 **McKinsey & Company**
 Visual Communication Specialist · 2021–2024
 
-Three years turning complex analysis into presentations executives could decide on. The work
-is under NDA, so the page is honest about what I can and can't show.
+Three years turning complex analysis into presentations executives could decide on. The
+work is under NDA, so the page is honest about what I can and can't show.
 
 → What I did there `/work/mckinsey`
 
 **Adclusive**
 Product Designer · Part-time · Shareholder · 2021–2024
 
-A Swedish ad platform connecting advertisers with publishers and influencers. I designed it
-for three years — alongside my day job at McKinsey.
+A Swedish ad platform connecting advertisers with publishers and influencers. I designed
+it for three years, alongside my day job at McKinsey.
 
 → The long version `/work/adclusive`
 

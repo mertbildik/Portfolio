@@ -3,7 +3,9 @@
 Strategic source of truth for the ground-up rethink. Built from full read-only inspection of
 `portfolio-personal`, the OFK repo (`project-cons`), `sinerjik-website`, `ofk-video-presentation`,
 `marketing-web` (weldmeld), the Bunect repos, the old Windows-side `Portfolio` repo (CV facts),
-and market research verified against primary sources in August 2026.
+and market research verified against primary sources in August 2026. A deeper research pass
+(repo git-dated evidence, per-project market context, portfolio craft, writing direction) lives
+in `portfolio-plan/research/` — read `research/implications.md` alongside this plan.
 
 Decisions in this document are strategy. Wording is not final copy, and UI ideas are hypotheses
 for the design phase unless marked as decisions.
@@ -104,6 +106,12 @@ names, and the site itself holding up under inspection.
 work — brand, design system, and the live site — with McKinsey and Adclusive as the professional
 depth behind it. One label everywhere: **Product Designer**. Design engineering is named as the
 direction, not claimed as the rank.
+
+**Confirmed after the research pass (Aug 2026, decided):** the middle path. The hiring data
+(see `research/market-and-positioning.md`) shows the rare demand sits at the
+founding-designer/design-engineer intersection — but the title stays Product Designer, and the
+artifacts (live sites, code-level evidence, measured decisions) carry the higher tier. Do not
+claim Design Engineer.
 
 **What the hero must communicate (wording open — this is not final copy):**
 - I design and I build; the sites I design are the sites that ship.
@@ -235,7 +243,7 @@ Each project answers a different question:
 
 | Project | Question | What it shows |
 |---|---|---|
-| **Sinerjik** | What's his level right now? | Current craft: a production Next.js site on the client's domain, motion with written rules, decisions backed by measurement, finished — not abandoned. |
+| **Sinerjik** | What's his level right now? | Current craft: a production Next.js site on the client's domain, motion with written rules, decisions backed by measurement, live and still being sharpened (engagement ongoing). |
 | **OFK** | Can he take a real company from nothing to shipped, alone? | The full arc: brief → sorting confirmed facts from unconfirmed → brand → system → bilingual site, live, with signed reference letters on it. |
 | **Adclusive** | Can he stay with one product, in a team, over years? | Three years part-time on a real two-sided platform — and proof the product interest predates the AI workflow. |
 
@@ -263,10 +271,12 @@ Structure (chronological, not the five-heading template):
 4. **Details that carry the build.** The EN/PL toggle that swaps languages with zero layout
    shift (a 10-second clip — the best single demo). "Numbers are data, not translation."
    The image pipeline that fixed a real Windows filename bug.
-5. **A decision that got reversed.** Two display fonts were chosen and "finalized," then dropped
-   two weeks later for one variable typeface — the reasoning survived in the docs. It mattered:
-   it's where the system got simpler. (Included because it was a real turning point, not to
-   perform honesty.)
+5. **A decision that got reversed — same day, per git.** The font pairing was "finalized" in a
+   09:33 commit on Apr 6 and gone by 13:53 the same day, replaced by one variable typeface. The
+   written reasoning exists only for the winning choice (documented Apr 20: hierarchy from
+   size/weight/tracking/optical sizing instead of family contrast) — don't claim a written
+   rationale for the original pairing. Tell it with the two timestamps. It mattered: it's where
+   the system got simpler. (Included because it was a real turning point, not to perform honesty.)
 6. **Shipped.** Live at ofkconstruction.com with three signed reference-letter PDFs served from
    the site. Timeline: Mar–Apr 2026 — fix the "2025" label.
 7. **Plain edges.** No analytics existed before or after, so no outcome claims — say so. Solo
@@ -290,9 +300,10 @@ software product family that's been running for 20+ years. The catch: the produc
 couldn't be shown. The answer wasn't stock art or AI-generated fake screens — it was building
 working interfaces in code, using the product's real feature names and real data shapes, so the
 site demonstrates the product instead of describing it. There's a written rule behind that:
-anything with readable text gets built, never generated. The site shipped on the client's own
-domain (sinerjik.com.tr, live) in about a month, and the project was closed properly — the open
-decisions list was worked down to empty, not walked away from.
+anything with readable text gets built, never generated. The site went live on the client's own
+domain (sinerjik.com.tr) eleven days after the first commit, and **the engagement is still
+active (decided): never frame it as closed or finished.** The open-decisions list sits at empty
+— that proves tidiness, not an ending.
 
 **Layer 2 — proof underneath, each tied to why it mattered:**
 - The neutral grays were re-tinted to match the brand blue's hue, because the standard gray
@@ -310,10 +321,12 @@ decisions list was worked down to empty, not walked away from.
   the visual tone of the whole page.
 
 **Don't claim:** bilingual work (Turkish-only — OFK owns that axis), business outcomes, user
-research, WCAG certification (self-measured AA — say exactly that), or automated test coverage
-(a test suite was deliberately removed in favor of in-browser verification; if mentioned, give
-the reasoning). AI co-authorship is in the commit record — the honest framing is that the
-direction, rules, measurements, and rejections are the designer's contribution.
+research, WCAG certification (self-measured AA — say exactly that), or automated test coverage.
+On tests, keep the claim its true size: a Playwright suite was tried for one day and removed in
+favor of measuring the affected flow in the browser; measurement tooling predates and outlives
+it. Don't inflate that into "tore out a mature suite." AI co-authorship is in the commit
+record — the honest framing is that the direction, rules, measurements, and rejections are the
+designer's contribution.
 
 ---
 
@@ -340,6 +353,18 @@ alongside a full-time job — started in 2021, long before the AI workflow exist
 - **The 20+ advertisers / 50+ influencers numbers, decided:** confirmed real, vouched for.
   State them as a one-month-post-launch snapshot, not a current figure — the platform is paused
   now — and frame them as the platform's scale, not a design outcome.
+- **Pre-incorporation, decided:** the Aug 2021 start is confirmed and predates the company's
+  formal incorporation (Mar 2022) — say "before the company was formally incorporated" once.
+  The Swedish registry is public and shows no payroll, so the copy says "a team of eight,"
+  never anything that implies employment records. Never link adclusive.se (the domain is dead);
+  the case study is effectively the product's public record.
+- **The pause gets one sentence of market context:** small Nordic ad networks were selling or
+  shutting down the same season, profitable ones included — checkable pattern, not a private
+  excuse (evidence in `research/adclusive.md`).
+- **Assets, decided:** the eight ~500px images are the best available for now. Present them
+  small, year-labeled, in pairs — archival framing. The wireframe→shipped dashboard
+  side-by-side is the centerpiece: it proves "structure settled in lo-fi" with no prose.
+  Replaceable later if better originals surface.
 - **No duplication:** the homepage gives Adclusive one card under "Teams I've Worked With" and
   links here. One story, told once.
 
@@ -458,6 +483,12 @@ Assets worth showing, by location (curate to 2–3 per case study; excerpts, not
 None outstanding. All the questions the repos couldn't answer — McKinsey stats, Adclusive
 numbers and team framing, the studio mention, availability, domain/identity, and site
 language — are decided above. Portfolio is English-only.
+
+The research pass (Aug 15, 2026, `portfolio-plan/research/`) raised five more; all decided:
+Adclusive started Aug 2021, pre-incorporation. Positioning holds the middle path (Product
+Designer title, higher-tier evidence). Sinerjik's engagement is ongoing — never framed as
+closed. OFK ISO certifications stay off the site. The current Adclusive assets are the best
+available; present around their resolution.
 
 ---
 

@@ -1,7 +1,10 @@
 # Sinerjik — case study
 
-Meta title: `Sinerjik — Mert Bildik`
+Meta title: `Sinerjik · Mert Bildik`
 Meta description: `A consulting firm and a 20-year-old software product on one site. The real screens couldn't be shown, so I built working demos in code.`
+
+Page shape: demo-led. Short sections, visuals carry the story, captions narrate. Every
+*Show:* line is a media slot with its caption copy; the paragraphs stay under ~100 words.
 
 ---
 
@@ -9,99 +12,123 @@ Meta description: `A consulting firm and a 20-year-old software product on one s
 
 **Sinerjik**
 
-Product Designer · Jul–Aug 2026 · [sinerjik.com.tr](https://www.sinerjik.com.tr) — live
+Product Designer · 2026, ongoing · [sinerjik.com.tr](https://www.sinerjik.com.tr) (live)
 
 Next.js · Tailwind · GSAP · three.js
 
-A consulting firm and a 20-year-old software product, sold on one site — with product demos
-built in code, because the real screens couldn't be shown.
+A consulting firm and a 20-year-old software product, sold on one site. The real screens
+couldn't be shown, so the site demonstrates the product in code.
 
 ---
 
 ## Two businesses, one site
 
-Sinerjik is a Turkish B2B company from İzmir, in business since 2008, with roots going back
-to the nineties. They do two things: management and IT consulting (ISO, COBIT, ITIL — the
-serious, audit-heavy kind), and a software family called MoBI Plus+ that has been running in
-warehouses and sales operations for over 20 years.
+Sinerjik is a Turkish B2B company from İzmir, in business since 2008. The founder has been
+in this industry since 1994, through partnerships with IBM, Siemens, and Netsis. They sell
+two things: audit-heavy consulting (ISO, COBIT, ITIL) and MoBI Plus+, a software family
+that has run warehouses and sales operations for over 20 years.
 
-Their old site didn't do either of those things justice. The new one had to sell both at
-once, to an audience that buys on trust: proof first, services after.
+Their buyers pick a vendor for the next decade, and they pick on proof. The old site
+showed neither business well. The new one had to sell both at once.
 
-## The catch: a real product I couldn't show
+> *Show: the live homepage, or a short clip of the first scroll.*
+> Caption: `sinerjik.com.tr, live. Turkish only, by design.`
 
-The obvious move for a software page is screenshots. That wasn't an option here — the
-product's real UI is old, dense, and not something the client wanted on a marketing site.
+## A real product I couldn't show
 
-The usual escape hatches were off the table too. Stock imagery says nothing. AI-generated
-fake screens fall apart the moment you read the text in them. So I wrote a rule for the
-project and stuck to it: anything with readable text gets built in code, never generated.
+The obvious move for a software page is screenshots. Not an option here: the product's
+real UI is twenty years old, dense, and the client didn't want it on a marketing site.
 
-The result is that the site *demonstrates* the product instead of describing it. The
-homepage hero is a small working warehouse workflow — goods arrive, get placed, get picked,
-stock runs low, the system suggests a reorder, and one button actually works: you approve
-it. Every label in it is a real MoBI Plus+ feature name, and the data shapes are theirs —
-their CRM really does hold 1.2 million customer records. If JavaScript is off, the demo
-just shows its final frame, so the story still lands.
+Stock imagery says nothing. AI-generated interface shots fall apart the moment you read
+the text in them. So the project got a written rule:
 
-## Decisions I can show the math for
+> **Anything with readable text gets built in code, never generated.**
 
-A few choices on this project came down to measuring instead of guessing. Some examples:
+The homepage hero is a small working warehouse flow: goods arrive, get placed, get picked,
+stock runs low, the system suggests a reorder, and you can approve it. Every label is a
+real MoBI Plus+ feature name. The data shapes are theirs; their CRM really holds 1.2
+million customer records. With JavaScript off, the demo shows its final frame, so the
+story still lands.
 
-- The gray palette read faintly purple next to the brand blue. Not a taste call — the
-  standard grays sit at a different hue than the brand color. I re-tinted every gray to the
-  blue's own hue, at very low intensity. The skeleton and the brand stopped arguing.
-- The tables needed aligned numbers, and my first instinct was a monospace font. The actual
-  need was narrower: tabular figures. One font setting took the digit-width jitter from
-  9.56px to zero, and the site kept a single typeface.
-- Every text color has its measured contrast ratio recorded next to it in the code, and
-  there's a hidden `/tasarim` page that renders the whole system live with real content —
-  the site carries its own receipts. The ratios are self-measured AA, and I'll say exactly
-  that rather than "WCAG certified."
+> *Show: the hero demo, live or as a 10-second clip.*
+> Caption: `The product, demonstrated instead of described. Real feature names, real data shapes.`
 
-## Making a 3D scene behave
+## Decisions with the math attached
 
-The homepage has one continuous particle scene that follows the scroll — a cloud that
-becomes a double helix, then a circulation loop, then settles into a horizon line. It's
-there to carry the narrative, not to decorate it.
+**The grays argued with the brand.** The standard gray palette sits at a different hue
+than the brand blue and reads faintly purple beside it. I re-tinted every gray to the
+blue's own hue at very low saturation. The skeleton and the brand stopped arguing.
 
-Two performance decisions mattered:
+**Monospace was the wrong answer to a real problem.** Tables needed aligned numbers, and
+my first instinct was a mono font. The actual need was narrower: tabular figures. One font
+setting took the digit-width jitter from 9.56px to zero, and the site kept its single
+typeface.
 
-- On phones, the scene never loads at all. The 3D library weighed more than the entire rest
-  of the site, so mobile simply doesn't fetch it.
-- On desktop, returning to the homepage used to freeze for a moment. Shrinking the canvas
-  changed nothing — the cost was *setting the scene up*, not drawing it. Moving the setup
-  out of the page so it survives navigation cut the main-thread block from roughly 600ms to
-  260ms.
+**The code carries its own receipts.** Every text color has its measured contrast ratio
+recorded beside it, and a public, unlisted `/tasarim` page renders the whole system live
+with real content. The ratios are self-measured AA, and the site says exactly that.
 
-## The version I deleted
+> *Show: an excerpt from the stylesheet.*
+> ```
+> --fg:     #F4F7F9;  /* on background: 17.90:1  AAA */
+> --brand:  #0EA5E9;  /* on background:  6.95:1  AA  */
+> ```
+> Caption: `Contrast ratios live next to the values they measure. The full system is at /tasarim.`
 
-The scene's big moment was originally going to be the particles resolving into an open,
-presenting hand. I built it, refined the pose, and deleted it the same day. It was
-impressive and it was wrong — too theatrical for a company whose whole pitch is quiet
-competence. What replaced it is calmer, and it set the tone for the entire page. I'm
-mentioning it because that one decision shaped the site more than most of the ones I kept.
+## Making the 3D scene behave
 
-## Shipped, and actually finished
+One continuous particle scene follows the scroll: a cloud becomes a double helix, then a
+circulation loop, then settles into a horizon. It carries the narrative. Two performance
+calls made it shippable:
 
-The site is live on the client's own domain, with full metadata, sitemap, and structured
-data wired up. I kept a running list of unresolved decisions through the project; the last
-commit is the one that emptied it. Finished, not abandoned.
+- **Phones never load it.** The 3D library weighed more than the rest of the site
+  combined, so mobile skips the download entirely. That's 936 KB that never leaves the
+  server.
+- **Returning to the homepage used to freeze.** Shrinking the canvas changed nothing,
+  because the cost was setting the scene up, not drawing it. Moving the setup out of the
+  page tree cut the main-thread block from about 600ms to 260ms.
 
-Copy came from the client's real facts and got corrected against reality more than once —
-sector mappings updated after a client meeting, a decommissioned phone number removed, a
-customer count fixed to the actual figure.
+> *Show: a short clip of the scene through one scroll.*
+> Caption: `Desktop only. On phones the page tells the same story without it.`
+
+## The hand that lived five hours
+
+The scene's big moment was going to be the particles resolving into an open, presenting
+hand. The commit record tells the whole story:
+
+> *Show: three git log lines.*
+> ```
+> 12:23  hand added
+> 12:40  pose corrected
+> 17:33  hand removed
+> ```
+> Caption: `July 31. Built, refined, and deleted before dinner.`
+
+It was impressive and it was wrong. Too theatrical for a company whose whole pitch is
+quiet competence. What replaced it is calmer, built from the client's real content, and it
+set the tone for the entire page. That one deletion shaped the site more than most of the
+things I kept.
+
+## Corrected against reality
+
+The copy comes from a facts file, and reality got votes. After a client meeting in August,
+the sector-to-capability mapping changed to match what they actually sell. A
+decommissioned phone number came off. A customer count got fixed to the real figure.
+
+I keep a running list of open decisions on every project. On this one it currently reads:
+none pending. The site went live on the client's domain eleven days after the first
+commit, and the engagement is still active, so it keeps getting sharper.
 
 ## How it was built
 
-Built with Claude Code in the loop, working under written rules: design values live in the
-code, the docs hold the reasoning, and anything unmeasured gets measured before it ships.
-The direction, the rules, the rejections, and every number above are mine — the AI typed
-faster than I do.
+With Claude Code in the loop, under written rules: design values live in the code, the
+docs hold the reasoning, and anything unmeasured gets measured before it ships. The
+direction, the rules, the rejections, and every number above are mine. The typing mostly
+wasn't.
 
-## What this project isn't
+## What this isn't
 
-Turkish-only, by design — the client's market is Turkey. No user research or testing; the
-structure came from the client's sales reality, not interviews. And no business outcome
-numbers yet — the site shipped in August 2026, so any traffic claim would be made up. The
-scale figures above are the client's, describing their product — not results of my design.
+Turkish-only, because the client's market is Turkey. No user research; the structure came
+from the client's sales reality. No business outcomes yet: the site is weeks old, and any
+traffic claim would be invented. The scale figures above describe the client's product,
+not the results of my design.

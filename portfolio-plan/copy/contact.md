@@ -28,7 +28,7 @@ Button: `Send`
 
 Success message:
 
-> Got it — thanks. I'll get back to you soon.
+> Got it, thanks. I'll get back to you soon.
 
 Error message:
 

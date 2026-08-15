@@ -1,7 +1,10 @@
 # OFK Construction — case study
 
-Meta title: `OFK Construction — Mert Bildik`
-Meta description: `A 200-person Polish contractor with real projects and no website. Brand, design system, and a bilingual site — built so a buyer can verify the work.`
+Meta title: `OFK Construction · Mert Bildik`
+Meta description: `A 200-person Polish contractor with real projects and no website. Brand, design system, and a bilingual site, built so a buyer can verify the work.`
+
+Page shape: the story of a delivery, told through its decisions. Each *Show:* line is a
+media slot with caption copy. Target length ~1,800 words of body text or less.
 
 ---
 
@@ -9,12 +12,12 @@ Meta description: `A 200-person Polish contractor with real projects and no webs
 
 **OFK Construction**
 
-Product Designer · Mar–Apr 2026 · [ofkconstruction.com](https://ofkconstruction.com) — live
+Product Designer · Mar–Apr 2026 · [ofkconstruction.com](https://ofkconstruction.com) (live)
 
-React · Tailwind · Framer Motion · Lenis
+React · Tailwind · Motion · Lenis
 
 A contractor with real projects and no way to prove them. Brand, design system, and a
-bilingual website, built end to end so a buyer can check that the work is real.
+bilingual website, built end to end in one month.
 
 ---
 
@@ -22,73 +25,116 @@ bilingual website, built end to end so a buyer can check that the work is real.
 
 OFK is a Polish construction company with over 200 employees and a track record most
 contractors would lead with: civil and building works on the Orlen Olefin expansion in
-Płock, the Warsaw Fast Tramline, Polimery Police in Szczecin. Big, verifiable,
-industrial-scale work.
+Płock, the Warsaw Fast Tramline, Polimery Police in Szczecin.
 
-And none of it was visible anywhere. No website, no brand beyond a logo. When a procurement
-manager shortlisting subcontractors went looking, they found nothing. That's the whole
-brief: make the track record checkable.
+None of it was visible anywhere. No website, no brand beyond a logo. And the buyer here is
+specific: procurement at a general contractor, shortlisting subcontractors. Their vetting
+starts with a reference list and reference letters. When they went looking for OFK, they
+found nothing. That was the brief: make the track record checkable.
 
-## The first deliverable was a list of facts
+## Day one was a list of facts
 
-Before any design, I wrote a document sorting every claim the company could make by how well
-we could back it up: client confirmations first, then signed reference letters, then the
-brief, and everything else marked unconfirmed. It came with a rule I held myself to — no
-invented certifications, no project outcomes beyond what the references say, no positioning
-notes inflated into marketing copy.
+The first artifact in the repository isn't a mockup. It's a document sorting every claim
+the company could make by how well we could back it up.
 
-That sounds bureaucratic until you see what it does to a construction website. Every project
-on the site is one the client confirmed. Every reference is a real letter. One project that
-lacked a reference letter is presented more modestly than the ones that have them. A buyer
-who checks — and B2B buyers check — finds exactly what the site promised.
+> *Show: an excerpt from the facts document.*
+> ```
+> When sources conflict, use this order:
+>   1. Latest written client confirmations
+>   2. Uploaded reference letters
+>   3. Website brief
+>   4. Brochure
+>   5. Anything else = unconfirmed
+>
+> Do not invent certifications.
+> Do not invent project outcomes beyond uploaded references.
+> ```
+> Caption: `In the repo from the first commit. Everything on the site traces back to this file.`
 
-## The system came before the pages
+It sounds bureaucratic until you see what it does to a construction website. Every project
+shown is one the client confirmed. A project without a reference letter is presented more
+modestly than the ones that have one. The brochure carried an outdated email address; the
+rule caught it before it shipped. A buyer who checks, and these buyers check, finds
+exactly what the site promised.
 
-The site is bilingual, English and Polish, and that decision shaped the build order: design
-tokens, type rules, and motion rules first, pages second. When both languages share one
-system, they can't drift apart — there's no "Polish version" to maintain, just one site
-with two sets of words.
+## English first, and why
 
-The details that came out of that are my favorite part of the project:
+Polish contractor sites are Polish-first, with an English version that's often an
+afterthought. But OFK's clients on the Orlen expansion are Korean and Turkish contractor
+chains. The people vetting OFK read English. So the site leads in English, with a full
+Polish version beside it.
 
-- The language toggle swaps EN and PL with zero layout shift. Every bilingual label reserves
-  the width of its longer variant, so switching languages changes the words and moves
-  nothing. It's a small thing you can feel.
-- A rule from the codebase: numbers are data, not translation. If a figure shows up
-  identically in both language files, it doesn't belong in either — it moves to the data
-  layer, where it can't fork.
-- 79 site photos run through an optimization pipeline instead of hand editing — consistent
-  sizes, consistent naming, and one genuinely annoying Windows filename bug fixed along the
-  way.
+That decision shaped the build order: design tokens, type rules, and motion rules first,
+pages second. When both languages share one system, they can't drift apart. There is no
+"Polish version" to maintain. One site, two sets of words.
 
-## The font decision I reversed
+- **The toggle moves nothing.** Every bilingual label reserves the width of its longer
+  variant, so switching languages changes the words and shifts no layout. The whole
+  mechanism is 34 lines of code.
+- **Numbers are data, not translation.** If a figure shows up identically in both language
+  files, it doesn't belong in either. It moves to the data layer, where it can't fork.
+- **79 site photos** run through one optimization pipeline instead of hand editing, which
+  also fixed a genuinely annoying Windows filename bug along the way.
 
-Two weeks in, I picked a display face and a text face and wrote "finalized" in the commit.
-Two weeks later both were gone, replaced by a single variable typeface doing every job
-through size, weight, and optical sizing. The pairing wasn't bad — it was more system than
-the site needed, and cutting it made everything simpler: fewer rules, fewer files, one voice.
-I'm including this because it's the decision that taught me the most on this project:
-"finalized" is a word you should distrust in week two.
+> *Show: a 10-second clip of the EN/PL toggle, next to the 34-line component.*
+> Caption: `Switching languages changes the words and moves nothing. The code fits on one screen.`
+
+## The font decision that lasted four hours
+
+The commit log keeps me honest here:
+
+> *Show: two commit lines.*
+> ```
+> Apr 6, 09:33  Finalizing Barlow Semi Condensed & DM Sans
+> Apr 6, 13:53  index.html now loads Inter
+> ```
+> Caption: `"Finalized" at breakfast, gone by lunch.`
+
+The pairing wasn't bad. It was more system than the site needed: a condensed display face
+and a grotesk body, each with its own rules. One variable typeface does every job through
+size, weight, and optical sizing, and cutting the pair made everything simpler. Fewer
+rules, fewer files, one voice. The lesson stuck: distrust the word "finalized" in week two.
+
+## Proof a buyer can download
+
+Contractors OFK's size usually prove themselves with a wall of client logos. Signed
+reference letters tend to show up only on small local firms' sites, scanned onto a page
+last touched years ago. OFK does the unusual thing: three signed letters, from FABE
+POLSKA, ILK INSAAT, and YOOJEONG, published as actual PDFs.
+
+That matters because letters are the first thing a general contractor's vetting asks for.
+The site answers the question before anyone asks it.
+
+The projects section backs the letters with confirmed scope and real numbers where they
+exist. One pipeline job alone: 22 km of gravity pipeline and 710 manholes, and the site
+counts them up on screen.
+
+> *Show: the references section on the live site.*
+> Caption: `Three signed reference letters, downloadable. Third-party proof, not self-praise.`
 
 ## Shipped
 
-The site is live at ofkconstruction.com — Home, About, Projects, Services, Contact, in both
-languages. The projects section shows confirmed scope with real numbers where they exist
-(one pipeline job alone: 22 km of gravity pipeline, 710 manholes — the site counts them up).
-Three signed reference letters from FABE POLSKA, ILK INSAAT, and YOOJEONG are on the site as
-actual PDFs, not logos.
+Live at ofkconstruction.com: Home, About, Projects, Services, Contact, in both languages.
+First commit to last: one month.
 
 ## How it was built
 
-Solo, end to end, with Claude Code in the loop — and with the working rules written down
-first. Three documents governed the project: what's true about the company, what the design
-system allows, and how the code is organized. When the site and the docs disagreed, the docs
-won. It's the same discipline I learned making slides survive partner review at McKinsey,
+Solo, end to end, with Claude Code in the loop and the working rules written down first.
+Three documents governed the project: what's true about the company, what the design
+system allows, and how the code is organized. When the site and the docs disagreed, the
+docs won. It's the discipline I learned making slides survive partner review at McKinsey,
 applied to a codebase.
+
+> *Show: a short excerpt from the design-system rules.*
+> ```
+> On dark sections, use exactly these four opacity tiers.
+> Do not introduce intermediate values.
+> One accent color. Long-term commitment.
+> ```
+> Caption: `The system says no so the pages don't have to.`
 
 ## What I won't claim
 
-There's no analytics on the site — the client didn't need it at launch — so I have no
-traffic or lead numbers, and I'm not going to invent any. The outcome I can stand behind is
-narrower and real: before, a buyer checking OFK found nothing. Now they find the projects,
-the scope, and the letters.
+There's no analytics on the site, so I have no traffic or lead numbers, and I won't invent
+any. The outcome I can stand behind is narrower and real: before, a buyer checking OFK
+found nothing. Now they find the projects, the scope, and the letters.
