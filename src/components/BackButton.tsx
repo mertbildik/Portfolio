@@ -31,7 +31,7 @@ const BackButton: React.FC<{ to?: string }> = ({ to }) => {
 
     return (
         <button
-            onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/portfolio'))}
+            onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/#portfolio'))}
             className={STYLE}
             aria-label="Go back"
         >

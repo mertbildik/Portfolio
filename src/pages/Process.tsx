@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
 
-import BackButton from '../components/BackButton';
 import SplitPage, { IDENTITY_COLUMN } from '../layouts/SplitPage';
 import { EASE, containerVariants, itemVariants } from '../components/motion';
 
@@ -51,8 +49,7 @@ const Process: React.FC = () => {
     ];
 
     return (
-        <SplitPage align="center">
-            {/* LEFT COLUMN: Header / Intro - col-span-4 */}
+        <SplitPage id="process">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -60,19 +57,15 @@ const Process: React.FC = () => {
                 className={IDENTITY_COLUMN}
             >
                 <div className="flex flex-col">
-                    <div className="mb-8 lg:mb-12">
-                        <BackButton to="/" />
-                    </div>
-
                     {/* Title System - Matches Portfolio's hierarchy */}
                     <div className="mb-6 lg:mb-8">
                         <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             METHODOLOGY
                         </span>
-                        <h1 className="text-display-xl text-ink-high">
+                        <h2 className="text-display-xl text-ink-high">
                             How I <br />
                             <span className="text-ink-low">Work.</span>
-                        </h1>
+                        </h2>
                     </div>
 
                     <p className="text-ink-body max-w-xs text-body-lg">
@@ -82,12 +75,11 @@ const Process: React.FC = () => {
                 </div>
             </motion.div>
 
-            {/* RIGHT COLUMN: Interactive List - col-span-8 */}
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="lg:col-span-8 flex flex-col justify-center w-full relative z-30 lg:pl-12"
+                className="flex flex-col justify-center w-full relative z-30"
             >
                 <div className="flex flex-col w-full max-w-3xl gap-10 lg:gap-12">
 
@@ -171,8 +163,8 @@ const Process: React.FC = () => {
                         </div>
 
                         <div className="mt-8 w-full flex justify-start">
-                            <Link
-                                to="/contact"
+                            <a
+                                href="#contact"
                                 className="w-full flex items-center justify-between group cursor-pointer"
                             >
                                 <div className="flex flex-col shrink-0">
@@ -182,7 +174,7 @@ const Process: React.FC = () => {
                                 <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={20} />
                                 </div>
-                            </Link>
+                            </a>
                         </div>
                     </div>
 

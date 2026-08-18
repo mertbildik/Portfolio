@@ -173,7 +173,8 @@
   --default-transition-duration: 300ms;
 
   /* ---- frame ------------------------------------------------------------ */
-  --container-shell: 1600px; /* max page width, shared by both layouts */
+  --container-shell: 1600px; /* case studies and their full-width visuals */
+  --container-page: 692px;   /* homepage sections */
 }
 
 @layer base {
@@ -183,6 +184,10 @@
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -203,6 +208,10 @@
 /* motion handles its own animations via MotionConfig reducedMotion="user".
    This covers the one CSS loop left: the pulsing status dot. */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .animate-pulse {
     animation: none;
   }

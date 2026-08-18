@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ArrowRight, ArrowUpRight, Check, Copy } from 'lucide-react';
-import BackButton from '../components/BackButton';
 import SplitPage, { IDENTITY_COLUMN } from '../layouts/SplitPage';
 import { EASE, containerVariants, itemVariants } from '../components/motion';
 
@@ -109,8 +108,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <SplitPage align="center">
-            {/* COLUMN 1: PAGE IDENTITY (Span 4) */}
+        <SplitPage id="contact">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -118,18 +116,14 @@ const Contact: React.FC = () => {
                 className={IDENTITY_COLUMN}
             >
                 <div className="flex flex-col">
-                    <div className="mb-8 lg:mb-12">
-                        <BackButton to="/" />
-                    </div>
-
                     <div className="mb-6 lg:mb-8">
                         <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             Inquiry
                         </span>
-                        <h1 className="text-display-xl text-ink-high">
+                        <h2 className="text-display-xl text-ink-high">
                             Let's <br />
                             <span className="text-ink-low">Talk.</span>
-                        </h1>
+                        </h2>
                     </div>
 
                     <p className="text-ink-body max-w-xs text-body-lg">
@@ -139,13 +133,11 @@ const Contact: React.FC = () => {
                 </div>
             </motion.div>
 
-            {/* COLUMN 2: INTERFACE (Span 8) */}
-            {/* Replaced 'max-w-2xl' with 'max-w-3xl' and aligned padding to match Portfolio */}
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="lg:col-span-8 flex flex-col justify-center h-full relative z-30 lg:pl-12"
+                className="flex flex-col justify-center h-full relative z-30"
             >
                 <div className="flex flex-col w-full max-w-3xl gap-10 lg:gap-12">
 

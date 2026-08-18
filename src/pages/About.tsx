@@ -1,16 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
 import mertPhoto from '../assets/mert.webp';
-import BackButton from '../components/BackButton';
 import SplitPage, { IDENTITY_COLUMN } from '../layouts/SplitPage';
 import { EASE, containerVariants, itemVariants } from '../components/motion';
 
 const About: React.FC = () => {
     return (
-        <SplitPage align="center">
-            {/* LEFT COLUMN: Header / Intro - PRESERVED EXACTLY */}
+        <SplitPage id="about">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -18,19 +15,15 @@ const About: React.FC = () => {
                 className={IDENTITY_COLUMN}
             >
                 <div className="flex flex-col lg:min-h-0">
-                    <div className="mb-8 lg:mb-12">
-                        <BackButton to="/" />
-                    </div>
-
                     {/* Title System */}
                     <div className="mb-6 lg:mb-8">
                         <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
                             Profile
                         </span>
-                        <h1 className="text-display-xl text-ink-high">
+                        <h2 className="text-display-xl text-ink-high">
                             Who I <br />
                             <span className="text-ink-low">Am.</span>
-                        </h1>
+                        </h2>
                     </div>
 
                     <p className="text-ink-body max-w-xs text-body-lg">
@@ -39,12 +32,11 @@ const About: React.FC = () => {
                 </div>
             </motion.div>
 
-            {/* RIGHT COLUMN: HERO PORTRAIT SYSTEM */}
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="lg:col-span-8 flex flex-col justify-center w-full relative z-30 lg:pl-12"
+                className="flex flex-col justify-center w-full relative z-30"
             >
                 {/* Main System Grid */}
                 <div className="flex flex-col w-full max-w-3xl ml-auto">
@@ -137,14 +129,14 @@ const About: React.FC = () => {
                                 </span>
                             </div>
 
-                            <Link to="/contact" className="w-full flex items-center justify-between group cursor-pointer lg:w-auto lg:min-w-[280px]">
+                            <a href="#contact" className="w-full flex items-center justify-between group cursor-pointer lg:w-auto lg:min-w-[280px]">
                                 <div className="flex flex-col shrink-0">
                                     <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300 uppercase font-mono">Start a conversation</span>
                                 </div>
                                 <div className="w-10 h-10 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
                                     <ArrowRight size={16} />
                                 </div>
-                            </Link>
+                            </a>
 
                         </motion.div>
 

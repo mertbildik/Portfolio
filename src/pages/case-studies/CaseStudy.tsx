@@ -23,7 +23,7 @@ const CaseStudy: React.FC = () => {
     const project = PROJECTS.find((p) => p.id === id);
     if (project?.caseStudy) return <ProjectTemplate project={project} />;
 
-    return <Navigate to="/portfolio" replace />;
+    return <Navigate to="/#portfolio" replace />;
 };
 
 export default CaseStudy;

@@ -1,9 +1,8 @@
 import { test, expect, Page } from '@playwright/test';
 import { PROJECTS } from '../src/content/projects';
 
-const PAGES = ['/', '/portfolio', '/process', '/about', '/contact'];
 const CASE_STUDIES = PROJECTS.map((p) => `/portfolio/${p.id}`);
-const ALL = [...PAGES, ...CASE_STUDIES];
+const ALL = ['/', ...CASE_STUDIES];
 
 const MOBILE = { width: 390, height: 844 };
 const SHORT_LAPTOP = { width: 1366, height: 625 };
@@ -54,7 +53,7 @@ for (const path of ALL) {
 // the contact details permanently out of reach on a short laptop.
 test('contact details stay reachable on a short screen', async ({ page }) => {
     await page.setViewportSize(SHORT_LAPTOP);
-    await page.goto('/contact');
+    await page.goto('/#contact');
 
     // settle() scrolls the page the only way a visitor can. scrollIntoViewIfNeeded
     // would pass here even when the content sits in an unscrollable overflow-hidden box.
@@ -63,6 +62,14 @@ test('contact details stay reachable on a short screen', async ({ page }) => {
     for (const target of [page.getByText('mert.bildik@gmail.com'), page.getByRole('link', { name: 'LinkedIn' })]) {
         await expect(target).toBeInViewport();
     }
+});
+
+test('homepage links scroll to their sections', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('link', { name: 'View Portfolio' }).click();
+
+    await expect(page).toHaveURL('/#portfolio');
+    await expect(page.locator('#portfolio')).toBeInViewport();
 });
 
 // The template used to drop any output block whose title contained "brand" or
@@ -85,6 +92,14 @@ test('old case-study links still redirect', async ({ page }) => {
     await page.goto('/case-study/ofk');
     await expect(page).toHaveURL('/portfolio/ofk');
 });
+
+for (const section of ['portfolio', 'process', 'about', 'contact']) {
+    test(`old /${section} link redirects to its homepage section`, async ({ page }) => {
+        await page.goto(`/${section}`);
+        await expect(page).toHaveURL(`/#${section}`);
+        await expect(page.locator(`#${section}`)).toBeInViewport();
+    });
+}
 
 test('an unknown path falls back to home', async ({ page }) => {
     await page.goto('/does-not-exist');

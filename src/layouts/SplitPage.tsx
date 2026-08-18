@@ -1,37 +1,20 @@
 import React from 'react';
 
-/**
- * The identity column: back control, eyebrow, page heading, one lead paragraph.
- * Every split page but Home uses it, so it is written once here.
- */
 export const IDENTITY_COLUMN =
-    'lg:col-span-4 flex flex-col justify-start lg:self-start lg:pt-72 relative z-20 h-auto';
+    'flex flex-col justify-start relative z-20 h-auto';
 
-/**
- * The 4/8 column grid shared by Home, Portfolio, Process, About and Contact.
- * Layout only: ink and font come from `body`, same as every other page.
- */
-const SplitPage: React.FC<{ children: React.ReactNode; align?: 'start' | 'center' }> = ({
+const SplitPage: React.FC<{ children: React.ReactNode; id: string; hero?: boolean }> = ({
     children,
-    align = 'start',
+    id,
+    hero = false,
 }) => (
-    <div className="w-full min-h-screen flex flex-col">
+    <section id={id} className={`w-full ${hero ? 'min-h-screen flex items-center' : ''}`}>
         <div
-            className={`relative z-10 w-full max-w-shell flex-1 mx-auto
-                px-6 md:px-12 lg:pr-20 lg:pl-32 xl:px-32
-                grid grid-cols-1 lg:grid-cols-12 gap-12
-                py-24 lg:py-32 min-h-screen
-                ${align === 'center' ? 'items-start lg:items-center' : 'items-start'}`}
+            className="relative z-10 w-full max-w-page mx-auto px-6 py-18 flex flex-col gap-12"
         >
             {children}
         </div>
-
-        <div className="fixed bottom-8 left-6 md:left-12 z-40 hidden lg:block pointer-events-none">
-            <span className="text-caption text-ink-faint font-mono uppercase">
-                Mert Bildik © 2026
-            </span>
-        </div>
-    </div>
+    </section>
 );
 
 export default SplitPage;
