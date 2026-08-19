@@ -31,7 +31,6 @@ const LiveClock: React.FC = () => {
 
 const Contact: React.FC = () => {
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-    const [selectedServices, setSelectedServices] = useState<string[]>([]);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [emailCopied, setEmailCopied] = useState(false);
     const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -41,22 +40,6 @@ const Contact: React.FC = () => {
     };
 
     const isFormReady = formData.name.trim() !== '' && isValidEmail(formData.email) && formData.message.trim() !== '';
-
-    const SERVICES = [
-        "Web Design",
-        "Brand Identity",
-        "Presentation Design",
-        "Posters and Social",
-        "Something Else"
-    ];
-
-    const toggleService = (service: string) => {
-        setSelectedServices(prev =>
-            prev.includes(service)
-                ? prev.filter(s => s !== service)
-                : [...prev, service]
-        );
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -81,7 +64,6 @@ const Contact: React.FC = () => {
                     name: formData.name,
                     email: formData.email,
                     message: formData.message,
-                    services: selectedServices.length > 0 ? selectedServices.join(', ') : 'General Inquiry'
                 })
             });
 
@@ -157,62 +139,21 @@ const Contact: React.FC = () => {
                                     I'll review your brief shortly. Expect a response at {formData.email}.
                                 </p>
                                 <button
-                                    onClick={() => { setFormState('idle'); setFormData({ name: '', email: '', message: '' }); setSelectedServices([]); }}
+                                    onClick={() => { setFormState('idle'); setFormData({ name: '', email: '', message: '' }); }}
                                     className="text-button uppercase text-ink-body hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 border-b border-transparent hover:border-line-active focus-visible:border-line-active pb-0.5"
                                 >
                                     Start over
                                 </button>
                             </motion.div>
                         ) : (
-                            <motion.form
-                                key="form"
-                                variants={itemVariants}
-                                onSubmit={handleSubmit}
-                                className="flex flex-col gap-10"
-                            >
-                                {/* 01: FOCUS (Segmented Control) */}
-                                <div className="flex flex-col gap-6">
-                                    <label className="text-eyebrow font-mono text-ink-low uppercase pl-[2px]">
-                                        01 Focus
-                                    </label>
-                                    <div className="grid grid-cols-2 md:grid-cols-3 border-t border-l border-line">
-                                        {SERVICES.map((service) => {
-                                            const isSelected = selectedServices.includes(service);
-                                            return (
-                                                <motion.button
-                                                    key={service}
-                                                    type="button"
-                                                    onClick={() => toggleService(service)}
-                                                    className={`
-                                                        relative h-14 md:h-16 flex items-center justify-center text-button border-r border-b border-line transition-all duration-300 group
-                                                        ${isSelected
-                                                            ? 'bg-fill-inverse text-ink-inverse'
-                                                            : 'bg-transparent text-ink-low hover:text-ink-max hover:bg-fill-subtle focus-visible:text-ink-max focus-visible:bg-fill-subtle'
-                                                        }
-                                                    `}
-                                                >
-                                                    <span className="relative z-10 font-mono uppercase text-button">
-                                                        {service}
-                                                    </span>
-                                                    {/* Corner Marker for Selected */}
-                                                    {isSelected && (
-                                                        <motion.div
-                                                            layoutId="active-corner"
-                                                            className="absolute top-0 right-0 w-2 h-2 bg-canvas"
-                                                        />
-                                                    )}
-                                                </motion.button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-
-                                {/* 02: PARTICULARS */}
+                                <motion.form
+                                    key="form"
+                                    variants={itemVariants}
+                                    onSubmit={handleSubmit}
+                                    className="flex flex-col gap-10"
+                                >
+                                {/* PARTICULARS */}
                                 <div className="flex flex-col gap-10">
-                                    <label className="text-eyebrow font-mono text-ink-low uppercase pl-[2px]">
-                                        02 Details
-                                    </label>
-
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                         {/* NAME INPUT */}
                                         <div className="relative group">

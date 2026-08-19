@@ -22,7 +22,6 @@ const AppRoutes: React.FC = () => {
                 <Routes location={location} key={location.pathname}>
                     <Route path="/" element={<Home />} />
                     <Route path="/portfolio" element={<Navigate to="/#portfolio" replace />} />
-                    <Route path="/process" element={<Navigate to="/#process" replace />} />
                     <Route path="/about" element={<Navigate to="/#about" replace />} />
                     <Route path="/contact" element={<Navigate to="/#contact" replace />} />
 
