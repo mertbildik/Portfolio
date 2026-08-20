@@ -2,48 +2,42 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
-import { PROJECTS, Project } from '../content/projects';
-import SplitPage, { IDENTITY_COLUMN } from '../layouts/SplitPage';
-import { EASE, listVariants, itemVariants } from '../components/motion';
+import { PROJECTS, ProjectKind } from '../content/projects';
+import SplitPage from '../layouts/SplitPage';
+import SectionIntro from '../components/SectionIntro';
+import { blockVariants, listVariants, itemVariants, VIEWPORT_ONCE } from '../components/motion';
 
-const SECTIONS: { label: string; kind: Project['kind'] }[] = [
-    { label: 'CLIENT PROJECTS', kind: 'clientProject' },
-    { label: 'EMPLOYMENT', kind: 'employment' },
-    { label: 'VENTURES', kind: 'venture' },
+const SECTIONS: { label: string; kind: ProjectKind }[] = [
+    { label: 'Client projects', kind: 'clientProject' },
+    { label: 'Employment', kind: 'employment' },
+    { label: 'Ventures', kind: 'venture' },
 ];
 
-const PORTFOLIO_PROJECTS = PROJECTS.filter((p) => p.kind !== 'venture' && p.id !== 'bunect');
+const PORTFOLIO_PROJECTS = PROJECTS.filter((project) => project.listed);
 
 const Portfolio: React.FC = () => (
     <SplitPage id="portfolio">
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, ease: EASE }}
-            className={IDENTITY_COLUMN}
+            variants={blockVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT_ONCE}
         >
-            <div className="flex flex-col">
-                <div className="mb-6 lg:mb-8">
-                    <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">ARCHIVE</span>
-                    <h2 className="text-display-xl text-ink-high">
-                        Selected <br />
-                        <span className="text-ink-low">Work.</span>
-                    </h2>
-                </div>
-
-                <p className="text-ink-body max-w-xs text-body-lg">
-                    A small set of projects I am proud of. Client work, team work, and things I built for myself.
-                </p>
-            </div>
+            <SectionIntro
+                eyebrow="Archive"
+                title={<>Selected <br /><span className="text-ink-low">Work.</span></>}
+                description="A small set of projects I am proud of. Client work, team work, and things I built for myself."
+            />
         </motion.div>
 
         <motion.div
             variants={listVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={VIEWPORT_ONCE}
             className="flex flex-col w-full relative z-30"
         >
-            <div className="flex flex-col w-full max-w-3xl gap-10 lg:gap-12">
+            <div className="flex flex-col w-full gap-10 lg:gap-12">
                 {SECTIONS.map((section) => {
                     const sectionProjects = PORTFOLIO_PROJECTS.filter((p) => p.kind === section.kind);
                     if (sectionProjects.length === 0) return null;
@@ -51,7 +45,7 @@ const Portfolio: React.FC = () => (
                     <div key={section.kind} className="flex flex-col gap-4">
                         <motion.h2
                             variants={itemVariants}
-                            className="text-eyebrow font-mono text-ink-low uppercase pl-[2px] mb-2"
+                            className="text-eyebrow text-ink-low pl-[2px] mb-2"
                         >
                             {section.label}
                         </motion.h2>
@@ -71,7 +65,7 @@ const Portfolio: React.FC = () => (
                                             {project.title}
                                         </span>
 
-                                        <span className="hidden md:block text-caption font-mono text-ink-faint group-hover:text-ink-body group-focus-visible:text-ink-body uppercase transition-colors duration-300">
+                                        <span className="hidden md:block text-caption text-ink-faint group-hover:text-ink-body group-focus-visible:text-ink-body transition-colors duration-300">
                                             {project.role}
                                         </span>
 

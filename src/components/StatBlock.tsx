@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { EASE } from './motion';
+import { EASE, VIEWPORT_ONCE } from './motion';
 
 interface StatBlockProps {
     value: string;
@@ -13,7 +13,7 @@ const StatBlock: React.FC<StatBlockProps> = ({ value, label, desc, delay }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={VIEWPORT_ONCE}
         transition={{ duration: 0.8, delay, ease: EASE }}
         className="relative flex flex-col items-start text-left p-6 min-h-[180px] border-l border-line"
     >

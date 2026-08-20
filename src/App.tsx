@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from 'react-router';
-import { AnimatePresence, MotionConfig } from 'motion/react';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router';
+import { MotionConfig } from 'motion/react';
 
 import GlobalBackground from './components/GlobalBackground';
 import Wrapped from './layouts/Wrapped';
@@ -14,32 +14,27 @@ const LegacyCaseStudyRedirect: React.FC = () => {
 };
 
 const AppRoutes: React.FC = () => {
-    const location = useLocation();
     return (
-        <AnimatePresence mode="wait">
-            <Suspense fallback={<div className="min-h-screen" />}>
-                {/* key: AnimatePresence needs it to detect a page change */}
-                <Routes location={location} key={location.pathname}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/portfolio" element={<Navigate to="/#portfolio" replace />} />
-                    <Route path="/about" element={<Navigate to="/#about" replace />} />
-                    <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+        <Suspense fallback={<div className="min-h-screen" />}>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/portfolio" element={<Navigate to="/#portfolio" replace />} />
+                <Route path="/about" element={<Navigate to="/#about" replace />} />
+                <Route path="/contact" element={<Navigate to="/#contact" replace />} />
 
-                    <Route element={<Wrapped />}>
-                        <Route path="/portfolio/:id" element={<CaseStudy />} />
-                    </Route>
+                <Route element={<Wrapped />}>
+                    <Route path="/portfolio/:id" element={<CaseStudy />} />
+                </Route>
 
-                    <Route path="/case-study/:id" element={<LegacyCaseStudyRedirect />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
-            </Suspense>
-        </AnimatePresence>
+                <Route path="/case-study/:id" element={<LegacyCaseStudyRedirect />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+        </Suspense>
     );
 };
 
 const App: React.FC = () => (
-    // reducedMotion="user" drops every transform and layout animation, including
-    // the looping background, when the visitor asks for less motion.
+    // Motion-driven transforms resolve without movement when the visitor asks for less motion.
     <MotionConfig reducedMotion="user">
         <BrowserRouter>
             {/* Layout only. Ink, font and selection come from `body` in index.css,

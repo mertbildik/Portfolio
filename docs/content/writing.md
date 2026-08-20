@@ -2,6 +2,8 @@
 
 Writing is part of the interface. Help the reader understand the work, decide what matters, and know where to look next. Prefer clear thinking in a small space over more detail.
 
+Published copy lives in `src/content/` and the page components. The other files in `docs/content/` are editorial references, not runtime sources of truth.
+
 ## Voice And Clarity
 
 Write like a thoughtful practitioner explaining real work to an intelligent peer.

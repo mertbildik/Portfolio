@@ -1,4 +1,6 @@
 import { test, expect, Page } from '@playwright/test';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { PROJECTS } from '../src/content/projects';
 
 const CASE_STUDIES = PROJECTS.map((p) => `/portfolio/${p.id}`);
@@ -6,6 +8,7 @@ const ALL = ['/', ...CASE_STUDIES];
 
 const MOBILE = { width: 390, height: 844 };
 const SHORT_LAPTOP = { width: 1366, height: 625 };
+const ASSET_ROOT = fileURLToPath(new URL('../src/assets/portfolio/', import.meta.url));
 
 /**
  * Wait for the lazy page chunk, then scroll to the bottom so lazy images and
@@ -15,7 +18,13 @@ const SHORT_LAPTOP = { width: 1366, height: 625 };
 async function settle(page: Page) {
     await page.locator('h1').first().waitFor();
     await page.waitForLoadState('networkidle');
-    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await page.evaluate(async () => {
+        for (let y = 0; y < document.documentElement.scrollHeight; y += window.innerHeight * 0.75) {
+            window.scrollTo(0, y);
+            await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        }
+        window.scrollTo(0, document.documentElement.scrollHeight);
+    });
     await page.waitForLoadState('networkidle');
 }
 
@@ -29,6 +38,7 @@ for (const path of ALL) {
         await settle(page);
 
         expect(problems, `console errors on ${path}`).toEqual([]);
+        await expect(page).toHaveURL(path);
         await expect(page.locator('h1').first()).toBeVisible();
 
         const broken = await page.evaluate(
@@ -64,22 +74,22 @@ test('contact details stay reachable on a short screen', async ({ page }) => {
     }
 });
 
-test('homepage links scroll to their sections', async ({ page }) => {
+test('homepage call to action scrolls to contact', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('link', { name: 'View Portfolio' }).click();
+    await page.getByRole('link', { name: 'Get in touch' }).click();
 
-    await expect(page).toHaveURL('/#portfolio');
-    await expect(page.locator('#portfolio')).toBeInViewport();
+    await expect(page).toHaveURL('/#contact');
+    await expect(page.locator('#contact')).toBeInViewport();
 });
 
 // The template used to drop any output block whose title contained "brand" or
 // "social", so content written in projects.ts never appeared on the page.
 test('every output block in the content file reaches the page', async ({ page }) => {
-    for (const project of PROJECTS.filter((p) => p.caseStudy)) {
+    for (const project of PROJECTS.filter((entry) => entry.renderer === 'template')) {
         await page.goto(`/portfolio/${project.id}`);
         await settle(page);
 
-        for (const block of project.caseStudy!.output) {
+        for (const block of project.caseStudy.output) {
             await expect(
                 page.getByRole('heading', { name: block.title, exact: true }),
                 `${project.id} is missing the "${block.title}" block`,
@@ -93,13 +103,62 @@ test('old case-study links still redirect', async ({ page }) => {
     await expect(page).toHaveURL('/portfolio/ofk');
 });
 
-for (const section of ['portfolio', 'process', 'about', 'contact']) {
+for (const section of ['portfolio', 'about', 'contact']) {
     test(`old /${section} link redirects to its homepage section`, async ({ page }) => {
         await page.goto(`/${section}`);
         await expect(page).toHaveURL(`/#${section}`);
         await expect(page.locator(`#${section}`)).toBeInViewport();
     });
 }
+
+test('every referenced project image exists', () => {
+    for (const project of PROJECTS.filter((entry) => entry.renderer === 'template')) {
+        for (const block of project.caseStudy.output) {
+            for (const image of block.images ?? []) {
+                expect(
+                    existsSync(`${ASSET_ROOT}${project.id}/${image}.webp`),
+                    `${project.id} references missing image ${image}.webp`,
+                ).toBe(true);
+            }
+        }
+    }
+});
+
+test('direct case-study back navigation returns to portfolio', async ({ page }) => {
+    await page.goto('/portfolio/ofk');
+    await page.getByRole('link', { name: 'Back to portfolio' }).click();
+
+    await expect(page).toHaveURL('/#portfolio');
+    await expect(page.locator('#portfolio')).toBeInViewport();
+});
+
+test('case-study contents use addressable native anchors', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/portfolio/ofk');
+    await page.getByRole('link', { name: 'Approach', exact: true }).click();
+
+    await expect(page).toHaveURL('/portfolio/ofk#approach');
+    await expect(page.locator('#approach')).toBeInViewport();
+});
+
+test('reduced motion disables smooth scrolling', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/portfolio/ofk');
+
+    expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto');
+});
+
+test('case-study rail changes at the layout breakpoint without overflow', async ({ page }) => {
+    for (const width of [767, 768, 1023, 1024]) {
+        await page.setViewportSize({ width, height: 800 });
+        await page.goto('/portfolio/ofk');
+        await page.locator('h1').waitFor();
+
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        expect(overflow, `case study overflows at ${width}px`).toBeLessThanOrEqual(1);
+        await expect(page.getByRole('navigation')).toBeVisible({ visible: width >= 1024 });
+    }
+});
 
 test('an unknown path falls back to home', async ({ page }) => {
     await page.goto('/does-not-exist');

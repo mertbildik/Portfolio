@@ -1,5 +1,7 @@
 # McKinsey & Company
 
+Editorial reference only. Published employment content lives in `src/content/employment.ts`.
+
 - **Kind:** Employment
 - **Role:** Visual Communication Specialist
 - **Year / Status:** 3 years

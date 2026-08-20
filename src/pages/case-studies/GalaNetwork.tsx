@@ -1,20 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { getProjectImages } from '../../content/images';
 import BackButton from '../../components/BackButton';
-import { containerVariants, itemVariants, sectionVariants } from '../../components/motion';
+import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../../components/motion';
+import type { CustomProject } from '../../content/projects';
 
-const GalaNetwork: React.FC = () => {
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-
-    const projectImages = getProjectImages('gala-network');
+const GalaNetwork: React.FC<{ project: CustomProject }> = ({ project }) => {
+    const projectImages = getProjectImages(project.id);
 
     return (
-        <div className="w-full pb-32 space-y-24 md:space-y-32">
+        <div className="w-full space-y-24 md:space-y-32">
 
             {/* Header Section */}
             <motion.div
@@ -27,11 +22,11 @@ const GalaNetwork: React.FC = () => {
                     <BackButton />
                 </motion.div>
 
-                <motion.h1 variants={itemVariants} className="text-display-xl text-ink-high mb-8">
-                    GalaNetwork
+                <motion.h1 variants={itemVariants} className="text-display-lg text-ink-high mb-8">
+                    {project.title}
                 </motion.h1>
 
-                <motion.p variants={itemVariants} className="text-body-lg text-ink-body mb-12 max-w-xl">
+                <motion.p variants={itemVariants} className="text-body text-ink-body mb-12 max-w-xl">
                     An English first Galatasaray community built to connect fans worldwide through storytelling, match analysis, and design.
                 </motion.p>
 
@@ -60,11 +55,11 @@ const GalaNetwork: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">OVERVIEW</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">What it is</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">What it is</h2>
                     <p className="text-body text-ink-body">
                         GalaNetwork is a fan led network for people who love Galatasaray and want to stay connected beyond borders. The content is the entry point. The long term goal is a real network with shared value, support, and connections.
                     </p>
@@ -74,11 +69,11 @@ const GalaNetwork: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">ORIGIN</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">Why I started it</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">Why I started it</h2>
                     <p className="text-body text-ink-body mb-6">
                         This began as a lifelong hobby. I wanted to turn that passion into a real identity and a real brand. Most fans are in Turkey. I wanted the story to reach people who think and speak in English.
                     </p>
@@ -98,11 +93,11 @@ const GalaNetwork: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">MISSION</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">What we are building</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">What we are building</h2>
                     <p className="text-body text-ink-body">
                         A global home for Galatasaray storytelling. A place where fans can meet, learn, share, and help each other. Content builds attention. The network builds trust.
                     </p>
@@ -112,11 +107,11 @@ const GalaNetwork: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">OUTPUT</span>
-                    <h2 className="text-display-lg text-ink-high mb-12">What we publish</h2>
+                    <h2 className="text-display-md text-ink-high mb-12">What we publish</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="pl-6 border-l border-line">
@@ -145,11 +140,11 @@ const GalaNetwork: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">NETWORK</span>
-                    <h2 className="text-display-lg text-ink-high mb-12">How the network works</h2>
+                    <h2 className="text-display-md text-ink-high mb-12">How the network works</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                         <div>
@@ -180,11 +175,11 @@ const GalaNetwork: React.FC = () => {
             <motion.section
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-10%" }}
+                viewport={VIEWPORT_ONCE}
                 variants={sectionVariants}
             >
                 <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">GALLERY</span>
-                <h2 className="text-display-lg text-ink-high mb-6">Selected work</h2>
+                <h2 className="text-display-md text-ink-high mb-6">Selected work</h2>
                 <p className="text-body text-ink-body mb-12">
                     A few screens and posters from GalaNetwork. Built to stay consistent across matches and formats.
                 </p>
@@ -213,11 +208,11 @@ const GalaNetwork: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">OPERATING MODEL</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">How we run it</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">How we run it</h2>
                     <p className="text-body text-ink-body">
                         I lead content direction and design. I work with a co founder. We stay consistent in tone and visuals. We keep the output frequent and the standard high.
                     </p>
@@ -227,11 +222,11 @@ const GalaNetwork: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">NOW</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">Current focus</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">Current focus</h2>
                     <p className="text-body text-ink-body">
                         We are growing the English speaking audience. We are improving our poster systems and match analysis format. We are turning followers into a real network.
                     </p>

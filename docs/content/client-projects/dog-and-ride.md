@@ -1,5 +1,7 @@
 # Dog & Ride
 
+Editorial reference only. Published project content lives in `src/content/projects.ts`.
+
 - **Kind:** Client project
 - **Role:** Multidisciplinary Designer
 - **Year / Status:** 2025

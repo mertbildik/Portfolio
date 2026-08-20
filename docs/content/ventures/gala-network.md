@@ -1,5 +1,7 @@
 # GalaNetwork
 
+Editorial reference only. Published copy lives in `src/pages/case-studies/GalaNetwork.tsx`.
+
 <!-- Hidden from the site's Portfolio list as of 2026-08; content retained here. -->
 
 - **Kind:** Venture

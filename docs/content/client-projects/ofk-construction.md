@@ -1,5 +1,7 @@
 # OFK Construction
 
+Editorial reference only. Published project content lives in `src/content/projects.ts`.
+
 - **Kind:** Client project
 - **Role:** Product Designer
 - **Year / Status:** 2025

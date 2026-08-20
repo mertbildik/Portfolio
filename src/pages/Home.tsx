@@ -3,15 +3,11 @@ import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import mertPhoto from '../assets/mert.webp';
 import SplitPage from '../layouts/SplitPage';
+import CircleAction from '../components/CircleAction';
 import { containerVariants, itemVariants } from '../components/motion';
 import Portfolio from './Portfolio';
 import About from './About';
 import Contact from './Contact';
-
-const getCurrentQuarter = () => {
-    const date = new Date();
-    return `Q${Math.floor(date.getMonth() / 3) + 1} ${date.getFullYear()}`;
-};
 
 const Home: React.FC = () => {
     useEffect(() => {
@@ -30,35 +26,73 @@ const Home: React.FC = () => {
                     animate="visible"
                 >
                     <motion.div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-                        <motion.div variants={itemVariants} className="shrink-0 self-center md:self-auto">
-                            <img
-                                src={mertPhoto}
-                                alt="Mert Bildik"
-                                className="w-24 h-24 lg:w-28 lg:h-28 object-cover object-top rounded-full border border-line"
-                            />
+                        <motion.div variants={itemVariants} className="relative shrink-0 self-center md:self-auto">
+                            <div className="relative z-10 w-24 h-24 lg:w-28 lg:h-28 rounded-full border border-line overflow-hidden">
+                                <img
+                                    src={mertPhoto}
+                                    alt="Mert Bildik"
+                                    className="w-full h-full object-cover object-[center_22%] scale-[1.2]"
+                                />
+                            </div>
+                            <svg
+                                viewBox="0 0 100 100"
+                                className="absolute -inset-4 lg:-inset-5 w-[calc(100%+2rem)] h-[calc(100%+2rem)] lg:w-[calc(100%+2.5rem)] lg:h-[calc(100%+2.5rem)] animate-ring-spin"
+                                aria-hidden="true"
+                            >
+                                <defs>
+                                    <path
+                                        id="warsaw-ring-path"
+                                        d="M 50,50 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"
+                                        fill="none"
+                                    />
+                                </defs>
+                                <text className="fill-current text-ink-faint font-mono uppercase" style={{ fontSize: 8.5, letterSpacing: 1.5 }}>
+                                    <textPath href="#warsaw-ring-path">
+                                        BASED IN WARSAW • BASED IN WARSAW • BASED IN WARSAW •
+                                    </textPath>
+                                </text>
+                            </svg>
                         </motion.div>
 
                         <motion.div variants={itemVariants} className="text-center md:text-left">
                             <h2 className="text-headline text-ink-high mb-2 md:mb-3">
                                 Mert Bildik
                             </h2>
-                            <span className="text-eyebrow font-mono text-ink-low uppercase block">
-                                DIGITAL PRODUCT DESIGNER
+                            <span className="text-body-sm text-ink-low block">
+                                Digital product designer
                             </span>
                         </motion.div>
                     </motion.div>
 
-                    <motion.h1 variants={itemVariants} className="text-display-xl text-ink-high mt-10 md:mt-14">
-                        <span className="text-ink-low">I </span>design/build
+                    <motion.p
+                        variants={itemVariants}
+                        className="mt-8 md:mt-10 text-body text-ink-body w-full"
+                    >
+                        Today, I run my own company, taking B2B products from idea to shipped
+                        site. Previously, I was a visual communication specialist at{' '}
+                        <a
+                            href="https://www.mckinsey.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-ink-high hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 border-b border-transparent hover:border-line-active focus-visible:border-line-active pb-0.5"
+                        >
+                            McKinsey &amp; Company
+                        </a>
+                        .
+                    </motion.p>
+
+                    <motion.h1 variants={itemVariants} className="text-display-lg text-ink-low mt-10 md:mt-14">
+                        <span>I </span>
+                        <span className="text-ink-high">design/build</span>
                         <br />
-                        <span className="text-ink-low">digital products,</span>
+                        <span>digital products,</span>
                         <br />
                         websites, and visual experiences.
                     </motion.h1>
 
                     <motion.p
                         variants={itemVariants}
-                        className="mt-8 md:mt-12 text-body-lg text-ink-body ml-1 w-full max-w-lg"
+                        className="mt-8 md:mt-12 text-body text-ink-body ml-1 w-full max-w-lg"
                     >
                         Helping people spend less time clicking and more time living.
                     </motion.p>
@@ -76,14 +110,14 @@ const Home: React.FC = () => {
                                 <span className="text-card-title text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">
                                     Get in touch
                                 </span>
-                                <span className="text-caption font-mono text-ink-faint mt-1 flex items-center gap-2">
+                                <span className="text-caption text-ink-faint mt-1 flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 bg-status-ok/50 rounded-full animate-pulse" />
-                                    Available {getCurrentQuarter()}
+                                    Available for new projects
                                 </span>
                             </div>
-                            <div className="w-12 h-12 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
+                            <CircleAction>
                                 <ArrowUpRight size={20} />
-                            </div>
+                            </CircleAction>
                         </a>
                     </motion.div>
                 </motion.div>

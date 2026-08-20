@@ -1,29 +1,26 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router';
-import { PROJECTS } from '../../content/projects';
-import { EMPLOYMENT_CONTENT } from '../../content/employment';
+import { PROJECTS, type CustomProject } from '../../content/projects';
 import ProjectTemplate from './ProjectTemplate';
 import EmploymentTemplate from './EmploymentTemplate';
 
 /** Ventures whose page is written by hand rather than driven by content. */
-const HAND_WRITTEN: Record<string, React.LazyExoticComponent<React.FC>> = {
+const HAND_WRITTEN: Record<CustomProject['page'], React.LazyExoticComponent<React.ComponentType<{ project: CustomProject }>>> = {
     curvix: React.lazy(() => import('./Curvix')),
     'gala-network': React.lazy(() => import('./GalaNetwork')),
 };
 
 const CaseStudy: React.FC = () => {
     const { id = '' } = useParams();
+    const project = PROJECTS.find((entry) => entry.id === id);
 
-    const HandWritten = HAND_WRITTEN[id];
-    if (HandWritten) return <HandWritten />;
+    if (!project) return <Navigate to="/#portfolio" replace />;
 
-    const employment = EMPLOYMENT_CONTENT[id];
-    if (employment) return <EmploymentTemplate data={employment} />;
+    if (project.renderer === 'template') return <ProjectTemplate project={project} />;
+    if (project.renderer === 'employment') return <EmploymentTemplate data={project.employment} />;
 
-    const project = PROJECTS.find((p) => p.id === id);
-    if (project?.caseStudy) return <ProjectTemplate project={project} />;
-
-    return <Navigate to="/#portfolio" replace />;
+    const HandWritten = HAND_WRITTEN[project.page];
+    return <HandWritten project={project} />;
 };
 
 export default CaseStudy;

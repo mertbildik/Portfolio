@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 
 // The ink here is load-bearing, not decoration: the rule beside the label is drawn
 // with `bg-current`, so the label's ink is also the rule's ink. Both would otherwise
@@ -14,30 +14,10 @@ const Inner: React.FC = () => (
     </>
 );
 
-/**
- * The one back control. Pass `to` for a fixed destination (top-level pages),
- * omit it to step back through history (case studies).
- */
-const BackButton: React.FC<{ to?: string }> = ({ to }) => {
-    const navigate = useNavigate();
-
-    if (to) {
-        return (
-            <Link to={to} className={STYLE} aria-label="Go back">
-                <Inner />
-            </Link>
-        );
-    }
-
-    return (
-        <button
-            onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/#portfolio'))}
-            className={STYLE}
-            aria-label="Go back"
-        >
+const BackButton: React.FC = () => (
+        <Link to="/#portfolio" className={STYLE} aria-label="Back to portfolio">
             <Inner />
-        </button>
-    );
-};
+        </Link>
+);
 
 export default BackButton;

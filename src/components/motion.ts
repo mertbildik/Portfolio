@@ -8,6 +8,16 @@ import { Variants } from 'motion/react';
  * other has to change with it.
  */
 export const EASE = [0.16, 1, 0.3, 1] as const;
+export const VIEWPORT_ONCE = { once: true, margin: '-10%' } as const;
+
+export const blockVariants: Variants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: EASE },
+    },
+};
 
 export const containerVariants: Variants = {
     hidden: { opacity: 0 },

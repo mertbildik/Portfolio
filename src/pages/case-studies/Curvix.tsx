@@ -1,20 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { getProjectImages } from '../../content/images';
 import BackButton from '../../components/BackButton';
-import { containerVariants, itemVariants, sectionVariants } from '../../components/motion';
+import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../../components/motion';
+import type { CustomProject } from '../../content/projects';
 
-const Curvix: React.FC = () => {
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-
-    const projectImages = getProjectImages('curvix');
+const Curvix: React.FC<{ project: CustomProject }> = ({ project }) => {
+    const projectImages = getProjectImages(project.id);
 
     return (
-        <div className="w-full pb-32 space-y-24 md:space-y-32">
+        <div className="w-full space-y-24 md:space-y-32">
 
             {/* Header Section */}
             <motion.div
@@ -27,11 +22,11 @@ const Curvix: React.FC = () => {
                     <BackButton />
                 </motion.div>
 
-                <motion.h1 variants={itemVariants} className="text-display-xl text-ink-high mb-8">
-                    Curvix
+                <motion.h1 variants={itemVariants} className="text-display-lg text-ink-high mb-8">
+                    {project.title}
                 </motion.h1>
 
-                <motion.p variants={itemVariants} className="text-body-lg text-ink-body mb-12 max-w-xl">
+                <motion.p variants={itemVariants} className="text-body text-ink-body mb-12 max-w-xl">
                     A small studio identity I’m building to ship calm, precise design systems.
                 </motion.p>
 
@@ -60,11 +55,11 @@ const Curvix: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Overview</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">What Curvix is</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">What Curvix is</h2>
                     <p className="text-body text-ink-body">
                         Curvix is my studio brand. It is a container for how I think, how I build, and what I deliver. The goal is simple work that holds up over time.
                     </p>
@@ -74,11 +69,11 @@ const Curvix: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Intent</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">Why I built it</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">Why I built it</h2>
                     <p className="text-body text-ink-body">
                         I wanted one clear standard across web, product, and visuals. I wanted fewer decisions, better structure, and a calmer result. I wanted the work to feel consistent even when the project changes.
                     </p>
@@ -88,11 +83,11 @@ const Curvix: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Output</span>
-                    <h2 className="text-display-lg text-ink-high mb-12">What Curvix ships</h2>
+                    <h2 className="text-display-md text-ink-high mb-12">What Curvix ships</h2>
 
                     <div className="space-y-12">
                         <div className="pl-6 border-l border-line">
@@ -114,11 +109,11 @@ const Curvix: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Method</span>
-                    <h2 className="text-display-lg text-ink-high mb-12">How I work</h2>
+                    <h2 className="text-display-md text-ink-high mb-12">How I work</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                         <div>
@@ -151,11 +146,11 @@ const Curvix: React.FC = () => {
             <motion.section
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-10%" }}
+                viewport={VIEWPORT_ONCE}
                 variants={sectionVariants}
             >
                 <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Gallery</span>
-                <h2 className="text-display-lg text-ink-high mb-6">Selected screens</h2>
+                <h2 className="text-display-md text-ink-high mb-6">Selected screens</h2>
                 <p className="text-body text-ink-body mb-12">
                     A few screens from the Curvix site direction. Built to show the system in use.
                 </p>
@@ -192,11 +187,11 @@ const Curvix: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Operating model</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">How projects run</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">How projects run</h2>
                     <p className="text-body text-ink-body">
                         I lead the design end to end. When a project needs marketing or photography, I bring in freelancers I trust. The client experience stays single threaded. One owner. One system.
                     </p>
@@ -206,11 +201,11 @@ const Curvix: React.FC = () => {
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
+                    viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
                     <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Now</span>
-                    <h2 className="text-display-lg text-ink-high mb-6">Current focus</h2>
+                    <h2 className="text-display-md text-ink-high mb-6">Current focus</h2>
                     <p className="text-body text-ink-body">
                         I’m building Curvix as a long term studio identity. I take selective work that needs system level thinking and a high finish.
                     </p>

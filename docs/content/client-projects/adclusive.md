@@ -1,5 +1,7 @@
 # Adclusive
 
+Editorial reference only. Published project content lives in `src/content/projects.ts`.
+
 - **Kind:** Client project
 - **Role:** Product designer
 - **Year / Status:** 2024

@@ -1,5 +1,7 @@
 # Bunect
 
+Editorial reference only. Published project content lives in `src/content/projects.ts`.
+
 <!-- Hidden from the site's Portfolio list as of 2026-08; content retained here. -->
 
 - **Kind:** Client project

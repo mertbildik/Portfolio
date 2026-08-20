@@ -1,6 +1,6 @@
 # Home — Landing Page
 
-All landing-page copy, organized by the sections as they appear on the site. Wording is preserved exactly from the source.
+Editorial reference only. Published landing-page copy lives in `src/pages/` and project metadata lives in `src/content/projects.ts`.
 
 ## Hero
 
@@ -16,7 +16,7 @@ All landing-page copy, organized by the sections as they appear on the site. Wor
 ### Call to action
 
 - **Title:** Get in touch
-- **Status:** Available Q{quarter} {year} (computed dynamically, e.g. Q3 2026)
+- **Status:** Available for new projects
 
 ## Selected Work
 

@@ -31,7 +31,7 @@ There is **no linter**. Do not invent eslint/prettier configs.
 src/
   App.tsx              # routes, lazy pages, AnimatePresence wrapper
   main.tsx, index.css  # root + the ONLY place design values are defined
-  components/          # Navigation, GlobalBackground, BackButton, StatBlock, motion
+  components/          # GlobalBackground, BackButton, StatBlock, motion
   layouts/             # Wrapped (wraps /portfolio/:id), SplitPage
   pages/               # Home, Portfolio, Process, About, Contact, case-studies/
   content/             # projects.ts, employment.ts, images.ts — content source of truth
@@ -49,26 +49,56 @@ docs/
 - Tests run against the **production build** (`:4173`), not the dev server. Missing Tailwind classes and clipped layouts only show up here — `npm run build` is part of the loop, not optional.
 - Pre-merge: `npm run typecheck && npm run build && npm run test`.
 
+## Post-change consistency
+
+- After changing a fact, rule, decision, name, route, or value, search the likely related files and check for contradictions. Keep the search targeted; do not scan the whole repository without a reason.
+- If a meaningful conflict appears, show it, recommend the smallest correct resolution, and wait for approval. Do not resolve it silently.
+- Test only the affected scope unless broader verification is explicitly requested.
+
+## Markdown documentation
+
+Treat regular `.md` files as clean, finalized documentation, not logs.
+
+Do not keep:
+
+- process notes
+- pending approvals
+- unresolved ideas
+- decision history
+- temporary reasoning
+- descriptions of what used to be different
+
+Git history owns change history.
+
+## Unresolved decisions
+
+- Keep unresolved decisions in the root `decisions.md`.
+- Anything not fully decided belongs there instead of regular documentation.
+- Once resolved, apply the final result to the appropriate canonical file and remove the entry from `decisions.md`.
+- Do not keep the same decision in both places.
+- Before resolving a decision through agent judgment rather than explicit user instruction, show the proposed resolution in chat and wait for approval.
+
 ## Adding content
 
-A project = one entry in `src/content/projects.ts` + images under `src/assets/portfolio/<id>/` (filenames matching `id`, lowercase-hyphenated, `.webp` only, prefix with `1-`, `2-` for order). Render order is route → hand-written component → `EmploymentTemplate` → `ProjectTemplate` (default). `ProjectTemplate` parses plain strings — `\n` for paragraphs, `•`/`-` lines for bullets, em dash splits `keyDecisions` into title/body. Full rules in `docs/content/writing.md`.
+A project = one entry in `src/content/projects.ts` + images under `src/assets/portfolio/<id>/` (filenames matching `id`, lowercase-hyphenated, `.webp` only, prefix with `1-`, `2-` for order). Each entry explicitly selects `template`, `employment`, or `custom` rendering and whether it is listed. `ProjectTemplate` parses plain strings — `\n` for paragraphs, `•`/`-` lines for bullets, em dash splits `keyDecisions` into title/body. Full rules in `docs/content/writing.md`.
 
 ## Design rules (load-bearing)
 
 Read `docs/design/direction.md` first. The non-negotiables:
 
-- One typeface (Inter + system mono stack). No third face.
+- One typeface for words (Inter) + system mono stack for data. No third face.
 - No shadows. Depth is border + fill.
 - No new colours. Green and red are status only. Everything else is white at an alpha.
 - Ink ramp carries hierarchy; size does not. A heading uses one size.
-- Monospace for all labels (eyebrows, status, controls), sans for sentences.
+- Sans for sentences and labels; monospace for data (timestamps, coordinates, counts, values).
+- One minimal radius (6px) on boxes; full circle on pills, dots, buttons and the portrait.
 - No arbitrary values where a token or scale step already covers it.
 
 Change a value in `src/index.css` `@theme` block, never in a component.
 
 ## Routers / hosts
 
-The app uses real paths (`/portfolio/ofk`, `/process`). The host must serve `index.html` for any unknown path — `public/_redirects` (Netlify, Cloudflare Pages) and `vercel.json` (Vercel) cover it. Any other host needs the same rewrite.
+The app uses real paths (`/portfolio/ofk`). The host must serve `index.html` for any unknown path — `public/_redirects` (Netlify, Cloudflare Pages) and `vercel.json` (Vercel) cover it. Any other host needs the same rewrite.
 
 ## Don't
 

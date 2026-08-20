@@ -1,3 +1,5 @@
+import { EMPLOYMENT_CONTENT, type EmploymentData } from './employment';
+
 export interface ImpactStat {
     number: string;
     title: string;
@@ -31,15 +33,32 @@ export interface CaseStudy {
     learnings: string;
 }
 
-export interface Project {
+interface ProjectBase {
     id: string;
     kind: 'clientProject' | 'employment' | 'venture';
     title: string;
     role: string;
     yearOrStatus: string;
-    /** Absent for entries rendered by EmploymentTemplate or a hand-written page. */
-    caseStudy?: CaseStudy;
+    listed: boolean;
 }
+
+export interface TemplateProject extends ProjectBase {
+    renderer: 'template';
+    caseStudy: CaseStudy;
+}
+
+export interface EmploymentProject extends ProjectBase {
+    renderer: 'employment';
+    employment: EmploymentData;
+}
+
+export interface CustomProject extends ProjectBase {
+    renderer: 'custom';
+    page: 'curvix' | 'gala-network';
+}
+
+export type Project = TemplateProject | EmploymentProject | CustomProject;
+export type ProjectKind = Project['kind'];
 
 export const PROJECTS: Project[] = [
     {
@@ -48,6 +67,8 @@ export const PROJECTS: Project[] = [
         title: 'OFK Construction',
         role: 'Product Designer',
         yearOrStatus: '2025',
+        listed: true,
+        renderer: 'template',
         caseStudy: {
             timeline: 'Mar 2026 to Apr 2026',
             tools: ['React', 'Tailwind', 'Framer Motion', 'Notion', 'Claude Code', 'Adobe Creative Cloud'],
@@ -122,6 +143,8 @@ export const PROJECTS: Project[] = [
         title: 'Dog & Ride',
         role: 'Multidisciplinary Designer',
         yearOrStatus: '2025',
+        listed: true,
+        renderer: 'template',
         caseStudy: {
             timeline: 'May 2025 to June 2025',
             tools: ['Figma', 'Framer', 'PowerPoint', 'Adobe Creative Suite', 'Notion'],
@@ -193,6 +216,8 @@ export const PROJECTS: Project[] = [
         title: 'Bunect',
         role: 'Design Lead',
         yearOrStatus: '2025',
+        listed: false,
+        renderer: 'template',
         caseStudy: {
             timeline: 'Jan 2025 to Present (ongoing)',
             tools: ['Framer', 'Notion', 'Adobe Creative Suite', 'Canva', 'PowerPoint'],
@@ -260,6 +285,8 @@ export const PROJECTS: Project[] = [
         title: 'Adclusive',
         role: 'Product designer',
         yearOrStatus: '2024',
+        listed: true,
+        renderer: 'template',
         caseStudy: {
             timeline: '2021 to Present (on pause)',
             tools: ['Figma', 'Notion', 'VSCode', 'Angular'],
@@ -334,6 +361,9 @@ export const PROJECTS: Project[] = [
         title: 'McKinsey & Co.',
         role: 'Visual communication',
         yearOrStatus: '3 years',
+        listed: true,
+        renderer: 'employment',
+        employment: EMPLOYMENT_CONTENT.mckinsey,
     },
     {
         id: 'curvix',
@@ -341,6 +371,9 @@ export const PROJECTS: Project[] = [
         title: 'Curvix',
         role: 'Founder',
         yearOrStatus: 'Current',
+        listed: false,
+        renderer: 'custom',
+        page: 'curvix',
     },
     {
         id: 'gala-network',
@@ -348,5 +381,8 @@ export const PROJECTS: Project[] = [
         title: 'GalaNetwork',
         role: 'Co-founder',
         yearOrStatus: 'Current',
+        listed: false,
+        renderer: 'custom',
+        page: 'gala-network',
     },
 ];

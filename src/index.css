@@ -28,55 +28,50 @@
 @theme {
   /* ---- type family ---------------------------------------------------- */
   --font-sans: 'Inter', system-ui, sans-serif;
-  /* Declared rather than inherited: 91 labels depend on it. Same stack Tailwind
-     would have given us, written down so it is visible. */
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
 
+  /* ---- responsive ----------------------------------------------------- */
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+
   /* ---- type scale ------------------------------------------------------
-     Eleven tokens. Each sets size, weight, line height and letter spacing in one
+     Nine tokens. Each sets size, weight, line height and letter spacing in one
      class, so `text-card-title` is one decision rather than four.
-     The three display sizes are fluid and reach their maximum at ~890px wide.
+     Every size is fixed: the site is a single narrow column that never grows
+     past its cap, so fluid type has no room to express itself. Readability is
+     carried by whitespace and the ink ramp, not by large type.
 
      Two weights hold the whole scale: everything that reads as text is 400, and
      only the two small labels (button, eyebrow) get 500. Type looks heavier as it
-     grows and heavier again as light text on a dark canvas, so anything at 22px
+     grows and heavier again as light text on a dark canvas, so anything at 20px
      and up carries no extra weight at all. 500 exists to keep 13-14px from going
      weak, nothing else.
      Rules and reasoning: docs/design/typography.md */
 
-  --text-display-xl: clamp(44px, 9vw, 80px);
-  --text-display-xl--line-height: 1.08;
-  --text-display-xl--letter-spacing: -0.028em;
-  --text-display-xl--font-weight: 400;
-
-  --text-display-lg: clamp(32px, 6vw, 56px);
-  --text-display-lg--line-height: 1.15;
+  --text-display-lg: 32px;
+  --text-display-lg--line-height: 1.25;
   --text-display-lg--letter-spacing: -0.024em;
   --text-display-lg--font-weight: 400;
 
-  --text-display-md: clamp(28px, 4.5vw, 40px);
-  --text-display-md--line-height: 1.15;
+  --text-display-md: 26px;
+  --text-display-md--line-height: 1.25;
   --text-display-md--letter-spacing: -0.02em;
   --text-display-md--font-weight: 400;
 
-  --text-headline: 28px;
+  --text-headline: 22px;
   --text-headline--line-height: 1.25;
   --text-headline--letter-spacing: -0.6px;
   --text-headline--font-weight: 400;
 
-  --text-card-title: 22px;
+  --text-card-title: 20px;
   --text-card-title--line-height: 1.25;
   --text-card-title--letter-spacing: -0.3px;
   --text-card-title--font-weight: 400;
 
   /* The body sizes run at 1.60 rather than the usual 1.50: light text on a dark
      canvas needs more air between lines to stay calm. */
-  --text-body-lg: 18px;
-  --text-body-lg--line-height: 1.60;
-  --text-body-lg--letter-spacing: -0.1px;
-  --text-body-lg--font-weight: 400;
-
   --text-body: 16px;
   --text-body--line-height: 1.60;
   --text-body--letter-spacing: -0.05px;
@@ -106,7 +101,6 @@
      Painted by GlobalBackground, not by body, so the fixed layer shows through
      every route. Also the backing behind every image frame. */
   --color-canvas: #111111;
-  --color-canvas-overlay: #050505;
 
   /* ---- ink ramp --------------------------------------------------------
      Six steps measured against the canvas. Ink is the hierarchy: to push
@@ -155,11 +149,12 @@
   --color-node: #404040;
 
   /* ---- shape -----------------------------------------------------------
-     A box is square or it is a pill, nothing in between. Clearing this namespace
-     removes rounded-sm/md/lg/xl so the rule holds itself up: rounded-full and
-     rounded-none are built in and survive.
-     To allow a middle radius again, delete this line. */
-  --radius-*: initial;
+     One minimal radius on boxes, full circle on pills, dots, buttons and the
+     portrait. rounded-full and rounded-none are built in. */
+  --radius-sm: 6px;
+  --radius-md: 6px;
+  --radius-lg: 6px;
+  --radius-xl: 6px;
 
   /* ---- motion ----------------------------------------------------------
      The one entrance curve, for transitions written in CSS. motion needs
@@ -171,6 +166,15 @@
      runs at 300 rather than Tailwind's 150, which is off our scale. */
   --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
   --default-transition-duration: 300ms;
+
+  /* The one deliberate ambient loop on content: the portrait ring on the
+     hero turns slowly. Constant motion runs linear. */
+  --animate-ring-spin: ring-spin 20s linear infinite;
+  @keyframes ring-spin {
+    to {
+      rotate: 360deg;
+    }
+  }
 
   /* ---- frame ------------------------------------------------------------ */
   --container-shell: 1600px; /* case studies and their full-width visuals */
@@ -193,7 +197,7 @@
   body {
     /* Transparent so GlobalBackground's fixed canvas shows through every route.
        Selection is set once here and never overridden. */
-    @apply bg-transparent text-ink-high antialiased selection:bg-fill-inverse selection:text-black font-sans;
+    @apply bg-transparent text-ink-high antialiased selection:bg-fill-inverse selection:text-ink-inverse font-sans;
   }
 
   /* Tailwind 4's reset stopped giving buttons a pointer cursor, unlike Tailwind 3.
@@ -213,6 +217,10 @@
   }
 
   .animate-pulse {
+    animation: none;
+  }
+
+  .animate-ring-spin {
     animation: none;
   }
 }

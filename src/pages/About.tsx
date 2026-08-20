@@ -2,44 +2,36 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import mertPhoto from '../assets/mert.webp';
-import SplitPage, { IDENTITY_COLUMN } from '../layouts/SplitPage';
-import { EASE, containerVariants, itemVariants } from '../components/motion';
+import SplitPage from '../layouts/SplitPage';
+import CircleAction from '../components/CircleAction';
+import SectionIntro from '../components/SectionIntro';
+import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../components/motion';
 
 const About: React.FC = () => {
     return (
         <SplitPage id="about">
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, ease: EASE }}
-                className={IDENTITY_COLUMN}
+                variants={blockVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={VIEWPORT_ONCE}
             >
-                <div className="flex flex-col lg:min-h-0">
-                    {/* Title System */}
-                    <div className="mb-6 lg:mb-8">
-                        <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">
-                            Profile
-                        </span>
-                        <h2 className="text-display-xl text-ink-high">
-                            Who I <br />
-                            <span className="text-ink-low">Am.</span>
-                        </h2>
-                    </div>
-
-                    <p className="text-ink-body max-w-xs text-body-lg">
-                        Born in Izmir. Based in Warsaw.
-                    </p>
-                </div>
+                <SectionIntro
+                    eyebrow="Profile"
+                    title={<>Who I <br /><span className="text-ink-low">Am.</span></>}
+                    description="Born in Izmir. Based in Warsaw."
+                />
             </motion.div>
 
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
+                viewport={VIEWPORT_ONCE}
                 className="flex flex-col justify-center w-full relative z-30"
             >
                 {/* Main System Grid */}
-                <div className="flex flex-col w-full max-w-3xl ml-auto">
+                <div className="flex flex-col w-full">
                     <div className="w-full border-t border-line">
 
                         {/* 1. HERO ROW: BACKGROUND + PORTRAIT */}
@@ -47,12 +39,12 @@ const About: React.FC = () => {
 
                             {/* 1A. Background Text (Span 2) - Supports the photo */}
                             <motion.div variants={itemVariants} className="md:col-span-2 py-8 pr-12 flex flex-col justify-between h-full">
-                                <span className="text-eyebrow font-mono text-ink-low uppercase mb-6">
+                                <span className="text-eyebrow text-ink-low mb-6">
                                     01 — Background
                                 </span>
 
                                 <div className="max-w-md">
-                                    <h2 className="text-display-lg text-ink-high mb-8">
+                                    <h2 className="text-display-md text-ink-high mb-8">
                                         I build things that make life feel easier.
                                     </h2>
                                     <p className="text-ink-body text-body-sm">
@@ -65,7 +57,7 @@ const About: React.FC = () => {
                             {/* This container drives the row height naturally, no fixed min-h needed if content fits */}
                             <motion.div variants={itemVariants} className="relative w-full md:border-l border-line md:-ml-[1px] p-6 lg:p-8 flex items-center justify-center">
                                 {/* The Frame: Fixed Aspect Ratio */}
-                                <div className="w-full aspect-[3/4] relative bg-canvas border border-line overflow-hidden">
+                                <div className="w-full aspect-[3/4] relative bg-canvas border border-line overflow-hidden rounded-md">
                                     {/* Image: Object Top + Cover for perfect framing */}
                                     <img
                                         src={mertPhoto}
@@ -74,7 +66,7 @@ const About: React.FC = () => {
                                     />
 
                                     {/* Subtle Overlay gradient for depth */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-canvas/60 via-transparent to-transparent opacity-60" />
 
                                     {/* Micro Label */}
                                     <div className="absolute bottom-3 left-3">
@@ -90,7 +82,7 @@ const About: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 border-b border-line">
                             {/* Focus */}
                             <motion.div variants={itemVariants} className="py-8 md:pr-8 relative">
-                                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-4">
+                                <span className="block text-eyebrow text-ink-low mb-4">
                                     02 — Focus
                                 </span>
                                 <p className="text-ink-body text-body-sm">
@@ -100,7 +92,7 @@ const About: React.FC = () => {
 
                             {/* Method */}
                             <motion.div variants={itemVariants} className="py-8 md:px-8 md:border-l border-line relative md:-ml-[1px]">
-                                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-4">
+                                <span className="block text-eyebrow text-ink-low mb-4">
                                     03 — Method
                                 </span>
                                 <p className="text-ink-body text-body-sm">
@@ -110,7 +102,7 @@ const About: React.FC = () => {
 
                             {/* Philosophy */}
                             <motion.div variants={itemVariants} className="py-8 md:pl-8 md:border-l border-line relative md:-ml-[1px]">
-                                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-4">
+                                <span className="block text-eyebrow text-ink-low mb-4">
                                     04 — Philosophy
                                 </span>
                                 <p className="text-ink-body text-body-sm">
@@ -124,18 +116,18 @@ const About: React.FC = () => {
 
                             <div className="flex items-center gap-4">
                                 <div className="w-1.5 h-1.5 bg-status-ok/50 rounded-full animate-pulse" />
-                                <span className="text-caption font-mono text-ink-faint uppercase">
-                                    STATUS: Available for new projects
+                                <span className="text-caption text-ink-faint">
+                                    Status: Available for new projects
                                 </span>
                             </div>
 
                             <a href="#contact" className="w-full flex items-center justify-between group cursor-pointer lg:w-auto lg:min-w-[280px]">
                                 <div className="flex flex-col shrink-0">
-                                    <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300 uppercase font-mono">Start a conversation</span>
+                                    <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">Start a conversation</span>
                                 </div>
-                                <div className="w-10 h-10 rounded-full border border-line-strong flex items-center justify-center text-ink-max group-hover:bg-fill-inverse group-hover:text-ink-inverse group-focus-visible:bg-fill-inverse group-focus-visible:text-ink-inverse transition-all duration-300 shrink-0 ml-4">
+                                <CircleAction small>
                                     <ArrowRight size={16} />
-                                </div>
+                                </CircleAction>
                             </a>
 
                         </motion.div>

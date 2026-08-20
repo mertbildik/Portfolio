@@ -1,20 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Lock } from 'lucide-react';
 import BackButton from '../../components/BackButton';
 import StatBlock from '../../components/StatBlock';
-import { EASE } from '../../components/motion';
+import { EASE, VIEWPORT_ONCE } from '../../components/motion';
 import { EmploymentData } from '../../content/employment';
 
 const DURATION_BUMP = 0.8;
 
 const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [data.id]);
-
     return (
-        <div className="w-full pb-32 space-y-24 md:space-y-32">
+        <div className="w-full space-y-24 md:space-y-32">
 
             {/* 1. HERO SECTION */}
             <div className="relative">
@@ -37,12 +33,12 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                         transition={{ duration: 0.8, ease: EASE }}
                         className="lg:col-span-8"
                     >
-                        <h1 className="text-display-xl mb-8 text-ink-high">
+                        <h1 className="text-display-lg mb-8 text-ink-high">
                             {data.companyName}<br />
                             {data.companySuffix && <span className="text-ink-low">{data.companySuffix}</span>}
                         </h1>
 
-                        <p className="text-body-lg text-ink-body max-w-xl">
+                        <p className="text-body text-ink-body max-w-xl">
                             {data.role}. <br />
                             {data.description}
                         </p>
@@ -73,7 +69,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
                     <h2 className="text-eyebrow font-mono text-ink-low uppercase">Impact & Metrics</h2>
@@ -97,7 +93,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
                     <h2 className="text-eyebrow font-mono text-ink-low uppercase">Core Capabilities</h2>
@@ -109,7 +105,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={VIEWPORT_ONCE}
                             transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE }}
                             className="p-8 lg:p-12 border-b border-r border-line flex flex-col gap-8 min-h-[320px]"
                         >
@@ -132,9 +128,6 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
             {/* 4. FOOTER: RESTRICTED ACCESS REDESIGN */}
             <section>
                 <div className="relative border border-line bg-fill-subtle overflow-hidden">
-
-                    {/* Subtle Background Pattern */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03]" />
 
                     <div className="relative p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { getProjectImages } from '../../content/images';
 import BackButton from '../../components/BackButton';
-import { EASE, listVariants, itemVariants } from '../../components/motion';
-import { ImpactStat, OutputBlock, Project } from '../../content/projects';
+import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../../components/motion';
+import { ImpactStat, OutputBlock, TemplateProject } from '../../content/projects';
 
 const SECTIONS = [
     { id: 'problem', label: 'Problem' },
@@ -25,49 +25,37 @@ const Stats: React.FC<{ stats: ImpactStat[] }> = ({ stats }) => (
     </div>
 );
 
-const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
-    const study = project.caseStudy!;
+const ProjectTemplate: React.FC<{ project: TemplateProject }> = ({ project }) => {
+    const study = project.caseStudy;
     const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
-    const clickLockRef = useRef<number | null>(null);
     const images = getProjectImages(project.id);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [project.id]);
 
     // Picks the topmost section whose top has crossed a line ~30% from the
     // viewport top. Avoids the multi-intersection ambiguity of IntersectionObserver.
     useEffect(() => {
+        let frame: number | null = null;
         const update = () => {
-            if (clickLockRef.current !== null) return;
-            const threshold = window.innerHeight * 0.3;
-            let current = SECTIONS[0].id;
-            for (const section of SECTIONS) {
-                const el = document.getElementById(section.id);
-                if (el && el.getBoundingClientRect().top - threshold <= 0) current = section.id;
-            }
-            setActiveSection(current);
+            if (frame !== null) return;
+            frame = window.requestAnimationFrame(() => {
+                frame = null;
+                const threshold = window.innerHeight * 0.3;
+                let current = SECTIONS[0].id;
+                for (const section of SECTIONS) {
+                    const el = document.getElementById(section.id);
+                    if (el && el.getBoundingClientRect().top - threshold <= 0) current = section.id;
+                }
+                setActiveSection(current);
+            });
         };
         update();
-        document.addEventListener('scroll', update, { passive: true, capture: true });
+        window.addEventListener('scroll', update, { passive: true });
         window.addEventListener('resize', update);
         return () => {
-            document.removeEventListener('scroll', update, { capture: true } as EventListenerOptions);
+            window.removeEventListener('scroll', update);
             window.removeEventListener('resize', update);
-            if (clickLockRef.current !== null) window.clearTimeout(clickLockRef.current);
+            if (frame !== null) window.cancelAnimationFrame(frame);
         };
     }, [project.id]);
-
-    const scrollTo = (id: string) => {
-        const element = document.getElementById(id);
-        if (!element) return;
-        setActiveSection(id);
-        if (clickLockRef.current !== null) window.clearTimeout(clickLockRef.current);
-        clickLockRef.current = window.setTimeout(() => {
-            clickLockRef.current = null;
-        }, 800);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
 
     const renderText = (text: string) =>
         text
@@ -126,11 +114,11 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
     };
 
     return (
-        <div className="w-full flex flex-col items-start pb-32 space-y-24 md:space-y-32">
+        <div className="w-full flex flex-col items-start space-y-24 md:space-y-32">
             <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: EASE }}
+                variants={blockVariants}
+                initial="hidden"
+                animate="visible"
                 className="w-full"
             >
                 <div className="mb-16 md:mb-24">
@@ -142,8 +130,8 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         <span className="w-1.5 h-1.5 rounded-full bg-fill-inverse" />
                         <span className="text-caption font-mono text-ink-mid uppercase">{project.role}</span>
                     </div>
-                    <h1 className="text-display-xl text-ink-high text-balance">{project.title}</h1>
-                    <p className="text-body-lg text-ink-body max-w-2xl text-balance">{study.oneLineSummary}</p>
+                    <h1 className="text-display-lg text-ink-high text-balance">{project.title}</h1>
+                    <p className="text-body text-ink-body max-w-2xl text-balance">{study.oneLineSummary}</p>
                 </div>
             </motion.div>
 
@@ -174,9 +162,10 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                             <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">Contents</span>
                             <div className="flex flex-col border-l border-line">
                                 {SECTIONS.map((section) => (
-                                    <button
+                                    <a
                                         key={section.id}
-                                        onClick={() => scrollTo(section.id)}
+                                        href={`#${section.id}`}
+                                        aria-current={activeSection === section.id ? 'location' : undefined}
                                         className={`text-left px-4 py-2 text-button transition-all duration-300 border-l mb-[-1px] ${
                                             activeSection === section.id
                                                 ? 'text-ink-max border-line-active pl-6'
@@ -184,20 +173,15 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                                         }`}
                                     >
                                         {section.label}
-                                    </button>
+                                    </a>
                                 ))}
                             </div>
                         </nav>
                     </div>
                 </div>
 
-                <motion.div
-                    variants={listVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="lg:col-span-8 lg:col-start-5 space-y-24 md:space-y-32"
-                >
-                    <motion.section id="problem" variants={itemVariants} className="space-y-8 scroll-mt-32">
+                <div className="lg:col-span-8 lg:col-start-5 space-y-24 md:space-y-32">
+                    <motion.section id="problem" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">01 — The Problem</span>
                         <div className="space-y-6">{renderText(study.problem)}</div>
 
@@ -220,7 +204,7 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         </div>
                     </motion.section>
 
-                    <motion.section id="approach" variants={itemVariants} className="space-y-8 scroll-mt-32">
+                    <motion.section id="approach" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">02 — Approach</span>
                         <div className="space-y-6">{renderText(study.approach)}</div>
 
@@ -230,7 +214,7 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         </div>
                     </motion.section>
 
-                    <motion.section id="solution" variants={itemVariants} className="space-y-8 scroll-mt-32">
+                    <motion.section id="solution" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">03 — Solution</span>
                         <div className="space-y-6">{renderText(study.solution)}</div>
 
@@ -250,12 +234,12 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         </div>
                     </motion.section>
 
-                    <motion.section id="output" variants={itemVariants} className="space-y-12 scroll-mt-32">
+                    <motion.section id="output" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-12 scroll-mt-32">
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">04 — Output</span>
                         <div className="space-y-16">{study.output.map(renderOutput)}</div>
                     </motion.section>
 
-                    <motion.section id="impact" variants={itemVariants} className="space-y-8 scroll-mt-32">
+                    <motion.section id="impact" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">05 — Impact</span>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -278,11 +262,11 @@ const ProjectTemplate: React.FC<{ project: Project }> = ({ project }) => {
                         </div>
 
                         <div className="pt-24 border-t border-line">
-                            <h3 className="text-display-lg text-ink-high mb-8">Retrospective</h3>
+                            <h3 className="text-display-md text-ink-high mb-8">Retrospective</h3>
                             <div className="text-ink-body text-body max-w-2xl space-y-4">{renderText(study.learnings)}</div>
                         </div>
                     </motion.section>
-                </motion.div>
+                </div>
             </div>
         </div>
     );
