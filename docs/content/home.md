@@ -48,37 +48,6 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/` a
 | [Curvix](./ventures/curvix.md) | Founder | Current |
 | [GalaNetwork](./ventures/gala-network.md) | Co-founder | Current |
 
-## About
-
-- **Eyebrow:** Profile
-- **Title:** Who I Am.
-- **Intro:** Born in Izmir. Based in Warsaw.
-
-### 01 — Background
-
-**I build things that make life feel easier.**
-
-As a kid, I spent hours on the computer. Not only for fun. I liked figuring out simple ways to fix everyday problems. That mindset never left. Now I use it to design digital products with a clear purpose.
-
-**Portrait label:** Portrait '26
-
-### 02 — Focus
-
-Basketball and football keep me hooked. Design is where I feel most at home.
-
-### 03 — Method
-
-I started in a corporate environment and learned how businesses really work. Now I run my own studio. I like clear goals, direct feedback, and a calm process where the work stays the focus.
-
-### 04 — Philosophy
-
-Design is not about looking fancy. It is about helping people move forward with less friction and more focus.
-
-### Footer row
-
-- **Status:** STATUS: Available for new projects
-- **Action:** Start a conversation
-
 ## Contact
 
 - **Eyebrow:** Inquiry

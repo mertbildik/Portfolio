@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import HeroSection from './sections/HeroSection';
 import PortfolioSection from './sections/PortfolioSection';
-import AboutSection from './sections/AboutSection';
 import ContactSection from './sections/ContactSection';
 
 const HomePage: React.FC = () => {
@@ -15,7 +14,6 @@ const HomePage: React.FC = () => {
         <>
             <HeroSection />
             <PortfolioSection />
-            <AboutSection />
             <ContactSection />
 
             <div className="fixed bottom-8 left-6 z-40 hidden lg:block pointer-events-none">

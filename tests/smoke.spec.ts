@@ -103,7 +103,7 @@ test('old case-study links still redirect', async ({ page }) => {
     await expect(page).toHaveURL('/portfolio/ofk');
 });
 
-for (const section of ['portfolio', 'about', 'contact']) {
+for (const section of ['portfolio', 'contact']) {
     test(`old /${section} link redirects to its homepage section`, async ({ page }) => {
         await page.goto(`/${section}`);
         await expect(page).toHaveURL(`/#${section}`);
