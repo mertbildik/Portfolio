@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import mertPhoto from '../assets/mert.webp';
-import SplitPage from '../layouts/SplitPage';
-import CircleAction from '../components/CircleAction';
+import HomepageSection from './HomepageSection';
+import CircleAction from './CircleAction';
 import { containerVariants, itemVariants } from '../components/motion';
-import Portfolio from './Portfolio';
-import About from './About';
-import Contact from './Contact';
+import PortfolioSection from './PortfolioSection';
+import AboutSection from './AboutSection';
+import ContactSection from './ContactSection';
 
-const Home: React.FC = () => {
+const Homepage: React.FC = () => {
     useEffect(() => {
         if (window.location.hash) {
             document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <SplitPage id="home" hero>
+            <HomepageSection id="home" hero>
                 <motion.div
                     className="flex flex-col justify-center relative z-20 min-w-0"
                     variants={containerVariants}
@@ -121,11 +121,11 @@ const Home: React.FC = () => {
                         </a>
                     </motion.div>
                 </motion.div>
-            </SplitPage>
+            </HomepageSection>
 
-            <Portfolio />
-            <About />
-            <Contact />
+            <PortfolioSection />
+            <AboutSection />
+            <ContactSection />
 
             <div className="fixed bottom-8 left-6 z-40 hidden lg:block pointer-events-none">
                 <span className="text-caption text-ink-faint font-mono uppercase">
@@ -136,4 +136,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default Homepage;

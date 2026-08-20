@@ -1,8 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import { Outlet, useLocation } from 'react-router';
 
-/** Shared page frame for routes that do not lay themselves out. */
-const Wrapped: React.FC = () => {
+const CaseStudyLayout: React.FC = () => {
     const { pathname } = useLocation();
 
     useLayoutEffect(() => {
@@ -17,4 +16,4 @@ const Wrapped: React.FC = () => {
     );
 };
 
-export default Wrapped;
+export default CaseStudyLayout;

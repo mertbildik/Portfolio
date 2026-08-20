@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Lock } from 'lucide-react';
-import BackButton from '../../components/BackButton';
-import StatBlock from '../../components/StatBlock';
-import { EASE, VIEWPORT_ONCE } from '../../components/motion';
-import { EmploymentData } from '../../content/employment';
+import BackButton from './BackButton';
+import StatBlock from './StatBlock';
+import { EASE, VIEWPORT_ONCE } from '../components/motion';
+import { EmploymentData } from '../content/employment';
 
 const DURATION_BUMP = 0.8;
 

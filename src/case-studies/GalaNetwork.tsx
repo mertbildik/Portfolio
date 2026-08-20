@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { getProjectImages } from '../../content/images';
-import BackButton from '../../components/BackButton';
-import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../../components/motion';
-import type { CustomProject } from '../../content/projects';
+import { getProjectImages } from '../content/images';
+import BackButton from './BackButton';
+import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../components/motion';
+import type { CustomProject } from '../content/projects';
 
 const GalaNetwork: React.FC<{ project: CustomProject }> = ({ project }) => {
     const projectImages = getProjectImages(project.id);

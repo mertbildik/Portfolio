@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ArrowRight, ArrowUpRight, Check, Copy } from 'lucide-react';
-import SplitPage from '../layouts/SplitPage';
-import CircleAction from '../components/CircleAction';
-import SectionIntro from '../components/SectionIntro';
+import HomepageSection from './HomepageSection';
+import CircleAction from './CircleAction';
+import SectionIntro from './SectionIntro';
 import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../components/motion';
 
 const CONTACT_EMAIL = 'mert.bildik@gmail.com';
@@ -38,7 +38,7 @@ const LiveClock: React.FC = () => {
     );
 };
 
-const Contact: React.FC = () => {
+const ContactSection: React.FC = () => {
     const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [emailCopied, setEmailCopied] = useState(false);
@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <SplitPage id="contact">
+        <HomepageSection id="contact">
             <motion.div
                 variants={blockVariants}
                 initial="hidden"
@@ -312,8 +312,8 @@ const Contact: React.FC = () => {
 
                 </div>
             </motion.div>
-        </SplitPage>
+        </HomepageSection>
     );
 };
 
-export default Contact;
+export default ContactSection;

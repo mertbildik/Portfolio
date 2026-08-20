@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SplitPage: React.FC<{ children: React.ReactNode; id: string; hero?: boolean }> = ({
+const HomepageSection: React.FC<{ children: React.ReactNode; id: string; hero?: boolean }> = ({
     children,
     id,
     hero = false,
@@ -14,4 +14,4 @@ const SplitPage: React.FC<{ children: React.ReactNode; id: string; hero?: boolea
     </section>
 );
 
-export default SplitPage;
+export default HomepageSection;

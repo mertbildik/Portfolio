@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { getProjectImages } from '../../content/images';
-import BackButton from '../../components/BackButton';
-import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../../components/motion';
-import { ImpactStat, OutputBlock, TemplateProject } from '../../content/projects';
+import { getProjectImages } from '../content/images';
+import BackButton from './BackButton';
+import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../components/motion';
+import { ImpactStat, OutputBlock, TemplateProject } from '../content/projects';
 
 const SECTIONS = [
     { id: 'problem', label: 'Problem' },

@@ -4,7 +4,7 @@ The site is a narrow single scroll first, with wider case studies as a second sh
 
 ## Frame
 
-The shared frames set max width, gutters and vertical padding. `SplitPage` owns the narrow homepage frame; `Wrapped` owns the wider case-study frame.
+The shared frames set max width, gutters and vertical padding. `HomepageSection` owns the narrow homepage frame; `CaseStudyLayout` owns the wider case-study frame.
 
 ## Breakpoints
 

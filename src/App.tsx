@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router'
 import { MotionConfig } from 'motion/react';
 
 import GlobalBackground from './components/GlobalBackground';
-import Wrapped from './layouts/Wrapped';
+import CaseStudyLayout from './case-studies/CaseStudyLayout';
 
-const Home = React.lazy(() => import('./pages/Home'));
-const CaseStudy = React.lazy(() => import('./pages/case-studies/CaseStudy'));
+const Homepage = React.lazy(() => import('./homepage/Homepage'));
+const CaseStudyRoute = React.lazy(() => import('./case-studies/CaseStudyRoute'));
 
 const LegacyCaseStudyRedirect: React.FC = () => {
     const { id } = useParams();
@@ -17,13 +17,13 @@ const AppRoutes: React.FC = () => {
     return (
         <Suspense fallback={<div className="min-h-screen" />}>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Homepage />} />
                 <Route path="/portfolio" element={<Navigate to="/#portfolio" replace />} />
                 <Route path="/about" element={<Navigate to="/#about" replace />} />
                 <Route path="/contact" element={<Navigate to="/#contact" replace />} />
 
-                <Route element={<Wrapped />}>
-                    <Route path="/portfolio/:id" element={<CaseStudy />} />
+                <Route element={<CaseStudyLayout />}>
+                    <Route path="/portfolio/:id" element={<CaseStudyRoute />} />
                 </Route>
 
                 <Route path="/case-study/:id" element={<LegacyCaseStudyRedirect />} />

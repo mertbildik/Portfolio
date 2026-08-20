@@ -1,6 +1,6 @@
 # Home — Landing Page
 
-Editorial reference only. Published landing-page copy lives in `src/pages/` and project metadata lives in `src/content/projects.ts`.
+Editorial reference only. Published landing-page copy lives in `src/homepage/` and project metadata lives in `src/content/projects.ts`.
 
 ## Hero
 

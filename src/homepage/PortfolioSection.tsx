@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { PROJECTS, ProjectKind } from '../content/projects';
-import SplitPage from '../layouts/SplitPage';
-import SectionIntro from '../components/SectionIntro';
+import HomepageSection from './HomepageSection';
+import SectionIntro from './SectionIntro';
 import { blockVariants, listVariants, itemVariants, VIEWPORT_ONCE } from '../components/motion';
 
 const SECTIONS: { label: string; kind: ProjectKind }[] = [
@@ -15,8 +15,8 @@ const SECTIONS: { label: string; kind: ProjectKind }[] = [
 
 const PORTFOLIO_PROJECTS = PROJECTS.filter((project) => project.listed);
 
-const Portfolio: React.FC = () => (
-    <SplitPage id="portfolio">
+const PortfolioSection: React.FC = () => (
+    <HomepageSection id="portfolio">
         <motion.div
             variants={blockVariants}
             initial="hidden"
@@ -86,7 +86,7 @@ const Portfolio: React.FC = () => (
                 })}
             </div>
         </motion.div>
-    </SplitPage>
+    </HomepageSection>
 );
 
-export default Portfolio;
+export default PortfolioSection;

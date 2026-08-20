@@ -31,9 +31,9 @@ There is **no linter**. Do not invent eslint/prettier configs.
 src/
   App.tsx              # routes, lazy pages, AnimatePresence wrapper
   main.tsx, index.css  # root + the ONLY place design values are defined
-  components/          # GlobalBackground, BackButton, StatBlock, motion
-  layouts/             # Wrapped (wraps /portfolio/:id), SplitPage
-  pages/               # Home, Portfolio, Process, About, Contact, case-studies/
+  components/          # app-wide UI and shared motion variants
+  homepage/            # homepage composition, sections, and section-only UI
+  case-studies/        # detail route, layout, templates, and custom studies
   content/             # projects.ts, employment.ts, images.ts — content source of truth
   assets/portfolio/<id>/   # case-study images, .webp only
 public/                # static assets; _redirects handles SPA fallback on Netlify/CF

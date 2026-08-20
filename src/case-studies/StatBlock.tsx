@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { EASE, VIEWPORT_ONCE } from './motion';
+import { EASE, VIEWPORT_ONCE } from '../components/motion';
 
 interface StatBlockProps {
     value: string;

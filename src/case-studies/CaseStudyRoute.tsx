@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router';
-import { PROJECTS, type CustomProject } from '../../content/projects';
+import { PROJECTS, type CustomProject } from '../content/projects';
 import ProjectTemplate from './ProjectTemplate';
 import EmploymentTemplate from './EmploymentTemplate';
 
@@ -10,7 +10,7 @@ const HAND_WRITTEN: Record<CustomProject['page'], React.LazyExoticComponent<Reac
     'gala-network': React.lazy(() => import('./GalaNetwork')),
 };
 
-const CaseStudy: React.FC = () => {
+const CaseStudyRoute: React.FC = () => {
     const { id = '' } = useParams();
     const project = PROJECTS.find((entry) => entry.id === id);
 
@@ -23,4 +23,4 @@ const CaseStudy: React.FC = () => {
     return <HandWritten project={project} />;
 };
 
-export default CaseStudy;
+export default CaseStudyRoute;

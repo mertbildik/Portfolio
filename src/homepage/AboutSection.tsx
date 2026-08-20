@@ -2,14 +2,14 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import mertPhoto from '../assets/mert.webp';
-import SplitPage from '../layouts/SplitPage';
-import CircleAction from '../components/CircleAction';
-import SectionIntro from '../components/SectionIntro';
+import HomepageSection from './HomepageSection';
+import CircleAction from './CircleAction';
+import SectionIntro from './SectionIntro';
 import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../components/motion';
 
-const About: React.FC = () => {
+const AboutSection: React.FC = () => {
     return (
-        <SplitPage id="about">
+        <HomepageSection id="about">
             <motion.div
                 variants={blockVariants}
                 initial="hidden"
@@ -135,8 +135,8 @@ const About: React.FC = () => {
                     </div>
                 </div>
             </motion.div>
-        </SplitPage>
+        </HomepageSection>
     );
 };
 
-export default About;
+export default AboutSection;
