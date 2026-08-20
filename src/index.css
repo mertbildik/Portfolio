@@ -98,55 +98,34 @@
   --text-eyebrow--font-weight: 500;
 
   /* ---- canvas ----------------------------------------------------------
-     Painted by GlobalBackground, not by body, so the fixed layer shows through
-     every route. Also the backing behind every image frame. */
+     The one dark foundation, also used behind every image frame. */
   --color-canvas: #111111;
 
   /* ---- ink ramp --------------------------------------------------------
-     Six steps measured against the canvas. Ink is the hierarchy: to push
-     something back, move down the ramp rather than adding a box.
-
-     The steps are spaced evenly, each roughly 1.4x the contrast of the one below
-     it. Even spacing is what makes the ramp read as a ramp: two steps close
-     together are one step wearing two names, and a big jump at the bottom drops
-     text off a cliff instead of quieting it. Every step that can hold a sentence
-     clears WCAG AA, so the site stays low contrast without going unreadable.
-     Contrast ratios and the rules: docs/design/color.md + accessibility.md */
-  --color-ink-max: #FFFFFF;    /* 18.9:1  a state, never a resting colour: hover, focus, selected, active */
-  --color-ink-high: #E5E5E5;   /* 15.0:1  document default, display type, card and row titles at rest */
-  --color-ink-mid: #C2C2C2;    /* 10.6:1  a value standing beside its label */
-  --color-ink-body: #A3A3A3;   /*  7.5:1  paragraphs */
-  --color-ink-low: #8A8A8A;    /*  5.5:1  eyebrows, captions, labels, supporting copy */
-  --color-ink-faint: #6E6E6E;  /*  3.7:1  numbers, years, meta. Never a sentence. */
-  --color-ink-inverse: #111111;/*          text on a white fill */
-
-  /* Opacity never dims text. The ramp is the only dimmer, so a quieter label is a
-     step down the ramp, not white at 40%. Opacity keeps its job on whole elements:
-     icon reveals, entrance fades, the decorative background layers. */
+     Four accessible steps measured against the canvas. */
+  --color-ink-max: #FFFFFF;   /* 18.9:1  focal emphasis, hover, focus, selected, active */
+  --color-ink-high: #E8E8E8;  /* 15.4:1  headings, titles, primary actions, input values */
+  --color-ink-body: #B0B0B0;  /*  8.7:1  paragraphs, descriptions, links at rest */
+  --color-ink-low: #7E7E7E;   /*  4.7:1  labels, captions, years, timestamps, metadata */
 
   /* ---- borders ---------------------------------------------------------
-     One structural weight, one pixel, always. A quieter element does not get a
-     thinner edge; it changes its ink or its fill instead. */
-  --color-line: rgb(255 255 255 / 0.08);   /* everything structural */
-  --color-line-strong: rgb(255 255 255 / 0.2); /* circle buttons */
-  --color-line-active: #FFFFFF;            /* focus, selected, active */
+     One quiet resting edge for images and circle controls. Interaction usually
+     relies on ink and tonal shifts rather than a brighter perimeter. */
+  --color-line: rgb(255 255 255 / 0.06);
 
   /* ---- fills -----------------------------------------------------------
-     White at a low alpha, never a lighter grey. Fills mark state; they do not
-     define shape, and they never mark focus. */
-  --color-fill-subtle: rgb(255 255 255 / 0.02);  /* card and panel rest fill */
-  --color-fill-raised: rgb(255 255 255 / 0.03);  /* pills, chips */
-  --color-fill-inverse: #FFFFFF;                 /* selected cell, inverted button */
+     Interactive feedback uses one flat tonal shift. Static grouped content
+     uses the quieter translucent surface below so the canvas remains visible. */
+  --color-fill: rgb(255 255 255 / 0.02);
+  --surface-canvas:
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgb(255 255 255 / 0.04), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 100% 100%, rgb(255 255 255 / 0.015), transparent 70%);
+  --surface-panel: rgb(255 255 255 / 0.018);
 
   /* ---- status ----------------------------------------------------------
-     The only chromatic colour in the system. State only, never decoration, and
-     never the only signal. An inactive status dot uses ink-faint. */
-  --color-status-ok: #22C55E;    /* availability dot at /50, copy confirmation */
-  --color-status-error: #EF4444; /* form submission failure */
-
-  /* The one grey off the ink ramp. Not text: it is the physical node sitting on
-     the timeline rule, punched out of it with ring-canvas. */
-  --color-node: #404040;
+     The only interface chroma. Always paired with text or a shape change. */
+  --color-status-ok: #62B77A;    /* 7.7:1  availability and confirmed success */
+  --color-status-error: #D66B6B; /* 5.6:1  actionable failure */
 
   /* ---- shape -----------------------------------------------------------
      One minimal radius on boxes, full circle on pills, dots, buttons and the
@@ -161,11 +140,10 @@
      the same curve as four numbers rather than a CSS string, so it keeps its own
      copy in src/components/motion.ts. Two spellings of one curve, in two
      different runtimes: change one and change the other.
-     Durations use Tailwind's own scale: 300 is the default state change, 500 a
-     larger one. The default below means a transition with no duration written
-     runs at 300 rather than Tailwind's 150, which is off our scale. */
+     Durations use Tailwind's own scale: 200 is the default state change, 300 a
+     larger reveal or inversion. */
   --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
-  --default-transition-duration: 300ms;
+  --default-transition-duration: 200ms;
 
   /* The one deliberate ambient loop on content: the portrait ring on the
      hero turns slowly. Constant motion runs linear. */
@@ -181,6 +159,14 @@
   --container-page: 692px;   /* homepage sections */
 }
 
+@utility canvas-atmosphere {
+  background-image: var(--surface-canvas);
+}
+
+@utility surface {
+  background-color: var(--surface-panel);
+}
+
 @layer base {
 
   html,
@@ -191,13 +177,14 @@
   }
 
   html {
+    color-scheme: dark;
     scroll-behavior: smooth;
   }
 
   body {
     /* Transparent so GlobalBackground's fixed canvas shows through every route.
        Selection is set once here and never overridden. */
-    @apply bg-transparent text-ink-high antialiased selection:bg-fill-inverse selection:text-ink-inverse font-sans;
+    @apply bg-transparent text-ink-high antialiased selection:bg-ink-max selection:text-canvas font-sans;
   }
 
   /* Tailwind 4's reset stopped giving buttons a pointer cursor, unlike Tailwind 3.

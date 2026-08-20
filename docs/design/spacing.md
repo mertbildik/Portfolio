@@ -27,7 +27,7 @@ Padding sizes come in one set: compact, default, and a large step for grid cells
 
 ## Optical corrections
 
-Nudges are deliberate. A small left inset on a monospace label above Inter text, and a one pixel negative margin where adjacent cells or rows each draw a border, so the shared edge stays a single pixel.
+Nudges are deliberate. A small left inset optically aligns a monospace label above Inter text. A negative margin may extend a row hit area into its container padding without changing content alignment.
 
 ## Rules
 

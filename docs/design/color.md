@@ -1,81 +1,63 @@
 # Colour
 
-One canvas, one ink ramp, white at alpha for everything structural, and two status colours. Every value is defined once in `src/index.css`; this file says what each name is for.
+The portfolio is dark-only: one charcoal canvas, four accessible inks, one integrated surface treatment, one subtle border and two semantic colours. Project imagery supplies every other colour. Values live only in `src/index.css`.
 
-## Canvas
+## Foundation
 
-`canvas` is the page base and the backing behind every image frame. `ink-inverse` is text and icons on a white fill.
+`canvas` is the page background and the backing inside image frames. A restrained white-alpha atmosphere gives the fixed canvas slight tonal variation without introducing another colour. The complete interface is composed for this canvas; there is no light palette or theme switching.
 
-The canvas is painted by a fixed background layer rather than by `body`, so it survives every route change.
+## Ink
 
-## Ink ramp
-
-Six steps, plus the inverse. Ink is the hierarchy: to push something back, move it down the ramp rather than putting a box around it.
-
-| Token | For |
+| Token | Use |
 |---|---|
-| `ink-max` | Hover destination, focus, selected, active. A state, never a resting colour. |
-| `ink-high` | The document default. Display headings, and card and row titles at rest. |
-| `ink-mid` | A value standing beside its label |
-| `ink-body` | Paragraphs. The default for anything a visitor must read. |
-| `ink-low` | Eyebrows, supporting copy, captions, labels |
-| `ink-faint` | Numbers, years, index digits. Meta a visitor can lose without losing meaning. |
+| `ink-max` | The hero's single focal phrase; hover, focus, selected and active text |
+| `ink-high` | Page and section headings, project titles, primary action labels and entered form values |
+| `ink-body` | Paragraphs, descriptions, supporting sentences and links at rest |
+| `ink-low` | Eyebrows, field labels, captions, years, timestamps, indexes and metadata |
 
-**Rules**
+`ink-low` is the darkest permitted text colour. Meaningful sentences use `ink-body` or brighter.
 
-- Within one heading, move down the ramp to de-emphasise: the heading's own ink for the phrase that matters, `ink-low` for the rest.
-- Display-size type stops one step below white.
-- No text rests at `ink-max`. The icon inside a circle button is the exception.
-- Hover goes up the ramp, never down.
-- Hover lifts controls only.
-- `ink-faint` never carries a sentence.
-- Never write a raw grey. Tailwind's default palette still resolves, but it leaves the system.
-- Opacity never dims text. The ramp is the only dimmer. Opacity keeps its job on whole elements: icon reveals, entrance fades, the background layers.
-- Never lean on the inherited default. Anything that paints states its own ink, including icons, which draw with `currentColor`.
-- The one grey off the ramp is `node`, the timeline marker. It is a mark sitting on a rule, not text.
+Split-tone headings are allowed only when the words carry different meaning. Colour follows meaning, never a line break. Ordinary headings use `ink-high`; only the hero may promote its focal phrase to `ink-max`.
 
-### Label ink
+A standalone text element declares its role. A link, button or grouped control may set one ink on its parent and let text and icons inherit it.
 
-A label is `ink-low`, wherever it sits. A label a visitor cannot read is decoration.
+## Surfaces
 
-A label acting as the real sub-heading of a block rather than introducing one is a heading, so it takes `ink-high` like every other heading.
+`surface` is a flat translucent white-alpha layer for exceptional grouped content. The global canvas atmosphere remains visible through it, keeping surfaces integrated without an internal gradient. `fill` is the slightly stronger 2% tonal shift reserved for local interaction feedback. Neither treatment has a border.
 
-## Surface fills
+There are no static divider lines. Sections, rows, grid cells and metadata columns separate through spacing and alignment.
 
-White at a low alpha, never a lighter grey.
+`line` is the only resting border. Use it only where an edge genuinely clarifies an image or circle control. Inputs have no resting border. Functional lines such as link underlines, the BackLink rule and active markers are control feedback, not dividers.
 
-| Token | For |
-|---|---|
-| `fill-subtle` | Card and panel fill at rest, and the hover fill on a segmented cell |
-| `fill-raised` | Pills, chips, status badges |
-| `fill-inverse` | Selected segmented cell, inverted circle button on hover |
+## Interaction
 
-Fills mark state. They do not define shape: a card with a fill still needs its border. A fill never marks focus.
+Lift the whole control without flattening its hierarchy:
 
-## Borders
+- Primary text moves from `ink-high` to `ink-max`.
+- Supporting `ink-low` text moves to `ink-body`.
+- Revealed icons use `ink-max`.
+- Keyboard focus combines an ink lift with a tonal shift, revealed icon or functional control line. A bright perimeter is not the default.
 
-One structural weight, one pixel, always.
+Rows and links never gain a hover fill. A subtle `fill` may support keyboard focus when ink and icon feedback need a larger visible area. The circle action is the only hover exception: it inverts to an `ink-max` fill with `canvas` foreground. Text selection uses the same pair.
 
-| Token | For |
-|---|---|
-| `line` | Everything structural |
-| `line-strong` | Circle buttons |
-| `line-active` | Focus, the selected item in a contents nav, the rule beside a completed state |
-
-A nested or quieter element does not get a thinner edge; if it needs to recede, change its ink or its fill. The same weight applies when a rule is drawn as a background rather than a border.
+The contact form is one `surface` with open, aligned rows inside it. Labels rest at `ink-low`, prompts use `ink-body`, and values use `ink-high`. A focused row receives `fill`, an `ink-max` label and the existing plus marker; it does not gain an outline.
 
 ## Status
 
-The only chromatic colour in the system. State only, never decoration, and never the only signal.
-
-| Token | For |
+| Token | Use |
 |---|---|
-| `status-ok` | Availability, and copy-to-clipboard confirmation |
-| `status-error` | Form submission failure, always beside an error sentence |
-| `ink-faint` | An inactive or confidential status dot |
+| `status-ok` | Current availability and confirmed success |
+| `status-error` | A failure that requires attention |
 
-A dot reporting a live state pulses. Nothing else pulses.
+Status colour is never decorative and never the only signal. Pair it with wording or a recognizable icon change. Neutral states use the ink ramp.
 
-## Selection
+## Imagery
 
-Set once on `body`, and never overridden.
+Screenshots, posters and portraits keep their original colours. Do not tint, desaturate, filter, blend or overlay them with a gradient. Their canvas backing and subtle frame make them belong to the site.
+
+## Enforcement
+
+- Static colours use tokens at full opacity. Opacity is reserved for motion, reveals and a disabled control as a whole.
+- Interface code never uses raw colours, Tailwind's default palette or arbitrary alpha variants.
+- Standalone assets that cannot consume CSS, such as the favicon, may repeat the matching canvas and white values.
+- Do not add an accent, shade or semantic colour without a current interface need that the existing system cannot express.

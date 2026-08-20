@@ -88,11 +88,13 @@ Design is not about looking fancy. It is about helping people move forward with 
 ### Form
 
 - **Label:** Your name
+- **Prompt:** How should I address you?
 - **Label:** Email address
+- **Prompt:** you@company.com
 - **Label:** Project details
-- **Placeholder:** A quick note about what you are building, timeline, and budget range.
-- **Submit:** Submit (or Sending... while submitting)
-- **Submit status:** Ready to send. / Not ready. / Submission failed. Click to retry.
+- **Prompt:** What are you building? Include the timeline and budget range if you have them.
+- **Submit:** Send inquiry (or Sending... while submitting)
+- **Submit status:** Ready to send. / Complete all fields. / Submission failed. Click to retry.
 - **Success state:** Request initiated. / I'll review your brief shortly. Expect a response at {email}. / Start over
 
 ### Footer metadata

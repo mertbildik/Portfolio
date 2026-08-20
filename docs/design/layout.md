@@ -18,7 +18,7 @@ The shared frames set max width, gutters and vertical padding. `HomeSection` own
 
 ## The single scroll
 
-The homepage is one column: hero, work, about, contact, stacked. Each section carries an eyebrow, a heading, and its content. Nothing is hidden behind tabs or separate pages.
+The homepage is one column: hero, work, contact, stacked. Each section carries an eyebrow, a heading, and its content. Nothing is hidden behind tabs or separate pages.
 
 ## Case studies
 

@@ -30,18 +30,18 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     An English first Galatasaray community built to connect fans worldwide through storytelling, match analysis, and design.
                 </motion.p>
 
-                <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8 border-t border-line">
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8">
                     <div>
                         <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Role</span>
-                        <span className="text-caption text-ink-mid">Co founder, Content and Design Lead</span>
+                        <span className="text-caption text-ink-low">Co founder, Content and Design Lead</span>
                     </div>
                     <div>
                         <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Status</span>
-                        <span className="text-caption text-ink-mid">Active</span>
+                        <span className="text-caption text-ink-low">Active</span>
                     </div>
                     <div>
                         <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Focus</span>
-                        <span className="text-caption text-ink-mid">Community and network building</span>
+                        <span className="text-caption text-ink-low">Community and network building</span>
                     </div>
                 </motion.div>
             </motion.div>
@@ -114,19 +114,19 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     <h2 className="text-display-md text-ink-high mb-12">What we publish</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="pl-6 border-l border-line">
+                        <div>
                             <h3 className="text-card-title text-ink-high mb-2">Match storytelling</h3>
                             <p className="text-body-sm text-ink-body">Short posts that capture the moment and the emotion.</p>
                         </div>
-                        <div className="pl-6 border-l border-line">
+                        <div>
                             <h3 className="text-card-title text-ink-high mb-2">Analysis</h3>
                             <p className="text-body-sm text-ink-body">Simple match reads. Clear patterns.</p>
                         </div>
-                        <div className="pl-6 border-l border-line">
+                        <div>
                             <h3 className="text-card-title text-ink-high mb-2">Design posters</h3>
                             <p className="text-body-sm text-ink-body">Matchday, Starting XI, stats, and key player moments.</p>
                         </div>
-                        <div className="pl-6 border-l border-line">
+                        <div>
                             <h3 className="text-card-title text-ink-high mb-2">Community signals</h3>
                             <p className="text-body-sm text-ink-body">Questions, replies, and threads that keep the circle active.</p>
                         </div>
@@ -148,22 +148,22 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">01</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">01</span>
                             <h3 className="text-card-title text-ink-high mb-2">Listen</h3>
                             <p className="text-body-sm text-ink-body">We collect signals from the community. DMs, replies, and trusted sources.</p>
                         </div>
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">02</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">02</span>
                             <h3 className="text-card-title text-ink-high mb-2">Filter</h3>
                             <p className="text-body-sm text-ink-body">We keep what is useful, clear, and respectful.</p>
                         </div>
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">03</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">03</span>
                             <h3 className="text-card-title text-ink-high mb-2">Publish</h3>
                             <p className="text-body-sm text-ink-body">We turn it into posts, posters, or short analysis.</p>
                         </div>
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">04</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">04</span>
                             <h3 className="text-card-title text-ink-high mb-2">Connect</h3>
                             <p className="text-body-sm text-ink-body">We introduce people, share opportunities, and grow real relationships.</p>
                         </div>
@@ -188,7 +188,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     {projectImages.map((img, i) => (
                         <div
                             key={img.name}
-                            className={`w-full h-full bg-canvas border border-line overflow-hidden relative ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                            className={`w-full h-full bg-canvas border border-line rounded-md overflow-hidden relative ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
                         >
                             <img
                                 src={img.src}

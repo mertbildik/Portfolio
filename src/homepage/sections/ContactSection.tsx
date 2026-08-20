@@ -32,8 +32,8 @@ const LiveClock: React.FC = () => {
 
     return (
         <div className="flex items-baseline gap-2">
-            <span className="text-caption font-mono text-ink-body">{timeString}</span>
-            <span className="text-caption font-mono text-ink-faint uppercase">Warsaw, PL</span>
+            <span className="text-caption font-mono text-ink-low">{timeString}</span>
+            <span className="text-caption font-mono text-ink-low uppercase">Warsaw, PL</span>
         </div>
     );
 };
@@ -113,7 +113,7 @@ const ContactSection: React.FC = () => {
             >
                 <SectionIntro
                     eyebrow="Inquiry"
-                    title={<>Let's <br /><span className="text-ink-low">Talk.</span></>}
+                    title={<>Let's <br />Talk.</>}
                     description={<>Available for new projects. <br />I reply within 24 hours.</>}
                 />
             </motion.div>
@@ -135,138 +135,103 @@ const ContactSection: React.FC = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
-                                className="py-12 pl-6 border-l border-line-active"
+                                className="surface rounded-md p-8 md:p-10"
                             >
-                                <CheckCircle2 size={24} className="text-ink-max mb-6" strokeWidth={1.5} />
+                                <CheckCircle2 size={24} className="text-status-ok mb-6" strokeWidth={1.5} />
                                 <h3 className="text-headline text-ink-high mb-2">Request initiated.</h3>
                                 <p className="text-ink-body text-body-sm max-w-xs mb-8">
                                     I'll review your brief shortly. Expect a response at {formData.email}.
                                 </p>
                                 <button
                                     onClick={() => { setFormState('idle'); setFormData({ name: '', email: '', message: '' }); setIsFormReady(false); }}
-                                    className="text-button text-ink-body hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 border-b border-transparent hover:border-line-active focus-visible:border-line-active pb-0.5"
+                                    className="text-button text-ink-body hover:text-ink-max focus-visible:text-ink-max focus-visible:outline-none transition-colors duration-300 border-b border-transparent hover:border-ink-low focus-visible:border-ink-low pb-0.5"
                                 >
                                     Start over
                                 </button>
                             </motion.div>
                         ) : (
-                            <motion.form
-                                     key="form"
-                                     variants={itemVariants}
-                                     onSubmit={handleSubmit}
-                                     onInput={(event) => setIsFormReady(formIsReady(event.currentTarget))}
-                                     className="flex flex-col gap-10"
-                            >
-                                {/* PARTICULARS */}
-                                <div className="flex flex-col gap-10">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                                        {/* NAME INPUT */}
-                                        <div className="relative group">
-                                            <input
-                                                type="text"
-                                                id="contact-name"
-
-                                                name="name"
-                                                value={formData.name}
-                                                onChange={handleInputChange}
-                                                required
-                                                className="block w-full bg-transparent border-b border-line py-4 text-ink-high text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer"
-                                                placeholder="Your name"
-                                            />
-                                            <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                                <label htmlFor="contact-name" className={`text-button transition-colors duration-300 group-focus-within:text-ink-max ${formData.name ? 'text-ink-max' : 'text-ink-low'}`}>
-                                                    Your name
-                                                </label>
-                                                {/* Active Marker */}
-                                                <div
-                                                    className="opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 text-ink-max text-caption font-mono"
-                                                >
-                                                    +
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* EMAIL INPUT */}
-                                        <div className="relative group">
-                                            <input
-                                                type="email"
-                                                id="contact-email"
-
-                                                name="email"
-                                                value={formData.email}
-                                                onChange={handleInputChange}
-                                                required
-                                                className="block w-full bg-transparent border-b border-line py-4 text-ink-high text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer"
-                                                placeholder="Your email"
-                                            />
-                                            <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                                <label htmlFor="contact-email" className={`text-button transition-colors duration-300 group-focus-within:text-ink-max ${formData.email ? 'text-ink-max' : 'text-ink-low'}`}>
-                                                    Email address
-                                                </label>
-                                                {/* Active Marker */}
-                                                <div
-                                                    className="opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 text-ink-max text-caption font-mono"
-                                                >
-                                                    +
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* MESSAGE INPUT */}
-                                    <div className="relative group">
-                                        <textarea
-                                            rows={1}
-                                            id="contact-message"
-
-                                            name="message"
-                                            value={formData.message}
-                                            onChange={handleInputChange}
-                                            required
-                                            className="block w-full bg-transparent border-b border-line py-4 text-ink-high text-body focus:outline-none focus:border-line-active transition-colors duration-300 placeholder-transparent peer resize-none min-h-[40px] max-h-[160px]"
-                                            placeholder="A quick note about what you are building, timeline, and budget range."
-                                            onInput={(e) => {
-                                                const target = e.target as HTMLTextAreaElement;
-                                                target.style.height = 'auto';
-                                                target.style.height = target.scrollHeight + 'px';
-                                            }}
-                                        ></textarea>
-                                        <div className="absolute top-0 left-0 w-full flex justify-between pointer-events-none">
-                                            <label htmlFor="contact-message" className={`text-button transition-colors duration-300 group-focus-within:text-ink-max ${formData.message ? 'text-ink-max' : 'text-ink-low'}`}>
-                                                Project details
-                                            </label>
-                                            {/* Active Marker */}
-                                            <div
-                                                className="opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 text-ink-max text-caption font-mono"
-                                            >
-                                                +
-                                            </div>
-                                        </div>
-                                    </div>
+                             <motion.form
+                                key="form"
+                                variants={itemVariants}
+                                onSubmit={handleSubmit}
+                                onInput={(event) => setIsFormReady(formIsReady(event.currentTarget))}
+                                className="surface rounded-md p-2"
+                             >
+                                <div className="relative group grid grid-cols-1 md:grid-cols-[9rem_minmax(0,1fr)] gap-2 md:gap-6 rounded-md p-5 md:p-6 focus-within:bg-fill transition-colors duration-200 ease-out">
+                                    <label htmlFor="contact-name" className="text-button text-ink-low group-focus-within:text-ink-max transition-colors duration-200 ease-out md:pt-2.5">
+                                        Your name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="contact-name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="block w-full min-h-11 bg-transparent text-ink-high text-body focus:outline-none placeholder:text-ink-body pr-6"
+                                        placeholder="How should I address you?"
+                                    />
+                                    <span className="absolute top-6 right-6 opacity-0 group-focus-within:opacity-100 transition-opacity duration-200 ease-out text-ink-max text-caption font-mono" aria-hidden="true">+</span>
                                 </div>
 
-                                {/* ACTION */}
-                                <div className="pt-8">
-                                    <button
-                                        type="submit"
-                                        disabled={formState === 'submitting'}
-                                        className="w-full flex items-center justify-between group cursor-pointer pt-4 disabled:opacity-50 disabled:cursor-not-allowed"
-                                    >
-                                        <div className="flex flex-col shrink-0 text-left">
-                                            <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">
-                                                {formState === 'submitting' ? 'Sending...' : 'Submit'}
-                                            </span>
-                                            <span className="text-caption text-ink-faint mt-1 uppercase">
-                                                {formState === 'error' ? (
-                                                    <span className="text-status-error">Submission failed. Click to retry.</span>
-                                                ) : isFormReady ? "Ready to send." : "Not ready."}
-                                            </span>
-                                        </div>
-                                        <ActionCircle>
-                                            <ArrowRight size={20} />
-                                        </ActionCircle>
-                                    </button>
+                                <div className="relative group grid grid-cols-1 md:grid-cols-[9rem_minmax(0,1fr)] gap-2 md:gap-6 rounded-md p-5 md:p-6 focus-within:bg-fill transition-colors duration-200 ease-out">
+                                    <label htmlFor="contact-email" className="text-button text-ink-low group-focus-within:text-ink-max transition-colors duration-200 ease-out md:pt-2.5">
+                                        Email address
+                                    </label>
+                                    <input
+                                        type="email"
+                                        id="contact-email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="block w-full min-h-11 bg-transparent text-ink-high text-body focus:outline-none placeholder:text-ink-body pr-6"
+                                        placeholder="you@company.com"
+                                    />
+                                    <span className="absolute top-6 right-6 opacity-0 group-focus-within:opacity-100 transition-opacity duration-200 ease-out text-ink-max text-caption font-mono" aria-hidden="true">+</span>
                                 </div>
+
+                                <div className="relative group grid grid-cols-1 md:grid-cols-[9rem_minmax(0,1fr)] gap-3 md:gap-6 rounded-md p-5 md:p-6 focus-within:bg-fill transition-colors duration-200 ease-out">
+                                    <label htmlFor="contact-message" className="text-button text-ink-low group-focus-within:text-ink-max transition-colors duration-200 ease-out md:pt-1">
+                                        Project details
+                                    </label>
+                                    <textarea
+                                        rows={1}
+                                        id="contact-message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="block w-full bg-transparent text-ink-high text-body focus:outline-none placeholder:text-ink-body resize-none min-h-28 md:min-h-20 max-h-[160px] pr-6"
+                                        placeholder="What are you building? Include the timeline and budget range if you have them."
+                                        onInput={(e) => {
+                                            const target = e.target as HTMLTextAreaElement;
+                                            target.style.height = 'auto';
+                                            target.style.height = target.scrollHeight + 'px';
+                                        }}
+                                    />
+                                    <span className="absolute top-6 right-6 opacity-0 group-focus-within:opacity-100 transition-opacity duration-200 ease-out text-ink-max text-caption font-mono" aria-hidden="true">+</span>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    disabled={formState === 'submitting'}
+                                    className="w-full grid grid-cols-[1fr_auto] md:grid-cols-[9rem_minmax(0,1fr)_auto] items-center gap-6 group cursor-pointer rounded-md p-5 md:p-6 focus-visible:outline-none focus-visible:bg-fill disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 ease-out"
+                                >
+                                    <div className="md:col-start-2 flex flex-col shrink-0 text-left">
+                                        <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max group-disabled:text-ink-high transition-colors duration-300">
+                                            {formState === 'submitting' ? 'Sending...' : 'Send inquiry'}
+                                        </span>
+                                        <span aria-live="polite" className="text-caption text-ink-low mt-1 uppercase group-hover:text-ink-body group-focus-visible:text-ink-body group-disabled:text-ink-low transition-colors duration-300">
+                                            {formState === 'error' ? (
+                                                <span className="text-status-error">Submission failed. Click to retry.</span>
+                                            ) : isFormReady ? "Ready to send." : "Complete all fields."}
+                                        </span>
+                                    </div>
+                                    <ActionCircle small>
+                                        <ArrowRight size={18} />
+                                    </ActionCircle>
+                                </button>
                             </motion.form>
                         )}
                     </AnimatePresence>
@@ -274,27 +239,27 @@ const ContactSection: React.FC = () => {
                     {/* FOOTER METADATA - Data Grid System */}
                     <motion.div
                         variants={itemVariants}
-                        className="grid grid-cols-1 md:grid-cols-3 border-t border-line"
+                        className="grid grid-cols-1 md:grid-cols-3 md:gap-8"
                     >
-                        {/* 01: Email - with vertical border */}
-                        <div className="flex flex-col gap-4 py-8 md:pr-8 md:border-r border-line">
+                        {/* 01: Email */}
+                        <div className="flex flex-col gap-4 py-8">
                             <span className="text-eyebrow text-ink-low">Connect</span>
                             <button
                                 type="button"
                                 onClick={handleCopyEmail}
-                                aria-label="Copy email address"
-                                className="group cursor-pointer flex items-center gap-3 text-ink-body hover:text-ink-max focus-visible:text-ink-max focus-visible:outline-none transition-colors duration-300 w-fit"
+                                aria-label={emailCopied ? 'Email copied' : 'Copy email address'}
+                                className="group cursor-pointer flex min-h-11 items-center gap-3 text-ink-low hover:text-ink-max focus-visible:text-ink-max focus-visible:outline-none transition-colors duration-200 ease-out w-fit"
                             >
                                 <span className="text-caption font-mono">{CONTACT_EMAIL}</span>
                                 {emailCopied ? <Check size={12} className="text-status-ok" /> : <Copy size={12} className="opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300 text-ink-low" />}
                             </button>
                         </div>
 
-                        {/* 02: Social - with vertical border */}
-                        <div className="flex flex-col gap-4 py-8 md:px-8 md:border-r border-line">
+                        {/* 02: Social */}
+                        <div className="flex flex-col gap-4 py-8">
                             <span className="text-eyebrow text-ink-low">Networks</span>
                             <div className="flex flex-col gap-2">
-                                <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-ink-body hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 group w-fit">
+                                <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 text-ink-body hover:text-ink-max focus-visible:text-ink-max focus-visible:outline-none transition-colors duration-300 group w-fit">
                                     <span className="text-caption">LinkedIn</span>
                                     <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300" />
                                 </a>
@@ -302,7 +267,7 @@ const ContactSection: React.FC = () => {
                         </div>
 
                         {/* 03: Time - aligned right/end */}
-                        <div className="hidden md:flex flex-col gap-4 py-8 md:pl-8">
+                        <div className="hidden md:flex flex-col gap-4 py-8">
                             <span className="text-eyebrow text-ink-low">Local time</span>
                             <div className="text-caption font-mono text-ink-body">
                                 <LiveClock />

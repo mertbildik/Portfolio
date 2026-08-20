@@ -35,7 +35,7 @@ const HeroSection: React.FC = () => (
                                 fill="none"
                             />
                         </defs>
-                        <text className="fill-current text-ink-faint font-mono uppercase" style={{ fontSize: 8.5, letterSpacing: 1.5 }}>
+                        <text className="fill-current text-ink-low font-mono uppercase" style={{ fontSize: 8.5, letterSpacing: 1.5 }}>
                             <textPath href="#warsaw-ring-path">
                                 BASED IN WARSAW • BASED IN WARSAW • BASED IN WARSAW •
                             </textPath>
@@ -56,20 +56,16 @@ const HeroSection: React.FC = () => (
                     href="https://www.mckinsey.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-ink-high hover:text-ink-max focus-visible:text-ink-max transition-colors duration-300 border-b border-transparent hover:border-line-active focus-visible:border-line-active pb-0.5"
+                    className="text-ink-high hover:text-ink-max focus-visible:text-ink-max focus-visible:outline-none transition-colors duration-300 border-b border-transparent hover:border-ink-low focus-visible:border-ink-low pb-0.5"
                 >
                     McKinsey &amp; Company
                 </a>
                 .
             </motion.p>
 
-            <motion.h1 variants={itemVariants} className="text-display-lg text-ink-low mt-10 md:mt-14">
-                <span>I </span>
-                <span className="text-ink-high">design/build</span>
-                <br />
-                <span>digital products,</span>
-                <br />
-                websites, and visual experiences.
+            <motion.h1 variants={itemVariants} className="text-display-lg text-ink-high mt-18">
+                <span>I design/build </span>
+                <span className="text-ink-max">digital products, websites, and visual experiences.</span>
             </motion.h1>
 
             <motion.p variants={itemVariants} className="mt-8 md:mt-12 text-body text-ink-body ml-1 w-full max-w-lg">
@@ -84,13 +80,13 @@ const HeroSection: React.FC = () => (
             animate="visible"
         >
             <motion.div variants={itemVariants} className="mt-12 w-full">
-                <a href="#contact" className="flex items-center justify-between group cursor-pointer whitespace-nowrap">
+                <a href="#contact" className="flex items-center justify-between group cursor-pointer whitespace-nowrap focus-visible:outline-none">
                     <div className="flex flex-col shrink-0">
                         <span className="text-card-title text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">
                             Get in touch
                         </span>
-                        <span className="text-caption text-ink-faint mt-1 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 bg-status-ok/50 rounded-full animate-pulse" />
+                        <span className="text-caption text-ink-low mt-1 flex items-center gap-2 group-hover:text-ink-body group-focus-visible:text-ink-body transition-colors duration-300">
+                            <span className="w-1.5 h-1.5 bg-status-ok rounded-full animate-pulse" />
                             Available for new projects
                         </span>
                     </div>

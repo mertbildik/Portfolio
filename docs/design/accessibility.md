@@ -1,71 +1,72 @@
 # Accessibility
 
-The site is low contrast by design. That makes the ink rules the tightest constraint in the system.
+The restrained palette remains readable because every text ink clears WCAG AA against the canvas.
 
 ## Contrast
 
-WCAG AA needs 4.5:1 for normal text, and 3:1 for large text and for interface borders. Measured against the canvas, the top five ink steps clear the normal-text bar. `ink-faint` clears large text and interface bars only. The measured ratio for each step is written beside it in `src/index.css`.
+| Token | Contrast on `canvas` | Minimum role |
+|---|---:|---|
+| `ink-max` | 18.9:1 | Focal emphasis and interaction state |
+| `ink-high` | 15.4:1 | Headings, titles, actions and entered values |
+| `ink-body` | 8.7:1 | Paragraphs and meaningful sentences |
+| `ink-low` | 4.7:1 | Labels and metadata; the text floor |
+| `status-ok` | 7.7:1 | Availability and confirmed success |
+| `status-error` | 5.6:1 | Actionable failure |
 
-1. A paragraph carrying information that appears nowhere else uses `ink-body` or lighter.
-2. `ink-low` is for labels, eyebrows, captions and supporting copy that restates or introduces something already visible. It is the darkest ink allowed on a sentence.
-3. `ink-faint` is for meta a visitor can lose without losing meaning: row numbers, years, index digits. Never a sentence, never the only label on a control.
-4. Any `ink-low` or `ink-faint` element inside an interactive row lifts to `ink-body` or lighter on hover and on focus. Outside a control ink stays put, so it must already be readable enough for its job at rest.
-5. A border that defines a control goes to `line-active` on focus, which clears the 3:1 interface bar.
-6. Opacity is not a contrast tool. Dimming text with `opacity` produces a colour that is in no table. Move down the ramp instead.
+Meaningful sentences use `ink-body` or brighter. Static text is never dimmed with opacity.
 
 ## Focus
 
-`outline-none` is allowed only when the same element defines a visible focus state. No exceptions.
+Every keyboard-focusable control has a visible state. `outline-none` is allowed only when the same element or its wrapper supplies a clear combination of contrast, shape or tonal change.
 
-Every hover-revealed label, arrow or colour change must also fire on `focus-visible`. A keyboard visitor must never see less than a mouse visitor.
+- Contact fields gain a tonal surface, bright label and plus marker.
+- Portfolio rows gain a tonal surface, brighter hierarchy and their arrow.
+- Inline controls provide a clear ink lift, revealed icon or functional underline.
+- Hover-revealed colour and icons also appear on `focus-visible`.
 
-Put `group` on the focusable element itself so `group-focus-visible` resolves against it.
-
-Since no row carries a fill on hover or focus, the rule going white is the whole focus signal. It is what earns the `outline-none` on the link, so it can never be dropped without putting the outline back.
+Static dividers are not focus indicators and never return for this purpose.
 
 ## Keyboard
 
-- Anything clickable is a `<button>` or an `<a>`/`<Link>`. A `div` with `onClick` is not shippable.
-- Tab order follows source order. No `tabindex` above `0`.
-- Anything that scrolls to a section leaves scroll margin on the target, so it does not land under a sticky element.
-- There are no modals or overlays, so no keyboard trap exists.
+- Clickable elements are buttons or links, never `div` click handlers.
+- Tab order follows source order. Do not use a positive `tabindex`.
+- Anchor targets leave enough scroll margin to remain visible below sticky content.
 
 ## Targets
 
-Minimum tap target 44 × 44px. Where a control is smaller than that, the label beside it is part of the same control and the whole row is the link. An inline icon is never a target on its own.
+Tap targets are at least 44 × 44px. A small icon is part of its labelled control rather than a target by itself.
 
 ## Forms
 
-- Every input has a programmatic label: an `id` and `htmlFor` pair, or an `aria-label`. A floating visual label is not a label.
-- Placeholders are transparent by design, so they can never be the only prompt.
-- Required fields are marked with `required` in the markup, not only by validation on submit.
-- Submission state is announced in text, never by colour alone. The error colour always accompanies an error sentence.
-- The success panel offers a way back to a blank form.
+- Every field has a persistent visible `<label>` paired through `id` and `htmlFor`.
+- The visible prompt supplements the label; it never replaces the programmatic label.
+- Required fields use the native `required` attribute.
+- Entered values use `ink-high`; prompts use `ink-body`; resting labels use `ink-low`.
+- Submission state is announced in text. Semantic colour is never the only signal.
+- The success state offers a way back to a blank form.
 
 ## Content
 
 | Rule | Detail |
 |---|---|
-| One `h1` per page | The page title. A case study uses the project name. |
-| Headings descend | Never skip a level to reach a size. Size comes from the type token. |
-| Labels are not headings | A label introducing a section is a `<span>` unless it is the section's real heading. |
-| Icons | Never the only signal. Pair with a label, or give the control an `aria-label`. |
-| Status | Never colour alone. A status dot always sits beside its sentence. |
-| Type floor | `text-caption` is the smallest size, and only for meta. Body copy never goes below `text-body-sm`. |
-| Alt text | Describes the content of the screen. Decorative layers are `div`s, not images. |
-| Language | `lang="en"` on `<html>`. Foreign proper nouns inside English copy need no markup. |
+| One `h1` per page | The page title; a case study uses the project name |
+| Headings descend | Never skip a level to reach a visual size |
+| Labels are not headings | A label is a `<span>` unless it is the block's real heading |
+| Icons | Pair with text or give the control an accessible name |
+| Status | Pair colour with wording or a recognizable shape change |
+| Type floor | `text-caption` is metadata only; body copy never goes below `text-body-sm` |
+| Alt text | Describe the displayed content, not the filename or image type |
 
 ## Motion
 
-Honour `prefers-reduced-motion: reduce`. See `motion.md`. The portrait ring loops forever, so it must stop under the query.
+Honour `prefers-reduced-motion: reduce`. Position-based entrances and ambient loops stop; useful colour feedback remains.
 
-## Check before shipping
+## Check Before Shipping
 
-- [ ] Every paragraph is `ink-body` or lighter
-- [ ] No `outline-none` without a visible focus state on the same element
-- [ ] Every hover reveal also fires on keyboard focus
-- [ ] Every interactive element is a `<button>` or a link
-- [ ] Every input has a real label
+- [ ] Every sentence is `ink-body` or brighter
+- [ ] Every control has a visible keyboard focus state
+- [ ] Every hover reveal also appears on keyboard focus
+- [ ] Every field has a persistent visible and programmatic label
 - [ ] Every tap target reaches 44px
-- [ ] Nothing is signalled by colour alone
-- [ ] Reduced motion stops the portrait ring
+- [ ] Nothing is communicated by colour alone
+- [ ] Reduced motion stops ambient loops and position movement

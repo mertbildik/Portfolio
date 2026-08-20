@@ -6,11 +6,11 @@ For adding images to a case study, see `docs/content/writing.md`.
 
 ## Frame
 
-Every image sits in the same frame: full width, the minimal radius, one border weight, and a canvas-coloured backing. The backing is the point. A screenshot with transparent or letterboxed edges reads as part of the page rather than as a floating tile.
+Every image sits in the same frame: full width, the minimal radius, the subtle `line` border, and a canvas-coloured backing. The backing is the point. A screenshot with transparent or letterboxed edges reads as part of the page rather than as a floating tile.
 
 ## Colour
 
-Images render in full colour, with no base filter. The frame, not a filter, is what makes an image belong. Do not apply `grayscale`, `blur`, `brightness` or `saturate` to a content image.
+Images render in their original colour. The frame, not an effect, is what makes an image belong. Do not apply a tint, gradient, overlay, blend mode, `grayscale`, `blur`, `brightness` or `saturate` to a content image.
 
 ## Fit
 
@@ -26,11 +26,11 @@ A gallery is one column, two columns, or a feature layout where one asset leads 
 
 Columns are declared per output block, never inferred from the number of images or the wording of a title.
 
-An output block opens with a card describing what is shown, then the images below it. That card sits on the same border weight as the frames beneath it.
+An output block opens with a borderless `fill` card describing what is shown, then the framed images below it.
 
 ## Portrait
 
-One portrait exists. It is a full circle, cropped to the top, with a gradient rising from the bottom edge and a caption inset into the corner. It is a one-off, not a pattern to reuse.
+One portrait exists. It is a full circle, cropped to the top and surrounded by the rotating location label. It has no filter, tint or overlay and is not a pattern to reuse.
 
 ## Alt text and loading
 

@@ -1,77 +1,62 @@
 # Surfaces
 
-Structure is drawn with hairline rules. Fills mark state. Nothing casts a shadow.
+Spacing and alignment structure the portfolio. One translucent tonal surface groups exceptional content while preserving the continuous canvas. Nothing casts a shadow, and static dividers do not exist.
 
 ## Radius
 
-Boxes carry one minimal radius (6px). Pills, dots, circle buttons and the portrait are full circles. Nothing in between.
+Boxes carry one minimal radius (6px). Pills, dots, circle buttons and the portrait are full circles. Nothing sits between those shapes.
 
-`src/index.css` maps the radius scale to that one value, so `rounded-sm`, `rounded-md`, `rounded-lg` and `rounded-xl` are the same corner; `rounded-full` and `rounded-none` are built in. If a box needs to feel lighter, change its fill, not its corners.
+`src/index.css` maps the radius scale to the same value, so a component chooses a semantic Tailwind step without introducing a new corner.
 
 ## Elevation
 
-There is none. No `box-shadow`, no `drop-shadow`, no glow. A surface separates from the canvas with a border, and optionally a subtle fill.
+There is none. No `box-shadow`, `drop-shadow` or glow. The canvas uses restrained white-alpha gradients for tonal continuity; grouped surfaces remain flat and translucent.
 
-One thing looks like a shadow and is not: the ring on the timeline node, which punches the dot out of the rule behind it.
+## Boundaries
 
-## The lattice
+Do not draw static lines between sections, rows, columns or grid cells. Use an existing spacing step and alignment instead.
 
-A multi-cell grid draws one shared border, not a border per cell. The container carries the opening edges and each cell carries the closing edges. It works mirrored too, when the cell is a shared component that cannot know its position. Pick one direction per grid.
+The only resting border is `line`, used around image frames and circle controls. Functional lines remain valid where they communicate interaction: link underlines, the BackLink rule and active navigation markers.
 
-Where cells sit side by side without a container border, only the following cells draw a rule and pull the shared edge back by one pixel, so a three-column row draws two lines and not four.
+## Fill
 
-Declare a lattice rule at the same breakpoint the grid appears at.
-
-A grid drawn this way has no doubled lines and no rounded corners.
+`surface` is a flat 1.8% translucent white layer for a self-contained content group or metadata chip. It has no internal gradient, opaque base, blur, border or shadow, so the global canvas atmosphere remains visible through it. `fill` is a flat 2% white reserved for focused rows and controls. Do not surface every section or replace removed dividers with a field of cards.
 
 ## Dots
 
-Three, each with one job: a bullet marking a list item, a node sitting on a timeline rule, and a status dot. They are close in size and not interchangeable.
+A bullet uses the ink of the text it marks. A semantic dot uses its status colour and sits beside wording. A neutral dot uses `ink-low`. Only current availability pulses.
 
-A marker uses the same ink as the text it marks. Markers do not react to hover. Nothing darker than `ink-faint` is a marker ink.
+## Named Blocks
 
-The timeline node is the one dot off the ink ramp.
-
-## Interaction: what may react
-
-Hover belongs to things you can click. If an element is not a `<button>`, an `<a>` or a `<Link>`, it carries no `hover:` class, no `group`, and no transition.
-
-A `group` with nothing reading it is dead markup. Delete it along with the hover.
-
-## The named blocks
-
-| Block | The decision behind it |
+| Block | Treatment |
 |---|---|
-| **Card** | A self-contained idea inside a section. One border weight, no hover. Comes filled or empty, and the fill is the only difference. |
-| **Panel** | A full-width block holding a two-column layout rather than a single idea. Padding scales up with the breakpoint; the split inside it is drawn with a rule. |
-| **Left-rule block** | The default way to list decisions, outputs or principles. A rule, not a box. One left inset, no all-round variant, no hover. |
-| **Grid cell** | A cell in a lattice. It sets a minimum height so a sparse cell does not collapse. |
-| **Pill** | A round badge, raised fill, for a status with a dot and a label. |
-| **Tag** | A chip, subtle fill, for one word of metadata. Never round. |
-| **Circle button** | The primary call to action. It inverts on hover. Always paired with a text label to its left. |
-| **Row** | An item in an index list, separated by a rule. A row never fills. It signals with ink, its arrow and its rule. |
-| **Input** | An underline, not a box. Placeholders are transparent; the floating label is the only visible prompt, and it goes white when focused or filled. |
-| **Segmented cell** | A control, so it hovers. Rest is transparent with dim ink; selected inverts to a white fill. |
-| **Back control** | One control everywhere. A rule that grows on hover beside a label. |
-| **Section eyebrow** | Every section opens with a bare label, no rule beside it. |
-| **Timeline** | A vertical rule that draws itself in from the top, with a node per step. Static after that. |
+| **Card** | A self-contained idea on `surface`, with the minimal radius and no border or hover |
+| **Panel** | One `surface` containing a larger grouped layout |
+| **Grid cell** | Open content separated from neighbouring cells by grid gap |
+| **Role chip** | A minimal-radius `surface` using `ink-low` for the case-study category |
+| **Tool chip** | The same minimal-radius `surface`, smaller and quieter with `ink-low` |
+| **Circle button** | A quiet `line` outline paired with a text label; the only control that fills on hover |
+| **Row** | Open, spacing-led and borderless at rest; responds through ink and icon feedback |
+| **Contact form** | One `surface` containing aligned, borderless rows; focus adds `fill` to the active row, brightens its label and reveals its marker |
+| **Back control** | A short functional rule that grows beside its label |
+| **Section eyebrow** | A bare label with no decorative rule |
 
 ## States
 
-| State | What changes |
+| State | Treatment |
 |---|---|
-| Rest | Ink one to two steps down the ramp. Border at `line`. No fill. |
-| Hover | Controls only. Ink lifts one step. Any reveal slides in. A fill appears only on the segmented cell and the circle button. |
-| Focus | Everything hover does, plus a border that survives without a pointer: the rule goes to `line-active`. Never a fill. |
-| Selected / active | Ink goes white and the border goes `line-active`, or the element inverts to a white fill with inverse ink. |
-| Loading | The label states the action in progress. The control also takes the disabled treatment. No spinner exists. |
-| Disabled | Reduced opacity and a not-allowed cursor, nothing else. |
+| Rest | The semantic ink role; no reactive fill |
+| Hover | Interactive ink lifts while hierarchy remains; revealed icons use `ink-max` |
+| Focus | Ink lift plus a tonal shift, revealed icon or functional control line; no default bright perimeter |
+| Selected / active | `ink-max`, optionally with an `ink-low` active marker |
+| Loading | The action label changes and the complete control takes the disabled treatment |
+| Disabled | Reduced opacity on the complete control and a not-allowed cursor |
 
 ## Rules
 
-- Border first, fill second. A fill never replaces a border.
-- One border weight. There is no second, quieter weight for nested things.
-- A rest fill is `fill-subtle`. It is never brighter, and it never marks focus.
-- Boxes take the minimal radius; pills, dots, buttons and the portrait are full circles. Nothing rounds otherwise.
+- Spacing before surface; surface before adding any new boundary.
+- Static surfaced content has no border.
+- No static divider lines.
+- No hover fill except circle-button inversion.
 - If it is not clickable, it does not react.
-- Do not nest a card inside a card. Use a left-rule block inside a card instead.
+- Do not nest one filled surface inside another without a concrete content need.

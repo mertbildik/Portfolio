@@ -13,9 +13,8 @@ const StatBlock: React.FC<{ value: string; label: string; desc: string; delay: n
         whileInView={{ opacity: 1, y: 0 }}
         viewport={VIEWPORT_ONCE}
         transition={{ duration: 0.8, delay, ease: EASE }}
-        className="relative flex flex-col items-start text-left p-6 min-h-[180px] border-l border-line"
+        className="relative flex flex-col items-start text-left p-6 min-h-[180px]"
     >
-        <div className="absolute top-0 left-0 w-full h-px bg-line" />
         <div className="w-full">
             <span className="block text-display-md text-ink-high">{value}</span>
         </div>
@@ -53,7 +52,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     >
                         <h1 className="text-display-lg mb-8 text-ink-high">
                             {data.companyName}<br />
-                            {data.companySuffix && <span className="text-ink-low">{data.companySuffix}</span>}
+                            {data.companySuffix && <span>{data.companySuffix}</span>}
                         </h1>
 
                         <p className="text-body text-ink-body max-w-xl">
@@ -68,10 +67,10 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
-                            className="flex flex-col gap-6 border-l border-line pl-6 py-2"
+                            className="flex flex-col gap-6 py-2"
                         >
                             <div className="flex items-center gap-2 mb-1">
-                                <div className="w-1.5 h-1.5 bg-ink-faint rounded-full animate-pulse" />
+                                <div className="w-1.5 h-1.5 bg-ink-low rounded-full" />
                                 <span className="text-eyebrow font-mono uppercase text-ink-low">Status: {data.ndaStatus}</span>
                             </div>
                             <p className="text-body-sm text-ink-body max-w-[240px] whitespace-pre-line">
@@ -90,10 +89,10 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
-                    <h2 className="text-eyebrow font-mono text-ink-low uppercase">Impact & Metrics</h2>
+                    <h2 className="text-eyebrow font-mono text-ink-high uppercase">Impact & Metrics</h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-r border-b border-line">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {data.stats.map((stat, i) => (
                         <StatBlock
                             key={i}
@@ -114,10 +113,10 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
-                    <h2 className="text-eyebrow font-mono text-ink-low uppercase">Core Capabilities</h2>
+                    <h2 className="text-eyebrow font-mono text-ink-high uppercase">Core Capabilities</h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-line">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {data.capabilities.map((cap, idx) => (
                         <motion.div
                             key={idx}
@@ -125,9 +124,9 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={VIEWPORT_ONCE}
                             transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE }}
-                            className="p-8 lg:p-12 border-b border-r border-line flex flex-col gap-8 min-h-[320px]"
+                            className="p-8 lg:p-12 flex flex-col gap-8 min-h-[320px]"
                         >
-                            <h3 className="text-eyebrow font-mono text-ink-low uppercase">
+                            <h3 className="text-eyebrow font-mono text-ink-high uppercase">
                                 {cap.title}
                             </h3>
 
@@ -145,7 +144,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
 
             {/* 4. FOOTER: RESTRICTED ACCESS REDESIGN */}
             <section>
-                <div className="relative border border-line bg-fill-subtle overflow-hidden">
+                <div className="relative surface rounded-md overflow-hidden">
 
                     <div className="relative p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
@@ -154,7 +153,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             <div className="flex flex-col gap-6">
                                 <div className="flex items-center gap-3 text-ink-low">
                                     <Lock size={20} strokeWidth={1.5} />
-                                    <h2 className="text-eyebrow font-mono uppercase">Restricted Access</h2>
+                                    <h2 className="text-eyebrow font-mono uppercase text-ink-high">Restricted Access</h2>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <h3 className="text-headline text-ink-high">
@@ -174,7 +173,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                         </div>
 
                         {/* RIGHT: What I can share */}
-                        <div className="flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-line pt-12 lg:pt-0 lg:pl-12">
+                        <div className="flex flex-col justify-center">
                             <span className="text-eyebrow font-mono text-ink-low uppercase mb-8 block">
                                 What I can share on a call:
                             </span>

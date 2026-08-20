@@ -87,7 +87,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
 
         return (
             <div key={block.title} className="space-y-8">
-                <div className="p-6 bg-fill-subtle border border-line">
+                <div className="p-6 surface rounded-md">
                     <h4 className="text-card-title text-ink-high mb-2">{block.title}</h4>
                     <p className="text-ink-body text-body-sm">{block.description}</p>
                 </div>
@@ -97,7 +97,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                         {blockImages.map((img) => (
                             <div
                                 key={img.name}
-                                className="w-full bg-canvas border border-line overflow-hidden"
+                                className="w-full bg-canvas border border-line rounded-md overflow-hidden"
                             >
                                 <img
                                     src={img.src}
@@ -126,9 +126,8 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                 </div>
 
                 <div className="flex flex-col gap-6">
-                    <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-fill-raised border border-line w-fit">
-                        <span className="w-1.5 h-1.5 rounded-full bg-fill-inverse" />
-                        <span className="text-caption font-mono text-ink-mid uppercase">{project.role}</span>
+                    <div className="inline-flex items-center px-3 py-1.5 rounded-md surface w-fit">
+                        <span className="text-caption font-mono text-ink-low uppercase">{project.role}</span>
                     </div>
                     <h1 className="text-display-lg text-ink-high text-balance">{project.title}</h1>
                     <p className="text-body text-ink-body max-w-2xl text-balance">{study.oneLineSummary}</p>
@@ -141,7 +140,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                         <div className="space-y-10">
                             <div className="space-y-3">
                                 <h3 className="text-eyebrow font-mono text-ink-low uppercase">Timeline</h3>
-                                <p className="text-ink-mid text-caption">{study.timeline}</p>
+                                <p className="text-ink-low text-caption">{study.timeline}</p>
                             </div>
                             <div className="space-y-3">
                                 <h3 className="text-eyebrow font-mono text-ink-low uppercase">Tools</h3>
@@ -149,7 +148,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                                     {study.tools.map((tool) => (
                                         <span
                                             key={tool}
-                                            className="text-caption text-ink-low bg-fill-subtle border border-line px-2 py-1 text-nowrap"
+                                            className="text-caption text-ink-low surface rounded-md px-2 py-1 text-nowrap"
                                         >
                                             {tool}
                                         </span>
@@ -160,15 +159,15 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
 
                         <nav className="space-y-2 sticky top-32">
                             <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">Contents</span>
-                            <div className="flex flex-col border-l border-line">
+                            <div className="flex flex-col">
                                 {SECTIONS.map((section) => (
                                     <a
                                         key={section.id}
                                         href={`#${section.id}`}
                                         aria-current={activeSection === section.id ? 'location' : undefined}
-                                        className={`text-left px-4 py-2 text-button transition-all duration-300 border-l mb-[-1px] ${
+                                        className={`text-left px-4 py-2 text-button rounded-md focus-visible:outline-none focus-visible:bg-fill transition-[color,border-color,padding-left,background-color] duration-200 ease-out border-l ${
                                             activeSection === section.id
-                                                ? 'text-ink-max border-line-active pl-6'
+                                                ? 'text-ink-max border-ink-low pl-6'
                                                 : 'text-ink-low border-transparent hover:text-ink-body hover:pl-6 focus-visible:text-ink-body focus-visible:pl-6'
                                         }`}
                                     >
@@ -185,7 +184,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">01 — The Problem</span>
                         <div className="space-y-6">{renderText(study.problem)}</div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-line">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
                             <div className="space-y-3">
                                 <h4 className="text-eyebrow font-mono uppercase text-ink-high">Context</h4>
                                 <p className="text-ink-body text-body-sm">{study.context}</p>
@@ -208,8 +207,8 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">02 — Approach</span>
                         <div className="space-y-6">{renderText(study.approach)}</div>
 
-                        <div className="p-8 bg-fill-subtle border border-line">
-                            <h4 className="text-eyebrow font-mono text-ink-low uppercase mb-4">User Scenario</h4>
+                        <div className="p-8 surface rounded-md">
+                            <h4 className="text-eyebrow font-mono text-ink-high uppercase mb-4">User Scenario</h4>
                             <p className="text-ink-body text-body">{study.usersScenario}</p>
                         </div>
                     </motion.section>
@@ -222,10 +221,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                             {study.keyDecisions.map((decision) => {
                                 const [title, ...body] = decision.split('—');
                                 return (
-                                    <div
-                                        key={title}
-                                        className="pl-6 border-l border-line"
-                                    >
+                                    <div key={title}>
                                         <h5 className="text-card-title text-ink-high mb-2">{title.trim()}</h5>
                                         <p className="text-body-sm text-ink-body">{body.join('—').trim()}</p>
                                     </div>
@@ -243,16 +239,16 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                         <span className="text-eyebrow font-mono text-ink-low uppercase block">05 — Impact</span>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="p-8 border border-line">
-                                <h4 className="text-eyebrow font-mono text-ink-low uppercase mb-6">User</h4>
+                            <div className="p-8 surface rounded-md">
+                                <h4 className="text-eyebrow font-mono text-ink-high uppercase mb-6">User</h4>
                                 {Array.isArray(study.impact.user) ? (
                                     <Stats stats={study.impact.user} />
                                 ) : (
                                     <div className="space-y-4">{renderText(study.impact.user)}</div>
                                 )}
                             </div>
-                            <div className="p-8 border border-line">
-                                <h4 className="text-eyebrow font-mono text-ink-low uppercase mb-6">Business</h4>
+                            <div className="p-8 surface rounded-md">
+                                <h4 className="text-eyebrow font-mono text-ink-high uppercase mb-6">Business</h4>
                                 {Array.isArray(study.impact.business) ? (
                                     <Stats stats={study.impact.business} />
                                 ) : (
@@ -261,7 +257,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                             </div>
                         </div>
 
-                        <div className="pt-24 border-t border-line">
+                        <div className="pt-24">
                             <h3 className="text-display-md text-ink-high mb-8">Retrospective</h3>
                             <div className="text-ink-body text-body max-w-2xl space-y-4">{renderText(study.learnings)}</div>
                         </div>

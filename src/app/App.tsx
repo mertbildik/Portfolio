@@ -34,9 +34,7 @@ const App: React.FC = () => (
                 so the document default stays ink-high and white keeps meaning
                 emphasis rather than being the floor. */}
             <div className="flex flex-col min-h-screen relative">
-                <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-                    <div className="absolute inset-0 bg-canvas z-0" />
-                </div>
+                <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-canvas canvas-atmosphere" />
                 <main className="flex-1 w-full relative z-10 flex flex-col">
                     <AppRoutes />
                 </main>

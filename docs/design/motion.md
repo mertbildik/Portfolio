@@ -14,13 +14,13 @@ The entrance curve exists twice on purpose, because the two runtimes want differ
 
 There are two durations for state and three for entrance. Everything in between is off the scale.
 
-| Name | For |
-|---|---|
-| fast | The default state change: colour, opacity, border, a small transform |
-| slow | A larger state change: a fill, a reveal, a scale, anything the eye should follow |
-| enter-item | A single item entering a stagger |
-| enter-block | A block, a hero, a page fade |
-| enter-section | A full section, or the timeline rule drawing |
+| Name | Value | For |
+|---|---:|---|
+| fast | 200ms | The default state change: colour, opacity, a tonal shift |
+| slow | 300ms | A larger inversion, reveal or small transform |
+| enter-item | 600ms | A single item entering a stagger |
+| enter-block | 800ms | A block, a hero, a page fade |
+| enter-section | 1200ms | A full section |
 
 `index.css` sets the default transition duration to the fast step, so a transition written without a duration still lands on the scale.
 
@@ -51,17 +51,12 @@ Reuse these. Do not invent a new hover.
 - Text lift. One step up the ink ramp.
 - Arrow reveal. Slides in from the left as it fades up.
 - Rule grow. A short rule extends.
-- Rule sharpen. The border goes to `line-active`, on focus.
-- Circle invert. Transparent to a white fill, icon to inverse ink.
-- Cell fill. Transparent to a subtle fill, on the segmented cell only.
+- Focus feedback. A tonal shift, ink lift or functional line confirms focus without a bright perimeter.
+- Circle invert. Transparent to an `ink-max` fill, icon to `canvas`.
 
 Hover applies to controls. Content carries no hover and no transition at all; see `surfaces.md`.
 
-Compose at most three of these in one hover. A row uses text lift plus arrow reveal, and adds rule sharpen on keyboard focus.
-
-## Layout animation
-
-Shared-layout animation is used once, for the marker that moves between selected cells in the contact control. Do not add a second one.
+Compose at most three of these in one hover. A row uses text lift plus arrow reveal, and may add the subtle tonal surface for keyboard focus. No row or link gains a hover fill.
 
 ## Ambient motion
 
@@ -81,4 +76,4 @@ Under `prefers-reduced-motion: reduce`:
 
 - Motion runs once per element per visit.
 - No spring physics, no bounce, no overshoot.
-- Animate `transform` and `opacity`. Never animate `width`, `height`, `top` or `left` on content; the exceptions are a rule and an inset on controls, both a few pixels wide.
+- Animate `transform` and `opacity`. Never animate `width`, `height`, `top` or `left` on content; the exceptions are the BackLink rule and a small control inset.

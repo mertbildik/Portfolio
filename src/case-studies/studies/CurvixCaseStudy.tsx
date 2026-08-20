@@ -30,18 +30,18 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     A small studio identity I’m building to ship calm, precise design systems.
                 </motion.p>
 
-                <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8 border-t border-line">
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8">
                     <div>
                         <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Role</span>
-                        <span className="text-caption text-ink-mid">Founder</span>
+                        <span className="text-caption text-ink-low">Founder</span>
                     </div>
                     <div>
                         <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Status</span>
-                        <span className="text-caption text-ink-mid">In progress</span>
+                        <span className="text-caption text-ink-low">In progress</span>
                     </div>
                     <div>
                         <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Team</span>
-                        <span className="text-caption text-ink-mid">Solo lead. Specialists as needed</span>
+                        <span className="text-caption text-ink-low">Solo lead. Specialists as needed</span>
                     </div>
                 </motion.div>
             </motion.div>
@@ -90,15 +90,15 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     <h2 className="text-display-md text-ink-high mb-12">What Curvix ships</h2>
 
                     <div className="space-y-12">
-                        <div className="pl-6 border-l border-line">
+                        <div>
                             <h3 className="text-card-title text-ink-high mb-2">Design systems</h3>
                             <p className="text-body-sm text-ink-body">Typography, spacing rules, layout logic, and components that scale.</p>
                         </div>
-                        <div className="pl-6 border-l border-line">
+                        <div>
                             <h3 className="text-card-title text-ink-high mb-2">Product and web</h3>
                             <p className="text-body-sm text-ink-body">Flows, screens, interaction rules, and build ready handoff.</p>
                         </div>
-                        <div className="pl-6 border-l border-line">
+                        <div>
                             <h3 className="text-card-title text-ink-high mb-2">Specialists when needed</h3>
                             <p className="text-body-sm text-ink-body">Marketing and photography are added only when the project requires it.</p>
                         </div>
@@ -117,22 +117,22 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">01</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">01</span>
                             <h3 className="text-card-title text-ink-high mb-2">Define</h3>
                             <p className="text-body-sm text-ink-body">Goal, constraints, audience, success checks.</p>
                         </div>
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">02</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">02</span>
                             <h3 className="text-card-title text-ink-high mb-2">Structure</h3>
                             <p className="text-body-sm text-ink-body">Content order, grid, wireframes.</p>
                         </div>
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">03</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">03</span>
                             <h3 className="text-card-title text-ink-high mb-2">Build</h3>
                             <p className="text-body-sm text-ink-body">Components, screens, motion rules, final assets.</p>
                         </div>
                         <div>
-                            <span className="block text-caption font-mono text-ink-faint mb-3">04</span>
+                            <span className="block text-caption font-mono text-ink-low mb-3">04</span>
                             <h3 className="text-card-title text-ink-high mb-2">Tune</h3>
                             <p className="text-body-sm text-ink-body">Polish, QA, launch support, small improvements.</p>
                         </div>
@@ -157,7 +157,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
 
                 <div className="space-y-8">
                     {projectImages.slice(0, 1).map((img) => (
-                        <div key={img.name} className="w-full bg-canvas border border-line overflow-hidden">
+                        <div key={img.name} className="w-full bg-canvas border border-line rounded-md overflow-hidden">
                             <img
                                 src={img.src}
                                 alt={`Curvix ${img.name}`}
@@ -169,7 +169,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {projectImages.slice(1).map((img) => (
-                            <div key={img.name} className="w-full bg-canvas border border-line overflow-hidden">
+                            <div key={img.name} className="w-full bg-canvas border border-line rounded-md overflow-hidden">
                                 <img
                                     src={img.src}
                                     alt={`Curvix ${img.name}`}
