@@ -80,7 +80,7 @@ Git history owns change history.
 
 ## Adding content
 
-A project = one entry in `src/content/projects.ts` + images under `src/assets/portfolio/<id>/` (filenames matching `id`, lowercase-hyphenated, `.webp` only, prefix with `1-`, `2-` for order). Each entry explicitly selects `template`, `employment`, or `custom` rendering and whether it is listed. `ProjectTemplate` parses plain strings — `\n` for paragraphs, `•`/`-` lines for bullets, em dash splits `keyDecisions` into title/body. Full rules in `docs/content/writing.md`.
+A project = one entry in `src/content/projects.ts` + images under `src/assets/portfolio/<id>/` (filenames matching `id`, lowercase-hyphenated, `.webp` only, prefix with `1-`, `2-` for order). Each entry explicitly selects `template`, `employment`, or `custom` rendering and whether it is listed. `ProjectCaseStudy` parses plain strings — `\n` for paragraphs, `•`/`-` lines for bullets, em dash splits `keyDecisions` into title/body. Full rules in `docs/content/writing.md`.
 
 ## Design rules (load-bearing)
 

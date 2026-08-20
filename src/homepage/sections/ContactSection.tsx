@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ArrowRight, ArrowUpRight, Check, Copy } from 'lucide-react';
-import HomepageSection from './HomepageSection';
-import CircleAction from './CircleAction';
-import SectionIntro from './SectionIntro';
-import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../components/motion';
+import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../../shared/motion';
+import ActionCircle from '../components/ActionCircle';
+import HomeSection from '../components/HomeSection';
+import SectionIntro from '../components/SectionIntro';
 
 const CONTACT_EMAIL = 'mert.bildik@gmail.com';
 
@@ -104,7 +104,7 @@ const ContactSection: React.FC = () => {
     };
 
     return (
-        <HomepageSection id="contact">
+        <HomeSection id="contact">
             <motion.div
                 variants={blockVariants}
                 initial="hidden"
@@ -262,9 +262,9 @@ const ContactSection: React.FC = () => {
                                                 ) : isFormReady ? "Ready to send." : "Not ready."}
                                             </span>
                                         </div>
-                                        <CircleAction>
+                                        <ActionCircle>
                                             <ArrowRight size={20} />
-                                        </CircleAction>
+                                        </ActionCircle>
                                     </button>
                                 </div>
                             </motion.form>
@@ -312,7 +312,7 @@ const ContactSection: React.FC = () => {
 
                 </div>
             </motion.div>
-        </HomepageSection>
+        </HomeSection>
     );
 };
 

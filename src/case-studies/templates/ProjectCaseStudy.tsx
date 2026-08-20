@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { getProjectImages } from '../content/images';
-import BackButton from './BackButton';
-import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../components/motion';
-import { ImpactStat, OutputBlock, TemplateProject } from '../content/projects';
+import { getProjectImages } from '../../assets/projectImages';
+import type { ImpactStat, OutputBlock, TemplateProject } from '../../content/projects';
+import BackLink from '../../shared/BackLink';
+import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../../shared/motion';
 
 const SECTIONS = [
     { id: 'problem', label: 'Problem' },
@@ -25,7 +25,7 @@ const Stats: React.FC<{ stats: ImpactStat[] }> = ({ stats }) => (
     </div>
 );
 
-const ProjectTemplate: React.FC<{ project: TemplateProject }> = ({ project }) => {
+const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) => {
     const study = project.caseStudy;
     const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
     const images = getProjectImages(project.id);
@@ -122,7 +122,7 @@ const ProjectTemplate: React.FC<{ project: TemplateProject }> = ({ project }) =>
                 className="w-full"
             >
                 <div className="mb-16 md:mb-24">
-                    <BackButton />
+                    <BackLink to="/#portfolio" ariaLabel="Back to portfolio">Go back</BackLink>
                 </div>
 
                 <div className="flex flex-col gap-6">
@@ -272,4 +272,4 @@ const ProjectTemplate: React.FC<{ project: TemplateProject }> = ({ project }) =>
     );
 };
 
-export default ProjectTemplate;
+export default ProjectCaseStudy;

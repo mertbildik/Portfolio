@@ -1,4 +1,4 @@
-const files = import.meta.glob('../assets/portfolio/*/*.webp', {
+const files = import.meta.glob('./portfolio/*/*.webp', {
     eager: true,
     query: '?url',
     import: 'default',

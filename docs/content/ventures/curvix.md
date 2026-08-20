@@ -1,13 +1,13 @@
 # Curvix
 
-Editorial reference only. Published copy lives in `src/case-studies/Curvix.tsx`.
+Editorial reference only. Published copy lives in `src/case-studies/studies/CurvixCaseStudy.tsx`.
 
 <!-- Hidden from the site's Portfolio list as of 2026-08; content retained here. -->
 
 - **Kind:** Venture
 - **Role:** Founder
 - **Status:** Current
-- **Page:** Hand-written case study (`src/case-studies/Curvix.tsx`)
+- **Page:** Hand-written case study (`src/case-studies/studies/CurvixCaseStudy.tsx`)
 
 **One-line summary:** A small studio identity I’m building to ship calm, precise design systems.
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import mertPhoto from '../assets/mert.webp';
-import HomepageSection from './HomepageSection';
-import CircleAction from './CircleAction';
-import SectionIntro from './SectionIntro';
-import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../components/motion';
+import mertPhoto from '../../assets/mert.webp';
+import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../../shared/motion';
+import ActionCircle from '../components/ActionCircle';
+import HomeSection from '../components/HomeSection';
+import SectionIntro from '../components/SectionIntro';
 
 const AboutSection: React.FC = () => {
     return (
-        <HomepageSection id="about">
+        <HomeSection id="about">
             <motion.div
                 variants={blockVariants}
                 initial="hidden"
@@ -125,9 +125,9 @@ const AboutSection: React.FC = () => {
                                 <div className="flex flex-col shrink-0">
                                     <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max transition-colors duration-300">Start a conversation</span>
                                 </div>
-                                <CircleAction small>
+                                <ActionCircle small>
                                     <ArrowRight size={16} />
-                                </CircleAction>
+                                </ActionCircle>
                             </a>
 
                         </motion.div>
@@ -135,7 +135,7 @@ const AboutSection: React.FC = () => {
                     </div>
                 </div>
             </motion.div>
-        </HomepageSection>
+        </HomeSection>
     );
 };
 

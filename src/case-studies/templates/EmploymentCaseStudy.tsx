@@ -1,14 +1,32 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Lock } from 'lucide-react';
-import BackButton from './BackButton';
-import StatBlock from './StatBlock';
-import { EASE, VIEWPORT_ONCE } from '../components/motion';
-import { EmploymentData } from '../content/employment';
+import type { EmploymentData } from '../../content/employment';
+import BackLink from '../../shared/BackLink';
+import { EASE, VIEWPORT_ONCE } from '../../shared/motion';
 
 const DURATION_BUMP = 0.8;
 
-const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
+const StatBlock: React.FC<{ value: string; label: string; desc: string; delay: number }> = ({ value, label, desc, delay }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.8, delay, ease: EASE }}
+        className="relative flex flex-col items-start text-left p-6 min-h-[180px] border-l border-line"
+    >
+        <div className="absolute top-0 left-0 w-full h-px bg-line" />
+        <div className="w-full">
+            <span className="block text-display-md text-ink-high">{value}</span>
+        </div>
+        <div className="flex flex-col gap-2 mt-6 w-full items-start">
+            <span className="block text-eyebrow font-mono uppercase text-ink-low">{label}</span>
+            <p className="text-body-sm text-ink-body">{desc}</p>
+        </div>
+    </motion.div>
+);
+
+const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
     return (
         <div className="w-full space-y-24 md:space-y-32">
 
@@ -22,7 +40,7 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="mb-16 md:mb-24"
                 >
-                    <BackButton />
+                    <BackLink to="/#portfolio" ariaLabel="Back to portfolio">Go back</BackLink>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -180,4 +198,4 @@ const EmploymentTemplate: React.FC<{ data: EmploymentData }> = ({ data }) => {
     );
 };
 
-export default EmploymentTemplate;
+export default EmploymentCaseStudy;

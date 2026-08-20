@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { getProjectImages } from '../content/images';
-import BackButton from './BackButton';
-import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../components/motion';
-import type { CustomProject } from '../content/projects';
+import { getProjectImages } from '../../assets/projectImages';
+import type { CustomProject } from '../../content/projects';
+import BackLink from '../../shared/BackLink';
+import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../../shared/motion';
 
-const Curvix: React.FC<{ project: CustomProject }> = ({ project }) => {
+const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
     const projectImages = getProjectImages(project.id);
 
     return (
@@ -19,7 +19,7 @@ const Curvix: React.FC<{ project: CustomProject }> = ({ project }) => {
                 className="w-full"
             >
                 <motion.div variants={itemVariants} className="mb-16 md:mb-24">
-                    <BackButton />
+                    <BackLink to="/#portfolio" ariaLabel="Back to portfolio">Go back</BackLink>
                 </motion.div>
 
                 <motion.h1 variants={itemVariants} className="text-display-lg text-ink-high mb-8">
@@ -218,4 +218,4 @@ const Curvix: React.FC<{ project: CustomProject }> = ({ project }) => {
     );
 };
 
-export default Curvix;
+export default CurvixCaseStudy;

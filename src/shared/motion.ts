@@ -1,4 +1,4 @@
-import { Variants } from 'motion/react';
+import type { Variants } from 'motion/react';
 
 /**
  * The one entrance curve. See docs/design/motion.md.

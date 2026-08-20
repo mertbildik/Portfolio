@@ -2,11 +2,8 @@ import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router';
 import { MotionConfig } from 'motion/react';
 
-import GlobalBackground from './components/GlobalBackground';
-import CaseStudyLayout from './case-studies/CaseStudyLayout';
-
-const Homepage = React.lazy(() => import('./homepage/Homepage'));
-const CaseStudyRoute = React.lazy(() => import('./case-studies/CaseStudyRoute'));
+const HomePage = React.lazy(() => import('../homepage/HomePage'));
+const CaseStudyPage = React.lazy(() => import('../case-studies/CaseStudyPage'));
 
 const LegacyCaseStudyRedirect: React.FC = () => {
     const { id } = useParams();
@@ -17,15 +14,11 @@ const AppRoutes: React.FC = () => {
     return (
         <Suspense fallback={<div className="min-h-screen" />}>
             <Routes>
-                <Route path="/" element={<Homepage />} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/portfolio" element={<Navigate to="/#portfolio" replace />} />
                 <Route path="/about" element={<Navigate to="/#about" replace />} />
                 <Route path="/contact" element={<Navigate to="/#contact" replace />} />
-
-                <Route element={<CaseStudyLayout />}>
-                    <Route path="/portfolio/:id" element={<CaseStudyRoute />} />
-                </Route>
-
+                <Route path="/portfolio/:id" element={<CaseStudyPage />} />
                 <Route path="/case-study/:id" element={<LegacyCaseStudyRedirect />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
@@ -41,7 +34,9 @@ const App: React.FC = () => (
                 so the document default stays ink-high and white keeps meaning
                 emphasis rather than being the floor. */}
             <div className="flex flex-col min-h-screen relative">
-                <GlobalBackground />
+                <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+                    <div className="absolute inset-0 bg-canvas z-0" />
+                </div>
                 <main className="flex-1 w-full relative z-10 flex flex-col">
                     <AppRoutes />
                 </main>

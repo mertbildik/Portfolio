@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomepageSection: React.FC<{ children: React.ReactNode; id: string; hero?: boolean }> = ({
+const HomeSection: React.FC<{ children: React.ReactNode; id: string; hero?: boolean }> = ({
     children,
     id,
     hero = false,
@@ -14,4 +14,4 @@ const HomepageSection: React.FC<{ children: React.ReactNode; id: string; hero?: 
     </section>
 );
 
-export default HomepageSection;
+export default HomeSection;

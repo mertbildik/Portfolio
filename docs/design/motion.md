@@ -2,13 +2,13 @@
 
 Content enters once, from below, and settles. State changes are short and colour-led. The hero portrait ring is the one deliberate loop.
 
-Shared variants live in `src/components/motion.ts`. Use them; do not write a one-off variant beside them.
+Shared variants live in `src/shared/motion.ts`. Use them; do not write a one-off variant beside them.
 
 ## Easing
 
 Two curves. `ease-entrance` for anything that enters or moves position, plain `ease-out` for hover and focus changes. Nothing else.
 
-The entrance curve exists twice on purpose, because the two runtimes want different formats: `src/index.css` holds it as a CSS curve for Tailwind transitions, and `src/components/motion.ts` holds the same curve as four numbers for `motion`. Change one, change the other.
+The entrance curve exists twice on purpose, because the two runtimes want different formats: `src/index.css` holds it as a CSS curve for Tailwind transitions, and `src/shared/motion.ts` holds the same curve as four numbers for `motion`. Change one, change the other.
 
 ## Duration
 
