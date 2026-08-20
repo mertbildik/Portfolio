@@ -12,6 +12,8 @@ const SECTIONS: { label: string; kind: Project['kind'] }[] = [
     { label: 'VENTURES', kind: 'venture' },
 ];
 
+const PORTFOLIO_PROJECTS = PROJECTS.filter((p) => p.kind !== 'venture' && p.id !== 'bunect');
+
 const Portfolio: React.FC = () => (
     <SplitPage id="portfolio">
         <motion.div
@@ -42,7 +44,10 @@ const Portfolio: React.FC = () => (
             className="flex flex-col w-full relative z-30"
         >
             <div className="flex flex-col w-full max-w-3xl gap-10 lg:gap-12">
-                {SECTIONS.map((section) => (
+                {SECTIONS.map((section) => {
+                    const sectionProjects = PORTFOLIO_PROJECTS.filter((p) => p.kind === section.kind);
+                    if (sectionProjects.length === 0) return null;
+                    return (
                     <div key={section.kind} className="flex flex-col gap-4">
                         <motion.h2
                             variants={itemVariants}
@@ -52,7 +57,7 @@ const Portfolio: React.FC = () => (
                         </motion.h2>
                         <div className="flex flex-col">
                             <div className="border-t border-line -mx-2 mb-0" />
-                            {PROJECTS.filter((p) => p.kind === section.kind).map((project) => (
+                            {sectionProjects.map((project) => (
                                 <Link
                                     key={project.id}
                                     to={`/portfolio/${project.id}`}
@@ -83,7 +88,8 @@ const Portfolio: React.FC = () => (
                             ))}
                         </div>
                     </div>
-                ))}
+                    );
+                })}
             </div>
         </motion.div>
     </SplitPage>

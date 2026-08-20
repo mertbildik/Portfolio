@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
+import mertPhoto from '../assets/mert.webp';
 import SplitPage from '../layouts/SplitPage';
 import { containerVariants, itemVariants } from '../components/motion';
 import Portfolio from './Portfolio';
@@ -28,18 +29,26 @@ const Home: React.FC = () => {
                     initial="hidden"
                     animate="visible"
                 >
-                    <motion.div variants={itemVariants} className="pl-[2px]">
-                        <span className="text-eyebrow font-mono text-ink-low uppercase mb-6 md:mb-8 block">
-                            DIGITAL PRODUCT DESIGNER
-                        </span>
+                    <motion.div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+                        <motion.div variants={itemVariants} className="shrink-0 self-center md:self-auto">
+                            <img
+                                src={mertPhoto}
+                                alt="Mert Bildik"
+                                className="w-24 h-24 lg:w-28 lg:h-28 object-cover object-top rounded-full border border-line"
+                            />
+                        </motion.div>
+
+                        <motion.div variants={itemVariants} className="text-center md:text-left">
+                            <h2 className="text-headline text-ink-high mb-2 md:mb-3">
+                                Mert Bildik
+                            </h2>
+                            <span className="text-eyebrow font-mono text-ink-low uppercase block">
+                                DIGITAL PRODUCT DESIGNER
+                            </span>
+                        </motion.div>
                     </motion.div>
 
-                    <motion.p variants={itemVariants} className="text-headline text-ink-high mb-3 md:mb-4 flex items-center gap-3">
-                        <span aria-hidden="true" className="text-[0.85em] leading-none">👋🏻</span>
-                        Hello!
-                    </motion.p>
-
-                    <motion.h1 variants={itemVariants} className="text-display-xl text-ink-high">
+                    <motion.h1 variants={itemVariants} className="text-display-xl text-ink-high mt-10 md:mt-14">
                         <span className="text-ink-low">I </span>design/build
                         <br />
                         <span className="text-ink-low">digital products,</span>
