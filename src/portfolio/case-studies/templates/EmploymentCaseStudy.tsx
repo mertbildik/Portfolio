@@ -89,7 +89,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
-                    <h2 className="text-eyebrow text-ink-high">Impact & metrics</h2>
+                    <h2 className="text-display-md text-ink-high">Impact & metrics</h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -113,7 +113,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
-                    <h2 className="text-eyebrow text-ink-high">Core capabilities</h2>
+                    <h2 className="text-display-md text-ink-high">Core capabilities</h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -126,7 +126,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE }}
                             className="p-8 lg:p-12 flex flex-col gap-8 min-h-[320px]"
                         >
-                            <h3 className="text-eyebrow text-ink-high">
+                            <h3 className="text-card-title text-ink-high">
                                 <span className="font-mono">{cap.title.split(' / ')[0]}</span> / {cap.title.split(' / ')[1]}
                             </h3>
 
@@ -153,7 +153,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             <div className="flex flex-col gap-6">
                                 <div className="flex items-center gap-3 text-ink-low">
                                     <Lock size={20} strokeWidth={1.5} />
-                                    <h2 className="text-eyebrow text-ink-high">Restricted access</h2>
+                                    <h2 className="text-display-md text-ink-high">Restricted access</h2>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <h3 className="text-headline text-ink-high">

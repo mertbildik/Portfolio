@@ -42,12 +42,12 @@ const PortfolioSection: React.FC = () => (
                     if (sectionProjects.length === 0) return null;
                     return (
                     <div key={section.kind} className="flex flex-col gap-4">
-                        <motion.h2
+                        <motion.h3
                             variants={itemVariants}
                             className="text-eyebrow text-ink-high pl-[2px] mb-2"
                         >
                             {section.label}
-                        </motion.h2>
+                        </motion.h3>
                         <div className="flex flex-col">
                             {sectionProjects.map((project) => (
                                 <Link

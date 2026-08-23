@@ -221,7 +221,7 @@ const ContactSection: React.FC = () => {
                                         <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max group-disabled:text-ink-high transition-colors duration-300">
                                             {formState === 'submitting' ? 'Sending…' : 'Send inquiry'}
                                         </span>
-                                        <span aria-live="polite" className="text-caption text-ink-low mt-1 group-hover:text-ink-body group-focus-visible:text-ink-body group-disabled:text-ink-low transition-colors duration-300">
+                                        <span aria-live="polite" className="text-body-sm text-ink-low mt-1 group-hover:text-ink-body group-focus-visible:text-ink-body group-disabled:text-ink-low transition-colors duration-300">
                                             {formState === 'error' ? (
                                                 <span className="text-status-error">Submission failed. Click to retry.</span>
                                             ) : isFormReady ? "Ready to send." : "Complete all fields."}
@@ -259,7 +259,7 @@ const ContactSection: React.FC = () => {
                             <span className="text-eyebrow text-ink-low">Networks</span>
                             <div className="flex flex-col gap-2">
                                 <a href="https://www.linkedin.com/in/mertbildik/" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 text-ink-body hover:text-ink-max focus-visible:text-ink-max focus-visible:outline-none transition-colors duration-300 group w-fit">
-                                    <span className="text-caption">LinkedIn</span>
+                                    <span className="text-button">LinkedIn</span>
                                     <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300" />
                                 </a>
                             </div>
@@ -268,7 +268,7 @@ const ContactSection: React.FC = () => {
                         {/* 03: Time - aligned right/end */}
                         <div className="hidden md:flex flex-col gap-4 py-8">
                             <span className="text-eyebrow text-ink-low">Local time</span>
-                            <div className="text-caption text-ink-body">
+                            <div>
                                 <LiveClock />
                             </div>
                         </div>

@@ -6,11 +6,11 @@ import BackLink from '../BackLink';
 import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../../../shared/motion';
 
 const SECTIONS = [
-    { id: 'problem', label: 'Problem' },
-    { id: 'approach', label: 'Approach' },
-    { id: 'solution', label: 'Solution' },
-    { id: 'output', label: 'Output' },
-    { id: 'impact', label: 'Impact' },
+    { id: 'problem', label: 'Problem', title: 'The problem' },
+    { id: 'approach', label: 'Approach', title: 'Approach' },
+    { id: 'solution', label: 'Solution', title: 'Solution' },
+    { id: 'output', label: 'Output', title: 'Output' },
+    { id: 'impact', label: 'Impact', title: 'Impact' },
 ];
 
 const Stats: React.FC<{ stats: ImpactStat[] }> = ({ stats }) => (
@@ -74,7 +74,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                 // Both are margin-bottom in Tailwind 4, so a paragraph setting its own
                 // would fight the container instead of stacking with it.
                 return (
-                    <p key={idx} className="text-ink-body text-body max-w-2xl text-balance">
+                    <p key={idx} className="text-ink-body text-body max-w-2xl">
                         {paragraph}
                     </p>
                 );
@@ -88,7 +88,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
         return (
             <div key={block.title} className="space-y-8">
                 <div className="p-6 surface rounded-md">
-                    <h4 className="text-card-title text-ink-high mb-2">{block.title}</h4>
+                    <h3 className="text-card-title text-ink-high mb-2">{block.title}</h3>
                     <p className="text-ink-body text-body-sm">{block.description}</p>
                 </div>
 
@@ -139,11 +139,11 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                     <div className="flex flex-col gap-12 h-full">
                         <div className="space-y-10">
                             <div className="space-y-3">
-                                <h3 className="text-eyebrow text-ink-low">Timeline</h3>
+                                <span className="text-eyebrow text-ink-low block">Timeline</span>
                                 <p className="text-ink-low text-caption font-mono">{study.timeline}</p>
                             </div>
                             <div className="space-y-3">
-                                <h3 className="text-eyebrow text-ink-low">Tools</h3>
+                                <span className="text-eyebrow text-ink-low block">Tools</span>
                                 <div className="flex flex-wrap gap-2">
                                     {study.tools.map((tool) => (
                                         <span
@@ -181,16 +181,19 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
 
                 <div className="lg:col-span-8 lg:col-start-5 space-y-24 md:space-y-32">
                     <motion.section id="problem" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">01</span> — The problem</span>
+                        <div>
+                            <span className="block text-eyebrow text-ink-low mb-8"><span className="font-mono">01</span></span>
+                            <h2 className="text-display-md text-ink-high">The problem</h2>
+                        </div>
                         <div className="space-y-6">{renderText(study.problem)}</div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
                             <div className="space-y-3">
-                                <h4 className="text-eyebrow text-ink-high">Context</h4>
+                                <h3 className="text-card-title text-ink-high">Context</h3>
                                 <p className="text-ink-body text-body-sm">{study.context}</p>
                             </div>
                             <div className="space-y-3">
-                                <h4 className="text-eyebrow text-ink-high">Objectives</h4>
+                                <h3 className="text-card-title text-ink-high">Objectives</h3>
                                 <ul className="space-y-2">
                                     {study.goals.map((goal) => (
                                         <li key={goal} className="text-ink-body text-body-sm flex gap-3 items-start">
@@ -204,17 +207,23 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                     </motion.section>
 
                     <motion.section id="approach" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">02</span> — Approach</span>
+                        <div>
+                            <span className="block text-eyebrow text-ink-low mb-8"><span className="font-mono">02</span></span>
+                            <h2 className="text-display-md text-ink-high">Approach</h2>
+                        </div>
                         <div className="space-y-6">{renderText(study.approach)}</div>
 
                         <div className="p-8 surface rounded-md">
-                            <h4 className="text-eyebrow text-ink-high mb-4">User scenario</h4>
+                            <h3 className="text-card-title text-ink-high mb-4">User scenario</h3>
                             <p className="text-ink-body text-body">{study.usersScenario}</p>
                         </div>
                     </motion.section>
 
                     <motion.section id="solution" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">03</span> — Solution</span>
+                        <div>
+                            <span className="block text-eyebrow text-ink-low mb-8"><span className="font-mono">03</span></span>
+                            <h2 className="text-display-md text-ink-high">Solution</h2>
+                        </div>
                         <div className="space-y-6">{renderText(study.solution)}</div>
 
                         <div className="grid grid-cols-1 gap-8 pt-4">
@@ -222,7 +231,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                                 const [title, ...body] = decision.split('—');
                                 return (
                                     <div key={title}>
-                                        <h5 className="text-card-title text-ink-high mb-2">{title.trim()}</h5>
+                                        <h3 className="text-card-title text-ink-high mb-2">{title.trim()}</h3>
                                         <p className="text-body-sm text-ink-body">{body.join('—').trim()}</p>
                                     </div>
                                 );
@@ -231,16 +240,22 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                     </motion.section>
 
                     <motion.section id="output" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-12 scroll-mt-32">
-                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">04</span> — Output</span>
+                        <div>
+                            <span className="block text-eyebrow text-ink-low mb-8"><span className="font-mono">04</span></span>
+                            <h2 className="text-display-md text-ink-high">Output</h2>
+                        </div>
                         <div className="space-y-16">{study.output.map(renderOutput)}</div>
                     </motion.section>
 
                     <motion.section id="impact" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">05</span> — Impact</span>
+                        <div>
+                            <span className="block text-eyebrow text-ink-low mb-8"><span className="font-mono">05</span></span>
+                            <h2 className="text-display-md text-ink-high">Impact</h2>
+                        </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="p-8 surface rounded-md">
-                                <h4 className="text-eyebrow text-ink-high mb-6">User</h4>
+                                <h3 className="text-card-title text-ink-high mb-6">User</h3>
                                 {Array.isArray(study.impact.user) ? (
                                     <Stats stats={study.impact.user} />
                                 ) : (
@@ -248,7 +263,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                                 )}
                             </div>
                             <div className="p-8 surface rounded-md">
-                                <h4 className="text-eyebrow text-ink-high mb-6">Business</h4>
+                                <h3 className="text-card-title text-ink-high mb-6">Business</h3>
                                 {Array.isArray(study.impact.business) ? (
                                     <Stats stats={study.impact.business} />
                                 ) : (

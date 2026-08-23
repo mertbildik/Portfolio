@@ -43,7 +43,7 @@ const HeroSection: React.FC = () => (
                 </motion.div>
 
                 <motion.div variants={itemVariants} className="text-center md:text-left">
-                    <h2 className="text-headline text-ink-high mb-2 md:mb-3">Mert Bildik</h2>
+                    <span className="block text-headline text-ink-high mb-2 md:mb-3">Mert Bildik</span>
                     <span className="text-body-sm text-ink-low block">Digital product designer</span>
                 </motion.div>
             </motion.div>

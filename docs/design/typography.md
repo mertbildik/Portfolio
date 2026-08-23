@@ -5,12 +5,12 @@ Nine tokens. One class sets size, weight, line height and letter spacing togethe
 | Token | For |
 |---|---|
 | `text-display-lg` | The hero headline on a page, and every section title |
-| `text-display-md` | Sub-section headlines |
+| `text-display-md` | Sub-section headlines, and large stat values when the number is the focus |
 | `text-headline` | The heading of a block that is not a section |
 | `text-card-title` | The title of a card or an index row |
 | `text-body` | Default body copy, and lead paragraphs |
 | `text-body-sm` | Card body, secondary copy |
-| `text-caption` | Captions, meta, values, status. The smallest size in the system. |
+| `text-caption` | Captions, metadata, values and short factual status. The smallest size in the system. Actionable sentences and recovery instructions use `text-body-sm`. |
 | `text-button` | Every button and form label |
 | `text-eyebrow` | Section eyebrows |
 
@@ -35,7 +35,7 @@ Nine tokens. One class sets size, weight, line height and letter spacing togethe
 
 ## Every size is fixed
 
-The site is a single narrow column that never grows past its cap. All nine sizes are fixed pixels. Readability is carried by whitespace and the ink ramp, not by large type. Their tracking is set in `em` so it stays proportional.
+The site is a single narrow column that never grows past its cap. All nine sizes are fixed pixels. Readability is carried by whitespace and the ink ramp, not by large type. Tracking is owned by each token: the two display sizes tighten proportionally with `em`, and the fixed 16–22px sizes carry small optical pixel adjustments for the same reason. There is no separate tracking step in markup.
 
 The responsiveness lives in the layout, not the markup. Do not add `md:text-*` variants to compensate.
 
