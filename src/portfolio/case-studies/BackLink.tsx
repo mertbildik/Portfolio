@@ -14,7 +14,7 @@ const BackLink: React.FC<BackLinkProps> = ({ to, children, ariaLabel }) => (
         aria-label={ariaLabel}
     >
         <span className="h-[1px] w-8 bg-current transition-[width] duration-300 ease-out group-hover:w-12 group-focus-visible:w-12" />
-        <span className="text-button font-mono uppercase">{children}</span>
+        <span className="text-button">{children}</span>
     </Link>
 );
 

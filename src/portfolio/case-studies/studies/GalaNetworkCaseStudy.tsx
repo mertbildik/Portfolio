@@ -32,15 +32,15 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
 
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8">
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Role</span>
-                        <span className="text-caption text-ink-low">Co founder, Content and Design Lead</span>
+                        <span className="block text-eyebrow text-ink-low mb-1">Role</span>
+                        <span className="text-caption text-ink-low">Co-founder, content and design lead</span>
                     </div>
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Status</span>
+                        <span className="block text-eyebrow text-ink-low mb-1">Status</span>
                         <span className="text-caption text-ink-low">Active</span>
                     </div>
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Focus</span>
+                        <span className="block text-eyebrow text-ink-low mb-1">Focus</span>
                         <span className="text-caption text-ink-low">Community and network building</span>
                     </div>
                 </motion.div>
@@ -58,7 +58,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">OVERVIEW</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Overview</span>
                     <h2 className="text-display-md text-ink-high mb-6">What it is</h2>
                     <p className="text-body text-ink-body">
                         GalaNetwork is a fan led network for people who love Galatasaray and want to stay connected beyond borders. The content is the entry point. The long term goal is a real network with shared value, support, and connections.
@@ -72,7 +72,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">ORIGIN</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Origin</span>
                     <h2 className="text-display-md text-ink-high mb-6">Why I started it</h2>
                     <p className="text-body text-ink-body mb-6">
                         This began as a lifelong hobby. I wanted to turn that passion into a real identity and a real brand. Most fans are in Turkey. I wanted the story to reach people who think and speak in English.
@@ -80,7 +80,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     <p className="text-body text-ink-body">
                         Icardi's line that stayed with me was:
                         <br />
-                        <span className="text-ink-high italic">“Galatasaray is already big. We will make it bigger.”</span>
+                        <span className="text-ink-high">“Galatasaray is already big. We will make it bigger.”</span>
                     </p>
                 </motion.section>
 
@@ -96,7 +96,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">MISSION</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Mission</span>
                     <h2 className="text-display-md text-ink-high mb-6">What we are building</h2>
                     <p className="text-body text-ink-body">
                         A global home for Galatasaray storytelling. A place where fans can meet, learn, share, and help each other. Content builds attention. The network builds trust.
@@ -110,7 +110,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">OUTPUT</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Output</span>
                     <h2 className="text-display-md text-ink-high mb-12">What we publish</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -143,7 +143,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">NETWORK</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Network</span>
                     <h2 className="text-display-md text-ink-high mb-12">How the network works</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
@@ -178,7 +178,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                 viewport={VIEWPORT_ONCE}
                 variants={sectionVariants}
             >
-                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">GALLERY</span>
+                <span className="block text-eyebrow text-ink-low mb-8">Gallery</span>
                 <h2 className="text-display-md text-ink-high mb-6">Selected work</h2>
                 <p className="text-body text-ink-body mb-12">
                     A few screens and posters from GalaNetwork. Built to stay consistent across matches and formats.
@@ -211,7 +211,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">OPERATING MODEL</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Operating model</span>
                     <h2 className="text-display-md text-ink-high mb-6">How we run it</h2>
                     <p className="text-body text-ink-body">
                         I lead content direction and design. I work with a co founder. We stay consistent in tone and visuals. We keep the output frequent and the standard high.
@@ -225,7 +225,7 @@ const GalaNetworkCaseStudy: React.FC<{ project: CustomProject }> = ({ project })
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">NOW</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Now</span>
                     <h2 className="text-display-md text-ink-high mb-6">Current focus</h2>
                     <p className="text-body text-ink-body">
                         We are growing the English speaking audience. We are improving our poster systems and match analysis format. We are turning followers into a real network.

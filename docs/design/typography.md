@@ -26,12 +26,12 @@ Nine tokens. One class sets size, weight, line height and letter spacing togethe
 
 - Use only these nine. No `text-xs` or `text-2xl`, no arbitrary sizes, no responsive size variants in markup.
 - Never add `font-*`, `leading-*` or `tracking-*` to an element that already has a token. `font-semibold` is the one exception.
-- Colour, `font-mono`, `uppercase` and layout classes are not part of the token and are set normally.
+- Colour, `font-mono` and layout classes are not part of the token and are set normally. Interface text is sentence-case; do not use text-transform utilities.
 - A heading split across lines uses the same token on every line with no extra margin between them. Emphasis comes from colour alone.
 - `text-balance` goes on a heading or a lead paragraph that wraps to two or three lines. Never on a full body paragraph.
 - `truncate` goes on a title inside a fixed-width grid column. Everywhere else, text wraps.
 
-**The one exception.** An emoji sitting inline in a heading is trimmed with a relative size (`text-[0.85em]`). It is the only arbitrary size in the system, it is relative rather than fixed, and it applies to emoji only.
+**The exceptions.** An emoji sitting inline in a heading is trimmed with a relative size (`text-[0.85em]`). The decorative SVG portrait ring uses 8.5px Inter because its text must fit a fixed circular path. No other arbitrary type sizes are permitted.
 
 ## Every size is fixed
 

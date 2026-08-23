@@ -32,15 +32,15 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
 
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-x-12 gap-y-4 pt-8">
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Role</span>
+                        <span className="block text-eyebrow text-ink-low mb-1">Role</span>
                         <span className="text-caption text-ink-low">Founder</span>
                     </div>
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Status</span>
+                        <span className="block text-eyebrow text-ink-low mb-1">Status</span>
                         <span className="text-caption text-ink-low">In progress</span>
                     </div>
                     <div>
-                        <span className="block text-eyebrow font-mono text-ink-low uppercase mb-1">Team</span>
+                        <span className="block text-eyebrow text-ink-low mb-1">Team</span>
                         <span className="text-caption text-ink-low">Solo lead. Specialists as needed</span>
                     </div>
                 </motion.div>
@@ -58,7 +58,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Overview</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Overview</span>
                     <h2 className="text-display-md text-ink-high mb-6">What Curvix is</h2>
                     <p className="text-body text-ink-body">
                         Curvix is my studio brand. It is a container for how I think, how I build, and what I deliver. The goal is simple work that holds up over time.
@@ -72,7 +72,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Intent</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Intent</span>
                     <h2 className="text-display-md text-ink-high mb-6">Why I built it</h2>
                     <p className="text-body text-ink-body">
                         I wanted one clear standard across web, product, and visuals. I wanted fewer decisions, better structure, and a calmer result. I wanted the work to feel consistent even when the project changes.
@@ -86,7 +86,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Output</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Output</span>
                     <h2 className="text-display-md text-ink-high mb-12">What Curvix ships</h2>
 
                     <div className="space-y-12">
@@ -112,7 +112,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Method</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Method</span>
                     <h2 className="text-display-md text-ink-high mb-12">How I work</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
@@ -149,7 +149,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                 viewport={VIEWPORT_ONCE}
                 variants={sectionVariants}
             >
-                <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Gallery</span>
+                <span className="block text-eyebrow text-ink-low mb-8">Gallery</span>
                 <h2 className="text-display-md text-ink-high mb-6">Selected screens</h2>
                 <p className="text-body text-ink-body mb-12">
                     A few screens from the Curvix site direction. Built to show the system in use.
@@ -190,7 +190,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Operating model</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Operating model</span>
                     <h2 className="text-display-md text-ink-high mb-6">How projects run</h2>
                     <p className="text-body text-ink-body">
                         I lead the design end to end. When a project needs marketing or photography, I bring in freelancers I trust. The client experience stays single threaded. One owner. One system.
@@ -204,7 +204,7 @@ const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
                     viewport={VIEWPORT_ONCE}
                     variants={sectionVariants}
                 >
-                    <span className="block text-eyebrow font-mono text-ink-low uppercase mb-8">Now</span>
+                    <span className="block text-eyebrow text-ink-low mb-8">Now</span>
                     <h2 className="text-display-md text-ink-high mb-6">Current focus</h2>
                     <p className="text-body text-ink-body">
                         I’m building Curvix as a long term studio identity. I take selective work that needs system level thinking and a high finish.

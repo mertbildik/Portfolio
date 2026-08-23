@@ -24,7 +24,7 @@ const PortfolioSection: React.FC = () => (
         >
             <SectionIntro
                 eyebrow="Archive"
-                title={<>Selected <br />Work.</>}
+                title={<>Selected <br />work.</>}
                 description="A small set of projects I am proud of. Client work, team work, and things I built for myself."
             />
         </motion.div>
@@ -68,7 +68,7 @@ const PortfolioSection: React.FC = () => (
                                         </span>
 
                                         <div className="flex items-center justify-end gap-4">
-                                            <span className="text-caption font-mono text-ink-low group-hover:text-ink-body group-focus-visible:text-ink-body transition-colors duration-200 ease-out">
+                                            <span className={`text-caption text-ink-low group-hover:text-ink-body group-focus-visible:text-ink-body transition-colors duration-200 ease-out ${/\d/.test(project.yearOrStatus) ? 'font-mono' : ''}`}>
                                                 {project.yearOrStatus}
                                             </span>
                                             <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0 transition-[opacity,transform] duration-300 ease-out">

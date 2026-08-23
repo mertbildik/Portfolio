@@ -17,8 +17,8 @@ const Stats: React.FC<{ stats: ImpactStat[] }> = ({ stats }) => (
     <div className="flex flex-col gap-10">
         {stats.map((stat) => (
             <div key={stat.title} className="flex flex-col gap-3">
-                <span className="text-display-md text-ink-high">{stat.number}</span>
-                <span className="text-eyebrow font-mono text-ink-low uppercase">{stat.title}</span>
+                <span className="text-display-md font-mono text-ink-high">{stat.number}</span>
+                <span className="text-eyebrow text-ink-low">{stat.title}</span>
                 <p className="text-ink-body text-body-sm">{stat.description}</p>
             </div>
         ))}
@@ -127,7 +127,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
 
                 <div className="flex flex-col gap-6">
                     <div className="inline-flex items-center px-3 py-1.5 rounded-md surface w-fit">
-                        <span className="text-caption font-mono text-ink-low uppercase">{project.role}</span>
+                        <span className="text-caption text-ink-low">{project.role}</span>
                     </div>
                     <h1 className="text-display-lg text-ink-high text-balance">{project.title}</h1>
                     <p className="text-body text-ink-body max-w-2xl text-balance">{study.oneLineSummary}</p>
@@ -139,11 +139,11 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                     <div className="flex flex-col gap-12 h-full">
                         <div className="space-y-10">
                             <div className="space-y-3">
-                                <h3 className="text-eyebrow font-mono text-ink-low uppercase">Timeline</h3>
-                                <p className="text-ink-low text-caption">{study.timeline}</p>
+                                <h3 className="text-eyebrow text-ink-low">Timeline</h3>
+                                <p className="text-ink-low text-caption font-mono">{study.timeline}</p>
                             </div>
                             <div className="space-y-3">
-                                <h3 className="text-eyebrow font-mono text-ink-low uppercase">Tools</h3>
+                                <h3 className="text-eyebrow text-ink-low">Tools</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {study.tools.map((tool) => (
                                         <span
@@ -158,7 +158,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                         </div>
 
                         <nav className="space-y-2 sticky top-32">
-                            <span className="text-eyebrow font-mono text-ink-low uppercase mb-4 block">Contents</span>
+                            <span className="text-eyebrow text-ink-low mb-4 block">Contents</span>
                             <div className="flex flex-col">
                                 {SECTIONS.map((section) => (
                                     <a
@@ -181,16 +181,16 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
 
                 <div className="lg:col-span-8 lg:col-start-5 space-y-24 md:space-y-32">
                     <motion.section id="problem" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-low uppercase block">01 — The Problem</span>
+                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">01</span> — The problem</span>
                         <div className="space-y-6">{renderText(study.problem)}</div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
                             <div className="space-y-3">
-                                <h4 className="text-eyebrow font-mono uppercase text-ink-high">Context</h4>
+                                <h4 className="text-eyebrow text-ink-high">Context</h4>
                                 <p className="text-ink-body text-body-sm">{study.context}</p>
                             </div>
                             <div className="space-y-3">
-                                <h4 className="text-eyebrow font-mono uppercase text-ink-high">Objectives</h4>
+                                <h4 className="text-eyebrow text-ink-high">Objectives</h4>
                                 <ul className="space-y-2">
                                     {study.goals.map((goal) => (
                                         <li key={goal} className="text-ink-body text-body-sm flex gap-3 items-start">
@@ -204,17 +204,17 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                     </motion.section>
 
                     <motion.section id="approach" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-low uppercase block">02 — Approach</span>
+                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">02</span> — Approach</span>
                         <div className="space-y-6">{renderText(study.approach)}</div>
 
                         <div className="p-8 surface rounded-md">
-                            <h4 className="text-eyebrow font-mono text-ink-high uppercase mb-4">User Scenario</h4>
+                            <h4 className="text-eyebrow text-ink-high mb-4">User scenario</h4>
                             <p className="text-ink-body text-body">{study.usersScenario}</p>
                         </div>
                     </motion.section>
 
                     <motion.section id="solution" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-low uppercase block">03 — Solution</span>
+                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">03</span> — Solution</span>
                         <div className="space-y-6">{renderText(study.solution)}</div>
 
                         <div className="grid grid-cols-1 gap-8 pt-4">
@@ -231,16 +231,16 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                     </motion.section>
 
                     <motion.section id="output" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-12 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-low uppercase block">04 — Output</span>
+                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">04</span> — Output</span>
                         <div className="space-y-16">{study.output.map(renderOutput)}</div>
                     </motion.section>
 
                     <motion.section id="impact" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_ONCE} className="space-y-8 scroll-mt-32">
-                        <span className="text-eyebrow font-mono text-ink-low uppercase block">05 — Impact</span>
+                        <span className="text-eyebrow text-ink-low block"><span className="font-mono">05</span> — Impact</span>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="p-8 surface rounded-md">
-                                <h4 className="text-eyebrow font-mono text-ink-high uppercase mb-6">User</h4>
+                                <h4 className="text-eyebrow text-ink-high mb-6">User</h4>
                                 {Array.isArray(study.impact.user) ? (
                                     <Stats stats={study.impact.user} />
                                 ) : (
@@ -248,7 +248,7 @@ const ProjectCaseStudy: React.FC<{ project: TemplateProject }> = ({ project }) =
                                 )}
                             </div>
                             <div className="p-8 surface rounded-md">
-                                <h4 className="text-eyebrow font-mono text-ink-high uppercase mb-6">Business</h4>
+                                <h4 className="text-eyebrow text-ink-high mb-6">Business</h4>
                                 {Array.isArray(study.impact.business) ? (
                                     <Stats stats={study.impact.business} />
                                 ) : (

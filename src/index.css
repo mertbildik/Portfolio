@@ -10,16 +10,6 @@
   src: url('/fonts/InterVariable.woff2') format('woff2');
 }
 
-/* JetBrains Mono variable, self-hosted for the same reason. One file covers
-   weights 100-800. Data — timestamps, coordinates, counts, values — uses this. */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 100 800;
-  font-display: swap;
-  src: url('/fonts/JetBrainsMonoVariable.woff2') format('woff2');
-}
-
 /* Geist Mono variable, self-hosted for the same reason. One file covers
    weights 100-900. Data — timestamps, coordinates, counts, values — uses this. */
 @font-face {

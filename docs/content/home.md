@@ -5,7 +5,7 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 ## Hero
 
 - **Name:** Mert Bildik
-- **Eyebrow:** DIGITAL PRODUCT DESIGNER
+- **Eyebrow:** Digital product designer
 - **Headline:**
 
   I design/build digital products, websites, and visual experiences.
@@ -18,28 +18,28 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 - **Title:** Get in touch
 - **Status:** Available for new projects
 
-## Selected Work
+## Selected work
 
-- **Eyebrow:** ARCHIVE
-- **Title:** Selected Work.
+- **Eyebrow:** Archive
+- **Title:** Selected work.
 - **Intro:** A small set of projects I am proud of. Client work, team work, and things I built for myself.
 
-### CLIENT PROJECTS
+### Client projects
 
 | Project | Role | Year / Status |
 | --- | --- | --- |
-| [OFK Construction](./client-projects/ofk-construction.md) | Product Designer | 2025 |
-| [Dog & Ride](./client-projects/dog-and-ride.md) | Multidisciplinary Designer | 2025 |
-| [Bunect](./client-projects/bunect.md) <!-- hidden from the site's list --> | Design Lead | 2025 |
+| [OFK Construction](./client-projects/ofk-construction.md) | Product designer | 2025 |
+| [Dog & Ride](./client-projects/dog-and-ride.md) | Multidisciplinary designer | 2025 |
+| [Bunect](./client-projects/bunect.md) <!-- hidden from the site's list --> | Design lead | 2025 |
 | [Adclusive](./client-projects/adclusive.md) | Product designer | 2021 – 2024 |
 
-### EMPLOYMENT
+### Employment
 
 | Project | Role | Year / Status |
 | --- | --- | --- |
 | [McKinsey & Co.](./employment/mckinsey.md) | Visual communication | 2021 – 2024 |
 
-### VENTURES
+### Ventures
 
 <!-- Hidden from the site's list as of 2026-08; content retained here. -->
 
@@ -51,7 +51,7 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 ## Contact
 
 - **Eyebrow:** Inquiry
-- **Title:** Let's Talk.
+- **Title:** Let's talk.
 - **Intro:** Available for new projects. / I reply within 24 hours.
 
 ### Form
@@ -62,15 +62,15 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 - **Prompt:** you@company.com
 - **Label:** Project details
 - **Prompt:** What are you building? Include the timeline and budget range if you have them.
-- **Submit:** Send inquiry (or Sending... while submitting)
+- **Submit:** Send inquiry (or Sending… while submitting)
 - **Submit status:** Ready to send. / Complete all fields. / Submission failed. Click to retry.
 - **Success state:** Request initiated. / I'll review your brief shortly. Expect a response at {email}. / Start over
 
 ### Footer metadata
 
-- **CONNECT:** mert.bildik@gmail.com (click to copy)
-- **NETWORKS:** LinkedIn (https://www.linkedin.com/in/mertbildik/)
-- **LOCAL TIME:** {current time} Warsaw, PL (live clock, Europe/Warsaw)
+- **Connect:** mert.bildik@gmail.com (click to copy)
+- **Networks:** LinkedIn (https://www.linkedin.com/in/mertbildik/)
+- **Local time:** {current time} Warsaw, PL (live clock, Europe/Warsaw)
 
 ## Footer
 

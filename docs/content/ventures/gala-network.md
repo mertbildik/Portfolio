@@ -13,7 +13,7 @@ Editorial reference only. Published copy lives in `src/portfolio/case-studies/st
 
 ## Meta
 
-- **Role:** Co founder, Content and Design Lead
+- **Role:** Co-founder, content and design lead
 - **Status:** Active
 - **Focus:** Community and network building
 

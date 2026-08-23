@@ -33,7 +33,7 @@ Values for all of it live in the `@theme` block of `src/index.css`. These files 
 
 ## Foundation
 
-- One typeface: Inter for words, Geist Mono for data. No third face.
+- Two typefaces: Inter for words, Geist Mono for data. No third face.
 - One canvas. Every darker or lighter one-off folds into it.
 - One entrance curve. Everything that enters or changes position uses it.
 - No shadows. Gradients are reserved for the global canvas atmosphere.

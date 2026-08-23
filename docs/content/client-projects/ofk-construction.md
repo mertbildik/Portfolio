@@ -3,7 +3,7 @@
 Editorial reference only. Published project content lives in `src/portfolio/content/projects.ts`.
 
 - **Kind:** Client project
-- **Role:** Product Designer
+- **Role:** Product designer
 - **Year / Status:** 2025
 - **Timeline:** Mar 2026 to Apr 2026
 - **Tools:** React, Tailwind, Framer Motion, Notion, Claude Code, Adobe Creative Cloud
@@ -79,13 +79,13 @@ Designed and shipped in React with Tailwind, Framer Motion for transitions, and 
 
 **User**
 
-- **2 LANGUAGES** — English and Polish, built in from day one. Same content, same trust, both audiences.
-- **3 REFERENCE COMPANIES SHOWN** — FABE POLSKA, YOOJEONG, and ILK INSAAT. Real names that prospects can verify.
+- **2 Languages** — English and Polish, built in from day one. Same content, same trust, both audiences.
+- **3 Reference companies shown** — FABE POLSKA, YOOJEONG, and ILK INSAAT. Real names that prospects can verify.
 
 **Business**
 
-- **5 CORE PAGES** — Home, About, Projects, Services, Contact. Everything a B2B buyer needs in one place.
-- **1 DESIGN SYSTEM** — Tokens, primitives, and motion rules. Future pages stay consistent without redesign.
+- **5 Core pages** — Home, About, Projects, Services, Contact. Everything a B2B buyer needs in one place.
+- **1 Design system** — Tokens, primitives, and motion rules. Future pages stay consistent without redesign.
 
 ## Retrospective
 

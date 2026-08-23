@@ -32,7 +32,7 @@ const LiveClock: React.FC = () => {
     return (
         <div className="flex items-baseline gap-2">
             <span className="text-caption font-mono text-ink-low">{timeString}</span>
-            <span className="text-caption font-mono text-ink-low uppercase">Warsaw, PL</span>
+            <span className="text-caption text-ink-low">Warsaw, <span className="font-mono">PL</span></span>
         </div>
     );
 };
@@ -112,7 +112,7 @@ const ContactSection: React.FC = () => {
             >
                 <SectionIntro
                     eyebrow="Inquiry"
-                    title={<>Let's <br />Talk.</>}
+                    title={<>Let's <br />talk.</>}
                     description={<>Available for new projects. <br />I reply within 24 hours.</>}
                 />
             </motion.div>
@@ -219,9 +219,9 @@ const ContactSection: React.FC = () => {
                                 >
                                     <div className="md:col-start-2 flex flex-col shrink-0 text-left">
                                         <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max group-disabled:text-ink-high transition-colors duration-300">
-                                            {formState === 'submitting' ? 'Sending...' : 'Send inquiry'}
+                                            {formState === 'submitting' ? 'Sending…' : 'Send inquiry'}
                                         </span>
-                                        <span aria-live="polite" className="text-caption text-ink-low mt-1 uppercase group-hover:text-ink-body group-focus-visible:text-ink-body group-disabled:text-ink-low transition-colors duration-300">
+                                        <span aria-live="polite" className="text-caption text-ink-low mt-1 group-hover:text-ink-body group-focus-visible:text-ink-body group-disabled:text-ink-low transition-colors duration-300">
                                             {formState === 'error' ? (
                                                 <span className="text-status-error">Submission failed. Click to retry.</span>
                                             ) : isFormReady ? "Ready to send." : "Complete all fields."}
@@ -268,7 +268,7 @@ const ContactSection: React.FC = () => {
                         {/* 03: Time - aligned right/end */}
                         <div className="hidden md:flex flex-col gap-4 py-8">
                             <span className="text-eyebrow text-ink-low">Local time</span>
-                            <div className="text-caption font-mono text-ink-body">
+                            <div className="text-caption text-ink-body">
                                 <LiveClock />
                             </div>
                         </div>

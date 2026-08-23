@@ -34,9 +34,9 @@ const HeroSection: React.FC = () => (
                                 fill="none"
                             />
                         </defs>
-                        <text className="fill-current text-ink-low font-mono uppercase" style={{ fontSize: 8.5, letterSpacing: 1.5 }}>
+                        <text className="fill-current text-ink-low" style={{ fontSize: 8.5, letterSpacing: 0.4 }}>
                             <textPath href="#warsaw-ring-path" textLength={Math.PI * 90} lengthAdjust="spacing">
-                                {'BASED IN WARSAW • BASED IN WARSAW • BASED IN WARSAW •\u00A0'}
+                                {'Based in Warsaw • Based in Warsaw • Based in Warsaw •\u00A0'}
                             </textPath>
                         </text>
                     </svg>

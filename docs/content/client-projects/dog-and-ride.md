@@ -3,7 +3,7 @@
 Editorial reference only. Published project content lives in `src/portfolio/content/projects.ts`.
 
 - **Kind:** Client project
-- **Role:** Multidisciplinary Designer
+- **Role:** Multidisciplinary designer
 - **Year / Status:** 2025
 - **Timeline:** May 2025 to June 2025
 - **Tools:** Figma, Framer, PowerPoint, Adobe Creative Suite, Notion

@@ -16,10 +16,10 @@ const StatBlock: React.FC<{ value: string; label: string; desc: string; delay: n
         className="relative flex flex-col items-start text-left p-6 min-h-[180px]"
     >
         <div className="w-full">
-            <span className="block text-display-md text-ink-high">{value}</span>
+            <span className="block text-display-md font-mono text-ink-high">{value}</span>
         </div>
         <div className="flex flex-col gap-2 mt-6 w-full items-start">
-            <span className="block text-eyebrow font-mono uppercase text-ink-low">{label}</span>
+            <span className="block text-eyebrow text-ink-low">{label}</span>
             <p className="text-body-sm text-ink-body">{desc}</p>
         </div>
     </motion.div>
@@ -71,7 +71,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                         >
                             <div className="flex items-center gap-2 mb-1">
                                 <div className="w-1.5 h-1.5 bg-ink-low rounded-full" />
-                                <span className="text-eyebrow font-mono uppercase text-ink-low">Status: {data.ndaStatus}</span>
+                                <span className="text-eyebrow text-ink-low">Status: {data.ndaStatus}</span>
                             </div>
                             <p className="text-body-sm text-ink-body max-w-[240px] whitespace-pre-line">
                                 {data.ndaDescription}
@@ -89,7 +89,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
-                    <h2 className="text-eyebrow font-mono text-ink-high uppercase">Impact & Metrics</h2>
+                    <h2 className="text-eyebrow text-ink-high">Impact & metrics</h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -113,7 +113,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     viewport={VIEWPORT_ONCE}
                     className="mb-12"
                 >
-                    <h2 className="text-eyebrow font-mono text-ink-high uppercase">Core Capabilities</h2>
+                    <h2 className="text-eyebrow text-ink-high">Core capabilities</h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -126,8 +126,8 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE }}
                             className="p-8 lg:p-12 flex flex-col gap-8 min-h-[320px]"
                         >
-                            <h3 className="text-eyebrow font-mono text-ink-high uppercase">
-                                {cap.title}
+                            <h3 className="text-eyebrow text-ink-high">
+                                <span className="font-mono">{cap.title.split(' / ')[0]}</span> / {cap.title.split(' / ')[1]}
                             </h3>
 
                             <ul className="flex flex-col gap-4">
@@ -153,7 +153,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             <div className="flex flex-col gap-6">
                                 <div className="flex items-center gap-3 text-ink-low">
                                     <Lock size={20} strokeWidth={1.5} />
-                                    <h2 className="text-eyebrow font-mono uppercase text-ink-high">Restricted Access</h2>
+                                    <h2 className="text-eyebrow text-ink-high">Restricted access</h2>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <h3 className="text-headline text-ink-high">
@@ -167,14 +167,14 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
 
                             {/* Timestamp */}
                             <div className="flex flex-col gap-1">
-                                <span className="text-eyebrow font-mono text-ink-low uppercase">Active Status</span>
+                                <span className="text-eyebrow text-ink-low">Active status</span>
                                 <span className="text-caption text-ink-low">{data.ndaStatus}</span>
                             </div>
                         </div>
 
                         {/* RIGHT: What I can share */}
                         <div className="flex flex-col justify-center">
-                            <span className="text-eyebrow font-mono text-ink-low uppercase mb-8 block">
+                            <span className="text-eyebrow text-ink-low mb-8 block">
                                 What I can share on a call:
                             </span>
                             <ul className="flex flex-col gap-4">

@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
         id: 'ofk',
         kind: 'clientProject',
         title: 'OFK Construction',
-        role: 'Product Designer',
+        role: 'Product designer',
         yearOrStatus: '2025',
         listed: true,
         renderer: 'template',
@@ -112,24 +112,24 @@ export const PROJECTS: Project[] = [
                 user: [
                     {
                         number: '2',
-                        title: 'LANGUAGES',
+                        title: 'Languages',
                         description: 'English and Polish, built in from day one. Same content, same trust, both audiences.',
                     },
                     {
                         number: '3',
-                        title: 'REFERENCE COMPANIES SHOWN',
+                        title: 'Reference companies shown',
                         description: 'FABE POLSKA, YOOJEONG, and ILK INSAAT. Real names that prospects can verify.',
                     },
                 ],
                 business: [
                     {
                         number: '5',
-                        title: 'CORE PAGES',
+                        title: 'Core pages',
                         description: 'Home, About, Projects, Services, Contact. Everything a B2B buyer needs in one place.',
                     },
                     {
                         number: '1',
-                        title: 'DESIGN SYSTEM',
+                        title: 'Design system',
                         description: 'Tokens, primitives, and motion rules. Future pages stay consistent without redesign.',
                     },
                 ],
@@ -141,7 +141,7 @@ export const PROJECTS: Project[] = [
         id: 'dog-and-ride',
         kind: 'clientProject',
         title: 'Dog & Ride',
-        role: 'Multidisciplinary Designer',
+        role: 'Multidisciplinary designer',
         yearOrStatus: '2025',
         listed: true,
         renderer: 'template',
@@ -185,7 +185,7 @@ export const PROJECTS: Project[] = [
                 user: [
                     {
                         number: '500',
-                        title: 'Instagram Followers',
+                        title: 'Instagram followers',
                         description: 'People understood the product fast enough to follow. The story finally matched what the product feels like.',
                     },
                     {
@@ -214,7 +214,7 @@ export const PROJECTS: Project[] = [
         id: 'bunect',
         kind: 'clientProject',
         title: 'Bunect',
-        role: 'Design Lead',
+        role: 'Design lead',
         yearOrStatus: '2025',
         listed: false,
         renderer: 'template',
@@ -254,24 +254,24 @@ export const PROJECTS: Project[] = [
                 user: [
                     {
                         number: '+20',
-                        title: 'WHATSAPP CLICKS PER MONTH',
+                        title: 'WhatsApp clicks per month',
                         description: 'People don’t hunt for info. They tap once and ask the right question.',
                     },
                     {
                         number: '3',
-                        title: 'CLEAR SERVICE PATHS',
+                        title: 'Clear service paths',
                         description: 'Accounting, TRC, and company setup each has a direct route. People land, pick, and move.',
                     },
                 ],
                 business: [
                     {
                         number: '+2000',
-                        title: 'WEBSITE VISITS PER MONTH',
+                        title: 'Website visits per month',
                         description: 'A steady stream of intent in one place. Easier to answer questions and convert interest.',
                     },
                     {
                         number: '+8',
-                        title: 'MEETINGS BOOKED PER MONTH',
+                        title: 'Meetings booked per month',
                         description: 'The deck and site make the first conversation shorter, clearer, and easier to lead.',
                     },
                 ],
@@ -304,9 +304,9 @@ export const PROJECTS: Project[] = [
             solution: 'The goal was simple.\nBring both sides into one platform with clear flows.',
             keyDecisions: [
                 'Role based portal structure — Separate areas for advertiser work and publisher work. Consistent sidebar navigation across screens.',
-                'Publisher dashboard and finance clarity — Revenue overview. Account balance. Status buckets like awaiting approval, approved...',
-                'Advertiser campaign setup — A structured create campaign flow with sections for general info, collaboration rules...',
-                'Tracking and assets — Link management with multiple tracking options. Creative uploads for images and banners...',
+                'Publisher dashboard and finance clarity — Revenue overview. Account balance. Status buckets like awaiting approval, approved…',
+                'Advertiser campaign setup — A structured create campaign flow with sections for general info, collaboration rules…',
+                'Tracking and assets — Link management with multiple tracking options. Creative uploads for images and banners…',
             ],
             output: [
                 {
@@ -330,24 +330,24 @@ export const PROJECTS: Project[] = [
                 user: [
                     {
                         number: '20+',
-                        title: 'ACTIVE ADVERTISERS',
+                        title: 'Active advertisers',
                         description: 'Real demand on the platform. Advertisers could launch, track, and manage campaigns without bouncing between tools.',
                     },
                     {
                         number: '50+',
-                        title: 'ACTIVE INFLUENCERS',
+                        title: 'Active influencers',
                         description: 'Real supply in the network. Creators could get briefs, share assets, and follow performance with less back and forth.',
                     },
                 ],
                 business: [
                     {
                         number: '5',
-                        title: 'CORE WORKFLOWS IN ONE PLACE',
+                        title: 'Core workflows in one place',
                         description: 'Campaign setup, tracking, creatives, performance, and finance live in the same system.',
                     },
                     {
                         number: '1',
-                        title: 'COMMISSION MODEL, BUILT IN',
+                        title: 'Commission model, built in',
                         description: 'Deals run through the platform, so revenue is tied to real activity, not promises.',
                     },
                 ],

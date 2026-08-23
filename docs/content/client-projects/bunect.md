@@ -5,7 +5,7 @@ Editorial reference only. Published project content lives in `src/portfolio/cont
 <!-- Hidden from the site's Portfolio list as of 2026-08; content retained here. -->
 
 - **Kind:** Client project
-- **Role:** Design Lead
+- **Role:** Design lead
 - **Year / Status:** 2025
 - **Timeline:** Jan 2025 to Present (ongoing)
 - **Tools:** Framer, Notion, Adobe Creative Suite, Canva, PowerPoint
@@ -74,13 +74,13 @@ Cleaner visuals and more consistent use of type and color.
 
 **User**
 
-- **+20 WHATSAPP CLICKS PER MONTH** — People don’t hunt for info. They tap once and ask the right question.
-- **3 CLEAR SERVICE PATHS** — Accounting, TRC, and company setup each has a direct route. People land, pick, and move.
+- **+20 WhatsApp clicks per month** — People don’t hunt for info. They tap once and ask the right question.
+- **3 Clear service paths** — Accounting, TRC, and company setup each has a direct route. People land, pick, and move.
 
 **Business**
 
-- **+2000 WEBSITE VISITS PER MONTH** — A steady stream of intent in one place. Easier to answer questions and convert interest.
-- **+8 MEETINGS BOOKED PER MONTH** — The deck and site make the first conversation shorter, clearer, and easier to lead.
+- **+2000 Website visits per month** — A steady stream of intent in one place. Easier to answer questions and convert interest.
+- **+8 Meetings booked per month** — The deck and site make the first conversation shorter, clearer, and easier to lead.
 
 ## Retrospective
 

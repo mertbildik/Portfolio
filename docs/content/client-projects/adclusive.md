@@ -79,13 +79,13 @@ The shipped interface across login, home, dashboards, and the advertiser directo
 
 **User**
 
-- **20+ ACTIVE ADVERTISERS** — Real demand on the platform. Advertisers could launch, track, and manage campaigns without bouncing between tools.
-- **50+ ACTIVE INFLUENCERS** — Real supply in the network. Creators could get briefs, share assets, and follow performance with less back and forth.
+- **20+ Active advertisers** — Real demand on the platform. Advertisers could launch, track, and manage campaigns without bouncing between tools.
+- **50+ Active influencers** — Real supply in the network. Creators could get briefs, share assets, and follow performance with less back and forth.
 
 **Business**
 
-- **5 CORE WORKFLOWS IN ONE PLACE** — Campaign setup, tracking, creatives, performance, and finance live in the same system.
-- **1 COMMISSION MODEL, BUILT IN** — Deals run through the platform, so revenue is tied to real activity, not promises.
+- **5 Core workflows in one place** — Campaign setup, tracking, creatives, performance, and finance live in the same system.
+- **1 Commission model, built in** — Deals run through the platform, so revenue is tied to real activity, not promises.
 
 ## Retrospective
 
