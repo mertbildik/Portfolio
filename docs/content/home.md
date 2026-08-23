@@ -5,7 +5,7 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 ## Hero
 
 - **Name:** Mert Bildik
-- **Role:** Product & web designer who builds
+- **Role:** Product designer
 - **Headline:**
 
   I design & build digital products, websites, and visual experiences.

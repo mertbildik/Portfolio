@@ -43,7 +43,7 @@ const HeroSection: React.FC = () => (
 
             <div>
                 <span className="block text-headline text-ink-high">Mert Bildik</span>
-                <span className="mt-2 block text-body-sm text-ink-low">Product &amp; web designer who builds</span>
+                <span className="mt-2 block text-body-sm text-ink-low">Product designer</span>
             </div>
         </motion.div>
 
