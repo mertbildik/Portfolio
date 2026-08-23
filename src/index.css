@@ -10,6 +10,26 @@
   src: url('/fonts/InterVariable.woff2') format('woff2');
 }
 
+/* JetBrains Mono variable, self-hosted for the same reason. One file covers
+   weights 100-800. Data — timestamps, coordinates, counts, values — uses this. */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/JetBrainsMonoVariable.woff2') format('woff2');
+}
+
+/* Geist Mono variable, self-hosted for the same reason. One file covers
+   weights 100-900. Data — timestamps, coordinates, counts, values — uses this. */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/GeistMonoVariable.woff2') format('woff2');
+}
+
 /* ============================================================================
    DESIGN TOKENS
 
@@ -28,8 +48,7 @@
 @theme {
   /* ---- type family ---------------------------------------------------- */
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
 
   /* ---- responsive ----------------------------------------------------- */
   --breakpoint-md: 48rem;
@@ -138,7 +157,7 @@
   /* ---- motion ----------------------------------------------------------
      The one entrance curve, for transitions written in CSS. motion needs
      the same curve as four numbers rather than a CSS string, so it keeps its own
-     copy in src/components/motion.ts. Two spellings of one curve, in two
+     copy in src/shared/motion.ts. Two spellings of one curve, in two
      different runtimes: change one and change the other.
      Durations use Tailwind's own scale: 200 is the default state change, 300 a
      larger reveal or inversion. */

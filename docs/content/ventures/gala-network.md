@@ -1,13 +1,13 @@
 # GalaNetwork
 
-Editorial reference only. Published copy lives in `src/case-studies/studies/GalaNetworkCaseStudy.tsx`.
+Editorial reference only. Published copy lives in `src/portfolio/case-studies/studies/GalaNetworkCaseStudy.tsx`.
 
 <!-- Hidden from the site's Portfolio list as of 2026-08; content retained here. -->
 
 - **Kind:** Venture
 - **Role:** Co-founder
 - **Status:** Current
-- **Page:** Hand-written case study (`src/case-studies/studies/GalaNetworkCaseStudy.tsx`)
+- **Page:** Hand-written case study (`src/portfolio/case-studies/studies/GalaNetworkCaseStudy.tsx`)
 
 **One-line summary:** An English first Galatasaray community built to connect fans worldwide through storytelling, match analysis, and design.
 

@@ -29,29 +29,32 @@ There is **no linter**. Do not invent eslint/prettier configs.
 
 ```
 src/
-  App.tsx              # routes, lazy pages, AnimatePresence wrapper
-  main.tsx, index.css  # root + the ONLY place design values are defined
-  components/          # app-wide UI and shared motion variants
-  homepage/            # homepage composition, sections, and section-only UI
-  case-studies/        # detail route, layout, templates, and custom studies
-  content/             # projects.ts, employment.ts, images.ts — content source of truth
-  assets/portfolio/<id>/   # case-study images, .webp only
+  app/                  # application shell, routes, and providers
+  homepage/             # homepage composition, hero, page frame, and portrait
+  contact/              # contact form and contact details
+  portfolio/            # portfolio index, runtime content, assets, and case studies
+    content/            # projects.ts and employment.ts — runtime content source
+    assets/<id>/        # case-study images, .webp only
+    case-studies/       # detail route, layout, templates, and custom studies
+  shared/               # genuinely cross-feature UI and motion only
+  main.tsx, index.css   # root + the ONLY place design values are defined
 public/                # static assets; _redirects handles SPA fallback on Netlify/CF
 docs/
   design/              # design system — read direction.md first
   content/writing.md   # how to add a project or case study
-  engineering/         # empty placeholder
+  engineering/         # architecture and engineering references
 ```
 
 ## Tests
 
-- `tests/smoke.spec.ts` is the only suite. Every page is loaded on production CSS, with viewport overflow and image-load checks. It also iterates `PROJECTS` from `src/content/projects.ts`, so **every project you add is tested automatically**.
+- `tests/smoke.spec.ts` is the only suite. Every page is loaded on production CSS, with viewport overflow and image-load checks. It also iterates `PROJECTS` from `src/portfolio/content/projects.ts`, so **every project you add is tested automatically**.
 - Tests run against the **production build** (`:4173`), not the dev server. Missing Tailwind classes and clipped layouts only show up here — `npm run build` is part of the loop, not optional.
 - Pre-merge: `npm run typecheck && npm run build && npm run test`.
 
 ## Post-change consistency
 
 - After changing a fact, rule, decision, name, route, or value, search the likely related files and check for contradictions. Keep the search targeted; do not scan the whole repository without a reason.
+- `docs/content/` is the human-readable editorial reference; `src/portfolio/content/` and hand-written case-study components are the runtime representation. Content changes must keep both representations consistent.
 - If a meaningful conflict appears, show it, recommend the smallest correct resolution, and wait for approval. Do not resolve it silently.
 - Test only the affected scope unless broader verification is explicitly requested.
 
@@ -80,13 +83,13 @@ Git history owns change history.
 
 ## Adding content
 
-A project = one entry in `src/content/projects.ts` + images under `src/assets/portfolio/<id>/` (filenames matching `id`, lowercase-hyphenated, `.webp` only, prefix with `1-`, `2-` for order). Each entry explicitly selects `template`, `employment`, or `custom` rendering and whether it is listed. `ProjectCaseStudy` parses plain strings — `\n` for paragraphs, `•`/`-` lines for bullets, em dash splits `keyDecisions` into title/body. Full rules in `docs/content/writing.md`.
+A project = one entry in `src/portfolio/content/projects.ts` + images under `src/portfolio/assets/<id>/` (filenames matching `id`, lowercase-hyphenated, `.webp` only, prefix with `1-`, `2-` for order). Each entry explicitly selects `template`, `employment`, or `custom` rendering and whether it is listed. `ProjectCaseStudy` parses plain strings — `\n` for paragraphs, `•`/`-` lines for bullets, em dash splits `keyDecisions` into title/body. Full rules in `docs/content/writing.md`.
 
 ## Design rules (load-bearing)
 
 Read `docs/design/direction.md` first. The non-negotiables:
 
-- One typeface for words (Inter) + system mono stack for data. No third face.
+- One typeface for words (Inter) + Geist Mono for data. No third face.
 - No shadows. Depth is border + fill.
 - No new colours. Green and red are status only. Everything else is white at an alpha.
 - Ink ramp carries hierarchy; size does not. A heading uses one size.
@@ -104,6 +107,6 @@ The app uses real paths (`/portfolio/ofk`). The host must serve `index.html` for
 
 - Don't add lint/format tooling — it's deliberately absent.
 - Don't introduce `react-router-dom`. Use `react-router`.
-- Don't put images in `public/`. They go in `src/assets/`.
+- Don't put portfolio images in `public/`. They go in `src/portfolio/assets/`.
 - Don't add a Tailwind config file. Edit `@theme` in `src/index.css`.
 - Don't write a case study that's a copy of a doc page — the smoke test asserts every `output` block reaches the page.

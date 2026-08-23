@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Lock } from 'lucide-react';
 import type { EmploymentData } from '../../content/employment';
-import BackLink from '../../shared/BackLink';
-import { EASE, VIEWPORT_ONCE } from '../../shared/motion';
+import BackLink from '../BackLink';
+import { EASE, VIEWPORT_ONCE } from '../../../shared/motion';
 
 const DURATION_BUMP = 0.8;
 

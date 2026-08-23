@@ -1,11 +1,11 @@
 # Adclusive
 
-Editorial reference only. Published project content lives in `src/content/projects.ts`.
+Editorial reference only. Published project content lives in `src/portfolio/content/projects.ts`.
 
 - **Kind:** Client project
 - **Role:** Product designer
-- **Year / Status:** 2024
-- **Timeline:** 2021 to Present (on pause)
+- **Year / Status:** 2021 – 2024
+- **Timeline:** Sep 2021 to Jan 2024
 - **Tools:** Figma, Notion, VSCode, Angular
 
 **One-line summary:** A multi role ad platform that connects advertisers with publishers and influencers, with dashboards, campaign setup, and tracking built into one system.

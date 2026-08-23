@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router'
 import { MotionConfig } from 'motion/react';
 
 const HomePage = React.lazy(() => import('../homepage/HomePage'));
-const CaseStudyPage = React.lazy(() => import('../case-studies/CaseStudyPage'));
+const CaseStudyPage = React.lazy(() => import('../portfolio/case-studies/CaseStudyPage'));
 
 const LegacyCaseStudyRedirect: React.FC = () => {
     const { id } = useParams();

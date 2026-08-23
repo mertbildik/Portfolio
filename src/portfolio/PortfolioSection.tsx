@@ -2,10 +2,9 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
-import { PROJECTS, type ProjectKind } from '../../content/projects';
-import { blockVariants, listVariants, itemVariants, VIEWPORT_ONCE } from '../../shared/motion';
-import HomeSection from '../components/HomeSection';
-import SectionIntro from '../components/SectionIntro';
+import SectionIntro from '../shared/SectionIntro';
+import { blockVariants, listVariants, itemVariants, VIEWPORT_ONCE } from '../shared/motion';
+import { PROJECTS, type ProjectKind } from './content/projects';
 
 const SECTIONS: { label: string; kind: ProjectKind }[] = [
     { label: 'Client projects', kind: 'clientProject' },
@@ -16,7 +15,7 @@ const SECTIONS: { label: string; kind: ProjectKind }[] = [
 const PORTFOLIO_PROJECTS = PROJECTS.filter((project) => project.listed);
 
 const PortfolioSection: React.FC = () => (
-    <HomeSection id="portfolio">
+    <>
         <motion.div
             variants={blockVariants}
             initial="hidden"
@@ -85,7 +84,7 @@ const PortfolioSection: React.FC = () => (
                 })}
             </div>
         </motion.div>
-    </HomeSection>
+    </>
 );
 
 export default PortfolioSection;

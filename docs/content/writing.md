@@ -2,7 +2,7 @@
 
 Writing is part of the interface. Help the reader understand the work, decide what matters, and know where to look next. Prefer clear thinking in a small space over more detail.
 
-Published copy lives in `src/content/` and the page components. The other files in `docs/content/` are editorial references, not runtime sources of truth.
+`docs/content/` is the human-readable editorial reference. Published runtime content lives in `src/portfolio/content/` and hand-written case-study components. Content changes must update both representations so they stay consistent.
 
 ## Voice And Clarity
 

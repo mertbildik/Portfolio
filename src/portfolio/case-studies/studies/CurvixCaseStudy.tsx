@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { getProjectImages } from '../../assets/projectImages';
 import type { CustomProject } from '../../content/projects';
-import BackLink from '../../shared/BackLink';
-import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../../shared/motion';
+import BackLink from '../BackLink';
+import { containerVariants, itemVariants, sectionVariants, VIEWPORT_ONCE } from '../../../shared/motion';
 
 const CurvixCaseStudy: React.FC<{ project: CustomProject }> = ({ project }) => {
     const projectImages = getProjectImages(project.id);

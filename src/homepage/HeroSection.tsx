@@ -1,20 +1,19 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import mertPhoto from '../../assets/mert.webp';
-import { containerVariants, itemVariants } from '../../shared/motion';
-import ActionCircle from '../components/ActionCircle';
-import HomeSection from '../components/HomeSection';
+import ActionCircle from '../shared/ActionCircle';
+import { containerVariants, itemVariants } from '../shared/motion';
+import mertPhoto from './mert.webp';
 
 const HeroSection: React.FC = () => (
-    <HomeSection id="home" hero>
+    <>
         <motion.div
             className="flex flex-col justify-center relative z-20 min-w-0"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
         >
-            <motion.div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+            <motion.div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 md:pl-4 lg:pl-5">
                 <motion.div variants={itemVariants} className="relative shrink-0 self-center md:self-auto">
                     <div className="relative z-10 w-24 h-24 lg:w-28 lg:h-28 rounded-full border border-line overflow-hidden">
                         <img
@@ -36,8 +35,8 @@ const HeroSection: React.FC = () => (
                             />
                         </defs>
                         <text className="fill-current text-ink-low font-mono uppercase" style={{ fontSize: 8.5, letterSpacing: 1.5 }}>
-                            <textPath href="#warsaw-ring-path">
-                                BASED IN WARSAW • BASED IN WARSAW • BASED IN WARSAW •
+                            <textPath href="#warsaw-ring-path" textLength={Math.PI * 90} lengthAdjust="spacing">
+                                {'BASED IN WARSAW • BASED IN WARSAW • BASED IN WARSAW •\u00A0'}
                             </textPath>
                         </text>
                     </svg>
@@ -68,7 +67,7 @@ const HeroSection: React.FC = () => (
                 <span className="text-ink-max">digital products, websites, and visual experiences.</span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="mt-8 md:mt-12 text-body text-ink-body ml-1 w-full max-w-lg">
+            <motion.p variants={itemVariants} className="mt-8 md:mt-12 text-body text-ink-body ml-1 max-w-lg">
                 Helping people spend less time clicking and more time living.
             </motion.p>
         </motion.div>
@@ -96,7 +95,7 @@ const HeroSection: React.FC = () => (
                 </a>
             </motion.div>
         </motion.div>
-    </HomeSection>
+    </>
 );
 
 export default HeroSection;

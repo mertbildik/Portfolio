@@ -1,4 +1,4 @@
-const files = import.meta.glob('./portfolio/*/*.webp', {
+const files = import.meta.glob('./*/*.webp', {
     eager: true,
     query: '?url',
     import: 'default',
@@ -11,7 +11,7 @@ export interface ProjectImage {
 
 export const getProjectImages = (projectId: string): ProjectImage[] =>
     Object.entries(files)
-        .filter(([path]) => path.includes(`/portfolio/${projectId}/`))
+        .filter(([path]) => path.includes(`/${projectId}/`))
         .sort(([a], [b]) => a.localeCompare(b))
         .map(([path, src]) => ({
             src: src as string,

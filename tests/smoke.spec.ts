@@ -1,14 +1,14 @@
 import { test, expect, Page } from '@playwright/test';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { PROJECTS } from '../src/content/projects';
+import { PROJECTS } from '../src/portfolio/content/projects';
 
 const CASE_STUDIES = PROJECTS.map((p) => `/portfolio/${p.id}`);
 const ALL = ['/', ...CASE_STUDIES];
 
 const MOBILE = { width: 390, height: 844 };
 const SHORT_LAPTOP = { width: 1366, height: 625 };
-const ASSET_ROOT = fileURLToPath(new URL('../src/assets/portfolio/', import.meta.url));
+const ASSET_ROOT = fileURLToPath(new URL('../src/portfolio/assets/', import.meta.url));
 
 /**
  * Wait for the lazy page chunk, then scroll to the bottom so lazy images and

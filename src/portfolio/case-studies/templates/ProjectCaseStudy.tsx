@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { getProjectImages } from '../../assets/projectImages';
 import type { ImpactStat, OutputBlock, TemplateProject } from '../../content/projects';
-import BackLink from '../../shared/BackLink';
-import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../../shared/motion';
+import BackLink from '../BackLink';
+import { blockVariants, sectionVariants, VIEWPORT_ONCE } from '../../../shared/motion';
 
 const SECTIONS = [
     { id: 'problem', label: 'Problem' },

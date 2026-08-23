@@ -9,7 +9,7 @@ export interface ImpactStat {
 export interface OutputBlock {
     title: string;
     description: string;
-    /** Filenames (without extension) from src/assets/portfolio/<project id>/ */
+    /** Filenames (without extension) from src/portfolio/assets/<project id>/ */
     images?: string[];
     columns?: 1 | 2;
 }
@@ -284,11 +284,11 @@ export const PROJECTS: Project[] = [
         kind: 'clientProject',
         title: 'Adclusive',
         role: 'Product designer',
-        yearOrStatus: '2024',
+        yearOrStatus: '2021 – 2024',
         listed: true,
         renderer: 'template',
         caseStudy: {
-            timeline: '2021 to Present (on pause)',
+            timeline: 'Sep 2021 to Jan 2024',
             tools: ['Figma', 'Notion', 'VSCode', 'Angular'],
             oneLineSummary: 'A multi role ad platform that connects advertisers with publishers and influencers, with dashboards, campaign setup, and tracking built into one system.',
             problem: 'Two sides needed to work in one product.\nAdvertisers. Publishers and influencers.\n\nThe platform required clarity across complex areas.\nCampaign creation. Asset management. Tracking links. Performance and finance.',
@@ -360,7 +360,7 @@ export const PROJECTS: Project[] = [
         kind: 'employment',
         title: 'McKinsey & Co.',
         role: 'Visual communication',
-        yearOrStatus: '3 years',
+        yearOrStatus: '2021 – 2024',
         listed: true,
         renderer: 'employment',
         employment: EMPLOYMENT_CONTENT.mckinsey,

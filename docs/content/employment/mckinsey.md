@@ -1,10 +1,10 @@
 # McKinsey & Company
 
-Editorial reference only. Published employment content lives in `src/content/employment.ts`.
+Editorial reference only. Published employment content lives in `src/portfolio/content/employment.ts`.
 
 - **Kind:** Employment
 - **Role:** Visual Communication Specialist
-- **Year / Status:** 3 years
+- **Year / Status:** 2021 – 2024
 - **NDA status:** Confidential
 
 **Description:** Translating complex financial models into intuitive narratives.

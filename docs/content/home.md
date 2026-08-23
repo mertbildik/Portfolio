@@ -1,6 +1,6 @@
 # Home — Landing Page
 
-Editorial reference only. Published landing-page copy lives in `src/homepage/` and project metadata lives in `src/content/projects.ts`.
+Editorial reference only. Published landing-page copy lives in `src/homepage/`, `src/portfolio/PortfolioSection.tsx`, and `src/contact/ContactSection.tsx`. Project metadata lives in `src/portfolio/content/projects.ts`.
 
 ## Hero
 
@@ -11,7 +11,7 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/` a
   I design/build digital products, websites, and visual experiences.
 
 - **Sub-line:** Helping people spend less time clicking and more time living.
-- **Portrait:** `src/assets/mert.webp` (round crop, alt text "Mert Bildik")
+- **Portrait:** `src/homepage/mert.webp` (round crop, alt text "Mert Bildik")
 
 ### Call to action
 
@@ -31,13 +31,13 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/` a
 | [OFK Construction](./client-projects/ofk-construction.md) | Product Designer | 2025 |
 | [Dog & Ride](./client-projects/dog-and-ride.md) | Multidisciplinary Designer | 2025 |
 | [Bunect](./client-projects/bunect.md) <!-- hidden from the site's list --> | Design Lead | 2025 |
-| [Adclusive](./client-projects/adclusive.md) | Product designer | 2024 |
+| [Adclusive](./client-projects/adclusive.md) | Product designer | 2021 – 2024 |
 
 ### EMPLOYMENT
 
 | Project | Role | Year / Status |
 | --- | --- | --- |
-| [McKinsey & Co.](./employment/mckinsey.md) | Visual communication | 3 years |
+| [McKinsey & Co.](./employment/mckinsey.md) | Visual communication | 2021 – 2024 |
 
 ### VENTURES
 
