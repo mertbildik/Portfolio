@@ -5,10 +5,10 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 ## Hero
 
 - **Name:** Mert Bildik
-- **Eyebrow:** Digital product designer
+- **Role:** Product & web designer who builds
 - **Headline:**
 
-  I design/build digital products, websites, and visual experiences.
+  I design & build digital products, websites, and visual experiences.
 
 - **Sub-line:** Helping people spend less time clicking and more time living.
 - **Portrait:** `src/homepage/mert.webp` (round crop, alt text "Mert Bildik")
@@ -20,23 +20,21 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 
 ## Selected work
 
-- **Eyebrow:** Archive
 - **Title:** Selected work.
-- **Intro:** A small set of projects I am proud of. Client work, team work, and things I built for myself.
+- **Intro:** A focused selection of client projects and long-term work across products, websites, and visual communication.
 
 ### Client projects
 
 | Project | Role | Year / Status |
 | --- | --- | --- |
-| [OFK Construction](./client-projects/ofk-construction.md) | Product designer | 2025 |
+| [OFK Construction](./client-projects/ofk-construction.md) | Product designer | 2026 |
 | [Dog & Ride](./client-projects/dog-and-ride.md) | Multidisciplinary designer | 2025 |
 | [Bunect](./client-projects/bunect.md) <!-- hidden from the site's list --> | Design lead | 2025 |
-| [Adclusive](./client-projects/adclusive.md) | Product designer | 2021 – 2024 |
+### Experience
 
-### Employment
-
-| Project | Role | Year / Status |
+| Project | Relationship / Role | Year / Status |
 | --- | --- | --- |
+| [Adclusive](./employment/adclusive.md) | Long-term engagement · Product designer | 2021 – 2024 |
 | [McKinsey & Co.](./employment/mckinsey.md) | Visual communication | 2021 – 2024 |
 
 ### Ventures
@@ -50,9 +48,8 @@ Editorial reference only. Published landing-page copy lives in `src/homepage/`, 
 
 ## Contact
 
-- **Eyebrow:** Inquiry
 - **Title:** Let's talk.
-- **Intro:** Available for new projects. / I reply within 24 hours.
+- **Intro:** Available for new projects. I reply within 24 hours.
 
 ### Form
 

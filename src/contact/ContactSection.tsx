@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ArrowRight, ArrowUpRight, Check, Copy } from 'lucide-react';
 import ActionCircle from '../shared/ActionCircle';
-import { blockVariants, containerVariants, itemVariants, VIEWPORT_ONCE } from '../shared/motion';
+import { homepageItemVariants, VIEWPORT_ONCE } from '../shared/motion';
 import SectionIntro from '../shared/SectionIntro';
 
 const CONTACT_EMAIL = 'mert.bildik@gmail.com';
@@ -105,36 +105,36 @@ const ContactSection: React.FC = () => {
     return (
         <>
             <motion.div
-                variants={blockVariants}
+                variants={homepageItemVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={VIEWPORT_ONCE}
             >
                 <SectionIntro
-                    eyebrow="Inquiry"
-                    title={<>Let's <br />talk.</>}
-                    description={<>Available for new projects. <br />I reply within 24 hours.</>}
+                    title="Let's talk."
+                    description="Available for new projects. I reply within 24 hours."
                 />
             </motion.div>
 
             <motion.div
-                variants={containerVariants}
+                variants={homepageItemVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={VIEWPORT_ONCE}
-                className="flex flex-col justify-center h-full relative z-30"
+                className="relative z-30 mt-20 flex h-full flex-col justify-center md:mt-24"
             >
-                <div className="flex flex-col w-full gap-10 lg:gap-12">
+                <div className="flex w-full flex-col gap-16 md:gap-20">
 
                     {/* SECTION: FORM INTERFACE */}
                     <AnimatePresence mode="wait">
                         {formState === 'success' ? (
                             <motion.div
                                 key="success"
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0 }}
-                                className="surface rounded-md p-8 md:p-10"
+                                initial={{ opacity: 0, transform: 'translateY(8px)' }}
+                                animate={{ opacity: 1, transform: 'translateY(0)' }}
+                                exit={{ opacity: 0, transition: { duration: 0.16 } }}
+                                transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+                                className="border-y border-line py-10"
                             >
                                 <CheckCircle2 size={24} className="text-status-ok mb-6" strokeWidth={1.5} />
                                 <h3 className="text-headline text-ink-high mb-2">Request initiated.</h3>
@@ -151,12 +151,11 @@ const ContactSection: React.FC = () => {
                         ) : (
                              <motion.form
                                 key="form"
-                                variants={itemVariants}
                                 onSubmit={handleSubmit}
                                 onInput={(event) => setIsFormReady(formIsReady(event.currentTarget))}
-                                className="surface rounded-md p-2"
+                                className="border-y border-line"
                              >
-                                <div className="relative group grid grid-cols-1 md:grid-cols-[9rem_minmax(0,1fr)] gap-2 md:gap-6 rounded-md p-5 md:p-6 focus-within:bg-fill transition-colors duration-200 ease-out">
+                                <div className="group relative grid grid-cols-1 gap-2 border-b border-line px-4 py-5 transition-colors duration-200 ease-entrance focus-within:bg-fill md:grid-cols-[9rem_minmax(0,1fr)] md:gap-6 md:px-6 md:py-6">
                                     <label htmlFor="contact-name" className="text-button text-ink-low group-focus-within:text-ink-max transition-colors duration-200 ease-out md:pt-2.5">
                                         Your name
                                     </label>
@@ -173,7 +172,7 @@ const ContactSection: React.FC = () => {
                                     <span className="absolute top-6 right-6 opacity-0 group-focus-within:opacity-100 transition-opacity duration-200 ease-out text-ink-max text-caption font-mono" aria-hidden="true">+</span>
                                 </div>
 
-                                <div className="relative group grid grid-cols-1 md:grid-cols-[9rem_minmax(0,1fr)] gap-2 md:gap-6 rounded-md p-5 md:p-6 focus-within:bg-fill transition-colors duration-200 ease-out">
+                                <div className="group relative grid grid-cols-1 gap-2 border-b border-line px-4 py-5 transition-colors duration-200 ease-entrance focus-within:bg-fill md:grid-cols-[9rem_minmax(0,1fr)] md:gap-6 md:px-6 md:py-6">
                                     <label htmlFor="contact-email" className="text-button text-ink-low group-focus-within:text-ink-max transition-colors duration-200 ease-out md:pt-2.5">
                                         Email address
                                     </label>
@@ -190,7 +189,7 @@ const ContactSection: React.FC = () => {
                                     <span className="absolute top-6 right-6 opacity-0 group-focus-within:opacity-100 transition-opacity duration-200 ease-out text-ink-max text-caption font-mono" aria-hidden="true">+</span>
                                 </div>
 
-                                <div className="relative group grid grid-cols-1 md:grid-cols-[9rem_minmax(0,1fr)] gap-3 md:gap-6 rounded-md p-5 md:p-6 focus-within:bg-fill transition-colors duration-200 ease-out">
+                                <div className="group relative grid grid-cols-1 gap-3 border-b border-line px-4 py-5 transition-colors duration-200 ease-entrance focus-within:bg-fill md:grid-cols-[9rem_minmax(0,1fr)] md:gap-6 md:px-6 md:py-6">
                                     <label htmlFor="contact-message" className="text-button text-ink-low group-focus-within:text-ink-max transition-colors duration-200 ease-out md:pt-1">
                                         Project details
                                     </label>
@@ -215,7 +214,7 @@ const ContactSection: React.FC = () => {
                                 <button
                                     type="submit"
                                     disabled={formState === 'submitting'}
-                                    className="w-full grid grid-cols-[1fr_auto] md:grid-cols-[9rem_minmax(0,1fr)_auto] items-center gap-6 group cursor-pointer rounded-md p-5 md:p-6 focus-visible:outline-none focus-visible:bg-fill disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 ease-out"
+                                    className="group grid w-full cursor-pointer grid-cols-[1fr_auto] items-center gap-6 px-4 py-5 transition-colors duration-200 ease-entrance focus-visible:bg-fill focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:grid-cols-[9rem_minmax(0,1fr)_auto] md:px-6 md:py-6"
                                 >
                                     <div className="md:col-start-2 flex flex-col shrink-0 text-left">
                                         <span className="text-button text-ink-high group-hover:text-ink-max group-focus-visible:text-ink-max group-disabled:text-ink-high transition-colors duration-300">
@@ -237,8 +236,7 @@ const ContactSection: React.FC = () => {
 
                     {/* FOOTER METADATA - Data Grid System */}
                     <motion.div
-                        variants={itemVariants}
-                        className="grid grid-cols-1 md:grid-cols-3 md:gap-8"
+                        className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8"
                     >
                         {/* 01: Email */}
                         <div className="flex flex-col gap-4 py-8">
@@ -266,13 +264,18 @@ const ContactSection: React.FC = () => {
                         </div>
 
                         {/* 03: Time - aligned right/end */}
-                        <div className="hidden md:flex flex-col gap-4 py-8">
+                        <div className="flex flex-col gap-4 py-8">
                             <span className="text-eyebrow text-ink-low">Local time</span>
                             <div>
                                 <LiveClock />
                             </div>
                         </div>
                     </motion.div>
+
+                    <div className="flex items-center justify-between gap-6 pb-2 text-caption text-ink-low">
+                        <span>Mert Bildik</span>
+                        <span className="font-mono">© 2026</span>
+                    </div>
 
                 </div>
             </motion.div>

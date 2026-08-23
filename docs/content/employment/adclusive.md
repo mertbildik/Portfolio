@@ -2,7 +2,7 @@
 
 Editorial reference only. Published project content lives in `src/portfolio/content/projects.ts`.
 
-- **Kind:** Client project
+- **Kind:** Long-term engagement
 - **Role:** Product designer
 - **Year / Status:** 2021 – 2024
 - **Timeline:** Sep 2021 to Jan 2024

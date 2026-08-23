@@ -82,6 +82,28 @@ test('homepage call to action scrolls to contact', async ({ page }) => {
     await expect(page.locator('#contact')).toBeInViewport();
 });
 
+test('homepage presents four work modules in two groups', async ({ page }) => {
+    await page.goto('/');
+    await settle(page);
+
+    const portfolio = page.locator('#portfolio');
+    await expect(portfolio.getByRole('heading', { name: 'Client work' })).toBeVisible();
+    await expect(portfolio.getByRole('heading', { name: 'Experience' })).toBeVisible();
+
+    for (const project of ['OFK Construction', 'Dog & Ride', 'Adclusive', 'McKinsey & Co.']) {
+        await expect(portfolio.getByRole('link', { name: new RegExp(project.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')) })).toBeVisible();
+    }
+});
+
+test('homepage card outcomes remain visible on narrow screens', async ({ page }) => {
+    await page.setViewportSize(MOBILE);
+    await page.goto('/');
+    await settle(page);
+
+    await expect(page.getByText('A bilingual brand and website that makes an established construction record')).toBeVisible();
+    await expect(page.getByText('High-stakes visual communication shaped from complex models, under strict NDA.')).toBeVisible();
+});
+
 // The template used to drop any output block whose title contained "brand" or
 // "social", so content written in projects.ts never appeared on the page.
 test('every output block in the content file reaches the page', async ({ page }) => {
@@ -146,6 +168,19 @@ test('reduced motion disables smooth scrolling', async ({ page }) => {
     await page.goto('/portfolio/ofk');
 
     expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto');
+});
+
+test('reduced motion stops homepage ambient and hover movement', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    await settle(page);
+
+    const card = page.locator('a[href="/portfolio/ofk"]');
+    await card.hover();
+
+    expect(await card.locator('.work-card-image').evaluate((image) => getComputedStyle(image).transform)).toBe('none');
+    expect(await page.locator('.animate-ring-spin').evaluate((ring) => getComputedStyle(ring).animationName)).toBe('none');
 });
 
 test('case-study rail changes at the layout breakpoint without overflow', async ({ page }) => {

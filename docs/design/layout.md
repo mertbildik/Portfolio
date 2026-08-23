@@ -18,7 +18,7 @@ The shared frames set max width, gutters and vertical padding. `HomePageSection`
 
 ## The single scroll
 
-The homepage is one column: hero, work, contact, stacked. Each section carries an eyebrow, a heading, and its content. Nothing is hidden behind tabs or separate pages.
+The homepage is one column: hero, selected work, and contact, stacked. Sections use direct headings without eyebrow chrome. Selected work contains two explicit groups, Client work and Experience, and all project modules remain full width. Nothing is hidden behind tabs or separate pages.
 
 ## Case studies
 
@@ -26,7 +26,7 @@ A narrow left rail carrying the timeline, tools and a sticky contents nav, one e
 
 ## Grid
 
-Case studies may use a 12-column grid from `lg`; the homepage frame does not.
+Case studies may use a 12-column grid from `lg`; the homepage frame does not. Homepage project metadata uses a local title-and-year grid without changing the page shape.
 
 ## Measure
 

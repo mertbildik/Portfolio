@@ -10,11 +10,11 @@ A calm, highly crafted personal portfolio focused on digital design, interfaces,
 
 | # | Principle | In practice |
 |---|---|---|
-| 1 | **Ink carries hierarchy, not size** | A heading split over lines uses one size. Emphasis comes from moving up the ink ramp, never from a second font size. |
+| 1 | **Hierarchy earns scale** | Ink carries most hierarchy. The homepage hero receives one controlled responsive tier; everything below returns to the fixed scale. |
 | 2 | **Space before surfaces** | Spacing and alignment structure the page. A quiet fill groups exceptional content; borders frame images and controls only. |
 | 3 | **Sans for words, mono for data** | Sentences and labels are Inter. Timestamps, coordinates, counts and values are monospace. |
 | 4 | **Rest is dim, hover is bright** | Interactive elements sit one to two steps down the ink ramp and resolve toward white on hover. |
-| 5 | **Motion reveals, decorates rarely** | Things enter once, from below, and settle. The hero portrait ring is the deliberate exception. |
+| 5 | **Motion reveals, decorates once** | Things enter once, from below, and settle. The slow hero portrait ring is the only loop. |
 
 ## The system
 

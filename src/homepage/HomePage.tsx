@@ -22,12 +22,6 @@ const HomePage: React.FC = () => {
             <HomePageSection id="contact">
                 <ContactSection />
             </HomePageSection>
-
-            <div className="fixed bottom-8 left-6 z-40 hidden lg:block pointer-events-none">
-                <span className="text-caption text-ink-low">
-                    Mert Bildik <span className="font-mono">© 2026</span>
-                </span>
-            </div>
         </>
     );
 };

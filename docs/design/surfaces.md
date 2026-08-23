@@ -30,14 +30,15 @@ A bullet uses the ink of the text it marks. A semantic dot uses its status colou
 
 | Block | Treatment |
 |---|---|
-| **Card** | A self-contained idea on `surface`, with the minimal radius and no border or hover |
+| **Card** | A self-contained static idea on `surface`, with the minimal radius and no border or hover |
+| **Work module** | Open text on the page canvas beneath one framed media viewport. The module has no outer fill, lift or shadow. |
 | **Panel** | One `surface` containing a larger grouped layout |
 | **Grid cell** | Open content separated from neighbouring cells by grid gap |
 | **Role chip** | A minimal-radius `surface` using `ink-low` for the case-study category |
 | **Tool chip** | The same minimal-radius `surface`, smaller and quieter with `ink-low` |
 | **Circle button** | A quiet `line` outline paired with a text label; the only control that fills on hover |
 | **Row** | Open, spacing-led and borderless at rest; responds through ink and icon feedback |
-| **Contact form** | One `surface` containing aligned, borderless rows; focus adds `fill` to the active row, brightens its label and reveals its marker |
+| **Contact form** | Open aligned rows between functional `line` boundaries; focus adds `fill` to the active row, brightens its label and reveals its marker |
 | **Back control** | A short functional rule that grows beside its label |
 | **Section eyebrow** | A bare label with no decorative rule |
 
@@ -58,5 +59,6 @@ A bullet uses the ink of the text it marks. A semantic dot uses its status colou
 - Static surfaced content has no border.
 - No static divider lines.
 - No hover fill except circle-button inversion.
+- Work media may settle slightly on fine-pointer hover; the module itself never lifts.
 - If it is not clickable, it does not react.
 - Do not nest one filled surface inside another without a concrete content need.

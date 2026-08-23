@@ -40,7 +40,7 @@ Lift the whole control without flattening its hierarchy:
 
 Rows and links never gain a hover fill. A subtle `fill` may support keyboard focus when ink and icon feedback need a larger visible area. The circle action is the only hover exception: it inverts to an `ink-max` fill with `canvas` foreground. Text selection uses the same pair.
 
-The contact form is one `surface` with open, aligned rows inside it. Labels rest at `ink-low`, prompts use `ink-body`, and values use `ink-high`. A focused row receives `fill`, an `ink-max` label and the existing plus marker; it does not gain an outline.
+The contact form is open on the canvas with aligned rows between functional `line` boundaries. Labels rest at `ink-low`, prompts use `ink-body`, and values use `ink-high`. A focused row receives `fill`, an `ink-max` label and the existing plus marker; it does not gain an outline.
 
 ## Status
 

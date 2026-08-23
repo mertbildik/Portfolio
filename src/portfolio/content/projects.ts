@@ -66,7 +66,7 @@ export const PROJECTS: Project[] = [
         kind: 'clientProject',
         title: 'OFK Construction',
         role: 'Product designer',
-        yearOrStatus: '2025',
+        yearOrStatus: '2026',
         listed: true,
         renderer: 'template',
         caseStudy: {
@@ -281,7 +281,7 @@ export const PROJECTS: Project[] = [
     },
     {
         id: 'adclusive',
-        kind: 'clientProject',
+        kind: 'employment',
         title: 'Adclusive',
         role: 'Product designer',
         yearOrStatus: '2021 – 2024',

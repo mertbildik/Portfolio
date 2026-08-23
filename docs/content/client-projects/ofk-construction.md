@@ -4,7 +4,7 @@ Editorial reference only. Published project content lives in `src/portfolio/cont
 
 - **Kind:** Client project
 - **Role:** Product designer
-- **Year / Status:** 2025
+- **Year / Status:** 2026
 - **Timeline:** Mar 2026 to Apr 2026
 - **Tools:** React, Tailwind, Framer Motion, Notion, Claude Code, Adobe Creative Cloud
 

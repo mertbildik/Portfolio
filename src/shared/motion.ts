@@ -7,8 +7,24 @@ import type { Variants } from 'motion/react';
  * is the JS-side copy of `--ease-entrance` in src/index.css. If one changes, the
  * other has to change with it.
  */
-export const EASE = [0.16, 1, 0.3, 1] as const;
+export const EASE = [0.23, 1, 0.32, 1] as const;
 export const VIEWPORT_ONCE = { once: true, margin: '-10%' } as const;
+
+export const homepageContainerVariants: Variants = {
+    hidden: {},
+    visible: {
+        transition: { staggerChildren: 0.055, delayChildren: 0.08 },
+    },
+};
+
+export const homepageItemVariants: Variants = {
+    hidden: { opacity: 0, transform: 'translateY(12px)' },
+    visible: {
+        opacity: 1,
+        transform: 'translateY(0)',
+        transition: { duration: 0.55, ease: EASE },
+    },
+};
 
 export const blockVariants: Variants = {
     hidden: { opacity: 0, y: 10 },

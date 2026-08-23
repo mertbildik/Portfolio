@@ -8,6 +8,8 @@ The scale is used sparsely on purpose. A handful of steps carry almost everythin
 
 These pairs are fixed. Do not re-tune them per page.
 
+The homepage composes these component pairs into larger regions. Hero, work groups and contact each own one deliberate internal rhythm; sections do not gain surfaces or rules merely to explain their spacing.
+
 | Pair | Class |
 |---|---|
 | Eyebrow → section heading | `mb-8` |

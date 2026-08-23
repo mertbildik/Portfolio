@@ -32,6 +32,10 @@ An output block opens with a borderless `fill` card describing what is shown, th
 
 One portrait exists. It is a full circle, cropped to the top and surrounded by the rotating location label. It has no filter, tint or overlay and is not a pattern to reuse.
 
+## Homepage work
+
+Selected work uses one art-directed real asset per shareable project. Each image fills or deliberately sits within the common 8:5 viewport; the crop and fit are chosen per project rather than inferred. Confidential work uses verified typographic data in the same frame instead of a placeholder or invented screenshot.
+
 ## Alt text and loading
 
 - Every image below the first screen loads lazily.

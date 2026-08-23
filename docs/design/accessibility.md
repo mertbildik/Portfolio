@@ -20,9 +20,10 @@ Meaningful sentences use `ink-body` or brighter. Static text is never dimmed wit
 Every keyboard-focusable control has a visible state. `outline-none` is allowed only when the same element or its wrapper supplies a clear combination of contrast, shape or tonal change.
 
 - Contact fields gain a tonal surface, bright label and plus marker.
-- Portfolio rows gain a tonal surface, brighter hierarchy and their arrow.
+- Homepage work modules brighten their hierarchy, reveal their outcome and arrow, and strengthen the media boundary.
 - Inline controls provide a clear ink lift, revealed icon or functional underline.
 - Hover-revealed colour and icons also appear on `focus-visible`.
+- Information revealed on wide fine-pointer layouts remains persistently visible on narrow layouts.
 
 Static dividers are not focus indicators and never return for this purpose.
 

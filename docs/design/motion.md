@@ -1,6 +1,6 @@
 # Motion
 
-Content enters once, from below, and settles. State changes are short and colour-led. The hero portrait ring is the one deliberate loop.
+Content enters once, from below, and settles. State changes are short and colour-led. The slow hero portrait ring is the one deliberate loop.
 
 Shared variants live in `src/shared/motion.ts`. Use them; do not write a one-off variant beside them.
 
@@ -21,6 +21,8 @@ There are two durations for state and three for entrance. Everything in between 
 | enter-item | 600ms | A single item entering a stagger |
 | enter-block | 800ms | A block, a hero, a page fade |
 | enter-section | 1200ms | A full section |
+
+The homepage uses a tighter product rhythm: items enter over `550ms` with `55ms` between children. Its cards use `220ms` transform and opacity transitions, and circle controls confirm a press over `150ms`.
 
 `index.css` sets the default transition duration to the fast step, so a transition written without a duration still lands on the scale.
 
@@ -50,6 +52,7 @@ Reuse these. Do not invent a new hover.
 
 - Text lift. One step up the ink ramp.
 - Arrow reveal. Slides in from the left as it fades up.
+- Work reveal. A project image settles slightly while relationship metadata resolves into a short outcome. It is hover/focus enhancement only; narrow layouts show both strings.
 - Rule grow. A short rule extends.
 - Focus feedback. A tonal shift, ink lift or functional line confirms focus without a bright perimeter.
 - Circle invert. Transparent to an `ink-max` fill, icon to `canvas`.
@@ -60,14 +63,14 @@ Compose at most three of these in one hover. A row uses text lift plus arrow rev
 
 ## Ambient motion
 
-The hero portrait ring turns slowly (`animate-ring-spin`), and the status dot pulses. These are the only looping motions in the system.
+The hero portrait ring turns slowly (`animate-ring-spin`). Availability remains static. No other motion loops.
 
 ## Reduced motion
 
 Under `prefers-reduced-motion: reduce`:
 
 - Entrances resolve instantly to their visible state. Opacity may still fade; position offsets go to zero.
-- The status dot stops pulsing and the portrait ring stops turning.
+- The portrait ring stops turning and project media does not move.
 - Hover colour and opacity changes continue. They carry state and must remain.
 
 `MotionConfig reducedMotion="user"` covers everything `motion` drives. It does not cover CSS loops, which need their own media query in `index.css`.

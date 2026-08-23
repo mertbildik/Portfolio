@@ -5,9 +5,9 @@ const HomePageSection: React.FC<{ children: React.ReactNode; id: string; hero?: 
     id,
     hero = false,
 }) => (
-    <section id={id} className={`w-full ${hero ? 'min-h-screen' : ''}`}>
+    <section id={id} className="w-full">
         <div
-            className={`relative z-10 w-full max-w-page mx-auto px-6 flex flex-col gap-16 ${hero ? 'pt-18 pb-20' : 'py-20'}`}
+            className={`relative z-10 w-full max-w-page mx-auto px-6 ${hero ? 'pt-20 pb-24 md:pt-24 md:pb-28' : 'py-24 md:py-28'}`}
         >
             {children}
         </div>

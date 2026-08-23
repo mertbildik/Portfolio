@@ -64,6 +64,16 @@
   --text-display-lg--letter-spacing: -0.024em;
   --text-display-lg--font-weight: 400;
 
+  --text-hero: 34px;
+  --text-hero--line-height: 1.16;
+  --text-hero--letter-spacing: -0.03em;
+  --text-hero--font-weight: 400;
+
+  --text-hero-lg: 40px;
+  --text-hero-lg--line-height: 1.14;
+  --text-hero-lg--letter-spacing: -0.032em;
+  --text-hero-lg--font-weight: 400;
+
   --text-display-md: 26px;
   --text-display-md--line-height: 1.25;
   --text-display-md--letter-spacing: -0.02em;
@@ -151,12 +161,12 @@
      different runtimes: change one and change the other.
      Durations use Tailwind's own scale: 200 is the default state change, 300 a
      larger reveal or inversion. */
-  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-entrance: cubic-bezier(0.23, 1, 0.32, 1);
   --default-transition-duration: 200ms;
 
   /* The one deliberate ambient loop on content: the portrait ring on the
      hero turns slowly. Constant motion runs linear. */
-  --animate-ring-spin: ring-spin 20s linear infinite;
+  --animate-ring-spin: ring-spin 36s linear infinite;
   @keyframes ring-spin {
     to {
       rotate: 360deg;
@@ -205,8 +215,80 @@
   }
 }
 
+@layer components {
+  .work-card-media {
+    aspect-ratio: 8 / 5;
+  }
+
+  .work-card-image,
+  .work-card-rest,
+  .work-card-reveal,
+  .work-card-arrow {
+    transition-duration: 220ms;
+    transition-timing-function: var(--ease-entrance);
+  }
+
+  .work-card-image {
+    transition-property: transform;
+  }
+
+  .work-card-rest,
+  .work-card-reveal,
+  .work-card-arrow {
+    transition-property: opacity, transform;
+  }
+
+  .work-card-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .work-card-arrow {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  @media (min-width: 48rem) and (hover: hover) and (pointer: fine) {
+    .work-card-copy {
+      display: grid;
+    }
+
+    .work-card-copy > * {
+      grid-area: 1 / 1;
+    }
+
+    .work-card-reveal {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    .work-card:hover .work-card-image {
+      transform: scale(1.015);
+    }
+
+    .work-card:hover .work-card-rest,
+    .work-card:focus-visible .work-card-rest {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+
+    .work-card:hover .work-card-reveal,
+    .work-card:focus-visible .work-card-reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .work-card:hover .work-card-arrow,
+    .work-card:focus-visible .work-card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
 /* motion handles its own animations via MotionConfig reducedMotion="user".
-   This covers the one CSS loop left: the pulsing status dot. */
+   The portrait ring is CSS-driven, so it is stopped here. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -218,5 +300,15 @@
 
   .animate-ring-spin {
     animation: none;
+  }
+
+  .work-card:hover .work-card-image,
+  .work-card:hover .work-card-rest,
+  .work-card:focus-visible .work-card-rest,
+  .work-card:hover .work-card-reveal,
+  .work-card:focus-visible .work-card-reveal,
+  .work-card:hover .work-card-arrow,
+  .work-card:focus-visible .work-card-arrow {
+    transform: none;
   }
 }
