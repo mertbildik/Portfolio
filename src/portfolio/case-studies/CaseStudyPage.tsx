@@ -18,11 +18,11 @@ const CaseStudyPage: React.FC = () => {
     if (!project) return <Navigate to="/#portfolio" replace />;
 
     if (project.renderer === 'template') {
-        return <CaseStudyLayout><ProjectCaseStudy project={project} /></CaseStudyLayout>;
+        return <CaseStudyLayout homepageGrid><ProjectCaseStudy project={project} /></CaseStudyLayout>;
     }
 
     if (project.renderer === 'employment') {
-        return <CaseStudyLayout><EmploymentCaseStudy data={project.employment} /></CaseStudyLayout>;
+        return <CaseStudyLayout homepageGrid><EmploymentCaseStudy data={project.employment} /></CaseStudyLayout>;
     }
 
     const HandWritten = HAND_WRITTEN[project.page];

@@ -1,7 +1,10 @@
 import React, { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router';
 
-const CaseStudyLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const CaseStudyLayout: React.FC<{ children: React.ReactNode; homepageGrid?: boolean }> = ({
+    children,
+    homepageGrid = false,
+}) => {
     const { pathname } = useLocation();
 
     useLayoutEffect(() => {
@@ -9,8 +12,13 @@ const CaseStudyLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
     }, [pathname]);
 
     return (
-        /* Case studies keep their wider frame for galleries and content rails. */
-        <div className="w-full max-w-shell mx-auto px-6 md:px-12 lg:pl-32 lg:pr-20 xl:px-32 pt-24 pb-32 flex-1 flex flex-col">
+        <div
+            className={`w-full mx-auto px-6 pb-32 flex-1 flex flex-col ${
+                homepageGrid
+                    ? 'max-w-page pt-20 md:pt-24'
+                    : 'max-w-shell md:px-12 lg:pl-32 lg:pr-20 xl:px-32 pt-24'
+            }`}
+        >
             {children}
         </div>
     );

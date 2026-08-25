@@ -154,13 +154,33 @@ test('direct case-study back navigation returns to portfolio', async ({ page }) 
     await expect(page.locator('#portfolio')).toBeInViewport();
 });
 
-test('case-study contents use addressable native anchors', async ({ page }) => {
+test('case-study section navigation uses addressable native anchors', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/portfolio/ofk');
+    await page.getByRole('navigation', { name: 'Case study sections' }).hover();
     await page.getByRole('link', { name: 'Approach', exact: true }).click();
 
     await expect(page).toHaveURL('/portfolio/ofk#approach');
     await expect(page.locator('#approach')).toBeInViewport();
+});
+
+test('McKinsey uses the shared case-study header and section navigation', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/portfolio/mckinsey');
+
+    await expect(page.getByText('Status: Confidential', { exact: true })).toBeVisible();
+    for (const tool of ['Slack', 'Microsoft 365', 'Affinity', 'think-cell']) {
+        await expect(page.getByText(tool, { exact: true })).toBeVisible();
+    }
+    await expect(page.getByText('Work is under strict NDA. Process and outcomes can be shared on a call.')).toBeVisible();
+
+    const frameWidth = await page.locator('main > div').evaluate((element) => element.getBoundingClientRect().width);
+    expect(frameWidth).toBe(692);
+
+    await page.getByRole('navigation', { name: 'Case study sections' }).hover();
+    await page.getByRole('link', { name: 'Capabilities', exact: true }).click();
+    await expect(page).toHaveURL('/portfolio/mckinsey#capabilities');
+    await expect(page.locator('#capabilities')).toBeInViewport();
 });
 
 test('reduced motion disables smooth scrolling', async ({ page }) => {
@@ -183,7 +203,7 @@ test('reduced motion stops homepage ambient and hover movement', async ({ page }
     expect(await page.locator('.animate-ring-spin').evaluate((ring) => getComputedStyle(ring).animationName)).toBe('none');
 });
 
-test('case-study rail changes at the layout breakpoint without overflow', async ({ page }) => {
+test('case-study section navigation changes at the layout breakpoint without overflow', async ({ page }) => {
     for (const width of [767, 768, 1023, 1024]) {
         await page.setViewportSize({ width, height: 800 });
         await page.goto('/portfolio/ofk');

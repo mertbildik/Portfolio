@@ -4,6 +4,7 @@ export interface EmploymentData {
     companySuffix?: string; // e.g. "& Company"
     role: string;
     description: string;
+    tools: string[];
     ndaStatus: string;
     ndaDescription: string;
     stats: {
@@ -25,6 +26,7 @@ export const EMPLOYMENT_CONTENT: Record<string, EmploymentData> = {
         companySuffix: '& Company',
         role: 'Visual communication specialist',
         description: 'Translating complex financial models into intuitive narratives.',
+        tools: ['Slack', 'Microsoft 365', 'Affinity', 'think-cell'],
         ndaStatus: 'Confidential',
         ndaDescription: 'Work is under strict NDA. \nProcess and outcomes can be shared on a call.',
         stats: [

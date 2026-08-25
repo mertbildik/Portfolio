@@ -3,9 +3,15 @@ import { motion } from 'motion/react';
 import { Lock } from 'lucide-react';
 import type { EmploymentData } from '../../content/employment';
 import BackLink from '../BackLink';
+import CaseStudySectionNavigator from '../CaseStudySectionNavigator';
 import { EASE, VIEWPORT_ONCE } from '../../../shared/motion';
 
 const DURATION_BUMP = 0.8;
+const SECTIONS = [
+    { id: 'impact', label: 'Impact', description: 'Scale and outcomes' },
+    { id: 'capabilities', label: 'Capabilities', description: 'Core areas of work' },
+    { id: 'restricted-access', label: 'Restricted access', description: 'NDA and shareable process' },
+];
 
 const StatBlock: React.FC<{ value: string; label: string; desc: string; delay: number }> = ({ value, label, desc, delay }) => (
     <motion.div
@@ -27,12 +33,13 @@ const StatBlock: React.FC<{ value: string; label: string; desc: string; delay: n
 
 const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
     return (
-        <div className="w-full space-y-24 md:space-y-32">
-
-            {/* 1. HERO SECTION */}
-            <div className="relative">
-
-                {/* Back Link */}
+        <div className="w-full">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: EASE }}
+                className="mb-24 w-full md:mb-32"
+            >
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -42,47 +49,43 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     <BackLink to="/#portfolio" ariaLabel="Back to portfolio">Go back</BackLink>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                    {/* Left: Title & Role */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: EASE }}
-                        className="lg:col-span-8"
-                    >
-                        <h1 className="text-display-lg mb-8 text-ink-high">
-                            {data.companyName}<br />
-                            {data.companySuffix && <span>{data.companySuffix}</span>}
-                        </h1>
-
-                        <p className="text-body text-ink-body max-w-xl">
-                            {data.role}. <br />
-                            {data.description}
-                        </p>
-                    </motion.div>
-
-                    {/* Right: NDA Status */}
-                    <div className="lg:col-span-4 flex flex-col justify-end lg:pl-12">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            className="flex flex-col gap-6 py-2"
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                <div className="w-1.5 h-1.5 bg-ink-low rounded-full" />
-                                <span className="text-eyebrow text-ink-low">Status: {data.ndaStatus}</span>
-                            </div>
-                            <p className="text-body-sm text-ink-body max-w-[240px] whitespace-pre-line">
-                                {data.ndaDescription}
-                            </p>
-                        </motion.div>
+                <div className="flex flex-col gap-8">
+                    <div className="flex flex-wrap items-center gap-3">
+                        <div className="inline-flex items-center rounded-md surface px-3 py-1.5">
+                            <span className="text-caption text-ink-low">{data.role}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span className="h-1.5 w-1.5 rounded-full bg-ink-low" />
+                            <span className="text-caption text-ink-low">Status: {data.ndaStatus}</span>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            {/* 2. STATS & IMPACT GRID */}
-            <section>
+                    <h1 className="text-display-lg text-ink-high">
+                        {data.companyName}<br />
+                        {data.companySuffix && <span>{data.companySuffix}</span>}
+                    </h1>
+
+                    <p className="max-w-xl text-body text-ink-body">{data.description}</p>
+
+                    <div className="space-y-3">
+                        <span className="block text-eyebrow text-ink-low">Tools</span>
+                        <div className="flex flex-wrap gap-2">
+                            {data.tools.map((tool) => (
+                                <span key={tool} className="rounded-md surface px-2 py-1 text-caption text-ink-low text-nowrap">
+                                    {tool}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    <p className="max-w-xl whitespace-pre-line text-body-sm text-ink-low">{data.ndaDescription}</p>
+                </div>
+            </motion.div>
+
+            <CaseStudySectionNavigator sections={SECTIONS} pageKey={data.id} />
+
+            <div className="space-y-24 md:space-y-32">
+            <section id="impact" className="scroll-mt-32">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -92,7 +95,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     <h2 className="text-display-md text-ink-high">Impact & metrics</h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {data.stats.map((stat, i) => (
                         <StatBlock
                             key={i}
@@ -105,8 +108,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                 </div>
             </section>
 
-            {/* 3. MODULAR CAPABILITIES GRID */}
-            <section>
+            <section id="capabilities" className="scroll-mt-32">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -116,7 +118,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     <h2 className="text-display-md text-ink-high">Core capabilities</h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {data.capabilities.map((cap, idx) => (
                         <motion.div
                             key={idx}
@@ -124,7 +126,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={VIEWPORT_ONCE}
                             transition={{ duration: DURATION_BUMP, delay: idx * 0.1, ease: EASE }}
-                            className="p-8 lg:p-12 flex flex-col gap-8 min-h-[320px]"
+                            className="flex min-h-[320px] flex-col gap-8 p-8 md:p-10"
                         >
                             <h3 className="text-card-title text-ink-high">
                                 <span className="font-mono">{cap.title.split(' / ')[0]}</span> / {cap.title.split(' / ')[1]}
@@ -142,11 +144,10 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                 </div>
             </section>
 
-            {/* 4. FOOTER: RESTRICTED ACCESS REDESIGN */}
-            <section>
+            <section id="restricted-access" className="scroll-mt-32">
                 <div className="relative surface rounded-md overflow-hidden">
 
-                    <div className="relative p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                    <div className="relative grid grid-cols-1 gap-12 p-8 md:grid-cols-2 md:p-12">
 
                         {/* LEFT: NDA Declaration */}
                         <div className="flex flex-col gap-8 justify-between">
@@ -192,7 +193,7 @@ const EmploymentCaseStudy: React.FC<{ data: EmploymentData }> = ({ data }) => {
                     </div>
                 </div>
             </section>
-
+            </div>
         </div>
     );
 };

@@ -6,6 +6,7 @@ Editorial reference only. Published employment content lives in `src/portfolio/c
 - **Role:** Visual communication specialist
 - **Year / Status:** 2021 – 2024
 - **NDA status:** Confidential
+- **Tools:** Slack, Microsoft 365, Affinity, think-cell
 
 **Description:** Translating complex financial models into intuitive narratives.
 

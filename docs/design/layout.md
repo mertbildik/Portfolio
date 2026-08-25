@@ -4,7 +4,7 @@ The site is a narrow single scroll first, with wider case studies as a second sh
 
 ## Frame
 
-The shared frames set max width, gutters and vertical padding. `HomePageSection` owns the narrow homepage frame; `CaseStudyLayout` owns the wider case-study frame.
+The shared frames set max width, gutters and vertical padding. `HomePageSection` owns the narrow homepage frame; `CaseStudyLayout` selects that same frame for selected case studies and the wider frame for custom studies.
 
 ## Breakpoints
 
@@ -22,11 +22,11 @@ The homepage is one column: hero, selected work, and contact, stacked. Sections 
 
 ## Case studies
 
-A narrow left rail carrying the timeline, tools and a sticky contents nav, one empty column as the gap, then the body. The rail is hidden below `lg`. Sections carry a scroll margin so anchored jumps clear the sticky rail.
+Selected project and employment case studies use the homepage frame and single-column grid. Project metadata and tools sit in the header. From `lg`, a fixed right-edge section indicator expands on hover or keyboard focus to show the section names and descriptions. Sections carry a scroll margin for anchored jumps.
 
 ## Grid
 
-Case studies may use a 12-column grid from `lg`; the homepage frame does not. Homepage project metadata uses a local title-and-year grid without changing the page shape.
+Custom case studies may use a 12-column grid from `lg`; the homepage frame does not. Homepage project metadata and selected case-study headers use local metadata grids without changing the page shape.
 
 ## Measure
 
@@ -50,6 +50,6 @@ From back to front: the fixed background, then page content, then the footer sta
 
 There are no modals, dropdowns or tooltips in the system, so nothing else claims a layer in this ladder. A local `z-10` inside a component, to lift a label above its own decoration, is not part of it.
 
-## Sticky
+## Fixed navigation
 
-Sticky elements clear the page top padding. The one sticky element is the case-study contents nav.
+The selected case-study section navigator is fixed to the right viewport edge from `lg`. Its resting state keeps only the section indicator visible so it does not compete with the content.
