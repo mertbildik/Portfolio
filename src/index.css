@@ -113,7 +113,7 @@
 
   --text-eyebrow: 13px;
   --text-eyebrow--line-height: 1.30;
-  --text-eyebrow--letter-spacing: 0.4px;
+  --text-eyebrow--letter-spacing: 0;
   --text-eyebrow--font-weight: 500;
 
   /* ---- canvas ----------------------------------------------------------
