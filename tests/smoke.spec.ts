@@ -164,6 +164,34 @@ test('case-study section navigation uses addressable native anchors', async ({ p
     await expect(page.locator('#approach')).toBeInViewport();
 });
 
+for (const study of [
+    { id: 'ofk', link: 'Visit OFK Construction', href: 'https://ofkconstruction.com' },
+    { id: 'dog-and-ride', link: 'Visit Dog & Ride', href: 'https://www.dogandride.com/' },
+]) {
+    test(`${study.id} presents the final case-study frame and live site`, async ({ page }) => {
+        await page.goto(`/portfolio/${study.id}`);
+        await settle(page);
+
+        for (const label of ['Role', 'Timeline', 'Scope', 'Tools']) {
+            await expect(page.getByText(label, { exact: true }).first()).toBeVisible();
+        }
+        for (const section of ['Problem', 'Approach', 'Solution', 'Output', 'Impact']) {
+            await expect(page.getByRole('heading', { name: section, exact: true })).toBeVisible();
+        }
+        await expect(page.getByRole('link', { name: study.link })).toHaveAttribute('href', study.href);
+    });
+}
+
+test('Dog & Ride presents supporting metrics for the first five months', async ({ page }) => {
+    await page.goto('/portfolio/dog-and-ride');
+    await settle(page);
+
+    await expect(page.getByText('First five months after launch', { exact: true })).toBeVisible();
+    for (const metric of ['56s', 'Instagram', '700+', '10K+', '100K+']) {
+        await expect(page.getByText(metric, { exact: true })).toBeVisible();
+    }
+});
+
 test('McKinsey uses the shared case-study header and section navigation', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/portfolio/mckinsey');

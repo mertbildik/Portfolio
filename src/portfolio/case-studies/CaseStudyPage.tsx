@@ -5,8 +5,10 @@ import CaseStudyLayout from './CaseStudyLayout';
 import EmploymentCaseStudy from './templates/EmploymentCaseStudy';
 import ProjectCaseStudy from './templates/ProjectCaseStudy';
 
-/** Ventures whose page is written by hand rather than driven by content. */
+/** Pages written by hand rather than driven by the shared template. */
 const HAND_WRITTEN: Record<CustomProject['page'], React.LazyExoticComponent<React.ComponentType<{ project: CustomProject }>>> = {
+    ofk: React.lazy(() => import('./studies/OfkCaseStudy')),
+    'dog-and-ride': React.lazy(() => import('./studies/DogAndRideCaseStudy')),
     curvix: React.lazy(() => import('./studies/CurvixCaseStudy')),
     'gala-network': React.lazy(() => import('./studies/GalaNetworkCaseStudy')),
 };

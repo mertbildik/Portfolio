@@ -1,93 +1,113 @@
 # OFK Construction
 
-Editorial reference only. Published project content lives in `src/portfolio/content/projects.ts`.
+Editorial reference only. Published project content lives in `src/portfolio/case-studies/studies/OfkCaseStudy.tsx`.
 
 - **Kind:** Client project
 - **Role:** Product designer
 - **Year / Status:** 2026
-- **Timeline:** Mar 2026 to Apr 2026
-- **Tools:** React, Tailwind, Framer Motion, Notion, Claude Code, Adobe Creative Cloud
+- **Timeline:** Mar to Apr 2026
+- **Scope:** Strategy, identity, UX/UI, build
+- **Tools:** Figma, Notion, Claude Code, Affinity
 
-**One-line summary:** A brand direction, design system, and bilingual website for a Polish construction company, built so B2B clients can verify the work in one visit.
+**Summary:** OFK had completed projects and signed references, but no digital home for either. I built a bilingual website that helps corporate buyers inspect the work before making contact.
 
 ## Problem
 
-OFK had been running since 2018 with 200+ employees.
-Real track record. Orlen Olefin Expansion in Płock. Szczecin Polimery. Warsaw Fast Tramline.
+OFK’s reputation lived in completed projects, client relationships, photographs, and signed references. Online, the company had little more than a logo.
 
-But no website. No brand beyond a logo.
-B2B clients had no way to check who OFK was before reaching out.
+A buyer could not assess OFK in one place. They had to piece the story together from files and conversations.
 
-**Context**
+The website also needed to support pitches, meetings, and early project discussions.
 
-Core problem statement
-The work was real. The proof of it was not visible anywhere online.
+**Visual:** `problem-image-1.webp`
 
-**Objectives**
-
-- Show who OFK is and what they build
-- Make completed projects and references easy to verify
-- Keep contact one tap away
-
-**User scenario:** A procurement manager shortlisting subcontractors checks credibility before any call.
-OFK had nothing to give them.
+*The proof existed, but it was scattered across documents and folders.*
 
 ## Approach
 
-Started with what a B2B buyer actually looks for.
-Track record. Scale. Real references. A clear way to reach the team.
+I reviewed company documents, project records, photographs, service information, and three signed references.
 
-Content was shaped around those four questions.
-The design system was built before pages, so EN and PL stay consistent without rework.
+I used four questions to judge what belonged in the product:
+
+- Can OFK perform the required work?
+- Has it delivered something comparable?
+- Who can verify that experience?
+- How can a buyer start a conversation?
+
+Projects, technical scopes, and references gave the strongest answers. Broad company claims carried less weight without evidence.
+
+That set the hierarchy. Company information stayed brief, while project evidence had room for closer review.
+
+The client wanted to avoid platform fees and dependence on a website builder. I chose React so OFK could own and extend the website.
+
+**Visuals:** `approach-image-1.webp`, `approach-image-2.webp`, `approach-image-3.webp`, `approach-image-4.webp`
+
+*When sources conflicted, the most recent client confirmation took priority.*
+
+*Confirmed facts and missing evidence set the limits before design began.*
+
+*The audience and service taxonomy defined what the site had to make scannable.*
+
+*Positioning stayed separate from proof. Confirmed figures could be shown, but not attached to an unverified project.*
 
 ## Solution
 
-One system across brand, design, and site.
-Built to show the work, list real references, and make contact easy.
+I extended OFK’s logo into a digital identity. One blue accent, blue-gray neutrals, clear type, and firm spacing gave the website a technical voice.
 
-### Key decisions
+The website follows one rule: state the point, show the proof, then offer more detail.
 
-**Bilingual from day one** — English and Polish baked into the system, not bolted on. OFK works with both Polish and international clients.
+### Projects became the proof
 
-**Projects as the main trust signal** — Orlen Olefin Expansion, Szczecin Polimery, and the Warsaw Tramline shown with scope and reference letters.
+A service list says what OFK offers. A named project shows that the company has delivered it. Each project connects its location, photography, technical scope, and execution details in one place.
 
-**Reference companies up front** — FABE POLSKA, YOOJEONG, and ILK INSAAT named directly. Prospects can match them to the projects.
+**Visual:** `solution-projects.webp`
 
-**System before pages** — Tokens, primitives, and motion rules built first. Every section reuses the same parts.
+*Project summaries make comparable experience visible before a buyer opens the technical detail.*
+
+### References stayed verifiable
+
+A company name suggests credibility. A signed document lets a buyer inspect the claim. Each reference connects to its company, project, scope, and original file.
+
+**Visual:** `solution-references.webp`
+
+*Each reference stays attached to its company, project, scope, and original document.*
+
+### Two languages shared one system
+
+Separate sites would double the work and invite mismatched content. English and Polish share one structure, persistent language choice, and stable navigation.
+
+**Visual:** `solution-languages.webp`
+
+*Both languages change inside the same stable navigation.*
 
 ## Output
 
-### Brand direction
+I led product strategy, identity, UX/UI, and the front-end build.
 
-A grounded, editorial visual direction. Monochrome blue accent on a cool blue-gray neutral family. Professional without feeling corporate.
+I shipped a company overview, services, named projects, technical scopes, responsive galleries, downloadable references, and direct contact paths.
 
-### Design system
+The same website can introduce OFK online, guide a meeting, or support a project discussion with evidence.
 
-Tailwind v4 tokens, a tuned grayscale, type scale, motion constants, and reusable primitives. One source of truth for every page.
+**Visuals:** `output-home.webp`, `output-about.webp`, `output-case-study.webp`, `output-projects.webp`, `output-services.webp`
 
-### Website
+*The homepage establishes the digital identity and the two primary next steps: inspect projects or make contact.*
 
-A bilingual site across Home, About, Projects, Services, and Contact. Built to load fast and read clearly on desktop and mobile.
+*The identity gives company information a clear presentation hierarchy.*
 
-- Images: `1-home`, `2-about`, `3-projects`, `4-references`
+*Confirmed project figures become presentation-ready proof.*
 
-### Front-end build
+*Project pages connect site photography to the technical scope behind it.*
 
-Designed and shipped in React with Tailwind, Framer Motion for transitions, and Lenis for scroll. Same hands from system to live site.
+*Service categories stay visual and specific instead of becoming a long capability list.*
 
 ## Impact
 
-**User**
+OFK moved from a logo and scattered files to a live bilingual website.
 
-- **2 Languages** — English and Polish, built in from day one. Same content, same trust, both audiences.
-- **3 Reference companies shown** — FABE POLSKA, YOOJEONG, and ILK INSAAT. Real names that prospects can verify.
+Buyers can now inspect projects, review technical scope, download signed references, and make contact in one place.
 
-**Business**
+The website also gives OFK one presentation tool for pitches and meetings.
 
-- **5 Core pages** — Home, About, Projects, Services, Contact. Everything a B2B buyer needs in one place.
-- **1 Design system** — Tokens, primitives, and motion rules. Future pages stay consistent without redesign.
+No before-and-after analytics were available. The verified change is that OFK’s work is now public and easier to inspect.
 
-## Retrospective
-
-B2B sites earn trust by answering the obvious questions first.
-Who are you, what have you built, who can vouch for you, how do I reach you.
+[Visit OFK Construction](https://ofkconstruction.com)

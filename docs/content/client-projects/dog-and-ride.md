@@ -1,102 +1,87 @@
 # Dog & Ride
 
-Editorial reference only. Published project content lives in `src/portfolio/content/projects.ts`.
+Editorial reference only. Published project content lives in `src/portfolio/case-studies/studies/DogAndRideCaseStudy.tsx`.
 
 - **Kind:** Client project
 - **Role:** Multidisciplinary designer
 - **Year / Status:** 2025
-- **Timeline:** May 2025 to June 2025
+- **Timeline:** May to Jun 2025
+- **Scope:** Identity, research, photography, web, social, pitch
 - **Tools:** Figma, Framer, PowerPoint, Adobe Creative Suite, Notion
 
-**One-line summary:** A new brand and digital experience that lets scooter riders travel with their dogs safely, spend more time together, and buy with confidence.
+**Summary:** Dog & Ride makes custom carriers for people who ride with their dogs. I turned its logo and video content into a brand and landing page that answer fit and safety questions before consultation.
 
 ## Problem
 
-Dog & Ride already had a strong product.
-The business setup was the blocker.
+Every dog and motorcycle needs a different setup. Riders needed clear answers about fit, safety, and daily use before trusting the product.
 
-The brand was not defined yet.
-There was no website to explain the product clearly.
-People had too many questions before buying.
-Sales depended on manual chats, so conversions stayed low.
-
-**Context**
-
-Core problem statement
-People liked the idea, but they did not have enough clarity and trust to purchase.
-
-**Objectives**
-
-- Answer questions fast
-- Build trust
-- Make it easy to buy or reach out
-
-**User scenario:** Dog owners who ride scooters had one big issue.
-Traveling with a dog did not feel safe or comfortable.
+A standard product page and checkout would hide that complexity. The website needed to explain the product and lead each rider to a consultation.
 
 ## Approach
 
-Started with people who already bought.
+I gathered feedback from existing customers and people who tested the product. I asked what they liked, what they disliked, and what they needed before trusting it.
 
-A short survey and interviews with 5 existing customers.
-Focus stayed on three things.
+I also asked what created confidence and which images drew the strongest response. Their answers set the content, page order, photography direction, and website decisions.
 
-- What made them buy.
-- What confused them before buying.
-- What they would change about the experience.
+I developed the wireframes and components directly in Framer. One focused landing page covered the full path from product introduction to contact.
 
-The most common questions from sales chats were collected.
-Those questions shaped the website structure and content.
+**Reconstructed from project notes:**
+
+- What did people like or dislike?
+- What did they need before trusting it?
+- What created confidence?
+- Which images created the strongest response?
 
 ## Solution
 
-One cohesive system was delivered across brand, web, and social.
+### Show the ride, not just the carrier
 
-### Key decisions
+I used the image feedback to direct and edit photographs of dogs, riders, and the carrier in use. The images show both the carrier and the ride it enables.
 
-**Brand foundation** — A clear visual direction, colors, and tone of voice. A premium feel that still stays warm and human.
+**Visual:** `home.webp`
 
-**Website experience** — A simple flow that explains what it is, how it works, and who it fits. Clear safety story. Clear how to buy path. Fast contact for high intent buyers.
+*The opening pairs the product with the experience of travelling together.*
 
-**Instagram presence** — A consistent look and message. Posts and short videos that show real use and build trust.
+### Let buyer questions set the order
 
-**Vespa pitch deck** — A story that frames Dog & Ride as a lifestyle fit for Vespa riders. A clean narrative focused on safety, aesthetics, and emotional connection.
+The page moves from riding together to product features, safety, customer experiences, common questions, and contact. Each section answers a question that could stop a rider from getting in touch.
+
+**Visual:** `product-features.webp`
+
+*Product details follow the opening promise, when riders are ready to inspect how it works.*
+
+### End with consultation
+
+Dog & Ride does not have one setup for every rider. The page ends with direct contact instead of a standard checkout.
+
+**Visual:** `contact-and-faq.webp`
+
+*The FAQ handles practical questions before the rider starts a consultation.*
 
 ## Output
 
-### Brand
+I delivered the brand identity, research, photography direction and editing, website design and Framer build, social media system, and pitch presentation.
 
-A new identity system that did not exist before. Clear direction that makes the product feel credible and premium.
+The website explains the product. Social media shows it in use. The pitch deck presents the same idea to potential partners.
 
-### Website
+**Visuals:** `testimonials.webp`, `presentation-1.webp`
 
-A Framer website designed to do three jobs. Explain the product fast. Remove doubts with clear answers. Turn interest into purchase or direct contact.
+*Customer experiences add proof beside the product story.*
 
-- Images: `home`, `product-features`, `contact-and-faq`, `testimonials`
-
-### Social
-
-A repeatable Instagram content system. Designed to make the product feel real, not theoretical.
-
-### Partnership deck
-
-A PowerPoint deck to support the Vespa integration conversation. Built to be easy to present and easy to skim.
-
-- Images: `presentation-1`, `presentation-2`, `presentation-3`
+*The pitch deck adapts the same story for a potential partner.*
 
 ## Impact
 
-**User**
+Dog & Ride moved from a logo and video content to one identity and message across its website, social media, and pitch materials.
 
-- **500 Instagram Followers** — People understood the product fast enough to follow. The story finally matched what the product feels like.
-- **1 One sentence story** — Dog & Ride became easy to explain. That clarity builds trust before people ever click a link.
+The website now explains the product, answers fit and safety questions, and gives riders a clear consultation path.
 
-**Business**
+**First five months after launch:**
 
-- **600 to 900 Website visits per month** — Traffic is steady, not random. People have one place to learn, compare, and take the next step.
-- **3 Aligned touchpoints** — Website, Instagram, and the pitch deck now say the same thing. That makes questions simpler and partner talks easier to lead.
+- **56s** average website session
+- **Instagram** largest measured referral source
+- **700+** Instagram followers
+- **10K+** views on typical posts
+- **100K+** views on selected posts
 
-## Retrospective
-
-Premium products do not sell on visuals alone.
-They sell when questions get answered early.
+[Visit Dog & Ride](https://www.dogandride.com/)

@@ -6,7 +6,7 @@ import SectionIntro from '../shared/SectionIntro';
 import { homepageItemVariants, VIEWPORT_ONCE } from '../shared/motion';
 import adclusiveCover from './assets/adclusive/dashboard.webp';
 import dogAndRideCover from './assets/dog-and-ride/home.webp';
-import ofkCover from './assets/ofk/1-home.webp';
+import ofkCover from './assets/ofk/output-home.webp';
 import { PROJECTS, type Project } from './content/projects';
 
 interface WorkCardData {
